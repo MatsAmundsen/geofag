@@ -1,0 +1,22 @@
+{
+  "kontroll": "2026-11-09",
+  "nettomigrasjon": {
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SM.POP.NETM?date=2023",
+    "sha256": "bff73dcca2411c5c6722fd7e6547f6a120ac51e088324f5d51ad044e6d7f9b9d",
+    "definisjon": "Innflyttere minus utflyttere i perioden (ett år), både borgere og ikke-borgere. Kilde WPP 2024.",
+    "lisens": "CC BY 4.0"
+  },
+  "befolkning": {
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2023",
+    "sha256": "27398dc2f2947c58ab01bcc7e81941911d14b4b104da2c233b8d46b3e4a4f74e",
+    "lisens": "CC BY 4.0"
+  },
+  "rate": "SM.POP.NETM / SP.POP.TOTL × 1000, avrundet til én desimal; 217 land, ingen manglende",
+  "migrantbestand": {
+    "url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_destination_and_origin.xlsx",
+    "sha256": "0e10179d05186041a65cf5c6200943b2231701f9c1fd33cbbe21d23b8ea47316",
+    "lisens": "CC BY 3.0 IGO (oppgitt i fila: «Copyright © 2024 by United Nations, made available under a Creative Commons license CC BY 3.0 IGO»)",
+    "utvalg": "De ti største land-til-land-parene i 2024 (begge kjønn), der begge land finnes i Natural Earth 110m; Kina→Hongkong (2 490 414) utelatt",
+    "endepunkt": "Natural Earth 110m LABEL_X/LABEL_Y, matchet på UN_A3"
+  }
+}

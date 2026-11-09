@@ -1,0 +1,7 @@
+# Kapittel 7: kontroll av skjulte figurer
+
+Kontroll 6.–7. november 2026, Europe/Oslo.
+
+7.2 er bygget som et søylediagram med to søyler per land, ikke som et kart. Grunnen er at oppgaven krever et tydelig skille mellom gruveproduksjon og raffinering, og et kart kan bare vise én av dem om gangen. Dataene er USGS Mineral Commodity Summaries 2026 for kobber, med anslag for 2025 i tusen tonn kobberinnhold (Public Domain). Alle land i tabellen er med, også de uten gruveproduksjon (Japan, Sør-Korea og Tyskland), sammen med andre land og verdenssummen. Litium ble også kontrollert, men er ikke brukt fordi USA er tilbakeholdt (W) og tabellen ikke skiller gruve fra raffinering.
+
+7.8 er bygget som et SVG-kart. Sonene kommer fra Kartverkets datasett Norges maritime grenser i GML: økonomisk sone, fiskevernsonen ved Svalbard, fiskerisonen ved Jan Mayen, kontinentalsokkelen og sjøterritoriet. Datauttaket er fra 11. april 2025, og lisensen er CC BY 3.0 NO. Feltene er hentet 9. november 2026 fra Sokkeldirektoratets faktakart, laget «Field by status». Det gir 142 felt, og 141 av dem har omriss. Lisensen er NLOD 2.0, bekreftet på factpages.sodir.no og i Geonorge-metadata. Land kommer fra Natural Earth 1:50m (PD). Kartverkets bakgrunnskart er ikke brukt. Bildeteksten oppgir kartdato, feltstatus og at kartet ikke kan brukes til grensespørsmål. Kontrollsummer ligger i docs/geografi-kap7-skjulte-kilder.json.

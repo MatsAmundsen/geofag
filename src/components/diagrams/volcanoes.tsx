@@ -75,21 +75,21 @@ function FactList({ rows }: { rows: [string, string][] }) {
   );
 }
 
-export function VolcanoTypesDiagram() {
+export function VolcanoTypesDiagram({ geografi = false, selected }: { geografi?: boolean; selected?: "shield" | "stratovolcano" } = {}) {
   const uid = useId().replace(/:/g, "");
   const coneClip = `${uid}-cone`;
   const scoria = `${uid}-scoria`;
   return (
     <FigureFrame
-      heading="Magmakjemi avgjør form og eksplosivitet"
-      caption="Tre hovedtyper: skjoldvulkan, stratovulkan og sinderkjegle. Skjoldvulkanen bygges av tynne lavadekker. Stratovulkanen er lagdelt, med vekslende lava og aske/tefra. Sinderkjeglen er en mindre haug av slagg og sinder."
+      heading={geografi ? "To vulkantyper: form og oppbygning" : "Magmakjemi avgjør form og eksplosivitet"}
+      caption={geografi ? "Forenklede skisser uten målestokk. Skjoldvulkaner bygges hovedsakelig av lettflytende lava; stratovulkaner har lag av lava og oppstykket materiale. Form alene avgjør ikke neste utbrudd eller sikker avstand (USGS, u.å.-f)." : "Tre hovedtyper: skjoldvulkan, stratovulkan og sinderkjegle. Skjoldvulkanen bygges av tynne lavadekker. Stratovulkanen er lagdelt, med vekslende lava og aske/tefra. Sinderkjeglen er en mindre haug av slagg og sinder."}
     >
-      <div data-figure="vulkantyper" className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <article className="flex flex-col gap-3 rounded-xl border border-border bg-[#10181e] p-3">
+      <div data-figure="vulkantyper" className={`grid grid-cols-1 gap-4 ${selected ? "" : geografi ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}>
+        {(!selected || selected === "shield") && <article className="flex flex-col gap-3 rounded-xl border border-border bg-[#10181e] p-3">
           <div>
             <h3 className="text-base font-semibold text-[#e0b48a]">Skjoldvulkan</h3>
             <p className="mt-1 text-sm leading-snug text-muted-foreground">
-              Effusive utbrudd. Basaltisk lava med lav viskositet.
+              {geografi ? "Relativt lettflytende lava kan bre seg utover." : "Effusive utbrudd. Basaltisk lava med lav viskositet."}
             </p>
           </div>
           <svg viewBox="0 0 320 150" className="h-auto w-full" role="img" aria-label="Skjoldvulkan med slake sider">
@@ -101,19 +101,19 @@ export function VolcanoTypesDiagram() {
             <ellipse cx="160" cy="96" rx="12" ry="3.5" fill="#1a1410" stroke="#e0894a" strokeWidth="1" />
           </svg>
           <FactList
-            rows={[
+            rows={geografi ? [["Form", "Bred og slak."], ["Oppbygning", "Mange lag relativt lettflytende lava."], ["Forbehold", "Utbrudd kan fortsatt true mennesker og infrastruktur."]] : [
               ["Helning", "Slak, ofte 2° til 10°"],
               ["Mekanisme", "Lavaen kan renne langt før den størkner. Vulkanen bygges av mange tynne lavadekker."],
               ["Eksempler", "Mauna Loa og Kilauea på Hawaii"],
             ]}
           />
-        </article>
+        </article>}
 
-        <article className="flex flex-col gap-3 rounded-xl border border-border bg-[#10181e] p-3">
+        {(!selected || selected === "stratovolcano") && <article className="flex flex-col gap-3 rounded-xl border border-border bg-[#10181e] p-3">
           <div>
             <h3 className="text-base font-semibold text-[#d07a7a]">Stratovulkan</h3>
             <p className="mt-1 text-sm leading-snug text-muted-foreground">
-              Bratt kjegle. Seig magma som sjelden flyter langt.
+              {geografi ? "Vanligvis bratt form med lag av ulike utbruddsmaterialer." : "Bratt kjegle. Seig magma som sjelden flyter langt."}
             </p>
           </div>
           <svg viewBox="0 0 320 168" className="h-auto w-full" role="img" aria-label="Lagdelt stratovulkan">
@@ -134,7 +134,7 @@ export function VolcanoTypesDiagram() {
             <path d="M78 142 L148 46 L160 58 L172 46 L242 142" fill="none" stroke="#6b4a42" strokeWidth="1.4" />
             <ellipse cx="160" cy="32" rx="26" ry="10" fill="#6b7280" opacity="0.9" />
             <ellipse cx="148" cy="24" rx="16" ry="8" fill="#9ca3af" opacity="0.75" />
-            <path d="M148 58 Q112 96 96 130" fill="none" stroke={C.low} strokeWidth="3.5" strokeDasharray="5 3" />
+            {!geografi && <path d="M148 58 Q112 96 96 130" fill="none" stroke={C.low} strokeWidth="3.5" strokeDasharray="5 3" />}
           </svg>
           <ul className="flex flex-wrap gap-x-3 gap-y-1 text-xs leading-snug text-muted-foreground">
             <li className="inline-flex items-center gap-1.5">
@@ -143,21 +143,21 @@ export function VolcanoTypesDiagram() {
             </li>
             <li className="inline-flex items-center gap-1.5">
               <span className="inline-block size-2.5 rounded-sm bg-[#6a6258]" />
-              Aske/tefra
+              {geografi ? "Oppstykket materiale" : "Aske/tefra"}
             </li>
             <li>Grå sky: askesøyle</li>
-            <li>Stiplet rød: pyroklastisk strøm</li>
+            {!geografi && <li>Stiplet rød: pyroklastisk strøm</li>}
           </ul>
           <FactList
-            rows={[
+            rows={geografi ? [["Form", "Vanligvis en brattere kjegle."], ["Oppbygning", "Lag av størknet lava og oppstykket vulkansk materiale."], ["Forbehold", "Vulkantypen alene forutsier ikke et bestemt utbrudd."]] : [
               ["Helning", "Bratt, ofte 25° til 35°"],
               ["Lag", "Vekslende størknet seig lava, aske, pimpstein og tefra"],
               ["Eksempler", "Fuji, Vesuv, Mount St. Helens, Pinatubo og Beerenberg på Jan Mayen"],
             ]}
           />
-        </article>
+        </article>}
 
-        <article className="flex flex-col gap-3 rounded-xl border border-border bg-[#10181e] p-3">
+        {!geografi && <article className="flex flex-col gap-3 rounded-xl border border-border bg-[#10181e] p-3">
           <div>
             <h3 className="text-base font-semibold text-[#f0c9a0]">Sinderkjegle</h3>
             <p className="mt-1 text-sm leading-snug text-muted-foreground">
@@ -191,7 +191,7 @@ export function VolcanoTypesDiagram() {
               ["Eksempel", "Parícutin i Mexico vokste opp på en åker i 1943"],
             ]}
           />
-        </article>
+        </article>}
       </div>
     </FigureFrame>
   );
@@ -546,14 +546,23 @@ const HAZARDS: {
   },
 ];
 
-export function VolcanicHazardsDiagram() {
+// Vg1: samme kortkomponent, men uten G1-historikk, fartstall eller kjemiske detaljer.
+const GEOGRAFI_HAZARDS: typeof HAZARDS = [
+  { kind: "pdc", title: "1. Lava", points: ["Smeltet stein strømmer over bakken.", "Lava kan begrave eller sette fyr på bygninger og vegetasjon."], example: "Kilde: U.S. Geological Survey (u.å.-a)." },
+  { kind: "pdc", title: "2. Pyroklastisk strøm", points: ["En varm blanding av gass, aske og stein beveger seg langs bakken.", "Strømmen kan ødelegge store områder rundt vulkanen."], example: "Kilde: Newhall et al. (1997)." },
+  { kind: "ash", title: "3. Aske", points: ["Aske kan spres langt med vinden.", "Asken kan skade bygninger, jordbruk og flytrafikk."], example: "Kilde: Newhall et al. (1997)." },
+  { kind: "lahar", title: "4. Lahar", points: ["En lahar er en strøm av vann og vulkansk materiale.", "Regn kan sette avsatt aske i bevegelse også etter selve utbruddet."], example: "Kilde: Newhall et al. (1997)." },
+  { kind: "ash", title: "5. Gass", points: ["Noen vulkanske gasser kan skade mennesker, dyr og vegetasjon.", "Gassfare må vurderes av fagfolk, ikke ut fra lukt eller avstand alene."], example: "Kilde: U.S. Geological Survey (u.å.-b)." },
+];
+
+export function VolcanicHazardsDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   return (
     <FigureFrame
-      heading="Fire vulkanske farer"
-      caption="Lavastrømmer beveger seg ofte sakte nok til at folk kan komme seg unna. Kapitlet beskriver pyroklastiske strømmer, laharer, aske som truer luftfarten, og vulkansk vinter. Tsunami som egen vulkansk fare står ikke i dette kapitlet."
+      heading={geografi ? "Figur 6.3: Fem vulkanske farer" : "Fire vulkanske farer"}
+      caption={geografi ? "En oversikt over mulige farer, ikke et kart over sikker avstand. Ulike utbrudd gir ulike kombinasjoner av farer (Newhall et al., 1997; U.S. Geological Survey, u.å.-a, u.å.-b)." : "Lavastrømmer beveger seg ofte sakte nok til at folk kan komme seg unna. Kapitlet beskriver pyroklastiske strømmer, laharer, aske som truer luftfarten, og vulkansk vinter. Tsunami som egen vulkansk fare står ikke i dette kapitlet."}
     >
       <div data-figure="farer" className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {HAZARDS.map((hazard) => (
+        {(geografi ? GEOGRAFI_HAZARDS : HAZARDS).map((hazard) => (
           <article key={hazard.title} className="rounded-xl border border-border bg-[#12181e] p-4">
             <div className="flex items-start gap-3">
               <HazardIcon kind={hazard.kind} />

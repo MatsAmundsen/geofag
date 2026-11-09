@@ -1,0 +1,4 @@
+{"type":"FeatureCollection","features":[
+{"type":"Feature","properties":{"navn":"Rjukan, by (Tinn)","rolle":"Lokatorpunkt"},"geometry":{"type":"Point","coordinates":[8.59411,59.87891]}},
+{"type":"Feature","properties":{"navn":"Vemork, industriområde (Tinn)","rolle":"Lokatorpunkt"},"geometry":{"type":"Point","coordinates":[8.49372,59.87103]}},
+{"type":"Feature","properties":{"navn":"Mæl, stasjon (Tinn)","rolle":"Lokatorpunkt"},"geometry":{"type":"Point","coordinates":[8.81173,59.9296]}}]}

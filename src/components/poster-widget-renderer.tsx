@@ -1,3 +1,35 @@
+import { GeografiSkyveTrekk, GeografiFlyttingNorge, GeografiMigrasjonHistorie, GeografiInnvandringsgrunn, GeografiFlyktningerNaboland } from "@/components/geografi/migrasjon-diagrammer";
+import { GeografiVerdensbefolkning, GeografiDemografiskGrunnformel, GeografiNorgePyramider, GeografiLandPyramider, GeografiDemografiskOvergang, GeografiNorgeFruktbarhetAldring } from "@/components/geografi/befolkning-diagrammer";
+import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
+import { GeografiSysselNord } from "@/components/geografi/ressurs-valg";
+import { GeografiKraftproduksjon } from "@/components/geografi/ressurs-valg";
+import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
+import { PetroleumTrapModel } from "@/components/models/resource-ore-petroleum-model";
+import { WindCellsDiagram } from "@/components/diagrams/wind";
+import { CoriolisDiagram } from "@/components/diagrams/coriolis";
+import { CarbonCycleDiagram } from "@/components/diagrams/spheres";
+import { GeografiKlimadiagram, GeografiKlimaScenario } from "@/components/geografi/klima-diagrammer";
+import { GeografiBrelandskapFoto } from "@/components/geografi/landskap-valg";
+import { GeografiFjordLokator } from "@/components/geografi/landskap-valg";
+import { GeografiLeirslette } from "@/components/geografi/landskap-valg";
+import { GeografiVegaKart } from "@/components/geografi/landskap-valg";
+import { GeografiElvelandskap } from "@/components/geografi/landskap-valg";
+import { GeografiTidsskala } from "@/components/geografi/indre-valg";
+import { GeografiBerggrunnSkisse } from "@/components/geografi/indre-valg";
+import { GeografiReykjanes } from "@/components/geografi/indre-valg";
+import { GeografiTyrkiaKart } from "@/components/geografi/indre-valg";
+import { GeografiTsunamiSteg } from "@/components/geografi/indre-valg";
+import { GeografiRiftHav } from "@/components/geografi/indre-valg";
+import { GeografiPlateKart } from "@/components/geografi/indre-valg";
+import { GeografiLokalFotavtrykk } from "@/components/geografi/baerekraft-valg";
+import { GeografiHdiBnp } from "@/components/geografi/baerekraft-valg";
+import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
+import { HydrographCatchmentModel } from "@/components/models/hydrograph-catchment-model";
+import { GeografiGjerdrumFarekart } from "@/components/geografi/naturfare-valg";
+import { GeografiKvikkleireSteg } from "@/components/geografi/naturfare-valg";
+import { GeografiFeltlogg } from "@/components/geografi/feltlogg-vg1";
+import { GeografiTopokart } from "@/components/geografi/projeksjon-figurer";
+import { GeografiGallPeters } from "@/components/geografi/projeksjon-figurer";
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { TermiskVindV5 } from "@/components/diagrams/termisk-vind-v5";
 import { TsunamiPlass } from "@/components/tsunami-plass";
@@ -148,9 +180,11 @@ import { ArrowRight } from "lucide-react";
 import {
   AvsetningsformerDiagram,
   BreLengdesnittDiagram,
+  Frostsprengning,
   FrostsprengningDiagram,
   IsostasiSnitt,
   IsostasiSnittDiagram,
+  VdalTilUdal,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
 import {
@@ -163,6 +197,7 @@ import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melt
 import { Callout } from "@/components/callout";
 import {
   FjellskredBolgeDiagram,
+  KvikkleireDiagram,
   SkredSonerDiagram,
 } from "@/components/diagrams/skred";
 import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
@@ -183,7 +218,7 @@ import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagr
 import { AtmosfaeriskElvFigur, BeaufortTrappFigur, BombesyklonFigur, HansVarselFigur, SupercelleFigur } from "@/components/diagrams/vaerkatastrofer-figurer-2";
 import { KaldfrontFigur, VarmfrontFigur } from "@/components/diagrams/fronter-steg-figurer";
 import { TreCellerFigur } from "@/components/diagrams/tre-celler-figur";
-import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
+import { GeografiOrkanSnittFigur, GeografiStormfloFigur, KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
 import { AmocDiagram, ClimateContrastDiagram } from "@/components/diagrams/ocean";
@@ -327,7 +362,162 @@ function TsunamiLaster({ modell, children }: { modell: string; children: JSX.Ele
   );
 }
 
+const GeografiIstidskartLat = lazy(() => import("@/components/geografi/landskap-iskart").then((m) => ({default:m.GeografiIstidskart})));
+
+const GeografiBreKartLat = lazy(() => import("@/components/geografi/landskap-brekart").then((m) => ({default:m.GeografiBreKart})));
+
+const GeografiFosenKartLat = lazy(() => import("@/components/geografi/ressurs-fosen").then(m=>({default:m.GeografiFosenKart})));
+
+const GeografiTelefonStederLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiTelefonSteder})));
+const GeografiFiskEksportLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiFiskEksport})));
+
+const GeografiFruktbarhetKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiFruktbarhetKart})));
+const GeografiLevekarKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiLevekarKart})));
+
+const GeografiKommuneflyttingKartLat = lazy(() => import("@/components/geografi/migrasjon-kart").then(m=>({default:m.GeografiKommuneflyttingKart})));
+const GeografiFlyktningVertslandKartLat = lazy(() => import("@/components/geografi/migrasjon-kart").then(m=>({default:m.GeografiFlyktningVertslandKart})));
+
+const GeografiMonsterkartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMonsterkart})));
+
+const GeografiMercatorSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMercator})));
+
+const GeografiGradnettSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiGradnett})));
+
+const GeografiKartSammenlikningSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiKartSammenlikning})));
+
+const GeografiMentaltKartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMentaltKart})));
+
+const GeografiBlueMarbleSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiBlueMarble})));
+
+const GeografiGisLagSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiGisLag})));
+
+const GeografiSnowKartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiSnowKart})));
+
+const GeografiTemaValgSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiTemaValg})));
+
+const GeografiUtvalgSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiUtvalg})));
+
+const GeografiFeltprosessSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeltprosess})));
+
+const GeografiPlanmalSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiPlanmal})));
+
+const GeografiMetodevalgSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiMetodevalg})));
+
+const GeografiMaalepunkterSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiMaalepunkter})));
+
+const GeografiFeltBearbeidingSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeltBearbeiding})));
+
+const GeografiFeilkilderSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeilkilder})));
+
+const GeografiFeltetikkSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeltetikk})));
+
+const GeografiMikroklimaEgetSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiMikroklimaEget})));
+
+const GeografiSkjelvPlaterSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiSkjelvPlater})));
+
+const GeografiFareEksponeringSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiFareEksponering})));
+
+const GeografiFattigdomKartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiFattigdomKart})));
+
+const GeografiPlanetaereGrenserSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiPlanetaereGrenser})));
+
+const GeografiCo2KartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Kart})));
+
+const GeografiCo2SerieSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Serie})));
+
+const GeografiVarmeflekkerSkjultLat = lazy(() => import("@/components/geografi/indre-skjulte").then(m => ({default:m.GeografiVarmeflekker})));
+
+const GeografiSkjelvVulkanSkjultLat = lazy(() => import("@/components/geografi/indre-skjulte").then(m => ({default:m.GeografiSkjelvVulkan})));
+
+const GeografiGeirangerFotoSkjultLat = lazy(() => import("@/components/geografi/landskap-skjulte").then(m => ({default:m.GeografiGeirangerFoto})));
+
+const GeografiTemperaturserieSkjultLat = lazy(() => import("@/components/geografi/klima-skjulte").then(m => ({default:m.GeografiTemperaturserie})));
+
+const GeografiNesbyenLokatorSkjultLat = lazy(() => import("@/components/geografi/klima-skjulte").then(m => ({default:m.GeografiNesbyenLokator})));
+
+const GeografiBangladeshLokatorSkjultLat = lazy(() => import("@/components/geografi/klima-skjulte").then(m => ({default:m.GeografiBangladeshLokator})));
+
+const GeografiKobberProduksjonSkjultLat = lazy(() => import("@/components/geografi/ressurs-skjulte").then(m => ({default:m.GeografiKobberProduksjon})));
+
+const GeografiHavsonerFeltSkjultLat = lazy(() => import("@/components/geografi/ressurs-skjulte").then(m => ({default:m.GeografiHavsonerFelt})));
+
+const GeografiTjenesteKartSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiTjenesteKart})));
+
+const GeografiRjukanLokatorSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiRjukanLokator})));
+
+const GeografiNettomigrasjonKartSkjultLat = lazy(() => import("@/components/geografi/migrasjon-skjulte").then(m => ({default:m.GeografiNettomigrasjonKart})));
+
+const GeografiMigrantkorridorerSkjultLat = lazy(() => import("@/components/geografi/migrasjon-skjulte").then(m => ({default:m.GeografiMigrantkorridorer})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoMigrasjonKorridorer: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMigrantkorridorerSkjultLat /></Suspense>,
+  GeoMigrasjonNettoKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiNettomigrasjonKartSkjultLat /></Suspense>,
+  GeoNaeringRjukanLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiRjukanLokatorSkjultLat /></Suspense>,
+  GeoNaeringTjenesteKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTjenesteKartSkjultLat /></Suspense>,
+  GeoRessursHavsoner: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiHavsonerFeltSkjultLat /></Suspense>,
+  GeoRessursKobber: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiKobberProduksjonSkjultLat /></Suspense>,
+  GeoKlimaBangladeshLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiBangladeshLokatorSkjultLat /></Suspense>,
+  GeoKlimaNesbyenLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiNesbyenLokatorSkjultLat /></Suspense>,
+  GeoKlimaTemperaturserie: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTemperaturserieSkjultLat /></Suspense>,
+  GeoLandskapGeirangerFoto: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGeirangerFotoSkjultLat /></Suspense>,
+  GeoIndreSkjelvVulkan: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvVulkanSkjultLat /></Suspense>,
+  GeoIndreVarmeflekker: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiVarmeflekkerSkjultLat /></Suspense>,
+  GeoBaerekraftCo2Serie: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2SerieSkjultLat /></Suspense>,
+  GeoBaerekraftCo2Kart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2KartSkjultLat /></Suspense>,
+  GeoBaerekraftPlanetaere: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiPlanetaereGrenserSkjultLat /></Suspense>,
+  GeoBaerekraftFattigdomKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFattigdomKartSkjultLat /></Suspense>,
+  GeoNaturfareFareEksponering: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFareEksponeringSkjultLat /></Suspense>,
+  GeoNaturfareSkjelvPlater: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvPlaterSkjultLat /></Suspense>,
+  GeoFeltMikroklimaEget: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMikroklimaEgetSkjultLat /></Suspense>,
+  GeoFeltEtikk: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeltetikkSkjultLat /></Suspense>,
+  GeoFeltFeilkilder: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeilkilderSkjultLat /></Suspense>,
+  GeoFeltBearbeiding: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeltBearbeidingSkjultLat /></Suspense>,
+  GeoFeltMaalepunkter: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMaalepunkterSkjultLat /></Suspense>,
+  GeoFeltMetodevalg: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMetodevalgSkjultLat /></Suspense>,
+  GeoFeltPlanmal: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiPlanmalSkjultLat /></Suspense>,
+  GeoFeltProsess: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeltprosessSkjultLat /></Suspense>,
+  GeoFeltUtvalg: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiUtvalgSkjultLat /></Suspense>,
+  GeoVerktoyTemaValg: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTemaValgSkjultLat /></Suspense>,
+  GeoVerktoySnow: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSnowKartSkjultLat /></Suspense>,
+  GeoVerktoyGisLag: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGisLagSkjultLat /></Suspense>,
+  GeoVerktoyBlueMarble: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiBlueMarbleSkjultLat /></Suspense>,
+  GeoVerktoyMentalt: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMentaltKartSkjultLat /></Suspense>,
+  GeoVerktoyKartSammenlikning: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiKartSammenlikningSkjultLat /></Suspense>,
+  GeoVerktoyGradnett: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGradnettSkjultLat /></Suspense>,
+  GeoVerktoyMercator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMercatorSkjultLat /></Suspense>,
+  GeoVerktoyMonster: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMonsterkartSkjultLat /></Suspense>,
+  GeoMigrasjonKommunekart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiKommuneflyttingKartLat /></Suspense>,
+  GeoMigrasjonVertslandKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFlyktningVertslandKartLat /></Suspense>,
+
+  GeoBefolkningFruktbarhetKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFruktbarhetKartLat /></Suspense>,
+  GeoBefolkningLevekarKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiLevekarKartLat /></Suspense>,
+
+  GeoNaeringTelefonSteder: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiTelefonStederLat /></Suspense>,
+  GeoNaeringFiskEksport: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFiskEksportLat /></Suspense>,
+
+  GeoRessursFosenKart: () => <Suspense fallback={<p>Laster Fosen-kart med kildeobjekter.</p>}><GeografiFosenKartLat /></Suspense>,
+  GeoRessursSysselNord: () => <GeografiSysselNord />,
+  GeoRessursKraftproduksjon: () => <GeografiKraftproduksjon />,
+  GeoLandskapBrekart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiBreKartLat /></Suspense>,
+  GeoLandskapIstidskart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiIstidskartLat /></Suspense>,
+  GeoLandskapFjordLokator: () => <GeografiFjordLokator />,
+  GeoLandskapLeirslette: () => <GeografiLeirslette />,
+  GeoLandskapKyst: () => <GeografiVegaKart />,
+  GeoLandskapElv: () => <GeografiElvelandskap />,
+  GeoIndreTidsskala: () => <GeografiTidsskala />,
+  GeoIndreBerggrunn: () => <GeografiBerggrunnSkisse />,
+  GeoIndreReykjanes: () => <GeografiReykjanes />,
+  GeoIndreTyrkiaKart: () => <GeografiTyrkiaKart />,
+  GeoIndreTsunami: () => <GeografiTsunamiSteg />,
+  GeoIndreRiftHav: () => <GeografiRiftHav />,
+  GeoIndrePlateKart: () => <GeografiPlateKart />,
+  GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
+  GeoHdiBnp: () => <GeografiHdiBnp />,
+  GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
+  GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
+  GeoFeltloggVg1: () => <GeografiFeltlogg />,
+  GeoVerktoyTopokart: () => <GeografiTopokart />,
+  GeoVerktoyGallPeters: () => <GeografiGallPeters />,
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).
   ...G2_PAKKE_A_WIDGETS,
   ...Object.fromEntries(
@@ -1460,6 +1650,54 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoMigrasjonSkyveTrekk: () => <GeografiSkyveTrekk />,
+  GeoMigrasjonNorge: () => <GeografiFlyttingNorge />,
+  GeoMigrasjonHistorie: () => <GeografiMigrasjonHistorie />,
+  GeoMigrasjonInnvandringsgrunn: () => <GeografiInnvandringsgrunn />,
+  GeoMigrasjonFlyktninger: () => <GeografiFlyktningerNaboland />,
+  GeoBefolkningVerden: () => <GeografiVerdensbefolkning />,
+  GeoBefolkningGrunnformel: () => <GeografiDemografiskGrunnformel />,
+  GeoBefolkningNorgePyramider: () => <GeografiNorgePyramider />,
+  GeoBefolkningLandPyramider: () => <GeografiLandPyramider />,
+  GeoBefolkningOvergang: () => <GeografiDemografiskOvergang />,
+  GeoBefolkningNorgeFruktbarhet: () => <GeografiNorgeFruktbarhetAldring />,
+  GeoNaeringStruktur: () => <GeografiNaeringsstruktur />,
+  GeoNaeringLokalisering: () => <GeografiLokaliseringsfaktorer />,
+  GeoNaeringRingvirkninger: () => <GeografiRingvirkninger />,
+  GeoNaeringVerdikjede: () => <GeografiTelefonVerdikjede />,
+  GeoRessursFornyelse: () => <GeografiRessursFornyelse />,
+  GeoRessursBergartBrudd: () => <FraBergartTilBruddDiagram geografi />,
+  GeoRessursPetroleum: () => <PetroleumTrapModel geografi />,
+  GeoRessursVindAvveining: () => <WindPowerTradeoffDiagram geografi />,
+  GeoKlimaDiagram: () => <GeografiKlimadiagram />,
+  GeoKlimaVindceller: () => <WindCellsDiagram geografi />,
+  GeoKlimaCoriolis: () => <CoriolisDiagram geografi />,
+  GeoKlimaHav: () => <AmocDiagram geografi />,
+  GeoKlimaSoner: () => <GlobalClimateZonesDiagram geografi />,
+  GeoKlimaFon: () => <FoehnAdiabaticDiagram geografi />,
+  GeoKlimaStraling: () => <EarthRadiationBudgetDiagram geografi />,
+  GeoKlimaKarbon: () => <CarbonCycleDiagram geografi />,
+  GeoKlimaScenario: () => <GeografiKlimaScenario />,
+  GeoLandskapFrost: () => <Frostsprengning geografi heading="Figur 4.1 – Forvitring og flytting" caption="Vann som fryser i en sprekk, kan bidra til å dele opp berget. Når en stein løsner og faller, flyttes materialet ved tyngdekraften. Skissen viser et prinsipp, ikke et bestemt tidsforløp eller et skredvarsel (Sørbel, 2024; Bryhni & Røthe, 2025)." />,
+  GeoLandskapBrelandskap: () => <GeografiBrelandskapFoto />,
+  GeoLandskapBotn: () => <BotnEggTindFigurLat geografi heading="Figur 4.5 – Botn, egg og tind" caption="Breformede fordypninger kan etterlate skarpe rygger og topper. Følg formene gjennom trinnene. Terrenget er konstruert og viser ikke utviklingstiden eller et bestemt fjell (Lilleøren, 2025; Mæhlum, 2026a; Bryhni & Fossen, 2024)." />,
+  GeoLandskapMassebalanse: () => <GlacierMassBalanceModel geografi />,
+  GeoLandskapMarinGrense: () => <IsostasiSnitt geografi heading="Figur 4.6 – Havbunn på land" caption="Isens vekt, avsetning i sjø og senere landheving kan forklare leire på land. Marin grense er lokal, og under grensen er marin leire mulig, ikke påvist kvikkleire. Skjematisk tverrsnitt uten stedfesting eller beregnet høyde (NGU, u.å.-a, u.å.-b, u.å.-c; Fossen & Mæhlum, 2026)." />,
+  GeoLandskapKvikkleire: () => <KvikkleireDiagram geografi />,
+  GeoJordasLag: () => <EarthLayersDiagram geografi />,
+  GeoPlateGrenser: () => <BoundaryOverviewDiagram geografi />,
+  GeoPlateModell: () => <PlateTectonicsModel geografi />,
+  GeoJordskjelvBrudd: () => <ElasticReboundDiagram geografi />,
+  GeoVulkanModell: () => <VolcanoModel geografi />,
+  GeoBergartssyklus: () => <BergartssyklusFigurLat geografi heading="Figur 3.12: Bergartenes kretsløp" caption="Flere mulige veier mellom magma, sediment og bergarter. Omdanning skjer uten smelting. Heving endrer plasseringen, ikke automatisk bergartsgruppen. Ingen bergart må gjennom alle stasjonene (NGU, u.å.-c; USGS, u.å.-i)." />,
+  GeoBaerekraftTre: () => <BaerekraftTreFigur geografi />,
+  GeoNaturfareSkredSoner: () => <SkredSonerDiagram caption="Figur 6.4: Materialet løsner, beveger seg og avsettes i et utløpsområde. Også steder nedenfor løsneområdet kan bli rammet. Skissen viser et forenklet skred i bratt terreng, ikke en farevurdering av en bestemt skråning (NVE, 2024b)." />,
+  GeoNaturfareKvikkleire: () => <KvikkleireDiagram caption="Figur 6.6: En bekk kan fjerne støtte i skråningsfoten. Når leire glir ut, kan bakkanten miste støtte. Nye utglidninger kan dermed spre skredet bakover. Dette er en forenklet prosesskisse, ikke et kart over Gjerdrum (Gjerdrumutvalget, 2021, s. 8–11; NVE, 2026)." />,
+  GeoNaturfareFjellskred: () => <FjellskredBolgeDiagram caption="Figur 6.5: Fjellmasser kan sette vann i bevegelse og lage flodbølger. Oppskyllingshøyde er hvor høyt vannet når opp på land. Rundt 60 meter i skissen viser til største oppskylling ved Tafjord-hendelsen i 1934, ikke høyden i alle bygdene eller en framtidig prognose (NVE, u.å.-a)." />,
+  GeoNaturfareHydrogram: () => <HydrographCatchmentModel geografi />,
+  GeoNaturfareOrkan: () => <GeografiOrkanSnittFigur />,
+  GeoNaturfareStormflo: () => <GeografiStormfloFigur />,
+  GeoNaturfareVulkan: () => <VolcanicHazardsDiagram geografi />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
   FieldworkIllustration: () => <FeltmetodeFigur />,

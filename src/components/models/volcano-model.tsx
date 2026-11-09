@@ -1,3 +1,4 @@
+import { VolcanoTypesDiagram } from "@/components/diagrams/volcanoes";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,24 @@ function viscosityShort(label: string): string {
 }
 
 /** Jordskjelv- og tsunamimoduser beholdes i koden, men skjules på Vulkaner-siden. */
-export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: boolean } = {}) {
+export function VolcanoModel({ showSeismicModes = false, geografi = false }: { showSeismicModes?: boolean; geografi?: boolean } = {}) {
+  return geografi ? <GeografiVolcanoModel /> : <AdvancedVolcanoModel showSeismicModes={showSeismicModes} />;
+}
+function GeografiVolcanoModel() {
+  const [scenario, setScenario] = useState<"shield" | "stratovolcano">("shield");
+  return (
+    <ModelFrame kicker="Utforsk vulkantyper" title="Figur 3.8: Sammenlikn form og lag"
+      lead="Velg en vulkantype og forklar hvordan den bygges opp. Modellen sammenlikner former og beregner verken VEI, utbruddstid eller faresoner."
+      toolbar={<div className="flex flex-wrap gap-2" role="group" aria-label="Velg vulkantype">
+        <ModelTab active={scenario === "shield"} onClick={() => setScenario("shield")}>Skjoldvulkan</ModelTab>
+        <ModelTab active={scenario === "stratovolcano"} onClick={() => setScenario("stratovolcano")}>Stratovulkan</ModelTab>
+      </div>}>
+      <VolcanoTypesDiagram geografi selected={scenario} />
+      <ModelNote title="Undersøk modellen" tone="teal">Hva skiller oppbygningen? Hvorfor må et virkelig utbrudd undersøkes med flere opplysninger enn vulkantypen alene (USGS, u.å.-f)?</ModelNote>
+    </ModelFrame>
+  );
+}
+function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?: boolean } = {}) {
   const [scenario, setScenario] = useState<VolcanoScenario>("stratovolcano");
 
   // Kontroller for vulkan-simulering

@@ -326,7 +326,21 @@ export function OneVsThreeCellsDiagram() {
  * Med realistisk fallende tropopause (16 km -> 8 km), tropopausebrudd,
  * jetstrømkjerner (STJ og PFJ), skyformasjoner og trykkbelter.
  */
-export function WindCellsDiagram() {
+export function WindCellsDiagram({ geografi = false }: { geografi?: boolean } = {}) {
+  if (geografi) return (
+    <Diagram title="Tre vindceller på nordlig halvkule, vist som et forenklet tverrsnitt" heading="Figur 5.2 – Vindceller og dominerende vindbelter"
+      caption="Skissen viser et mønster over lang tid, ikke lukkede rør eller dagens vær. Grensene flytter seg. Pilene i tverrsnittet viser nord–sør-bevegelse, ikke vindens øst–vest-retning. Jordrotasjonen er med på å gi passatvind og vestavind. Ferrelcellen beskriver et gjennomsnitt av mer sammensatte bevegelser (Met Office, u.å.)." viewBox="0 0 900 370" wide scroll>
+      {(m) => <>
+        {[{ x: 65, name: "Hadleycellen", wind: "Passat mot ekvator", reverse: false }, { x: 335, name: "Ferrelcellen", wind: "Vestavindsbeltet", reverse: true }, { x: 605, name: "Polarcellen", wind: "Polare østavinder", reverse: false }].map(({ x, name, wind, reverse }) => <g key={name}>
+          <rect x={x - 20} y="55" width="245" height="240" rx="12" fill="#152430" stroke={C.dim} />
+          <L x={x + 100} y="90" size={18} weight={700} anchor="middle">{name}</L>
+          <Arrow d={reverse ? `M ${x + 175} 220 L ${x + 175} 140 Q ${x + 100} 100 ${x + 25} 140 L ${x + 25} 220 Q ${x + 100} 250 ${x + 175} 220` : `M ${x + 25} 220 L ${x + 25} 140 Q ${x + 100} 100 ${x + 175} 140 L ${x + 175} 220 Q ${x + 100} 250 ${x + 25} 220`} marker={m.teal} color={C.teal} width={3} />
+          <L x={x + 100} y="278" fill={C.warm} size={16} anchor="middle">{wind}</L>
+        </g>)}
+        <L x="50" y="335" size={16}>Ekvator</L><L x="850" y="335" size={16} anchor="end">Nordpolen</L>
+      </>}
+    </Diagram>
+  );
   return (
     <Diagram
       title="De tre sirkulasjonscellene på nordlig halvkule"
@@ -831,7 +845,26 @@ export function SurfaceWindsDiagram() {
  * 6. GlobalClimateZonesDiagram
  * Illustrert vegetasjons- og klimaprofil fra ekvator til polen direkte koblet til stigende og synkende luft.
  */
-export function GlobalClimateZonesDiagram() {
+export function GlobalClimateZonesDiagram({ geografi = false }: { geografi?: boolean } = {}) {
+  if (geografi) return (
+    <Diagram title="Köppens fem hovedgrupper bygger på temperatur og nedbør" heading="Figur 5.5 – Klimasoner er mer enn breddegrader"
+      caption="Dette er en oversikt, ikke et kart eller nøyaktige sonegrenser. Köppens hovedgrupper bruker temperatur og nedbør i sammenheng med vegetasjon. Høyde, hav og vind gir avvik fra enkle breddegradsbelter. Samme breddegrad betyr derfor ikke nødvendigvis samme klimasone (Mamen, u.å.; Dannevig & Harstveit, 2026)." viewBox="0 0 900 430" wide scroll>
+      {() => <>
+        {[
+          ["A – Tropisk", "Varmt gjennom hele året", C.teal],
+          ["B – Tørt", "Lite nedbør i forhold til temperatur", C.sand],
+          ["C – Varmtemperert", "Forholdsvis milde vintre", C.warm],
+          ["D – Kaldtemperert", "Kalde vintre, men varmere somre", C.cold],
+          ["E – Polar", "Kjølig også i den varmeste måneden", C.rain],
+        ].map(([name, description, color], i) => <g key={name}>
+          <rect x="35" y={25 + i * 72} width="830" height="60" rx="8" fill="#152430" stroke={color} />
+          <L x="55" y={62 + i * 72} size={18} fill={color} weight={700}>{name}</L>
+          <L x="350" y={62 + i * 72} size={16}>{description}</L>
+        </g>)}
+        <L x="450" y="410" anchor="middle" size={15}>Klimasonen påvirker vekstvilkår, men bestemmer ikke all vegetasjon alene.</L>
+      </>}
+    </Diagram>
+  );
   return (
     <Diagram
       title="Globale klimasoner og vegetasjonsbelter"

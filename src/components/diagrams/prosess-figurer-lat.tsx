@@ -241,7 +241,7 @@ function useNaer() {
   return [ref, naer] as const;
 }
 
-type FigurProps = { heading?: string; caption?: React.ReactNode };
+type FigurProps = { heading?: string; caption?: React.ReactNode; geografi?: boolean };
 
 function lat<P extends FigurProps>(plass: Plass, last: () => Promise<ComponentType<P>>) {
   const Komponent = lazy(async () => ({ default: await last() }));

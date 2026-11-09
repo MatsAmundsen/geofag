@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
     topicHead({
       title: "Geofag",
       description:
-        "Geofag er et læringsnettsted for videregående: platetektonikk, vulkaner, skred og flom i Geofag 1, og vind, hav og klima i Geofag 2.",
+        "Geofag er et læringsnettsted for videregående: Geofag 1, Geofag 2 og Geografi (GEO01-02).",
       path: "/",
     }),
   component: Hub,
@@ -104,6 +104,27 @@ function Hub() {
                 </Link>
               </div>
             </article>
+          </div>
+        </section>
+
+        <section className="border-t border-border bg-card">
+          <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+            <Link
+              to="/geografi"
+              className="flex flex-col gap-3 rounded-2xl border border-border bg-background p-6 transition-colors hover:border-primary/40 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <p className="text-xs uppercase tracking-wider text-primary">GEO01-02 · Vg1</p>
+                <h2 className="mt-2 font-display text-2xl font-medium tracking-tight sm:text-3xl">
+                  Geografi
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Sted, landskap og samfunn. Elleve kapitler under arbeid: verktøy, feltarbeid,
+                  naturfare, bærekraft og mer.
+                </p>
+              </div>
+              <span className="text-sm font-medium text-primary">Åpne Geografi</span>
+            </Link>
           </div>
         </section>
       </main>

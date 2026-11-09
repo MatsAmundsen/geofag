@@ -992,12 +992,13 @@ export function EkmanSpiralDiagram() {
 
 // ─── LEGACY DIAGRAMMER (BEHOLDES FOR BAKOVERKOMPATIBILITET MED EKSAMENSFIGURER) ───
 
-export function CoriolisDiagram() {
+export function CoriolisDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   return (
     <Diagram
       title="Avbøyning rundt trykksystemer"
-      heading="Høyre i nord, venstre i sør"
-      caption="Trykkgradienten vil sende luft rett fra H til L (stiplet). Coriolis dreier banen til høyre på nordlig halvkule og til venstre på sørlig. Når de to kreftene balanserer, går vinden langs isobarene — geostrofisk vind."
+      heading={geografi ? "Figur 5.3 – Høyre i nord, venstre i sør" : "Høyre i nord, venstre i sør"}
+      caption={geografi ? "Trykkforskjeller setter luft i bevegelse. Jordrotasjonen avbøyer bevegelsen mot høyre på nordlig halvkule og mot venstre på sørlig, sett i bevegelsesretningen. H betyr høytrykk, L betyr lavtrykk. Stiplede piler viser retningen uten avbøyning. Buene illustrerer prinsippet, ikke beregnede vindbaner (UCAR, u.å.-b)." : "Trykkgradienten vil sende luft rett fra H til L (stiplet). Coriolis dreier banen til høyre på nordlig halvkule og til venstre på sørlig. Når de to kreftene balanserer, går vinden langs isobarene — geostrofisk vind."}
+      scroll={geografi}
       viewBox="0 0 840 330"
     >
       {(m) => (
@@ -1010,18 +1011,18 @@ export function CoriolisDiagram() {
           <circle cx="340" cy="165" r="26" fill="none" stroke={C.low} strokeWidth="2.2" />
           <L x="340" y="171" fill={C.low} size={16} anchor="middle">L</L>
           <Arrow d="M 118 165 L 312 165" marker={m.muted} color={C.muted} width={1.8} dash="6 5" />
-          <L x="215" y="152" fill={C.muted} size={12} anchor="middle">trykkgradientkraft (rett mot L)</L>
+          <L x="215" y="152" fill={C.muted} size={12} anchor="middle">{geografi ? "Trykkforskjell mot lavtrykk" : "trykkgradientkraft (rett mot L)"}</L>
           <Arrow d="M 118 165 C 190 165, 240 242, 318 218" marker={m.teal} color={C.teal} width={3.2} />
-          <L x="215" y="255" fill={C.teal} size={14} weight={600} anchor="middle">avbøyd til høyre (NH)</L>
+          <L x="215" y="255" fill={C.teal} size={14} weight={600} anchor="middle">{geografi ? "avbøyd til høyre" : "avbøyd til høyre (NH)"}</L>
 
           <circle cx="510" cy="165" r="26" fill="none" stroke={C.teal} strokeWidth="2.2" />
           <L x="510" y="171" fill={C.teal} size={16} anchor="middle">H</L>
           <circle cx="760" cy="165" r="26" fill="none" stroke={C.low} strokeWidth="2.2" />
           <L x="760" y="171" fill={C.low} size={16} anchor="middle">L</L>
           <Arrow d="M 538 165 L 732 165" marker={m.muted} color={C.muted} width={1.8} dash="6 5" />
-          <L x="635" y="152" fill={C.muted} size={12} anchor="middle">trykkgradientkraft (rett mot L)</L>
+          <L x="635" y="152" fill={C.muted} size={12} anchor="middle">{geografi ? "Trykkforskjell mot lavtrykk" : "trykkgradientkraft (rett mot L)"}</L>
           <Arrow d="M 538 165 C 610 165, 660 88, 738 112" marker={m.teal} color={C.teal} width={3.2} />
-          <L x="635" y="78" fill={C.teal} size={14} weight={600} anchor="middle">avbøyd til venstre (SH)</L>
+          <L x="635" y="78" fill={C.teal} size={14} weight={600} anchor="middle">{geografi ? "avbøyd til venstre" : "avbøyd til venstre (SH)"}</L>
         </>
       )}
     </Diagram>

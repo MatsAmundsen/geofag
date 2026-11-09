@@ -2,6 +2,7 @@ export const NAV_HUB = [
   { to: "/", label: "Forside" },
   { to: "/geofag-1", label: "Geofag 1" },
   { to: "/geofag-2", label: "Geofag 2" },
+  { to: "/geografi", label: "Geografi" },
   { to: "/poster", label: "Poster" },
 ] as const;
 
@@ -133,12 +134,178 @@ export const NAV_GF2_GROUPS: readonly NavGroup[] = [
   { label: "Annet", items: gf2("/tema/felt-hav-luft-is", "/poster") },
 ];
 
-/** Mobilmenyens grupper for forsiden (4 lenker, ingen overskrifter). */
+/** Mobilmenyens grupper for forsiden (hub-lenker, ingen overskrifter). */
 export const NAV_HUB_GROUPS: readonly NavGroup[] = [{ label: null, items: NAV_HUB }];
+
+
+/** Geografi (GEO01-02) — kapittelkort og meny. */
+export const GEO_THEMES = [
+  {
+    slug: "geo-verktoy",
+    pathSlug: "verktoy",
+    to: "/geografi/verktoy",
+    title: "Geografisk tenkning og verktøy",
+    kicker: "Metoder",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Utforske og presentere geografiske forhold med kilder og kart, og forberede feltarbeid.",
+    maal: ["KM487", "KM486"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-feltarbeid",
+    pathSlug: "feltarbeid",
+    to: "/geografi/feltarbeid",
+    title: "Feltarbeid",
+    kicker: "Metoder",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Planlegge, gjennomføre og presentere et geografisk feltarbeid med trygghet og kildekritikk.",
+    maal: ["KM486", "KM487"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-indre-krefter",
+    pathSlug: "indre-krefter",
+    to: "/geografi/indre-krefter",
+    title: "Indre krefter: platetektonikk, jordskjelv og vulkaner",
+    kicker: "Landskap",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Jordas oppbygning, platetektonikk, jordskjelv, vulkaner og berggrunn — egne Vg1-sider for Geografi.",
+    maal: ["KM480", "KM483"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-landskap",
+    pathSlug: "landskap",
+    to: "/geografi/landskap",
+    title: "Ytre krefter og landskapet i Norge",
+    kicker: "Landskap",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Forvitring, is, elver og kyst former landskapet, og landformene påvirker bosetting og ressursbruk.",
+    maal: ["KM480", "KM483"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-klima",
+    pathSlug: "klima",
+    to: "/geografi/klima",
+    title: "Vær, klima og klimaendringer",
+    kicker: "Klima",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Vær og klima, sirkulasjoner, drivhuseffekt og hva klimaendringer betyr lokalt og globalt.",
+    maal: ["KM482", "KM483", "KM485"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-naturfare",
+    pathSlug: "naturfare",
+    to: "/geografi/naturfare",
+    title: "Naturfare og katastrofer",
+    kicker: "Fare",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Skille fare, risiko og sårbarhet, og utforske en aktuell natur- eller miljøkatastrofe.",
+    maal: ["KM483", "KM482", "KM487"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-ressurser",
+    pathSlug: "ressurser",
+    to: "/geografi/ressurser",
+    title: "Naturressurser og arealbruk",
+    kicker: "Ressurser",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Ressurstyper, arealbruk og interessekonflikter i Norge, Sápmi og nordområdene.",
+    maal: ["KM481", "KM480", "KM485"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-baerekraft",
+    pathSlug: "baerekraft",
+    to: "/geografi/baerekraft",
+    title: "Bærekraftig utvikling",
+    kicker: "Bærekraft",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Utvikling, bærekraftsmål, fotavtrykk og Norges ressursbruk i et globalt perspektiv.",
+    maal: ["KM485", "KM484", "KM481"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-naering",
+    pathSlug: "naering",
+    to: "/geografi/naering",
+    title: "Næringsliv og globalisering",
+    kicker: "Samfunn",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Næringsstruktur, lokalisering, verdikjeder og hvordan forbruk påvirker produksjon andre steder.",
+    maal: ["KM485", "KM481", "KM484"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-befolkning",
+    pathSlug: "befolkning",
+    to: "/geografi/befolkning",
+    title: "Befolkning og levekår",
+    kicker: "Samfunn",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Demografiske mål, befolkningspyramider, overgangsmodellen og ulike levekår i verden.",
+    maal: ["KM484", "KM485"],
+    status: "utkast" as const,
+  },
+  {
+    slug: "geo-migrasjon",
+    pathSlug: "migrasjon",
+    to: "/geografi/migrasjon",
+    title: "Migrasjon",
+    kicker: "Samfunn",
+    image: "/images/hero-earth.jpg",
+    alt: "Jorda sett fra lav bane over hav og skyer",
+    blurb: "Typer migrasjon, skyve- og trekkfaktorer, flytting i Norge og den globale flyktningsituasjonen.",
+    maal: ["KM484", "KM481"],
+    status: "utkast" as const,
+  },
+] as const;
+
+export const NAV_GEO = [
+  { to: "/", label: "Forside" },
+  { to: "/geografi", label: "Oversikt" },
+  { to: "/geografi/verktoy", label: "Verktøy" },
+  { to: "/geografi/feltarbeid", label: "Felt" },
+  { to: "/geografi/indre-krefter", label: "Indre" },
+  { to: "/geografi/landskap", label: "Landskap" },
+  { to: "/geografi/klima", label: "Klima" },
+  { to: "/geografi/naturfare", label: "Naturfare" },
+  { to: "/geografi/ressurser", label: "Ressurser" },
+  { to: "/geografi/baerekraft", label: "Bærekraft" },
+  { to: "/geografi/naering", label: "Næring" },
+  { to: "/geografi/befolkning", label: "Befolkning" },
+  { to: "/geografi/migrasjon", label: "Migrasjon" },
+  { to: "/poster", label: "Poster" },
+] as const;
+
+export const NAV_GEO_ROWS = [NAV_GEO.slice(0, 8), NAV_GEO.slice(8)] as const;
+
+export const NAV_GEO_GROUPS: readonly NavGroup[] = [
+  { label: "Start", items: NAV_GEO.slice(0, 2) },
+  { label: "Metoder", items: NAV_GEO.slice(2, 4) },
+  { label: "Natur og klima", items: NAV_GEO.slice(4, 8) },
+  { label: "Ressurser og bærekraft", items: NAV_GEO.slice(8, 10) },
+  { label: "Samfunn", items: NAV_GEO.slice(10, 13) },
+  { label: "Annet", items: NAV_GEO.slice(13) },
+];
 
 export function navGroupsForPath(pathname: string): readonly NavGroup[] {
   if (pathname === "/") return NAV_HUB_GROUPS;
   if (pathname.startsWith("/geofag-1")) return NAV_GF1_GROUPS;
+  if (pathname.startsWith("/geografi")) return NAV_GEO_GROUPS;
   return NAV_GF2_GROUPS;
 }
 
@@ -148,12 +315,16 @@ export const NAV = NAV_GF2;
 export function navForPath(pathname: string) {
   if (pathname === "/") return NAV_HUB;
   if (pathname.startsWith("/geofag-1")) return NAV_GF1;
+  if (pathname.startsWith("/geografi")) return NAV_GEO;
   return NAV_GF2;
 }
 
 export function brandForPath(pathname: string) {
   if (pathname.startsWith("/geofag-1")) {
     return { title: "Geofag 1", sub: "Jorda under oss" };
+  }
+  if (pathname.startsWith("/geografi")) {
+    return { title: "Geografi", sub: "Sted, landskap og samfunn" };
   }
   if (
     pathname.startsWith("/geofag-2") ||
@@ -645,7 +816,13 @@ export function allThemePaths(): string[] {
     ...GF1_THEMES.map((t) => t.to),
     ...GF2_THEMES.map((t) => t.to),
     ...KLIMA_SUBTHEMES.map((t) => t.to),
+    ...GEO_THEMES.map((t) => t.to),
+    "/geografi",
     "/tema/kryosfare",
     "/tema/klima/jetstrommer-atmosfaeriske-elver",
   ];
+}
+
+export function geoTheme(pathSlug: string) {
+  return GEO_THEMES.find((t) => t.pathSlug === pathSlug);
 }

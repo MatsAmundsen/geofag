@@ -39,6 +39,8 @@ export type IsbreFigurProps = {
   caption?: ReactNode;
   /** Steg som vises først (1-basert). */
   initialStep?: number;
+  /** Egen, forenklet visning for geografi Vg1. Standardvisningen i Geofag 1 bevares. */
+  geografi?: boolean;
 };
 
 const ICE_FLOW = "#2f5f80";
@@ -535,11 +537,12 @@ export function VdalTilUdal({
   heading = "Fra V-dal til U-dal og fjord",
   caption,
   initialStep,
+  geografi = false,
 }: IsbreFigurProps) {
   const [ref, visible] = useInView<SVGSVGElement>();
   // felles avspilling: én spiller om gangen, og pause gjelder hele siden
   const motion = useFellesAvspilling(visible, ref);
-  const clock = useStepClock(4, motion.playing && visible, 3200, 1400, initialStep);
+  const clock = useStepClock(geografi ? 3 : 4, motion.playing && visible, 3200, 1400, initialStep);
   const { step, phase } = clock;
   const p = step === 1 ? 0 : step === 2 ? smooth((phase - 0.22) / 0.78) : 1;
   const iceLevel = step === 2 ? smooth(phase / 0.25) : step === 3 ? 1 - smooth(phase / 0.3) : 0;
@@ -690,7 +693,7 @@ export function VdalTilUdal({
       badge: T(VU_XC + 46, 140),
     });
     add({
-      text: "Skurer og plukker mest der isen er tykkest",
+      text: geografi ? "Skuring og plukking kan utvide dalen" : "Skurer og plukker mest der isen er tykkest",
       x: T(VU_XC, 0)[0],
       y: T(0, 498)[1],
       at: T(VU_XC, vuGround(VU_XC, p) + 10),
@@ -783,7 +786,7 @@ export function VdalTilUdal({
   return (
     <IsbreFigur
       svgRef={ref}
-      title="En V-dal blir gravd ut av isen til en U-dal med hengende sidedal. Der bunnen ligger under havnivå, blir dalen en fjord med terskel og overfordypning."
+      title={geografi ? "Før, under og etter breerosjon: samme tverrsnitt utvikles fra V-dal til U-dal." : "En V-dal blir gravd ut av isen til en U-dal med hengende sidedal. Der bunnen ligger under havnivå, blir dalen en fjord med terskel og overfordypning."}
       heading={heading}
       caption={
         caption ??
@@ -793,13 +796,17 @@ export function VdalTilUdal({
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <StegVelger
-          labels={VU_STEPS}
+          labels={geografi ? ["1 Før breen", "2 Under breen", "3 Etter breen"] : VU_STEPS}
           step={step}
           onStep={pickStep(clock, motion)}
           label="Velg steg i dalutviklingen"
         />
       }
-      status={VU_STATUS[step - 1]}
+      status={geografi ? [
+        "Før: en elv har formet en dal med et smalere, V-formet tverrsnitt.",
+        "Under: isen beveger seg gjennom dalen. Skuring og plukking kan utvide og fordype den.",
+        "Etter: en bredere dalbunn og bratte sider viser en U-dal. Sidedalen ligger høyere enn hoveddalen.",
+      ][step - 1] : VU_STATUS[step - 1]}
       labels={labels}
       keys={[
         { text: "Gammel V-dal", color: C.warm, kind: "dash", off: step < 3 },
@@ -811,7 +818,7 @@ export function VdalTilUdal({
           : ["Tverrsnitt av dalen, skjematisk", "Ikke i målestokk"]
       }
       viewBox="0 0 960 520"
-      narrowViewBox={step === 4 ? "0 16 960 488" : step === 3 ? "40 0 900 512" : "60 0 800 512"}
+      narrowViewBox={geografi ? "0 0 960 520" : step === 4 ? "0 16 960 488" : step === 3 ? "40 0 900 512" : "60 0 800 512"}
     >
       {({ d, m }) => (
         <g
@@ -1474,6 +1481,7 @@ export function Frostsprengning({
   heading = "Frostsprengning",
   caption,
   initialStep,
+  geografi = false,
 }: IsbreFigurProps) {
   const [ref, visible] = useInView<SVGSVGElement>();
   // felles avspilling: én spiller om gangen, og pause gjelder hele siden
@@ -1541,7 +1549,7 @@ export function Frostsprengning({
         }),
       )
     : [];
-  const suck = frozen
+  const suck = frozen && !geografi
     ? [0.55, 0.8].flatMap((s) =>
         [-1, 1].map((side) => {
           const [x, y] = g.at(s, side * 7);
@@ -1614,7 +1622,7 @@ export function Frostsprengning({
       anchor: "middle",
       badge: [g.at(0.45, -2.6)[0] - 96, g.at(0.45, -2.6)[1] + 4],
     });
-    labels.push({
+    if (!geografi) labels.push({
       text: "Vann trekkes mot isen",
       x: 300,
       y: 372,
@@ -1647,7 +1655,7 @@ export function Frostsprengning({
   const urAt = shift(880, 400);
   const urBadge = shift(905, 438);
   labels.push({
-    text: "Ur: kjegle av kantet stein",
+    text: geografi ? "Ur: stein som har falt ned" : "Ur: kjegle av kantet stein",
     x: ur[0],
     y: ur[1],
     at: urAt,
@@ -1693,7 +1701,12 @@ export function Frostsprengning({
             />
           </>
         }
-        status={FR_STATUS[step - 1]}
+        status={geografi ? [
+          "Vann kommer inn i en eksisterende sprekk i berget.",
+          "Når vann fryser til is, øker volumet. Trykket kan utvide sprekken.",
+          "Etter tining kan sprekken være større. Figuren viser prinsippet, ikke et bestemt tidsforløp.",
+          "En løsnet stein kan falle ved tyngdekraften. Forvitring er oppdeling; fallet er flytting.",
+        ][step - 1] : FR_STATUS[step - 1]}
         labels={labels}
         notes={["Skjematisk, ikke i målestokk"]}
         viewBox="0 0 960 500"
@@ -1884,6 +1897,7 @@ export function IsostasiSnitt({
   heading = "Landet presses ned og hever seg",
   caption,
   initialStep,
+  geografi = false,
 }: IsbreFigurProps) {
   const [ref, visible] = useInView<SVGSVGElement>();
   // felles avspilling: én spiller om gangen, og pause gjelder hele siden
@@ -2060,7 +2074,7 @@ export function IsostasiSnitt({
   }
   if (step === 4) {
     labels.push({
-      text: "Marin grense: 0–220 m over dagens havnivå, avhengig av sted",
+      text: geografi ? "Marin grense varierer mellom steder" : "Marin grense: 0–220 m over dagens havnivå, avhengig av sted",
       x: Math.max(xs - 16, 496),
       y: mgY - 12 - Math.max(0, 496 - xs) * 0.45,
       anchor: "end",
@@ -2069,7 +2083,7 @@ export function IsostasiSnitt({
       badge: [xs + 22, mgY - 26],
     });
     labels.push({
-      text: "Marin leire på land under marin grense",
+      text: geografi ? "Her kan det finnes marin leire" : "Marin leire på land under marin grense",
       x: 150,
       y: 300,
       at: [270, surf(270) - 3],
@@ -2077,7 +2091,7 @@ export function IsostasiSnitt({
       badge: [Math.round((xs + 290) / 2), surf(Math.round((xs + 290) / 2)) + 20],
     });
     labels.push({
-      text: "Over marin grense: ingen marin leire",
+      text: geografi ? "Over lokal marin grense" : "Over marin grense: ingen marin leire",
       x: xs + 150,
       y: isLand(xs + 150) + 70,
       at: [xs + 110, isLand(xs + 110) + 3],
@@ -2095,7 +2109,7 @@ export function IsostasiSnitt({
   return (
     <IsbreFigur
       svgRef={ref}
-      title="Tverrsnitt: innlandsisen presser litosfæren ned i astenosfæren. Når isen smelter, går havet inn over landet, og etterpå hever landet seg. Det høyeste havnivået blir marin grense."
+      title={geografi ? "Isens vekt, avsetning av leire i sjø og senere landheving, vist uten lokal beregning." : "Tverrsnitt: innlandsisen presser litosfæren ned i astenosfæren. Når isen smelter, går havet inn over landet, og etterpå hever landet seg. Det høyeste havnivået blir marin grense."}
       heading={heading}
       caption={
         caption ??
@@ -2111,7 +2125,7 @@ export function IsostasiSnitt({
             onStep={pickStep(clock, motion)}
             label="Velg steg i isostasien"
           />
-          <Skyver
+          {!geografi && <Skyver
             label="Istykkelse"
             min={0.3}
             max={1}
@@ -2120,18 +2134,23 @@ export function IsostasiSnitt({
             onChange={setThick}
             valueLabel={thick < 0.5 ? "tynn is" : thick < 0.8 ? "middels" : "tykk is"}
             valueText={thick < 0.5 ? "tynn is" : thick < 0.8 ? "middels tykk is" : "tykk is"}
-          />
+          />}
         </>
       }
       status={
         <>
-          {IS_STATUS[step - 1]}
-          {step === 4
+          {geografi ? [
+            "Vekten av innlandsisen bidrar til å presse landet ned.",
+            "Når isen trekker seg tilbake, kan sjøen dekke lavtliggende land. Fine partikler kan avsettes i sjøen.",
+            "Når isens vekt er borte, fortsetter landet å heve seg. Tidligere havbunn kan komme på land.",
+            "Marin grense er høyeste lokale havnivå etter siste istid. Under grensen kan det finnes marin leire, ikke nødvendigvis kvikkleire.",
+          ][step - 1] : IS_STATUS[step - 1]}
+          {!geografi && step === 4
             ? " Landet ble presset ned ulikt mye, og derfor varierer marin grense: prøv istykkelsen."
             : null}
         </>
       }
-      labels={shown}
+      labels={geografi ? shown.filter((label) => !["Litosfære", "Seig astenosfære"].includes(label.text)) : shown}
       notes={["Skjematisk tverrsnitt", "Nedpressingen er sterkt overdrevet"]}
       keys={[
         {
@@ -2142,7 +2161,7 @@ export function IsostasiSnitt({
         },
         { text: "Marin grense", color: C.sand, kind: "dash", off: step !== 4 },
       ]}
-      remark={IS_REMARK}
+      remark={geografi ? "Prinsippskisse uten målestokk. Havnivået holdes fast her. Virkelig marin grense avhenger også av havnivåendringer og tidspunktet området ble isfritt. Figuren er ikke et kart over grunnforhold." : IS_REMARK}
       viewBox="0 0 960 500"
       narrowViewBox={step === 4 ? "30 80 540 200" : undefined}
     >

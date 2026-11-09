@@ -1,0 +1,48 @@
+{
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "18",
+          "55",
+          "56",
+          "32",
+          "0301",
+          "5501",
+          "5601",
+          "1804",
+          "3209"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "InnflyttingInnland",
+          "UtflyttingInnland",
+          "NettoInnland",
+          "Innvandring",
+          "Utvandring",
+          "Nettoinnvandring",
+          "FlyttInnlandPer1000"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}

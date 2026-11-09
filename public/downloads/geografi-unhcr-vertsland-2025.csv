@@ -1,0 +1,168 @@
+﻿iso3;vertsland_eller_omrade;regionkode;region;referanse;kategori;personer
+ARG;Argentina;RBA;Americas;2025-12;REF_UNHCR;4941
+BHS;Bahamas;RBA;Americas;2025-12;REF_UNHCR;10
+BRB;Barbados;RBA;Americas;2025-12;REF_UNHCR;5
+BLZ;Belize;RBA;Americas;2025-12;REF_UNHCR;347
+VEN;Bolivarian Republic of Venezuela;RBA;Americas;2025-12;REF_UNHCR;14333
+BRA;Brazil;RBA;Americas;2025-12;REF_UNHCR;278966
+VGB;British Virgin Islands (GBR);RBA;Americas;2025-12;REF_UNHCR;6
+CAN;Canada;RBA;Americas;2025-12;REF_UNHCR;416028
+CYM;Cayman Islands (GBR);RBA;Americas;2025-12;REF_UNHCR;53
+CHL;Chile;RBA;Americas;2025-12;REF_UNHCR;2631
+COL;Colombia;RBA;Americas;2025-12;REF_UNHCR;1464
+CRI;Costa Rica;RBA;Americas;2025-12;REF_UNHCR;36395
+CUB;Cuba;RBA;Americas;2025-12;REF_UNHCR;115
+DOM;Dominican Republic;RBA;Americas;2025-12;REF_UNHCR;20
+ECU;Ecuador;RBA;Americas;2025-12;REF_UNHCR;26428
+SLV;El Salvador;RBA;Americas;2025-12;REF_UNHCR;182
+GTM;Guatemala;RBA;Americas;2025-12;REF_UNHCR;1586
+GUY;Guyana;RBA;Americas;2025-12;REF_UNHCR;35
+HND;Honduras;RBA;Americas;2025-12;REF_UNHCR;270
+MEX;Mexico;RBA;Americas;2025-12;REF_UNHCR;152002
+PAN;Panama;RBA;Americas;2025-12;REF_UNHCR;2694
+PRY;Paraguay;RBA;Americas;2025-12;REF_UNHCR;4621
+PER;Peru;RBA;Americas;2025-12;REF_UNHCR;6788
+BOL;Plurinational State of Bolivia;RBA;Americas;2025-12;REF_UNHCR;1147
+KNA;Saint Kitts and Nevis;RBA;Americas;2025-12;REF_UNHCR;5
+LCA;Saint Lucia;RBA;Americas;2025-12;REF_UNHCR;5
+SXM;Sint Maarten (K. of the Netherlands);RBA;Americas;2025-12;REF_UNHCR;17
+SUR;Suriname;RBA;Americas;2025-12;REF_UNHCR;24
+TTO;Trinidad and Tobago;RBA;Americas;2025-12;REF_UNHCR;1877
+TCA;Turks and Caicos Islands (GBR);RBA;Americas;2025-12;REF_UNHCR;8
+USA;United States of America;RBA;Americas;2025-12;REF_UNHCR;457647
+URY;Uruguay;RBA;Americas;2025-12;REF_UNHCR;3195
+AFG;Afghanistan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;20869
+AUS;Australia;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;33415
+BGD;Bangladesh;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;1178038
+KHM;Cambodia;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;23
+CHN;China;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;230
+FJI;Fiji;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;15
+HKG;Hong Kong (CHN);RBAP;Asia and the Pacific;2025-12;REF_UNHCR;236
+IND;India;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;238643
+IDN;Indonesia;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;7374
+IRN;Islamic Republic of Iran;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;770514
+JPN;Japan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;42450
+KAZ;Kazakhstan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;4377
+KGZ;Kyrgyzstan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;1150
+MYS;Malaysia;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;150164
+MNG;Mongolia;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;11
+NRU;Nauru;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;5
+NPL;Nepal;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;19613
+NZL;New Zealand;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;2148
+PAK;Pakistan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;1159038
+PNG;Papua New Guinea;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;7727
+PHL;Philippines;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;1032
+KOR;Republic of Korea;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;4407
+LKA;Sri Lanka;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;213
+TJK;Tajikistan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;8620
+THA;Thailand;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;84017
+TKM;Turkmenistan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;9
+UZB;Uzbekistan;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;5
+VNM;Viet Nam;RBAP;Asia and the Pacific;2025-12;REF_UNHCR;13
+AGO;Angola;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;25396
+BWA;Botswana;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;847
+BDI;Burundi;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;110800
+COM;Comoros;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;5
+DJI;Djibouti;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;24899
+ERI;Eritrea;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;119
+SWZ;Eswatini;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;1414
+ETH;Ethiopia;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;1010466
+KEN;Kenya;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;617125
+LSO;Lesotho;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;478
+MDG;Madagascar;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;87
+MWI;Malawi;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;35241
+MUS;Mauritius;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;24
+MOZ;Mozambique;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;5105
+NAM;Namibia;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;5470
+RWA;Rwanda;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;115794
+SOM;Somalia;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;20967
+ZAF;South Africa;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;55177
+SSD;South Sudan;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;601818
+SDN;Sudan;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;809816
+UGA;Uganda;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;1936719
+TZA;United Republic of Tanzania;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;171142
+ZMB;Zambia;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;83225
+ZWE;Zimbabwe;RBESA;Eastern and Southern Africa;2025-12;REF_UNHCR;8570
+ALB;Albania;RBE;Europe;2025-12;REF_UNHCR;4673
+ARM;Armenia;RBE;Europe;2025-12;REF_UNHCR;123087
+AUT;Austria;RBE;Europe;2025-12;REF_UNHCR;286651
+AZE;Azerbaijan;RBE;Europe;2025-12;REF_UNHCR;6389
+BLR;Belarus;RBE;Europe;2025-12;REF_UNHCR;40794
+BEL;Belgium;RBE;Europe;2025-12;REF_UNHCR;186393
+BIH;Bosnia and Herzegovina;RBE;Europe;2025-12;REF_UNHCR;586
+BGR;Bulgaria;RBE;Europe;2025-12;REF_UNHCR;105596
+HRV;Croatia;RBE;Europe;2025-12;REF_UNHCR;29748
+CYP;Cyprus;RBE;Europe;2025-12;REF_UNHCR;48207
+CZE;Czechia;RBE;Europe;2025-12;REF_UNHCR;395559
+DNK;Denmark;RBE;Europe;2025-12;REF_UNHCR;95007
+EST;Estonia;RBE;Europe;2025-12;REF_UNHCR;41299
+FIN;Finland;RBE;Europe;2025-12;REF_UNHCR;102544
+FRA;France;RBE;Europe;2025-12;REF_UNHCR;788419
+GEO;Georgia;RBE;Europe;2025-12;REF_UNHCR;26522
+DEU;Germany;RBE;Europe;2025-12;REF_UNHCR;2655191
+GRC;Greece;RBE;Europe;2025-12;REF_UNHCR;134563
+HUN;Hungary;RBE;Europe;2025-12;REF_UNHCR;71332
+ISL;Iceland;RBE;Europe;2025-12;REF_UNHCR;8459
+IRL;Ireland;RBE;Europe;2025-12;REF_UNHCR;137869
+ITA;Italy;RBE;Europe;2025-12;REF_UNHCR;192914
+LVA;Latvia;RBE;Europe;2025-12;REF_UNHCR;32454
+LIE;Liechtenstein;RBE;Europe;2025-12;REF_UNHCR;987
+LTU;Lithuania;RBE;Europe;2025-12;REF_UNHCR;54381
+LUX;Luxembourg;RBE;Europe;2025-12;REF_UNHCR;10284
+MLT;Malta;RBE;Europe;2025-12;REF_UNHCR;8306
+MCO;Monaco;RBE;Europe;2025-12;REF_UNHCR;17
+MNE;Montenegro;RBE;Europe;2025-12;REF_UNHCR;12269
+NLD;Netherlands (Kingdom of the);RBE;Europe;2025-12;REF_UNHCR;283935
+MKD;North Macedonia;RBE;Europe;2025-12;REF_UNHCR;20822
+NOR;Norway;RBE;Europe;2025-12;REF_UNHCR;124006
+POL;Poland;RBE;Europe;2025-12;REF_UNHCR;990469
+PRT;Portugal;RBE;Europe;2025-12;REF_UNHCR;70349
+MDA;Republic of Moldova;RBE;Europe;2025-12;REF_UNHCR;149324
+ROU;Romania;RBE;Europe;2025-12;REF_UNHCR;206671
+RUS;Russian Federation;RBE;Europe;2025-12;REF_UNHCR;11811
+SRB;Serbia*;RBE;Europe;2025-12;REF_UNHCR;40863
+SVK;Slovakia;RBE;Europe;2025-12;REF_UNHCR;140885
+SVN;Slovenia;RBE;Europe;2025-12;REF_UNHCR;12513
+ESP;Spain;RBE;Europe;2025-12;REF_UNHCR;511079
+SWE;Sweden;RBE;Europe;2025-12;REF_UNHCR;144116
+CHE;Switzerland;RBE;Europe;2025-12;REF_UNHCR;208287
+TUR;Türkiye;RBE;Europe;2025-12;REF_UNHCR;2390414
+UKR;Ukraine;RBE;Europe;2025-12;REF_UNHCR;2370
+GBR;United Kingdom of Great Britain and Northern Ireland;RBE;Europe;2025-12;REF_UNHCR;581072
+DZA;Algeria;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;180575
+BHR;Bahrain;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;240
+EGY;Egypt;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;220033
+IRQ;Iraq;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;322345
+ISR;Israel;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;1274
+JOR;Jordan;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;436226
+KWT;Kuwait;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;386
+LBN;Lebanon;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;535168
+LBY;Libya;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;552523
+MRT;Mauritania;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;301490
+MAR;Morocco;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;7304
+OMN;Oman;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;289
+QAT;Qatar;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;195
+SAU;Saudi Arabia;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;448
+SYR;Syrian Arab Republic;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;9885
+TUN;Tunisia;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;2386
+ARE;United Arab Emirates;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;1377
+YEM;Yemen;RBMENA;Middle East and North Africa;2025-12;REF_UNHCR;49107
+BEN;Benin;RBWCA;West and Central Africa;2025-12;REF_UNHCR;16974
+BFA;Burkina Faso;RBWCA;West and Central Africa;2025-12;REF_UNHCR;40996
+CMR;Cameroon;RBWCA;West and Central Africa;2025-12;REF_UNHCR;408613
+CAF;Central African Republic;RBWCA;West and Central Africa;2025-12;REF_UNHCR;55307
+TCD;Chad;RBWCA;West and Central Africa;2025-12;REF_UNHCR;1502263
+CIV;Côte d'Ivoire;RBWCA;West and Central Africa;2025-12;REF_UNHCR;74630
+COD;Democratic Republic of the Congo;RBWCA;West and Central Africa;2025-12;REF_UNHCR;503732
+GAB;Gabon;RBWCA;West and Central Africa;2025-12;REF_UNHCR;166
+GMB;Gambia;RBWCA;West and Central Africa;2025-12;REF_UNHCR;4108
+GHA;Ghana;RBWCA;West and Central Africa;2025-12;REF_UNHCR;21050
+GIN;Guinea;RBWCA;West and Central Africa;2025-12;REF_UNHCR;2154
+GNB;Guinea-Bissau;RBWCA;West and Central Africa;2025-12;REF_UNHCR;24
+LBR;Liberia;RBWCA;West and Central Africa;2025-12;REF_UNHCR;1172
+MLI;Mali;RBWCA;West and Central Africa;2025-12;REF_UNHCR;286715
+NER;Niger;RBWCA;West and Central Africa;2025-12;REF_UNHCR;385986
+NGA;Nigeria;RBWCA;West and Central Africa;2025-12;REF_UNHCR;123848
+COG;Republic of the Congo;RBWCA;West and Central Africa;2025-12;REF_UNHCR;62500
+SEN;Senegal;RBWCA;West and Central Africa;2025-12;REF_UNHCR;17259
+TGO;Togo;RBWCA;West and Central Africa;2025-12;REF_UNHCR;54167
