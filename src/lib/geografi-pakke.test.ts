@@ -354,8 +354,8 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
     assert.doesNotMatch(md, /[Ss]e figur 8\.[124567]/);
   });
 
-  it("har 29 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 29);
+  it("har 28 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 28);
     assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
     for (const domain of ["udir.no", "ssb.no", "undp.org", "worldbank.org", "footprintnetwork.org", "footprintcalculator.org", "wwf.no", "pik-potsdam.de", "ipcc.ch", "unep.org", "sdgs.un.org", "miljodirektoratet.no", "regjeringen.no", "stratigraphy.org", "ourworldindata.org", "fn.no"])
       assert.ok(sources.includes(domain), domain);
