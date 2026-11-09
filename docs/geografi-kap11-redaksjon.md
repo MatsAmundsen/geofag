@@ -1,6 +1,6 @@
 # Redaksjonell overlevering: kapittel 11
 
-Oppdatert figurstatus står i `geografi-kap11-mats-valg.md` (Mats sine valg) og `geografi-kap11-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+Oppdatert data-, kart-, lisens- og figurstatus står i `geografi-kap11-mats-valg.md` (Mats sine valg) og `geografi-kap11-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
 
 ## Leveranse og arbeidsgren
 
