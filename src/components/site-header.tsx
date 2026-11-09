@@ -16,6 +16,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SiteSearch } from "@/components/sok/site-search";
 
+// Geografi-kapitlene deler en dynamisk rute, ikke elleve statiske filruter.
+function isGeografiKapittelPath<T extends string>(to: T): to is Extract<T, `/geografi/${string}`> {
+  return to.startsWith("/geografi/");
+}
+
 function isItemActive(pathname: string, to: string) {
   if (to === "/") return pathname === "/";
   return pathname === to || (to !== "/geofag-2" && pathname.startsWith(`${to}/`));
@@ -361,10 +366,16 @@ export function SiteHeader() {
                   ? pathname === "/"
                   : pathname === item.to ||
                     (item.to !== "/geofag-2" && pathname.startsWith(`${item.to}/`));
+              const destination = isGeografiKapittelPath(item.to)
+                ? {
+                    to: "/geografi/$kapittel" as const,
+                    params: { kapittel: item.to.slice("/geografi/".length) },
+                  }
+                : { to: item.to };
               return (
                 <Link
                   key={item.to}
-                  to={item.to}
+                  {...destination}
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "inline-flex h-10 items-center rounded-md px-2 text-sm transition-colors",
