@@ -427,6 +427,55 @@ export function filterOceanContourFragments(paths: IsoPath[], aspect: number): I
 }
 
 export type LabelBox = { x: number; y: number; width: number; height: number };
+
+/** Display-only: hide a short, bent end hook that would stick out past a contour label.
+ * A hook is the end stub beyond the label box when it is shorter than `maxStub` px and
+ * bends at least `minBend` degrees from the visible line on the far side of the label.
+ * Ends of a ring broken by land (end gap below 20 % of line length, e.g. the 1 h line at
+ * Sumatra) are never trimmed, so a land barrier stays visible. Times and masks are untouched. */
+export function trimLabelHooks(
+  paths: IsoPath[],
+  box: LabelBox,
+  width: number,
+  height: number,
+  maxStub = 16,
+  minBend = 30,
+): IsoPath[] {
+  const inside = (p: IsoPoint) =>
+    p.x * width >= box.x && p.x * width <= box.x + box.width &&
+    p.y * height >= box.y && p.y * height <= box.y + box.height;
+  const px = (a: IsoPoint, b: IsoPoint) => Math.hypot((b.x - a.x) * width, (b.y - a.y) * height);
+  return paths.map((path) => {
+    if (path.length < 3) return path;
+    let length = 0;
+    for (let i = 1; i < path.length; i++) length += px(path[i - 1], path[i]);
+    if (px(path[0], path[path.length - 1]) < 0.2 * length) return path;
+    let out = path;
+    for (const fromEnd of [false, true]) {
+      const pts = fromEnd ? out.slice().reverse() : out;
+      let stub = 0, i = 0;
+      while (i < pts.length && !inside(pts[i]) && stub <= maxStub) {
+        if (i > 0) stub += px(pts[i - 1], pts[i]);
+        i++;
+      }
+      if (i === 0 || i >= pts.length || stub > maxStub || !inside(pts[i])) continue;
+      let j = i;
+      while (j < pts.length && inside(pts[j])) j++;
+      if (j >= pts.length) continue;
+      let k = j, far = 0;
+      while (k + 1 < pts.length && far < 12) { far += px(pts[k], pts[k + 1]); k++; }
+      const out1 = {x: (pts[0].x - pts[i].x) * width, y: (pts[0].y - pts[i].y) * height};
+      const in2 = {x: (pts[j].x - pts[k].x) * width, y: (pts[j].y - pts[k].y) * height};
+      const n1 = Math.hypot(out1.x, out1.y), n2 = Math.hypot(in2.x, in2.y);
+      if (n1 === 0 || n2 === 0) continue;
+      const bend = (Math.acos(Math.max(-1, Math.min(1, (out1.x * in2.x + out1.y * in2.y) / n1 / n2))) * 180) / Math.PI;
+      if (bend < minBend) continue;
+      const kept = pts.slice(i);
+      out = fromEnd ? kept.reverse() : kept;
+    }
+    return out;
+  });
+}
 export function boxesOverlap(a: LabelBox, b: LabelBox, gap = 5) {
   return (
     a.x < b.x + b.width + gap &&

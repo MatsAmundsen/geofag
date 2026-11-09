@@ -790,3 +790,120 @@ test("M6 caveat is a once-described static text, and landslide phases have disti
   const component = readFileSync(new URL("./m6-warning.tsx", import.meta.url), "utf8");
   assert.match(component, /warningStatus\(source, step, `\$\{stages\[step\].title\}. \$\{stages\[step\].detail\}`\)/);
 });
+
+// ---- Revisjon 8: small finishing fixes requested after FD1's real screenshots ----
+import { townSeaLabel } from "./sim/fjord";
+import { trimLabelHooks } from "./sim/oceanmap";
+
+test("M7 Hus stands clearly on land, away from the normal shoreline, with unchanged exposure counts", () => {
+  const shore = (() => { let lo = 0.3, hi = 0.5; for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; if (townHeight(m) < TOWN_NORMAL_SEA_LEVEL) lo = m; else hi = m; } return lo; })();
+  const hus = TOWN_SITES.find((b) => b.name === "Hus")!;
+  for (const width of [300, 328, 358, 600, 992, 1240]) {
+    const glyph = townGlyphLayout(width, 221, 0.27, TOWN_SITES, {Hus: 23, "Nytt bygg": 57, Skole: 33}).find((g) => g.name === "Hus")!;
+    const normalY = 221 * 0.7;
+    // The whole symbol foot, including its seaward corner, rests on dry land.
+    assert.ok(townHeight(townSiteX(glyph.x - glyph.half, width)) > TOWN_NORMAL_SEA_LEVEL, `${width} seaward corner on land`);
+    assert.ok(normalY - glyph.y >= 6, `${width} foot ${(normalY - glyph.y).toFixed(1)} px above the sea line`);
+    assert.ok(glyph.x - glyph.half - townScreenX(shore, width) >= 6, `${width} seaward corner ≥ 6 px inland of the shoreline`);
+  }
+  for (const level of [0.16, 0.27]) {
+    const wet = townScenario(level).wet, at = (x: number) => wet[Math.round(x * (TOWN_N - 1))];
+    for (const b of TOWN_SITES) assert.ok(townHeight(b.x) > TOWN_NORMAL_SEA_LEVEL, `${b.name} on normal dry land`);
+    assert.deepEqual(TOWN_SITES.map((b) => at(b.x)), level === 0.16 ? [1, 0, 1] : [1, 1, 1], "3 affected on higher, 2 on lower level");
+  }
+  assert.ok(hus.x > shore + 0.02);
+});
+
+test("M7 «Sjø» sits inside the solid normal sea and «Tenkt vannivå» has a short leader", () => {
+  for (const width of [300, 328, 358, 600, 992, 1240]) {
+    const sea = townSeaLabel(width, 221, 19);
+    // About 10 px above and 3 px below the baseline for 14 px Source Sans 3.
+    const gap = width < 328 ? 1.5 : 2.5;
+    assert.ok(sea.baseline - 10 >= sea.normalY + 0.8 + gap, `${width} below the solid sea line, not in the hatch`);
+    assert.ok(sea.baseline + 3 <= sea.seabed - gap, `${width} above the seabed: ${(sea.seabed - sea.baseline - 3).toFixed(1)} px`);
+    for (let i = 0; i <= 10; i++)
+      assert.ok(townHeight(townSiteX(sea.x + 1.9 * i, width)) < TOWN_NORMAL_SEA_LEVEL, `${width} text over permanent sea`);
+  }
+  const component = readFileSync(new URL("./m7-risk.tsx", import.meta.url), "utf8");
+  assert.doesNotMatch(component, /top \+ 75/);
+  assert.doesNotMatch(component, /label\(ctx, "Sjø", 14, normalY - 9\)/);
+  assert.match(component, /const scenarioLabelY = scenarioY - 10;/);
+  assert.match(component, /leader\(ctx, 18, scenarioLabelY \+ 4, 18, scenarioY - 2\)/);
+  // «Tenkt vannivå» (82 px wide, 12 px cap) stays clear of every building symbol at both levels.
+  for (const width of [300, 328, 358, 992]) for (const level of [0.16, 0.27]) for (const moved of [false, true]) {
+    const sites = TOWN_SITES.map((b) => ({...b, x: moved && b.name === "Skole" ? 0.73 : b.x}));
+    const scenarioY = 221 * 0.7 - level * 221;
+    const text = {x: 12, y: scenarioY - 10 - 12 - 2, width: 86, height: 16};
+    for (const g of townGlyphLayout(width, 221, level, sites, {Hus: 23, "Nytt bygg": 57, Skole: 33}))
+      assert.ok(!boxesOverlap(text, {x: g.x - g.half, y: g.y - g.height, width: 2 * g.half, height: g.height}, 2), `${width} ${level} ${g.name}`);
+  }
+});
+
+const m5Placement = (id: "india" | "tohoku", width: number) => {
+  const o = makeOcean(id);
+  const levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
+  const contours = levels.map((level) => ({level, paths: filterOceanContourFragments(
+    smoothOceanContours(o, marchingContours(o, level)), oceanPanelLayout(o, 332).aspect)}));
+  const layout = oceanPanelLayout(o, width), mw = layout.mapWidth, mh = layout.mapHeight;
+  const obstacles = [{k: o.source}, ...o.points].map((p) => {
+    const [lon, lat] = cellGeo(o, p.k);
+    const x = ((lon - o.lon0) / (o.lon1 - o.lon0)) * mw, y = ((o.lat1 - lat) / (o.lat1 - o.lat0)) * mh;
+    return {x: x - 12, y: y - 12, width: 24, height: 24};
+  });
+  const isWater = (p: {x: number; y: number}) => {
+    const i = Math.floor(p.x * o.nx), j = Math.floor(p.y * o.ny);
+    return i >= 0 && i < o.nx && j >= 0 && j < o.ny && !o.land[j * o.nx + i];
+  };
+  return {contours, mw, mh, placed: contourLabels(contours, mw, mh, obstacles, isWater)};
+};
+
+test("M5 hides only a short bent end hook past a label; never extends or bridges a line", () => {
+  // Synthetic: a line that ends in a short downward hook just right of a label box.
+  const box = {x: 40, y: 40, width: 26, height: 18};
+  const hook = [{x: 0, y: 0.9}, {x: 0.2, y: 0.6}, {x: 0.45, y: 0.49}, {x: 0.55, y: 0.48}, {x: 0.68, y: 0.5}, {x: 0.74, y: 0.56}];
+  const [trimmed] = trimLabelHooks([hook], box, 100, 100);
+  assert.deepEqual(trimmed, hook.slice(0, 4), "hook beyond the box is hidden, line still runs under the label");
+  const straight = [0, 0.2, 0.45, 0.55, 0.75].map((x) => ({x, y: 0.37 + 0.25 * x}));
+  assert.deepEqual(trimLabelHooks([straight], box, 100, 100)[0], straight, "a straight continuation stays");
+  const ring = [{x: 0.75, y: 0.56}, {x: 0.55, y: 0.48}, {x: 0.4, y: 0.6}, {x: 0.3, y: 0.9}, {x: 0.6, y: 0.95}, {x: 0.8, y: 0.66}];
+  assert.deepEqual(trimLabelHooks([ring], box, 100, 100)[0], ring, "ends of a land-broken ring are never trimmed");
+  for (const id of ["india", "tohoku"] as const)
+    for (const width of [250, 328, 600, 750, 992, 1100]) {
+      const {contours, mw, mh, placed} = m5Placement(id, width);
+      for (const p of placed) {
+        if (p.anchor) continue;
+        const paths = contours.find((c) => c.level === p.level)!.paths;
+        const out = trimLabelHooks(paths, p.box, mw, mh);
+        out.forEach((path, i) => {
+          const src = paths[i];
+          const start = src.indexOf(path[0]);
+          assert.ok(start >= 0 && path.every((q, k) => q === src[start + k]), "only a contiguous sub-path, no new points");
+        });
+        if (id === "india" && p.level === 3600) assert.deepEqual(out, paths, `${width}: 1 h Sumatra break untouched`);
+      }
+    }
+  // The 2 h hook seen at desktop width beside its label is gone.
+  for (const width of [750, 850, 992, 1100]) {
+    const {contours, mw, mh, placed} = m5Placement("india", width);
+    const two = placed.find((p) => p.level === 7200 && !p.anchor)!, paths = contours.find((c) => c.level === 7200)!.paths;
+    const out = trimLabelHooks(paths, two.box, mw, mh);
+    const inside = (q: {x: number; y: number}) => q.x * mw >= two.box.x && q.x * mw <= two.box.x + two.box.width && q.y * mh >= two.box.y && q.y * mh <= two.box.y + two.box.height;
+    for (const path of out) for (const end of [path[0], path[path.length - 1]]) {
+      const near = Math.hypot(end.x * mw - (two.box.x + two.box.width / 2), end.y * mh - (two.box.y + two.box.height / 2)) < 40;
+      if (near) assert.ok(inside(end), `${width}: 2 h line ends under its label, no hook`);
+    }
+  }
+  const component = readFileSync(new URL("./m5-ocean.tsx", import.meta.url), "utf8");
+  assert.match(component, /trimLabelHooks\(paths, own.box, mw, mh\)/);
+});
+
+test("M6 missing-signal sentence has a clear object and fits a 320 px phone card", () => {
+  const stage = SKRED_WARNING_STAGES[2];
+  assert.equal(stage.detail, "Manglende signal utelukker ikke en bølge");
+  const html = renderToStaticMarkup(createElement(ModelWarning));
+  assert.doesNotMatch(html, /avkrefter ikke(?! at)/);
+  assert.match(html, /manglende signal utelukker ikke en bølge/);
+  for (const s of [...WARNING_STAGES, ...SKRED_WARNING_STAGES]) assert.doesNotMatch(`${s.title} ${s.detail}`, /[&!]/);
+  // Measured 244 px at 14 px Source Sans 3 (500); a 288 px canvas leaves 254 px in the card.
+  assert.ok(stage.detail.length <= 41);
+});

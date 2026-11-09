@@ -215,6 +215,19 @@ export function townSiteX(screenX: number, width: number) {
   return view.from + (screenX - 12) * view.span / (width - 24);
 }
 
+/** «Sjø» label inside the solid normal sea, below the normal sea line, at the deep left
+ * edge of the visible profile (narrow phones start slightly further left). The 14 px text
+ * (about 10 px above and 3 px below the baseline) is centred between the sea line and the
+ * shallowest seabed under it, with the baseline 11.5–18 px below the line. */
+export function townSeaLabel(width: number, ph: number, textWidth = 20) {
+  const yOf = (z: number) => ph * 0.7 - z * ph;
+  const normalY = yOf(TOWN_NORMAL_SEA_LEVEL), x = width < 340 ? 6 : 14;
+  const seabed = Math.min(...Array.from({length: 11}, (_, i) =>
+    yOf(townHeight(townSiteX(x + (textWidth * i) / 10, width)))));
+  const centred = normalY + 0.8 + (seabed - normalY - 0.8 - 13) / 2 + 10;
+  return { x, baseline: Math.max(normalY + 11.5, Math.min(normalY + 18, centred)), normalY, seabed };
+}
+
 /** Labels lie inside land below the profile, with leaders to the true building footpoints. */
 export function townGlyphLayout(
   width: number,
