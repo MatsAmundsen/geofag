@@ -26,7 +26,7 @@ Selvstendig skrevet tekst. Bibliotek og Terra Nova brukes bare som internt pensu
 | SSB, 2014 og 2024 | Nasjonalregnskapsbegreper, BNP, volumendring og forskjellen mellom BNP og BNI. Ingen gamle makrotall brukes som nåtall. |
 | UNDP, u.å. | HDI, helse/skolegang/BNI, gjennomsnitt og begrensninger. Ingen landrangering eller uverifisert 2026-rapport. |
 | Baah, Foster, Jolliffe, Lakner og Lara Ibarra, 9. juni 2025 | Verdensbankens nye fattigdomsgrense: 3,00 internasjonale dollar, 2021-kjøpekraft. Ikke valutakursomregning til en norsk grense. |
-| Hasell mfl., 2022, dataside oppdatert 22. september 2026 | OWID/World Bank PIP: terskel, inntekt kontra forbruk, datadekning, beregninger og metodebrudd. Sidens anbefalte forfatterår beholdes, dataoppdatering oppgis separat. |
+| Hasell et al., 2022, dataside oppdatert 22. september 2026 | OWID/World Bank PIP: terskel, inntekt kontra forbruk, datadekning, beregninger og metodebrudd. Sidens anbefalte forfatterår beholdes, dataoppdatering oppgis separat. |
 | FN-sambandet, 9. mars 2026 | Utviklingssyn, Brundtland, tre dimensjoner, målkonflikter og vekstdebatt. Sidens jordklodetall er ikke brukt som ferske tall. |
 | UN DESA, u.å. | 17 bærekraftsmål, vedtak 2015, 2030-agenda og konkrete måltemaer. |
 | PIK, 21. september 2026 | Planetary Health Check 2026: sju av ni grenser overskredet, havforsuring sist overskredet i 2025, eldre observasjoner i ny vurdering, sammenhengende risiko og regionalt ulike aerosolforhold. Ikke det gamle tallet seks av ni. |
