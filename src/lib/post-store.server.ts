@@ -1660,6 +1660,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv",
     stale: ["magnitude 6 omtrent hvert hundrede år, og et med magnitude 7 omtrent hvert tusende år"],
   },
+  {
+    // M1 og M3 flyttet, nye innledninger til M1–M3, M5-setningen følger gangtidsmodellen.
+    flag: "g1-tsunami-m1-m7-integrasjon-2026-11-09",
+    slug: "jordskjelv-naturfare",
+    stale: ["Ankomsttid i et idealisert hav, der land stopper den rette linjen"],
+  },
 ];
 COPY_RESEEDS.push(...COPY_RESEEDS_B);
 
