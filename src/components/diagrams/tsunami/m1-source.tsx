@@ -265,6 +265,8 @@ export function ModelSource() {
     ctx.stroke();
 
     const slipAt = { x: NaN, y: NaN };
+    // Pilenes streker, så ledelinjer til etiketter kan holdes unna dem.
+    const slipLines: [number, number, number, number][] = [];
     // Bevegelsen langs bruddet: én liten pil på hver side, bare for skyv og normal.
     if (RAKE[kind] !== 0 && stage === "etter") {
       const ax = xOf(xU);
@@ -308,6 +310,7 @@ export function ModelSource() {
         ctx.lineTo(ex - dir * ux * 7 - nx * 4, ey - dir * uy * 7 - ny * 4);
         ctx.closePath();
         ctx.fill();
+        slipLines.push([sx, sy, ex, ey]);
       };
       // Ved skyv går den overliggende plata opp langs bruddet, mot grøfta.
       seg(1, -sgn);
@@ -400,6 +403,7 @@ export function ModelSource() {
     const fy = (fay + fby) / 2;
     if (RAKE[kind] !== 0 && stage === "etter")
       lay.reserve({ x0: slipAt.x - 22, y0: slipAt.y - 22, x1: slipAt.x + 22, y1: slipAt.y + 22 });
+    for (const [x0, y0, x1, y1] of slipLines) lay.avoidLine(x0, y0, x1, y1);
 
     lay.place(
       "havnivå i ro",
@@ -521,6 +525,14 @@ export function ModelSource() {
       { x: fx + 12, y: fy + 26, text: t },
       { x: fx + 26, y: fy + 5, text: t },
       { x: fx - 26, y: fy + 5, align: "right" as const, text: t },
+      // Rett ved siden av glidepilene, uten ledelinje, når en kort bruddflate er dekket av pilene.
+      ...(slipLines.length
+        ? [
+            { x: slipAt.x + 28, y: slipAt.y + 5, text: t },
+            { x: slipAt.x + 28, y: slipAt.y - 10, text: t },
+            { x: slipAt.x - 28, y: slipAt.y + 5, align: "right" as const, text: t },
+          ]
+        : []),
       { x: fbx + 14, y: bottom - 10, text: t, to },
       { x: fbx - 14, y: bottom - 10, align: "right" as const, text: t, to },
       { x: fx + 26, y: fy - 22, text: t, to },
