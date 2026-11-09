@@ -4,6 +4,24 @@ import type { Kilde } from "@/lib/kilder";
 export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-verktoy": [
     {
+      prefix: "Natural Earth. (u.å.).",
+      italic: "1:110m Cultural Vectors",
+      suffix: " (utgave 5.1.1). Public Domain.",
+      href: "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/",
+    },
+    {
+      prefix: "Snow, J. (1855).",
+      italic: "On the mode of communication of cholera",
+      suffix: " (2. utg.). John Churchill. Historisk kart, digital reproduksjon via UCLA og Wikimedia Commons, Public Domain.",
+      href: "https://archive.org/details/b28985266/page/n57/mode/2up",
+    },
+    {
+      prefix: "NASA. (2011, 13. april).",
+      italic: "Blue marble.",
+      suffix: " Visualisering fra 2002. NASA Goddard Space Flight Center.",
+      href: "https://science.nasa.gov/resource/blue-marble/",
+    },
+    {
       prefix: "Kartverket. (u.å.). ",
       italic: "Topografisk rasterkart WMTS",
       suffix: " [Kart]. Utsnitt ved Gjende, zoom 11. Fire fliser sammenstilt 6. november 2026. © Kartverket, CC BY 4.0.",
@@ -228,6 +246,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-landskap": [] as const,
   "geo-klima": [] as const,
   "geo-naturfare": [
+    {
+      prefix: "U.S. Geological Survey. (u.å.-d).",
+      italic: "ANSS Comprehensive Earthquake Catalog (ComCat)",
+      suffix: " [Datasett]. Søk: 2023, magnitude 6 eller mer, 147 hendelser, uttrekk 6. november 2026. Public Domain.",
+      href: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-01-01&endtime=2024-01-01&minmagnitude=6&orderby=time-asc",
+    },
+    {
+      prefix: "U.S. Geological Survey. (u.å.-e).",
+      italic: "Tectonic plate boundaries",
+      suffix: " [Karttjeneste]. Public Domain. Alle 1 175 linjeobjekter, uttrekk 7. november 2026.",
+      href: "https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer",
+    },
+    {
+      prefix: "Bird, P. (2003).",
+      italic: "An updated digital model of plate boundaries.",
+      suffix: " Geochemistry, Geophysics, Geosystems, 4(3). https://doi.org/10.1029/2001GC000252",
+      href: "https://doi.org/10.1029/2001GC000252",
+    },
     {
       prefix: "Kartverket. (u.å.). ",
       italic: "Sentralt stedsnavnregister",

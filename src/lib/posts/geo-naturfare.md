@@ -26,7 +26,9 @@ Etter kapitlet kan du
 
 Målene bygger på KM483, med støtte i KM482 og KM487 (Udir, u.å.).
 
-[figur-6-1]: # (FIGURPLASSHOLDER 6.1: Jordskjelv og plategrenser. Se docs/geografi-kap6-redaksjon.md.)
+```widget
+GeoNaturfareSkjelvPlater
+```
 
 ### Tenk over
 
@@ -42,7 +44,9 @@ En **naturfare** er et naturfenomen eller en naturlig prosess som kan føre til 
 
 **Risiko** beskriver mulige tap og skader, vurdert ut fra faren og forholdene i samfunnet. Vi må se fare, eksponering, sårbarhet og evne til å håndtere hendelsen i sammenheng (UNDRR, 2017b). Huskekjeden «fare møter eksponering og sårbarhet» hjelper oss å stille spørsmål om disse leddene. Den er ikke en formel som gir et pålitelig risikotall når vi mangler nødvendige data.
 
-[figur-6-2]: # (FIGURPLASSHOLDER 6.2: Lik fare, ulik eksponering og sårbarhet. Ikke en tallfestet risikokalkulator.)
+```widget
+GeoNaturfareFareEksponering
+```
 
 ### Når blir hendelsen en katastrofe?
 
@@ -107,8 +111,6 @@ Erosjon fra en bekk kan fjerne støtte ved foten av en skråning og forverre sta
 ```widget
 GeoNaturfareKvikkleireSteg
 ```
-
-[figur-6-4-tillegg]: # (FIGURPLASSHOLDER 6.4 TILLEGG: Stedkart Gjerdrum og neste-steg-kontroll; firetrinnsskissen finnes.)
 
 Figur 6.4 lar deg følge denne kjeden med neste-steg-kontroll og lokatorkart i fire trinn, uten å beregne stabilitet eller skredets rekkevidde. Bruk figuren til å forklare hvordan et skred kan ramme mer enn det første løsneområdet. I Gjerdrum beskrev utvalget at skredet forplantet seg fra skråningen ved Tistilbekken mot Nystulia (Gjerdrumutvalget, 2021, s. 11–12). En prosesskisse er likevel ikke en nøyaktig gjengivelse av terreng, grunnforhold eller tidspunkt på stedet.
 
