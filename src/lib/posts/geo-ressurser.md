@@ -37,7 +37,7 @@ En forekomst i berggrunnen blir ikke automatisk en ressurs vi kan eller bør utv
 
 En **fornybar** ressurs blir fornyet gjennom naturlige prosesser innenfor tidsrom som er relevante for oss. Solinnstråling og vind er eksempler på energistrømmer vi ikke bruker opp ved vanlig utnyttelse. En **betinget fornybar** ressurs kan fornyes dersom vi bevarer grunnlaget for ny produksjon. Skog og fisk hører til her, fordi overbeskatning kan svekke muligheten for fornyelse. Ordet fornybar er altså ikke en garanti for ubegrenset uttak eller skadefri bruk (Olerud, 2025).
 
-En **ikke-fornybar** ressurs blir ikke erstattet i takt med uttaket innenfor menneskelige tidsperspektiver. Petroleum og metallforekomster er eksempler, selv om geologiske prosesser fortsatt virker i naturen. Metaller kan gjenvinnes og brukes igjen, mens brent olje ikke kan gjenvinnes som olje. Gjenvinning endrer derfor hvordan vi bruker en begrenset ressurs, ikke hvordan forekomsten ble dannet. Figur 7.2 skiller ressursens fornyelse fra virkningene av å utnytte den (Hofstad & Seip, 2025; Olerud, 2025).
+En **ikke-fornybar** ressurs blir ikke erstattet i takt med uttaket innenfor menneskelige tidsperspektiver. Petroleum og metallforekomster er eksempler, selv om geologiske prosesser fortsatt virker i naturen. Metaller kan gjenvinnes og brukes igjen, mens brent olje ikke kan gjenvinnes som olje. Gjenvinning endrer derfor hvordan vi bruker en begrenset ressurs, ikke hvordan forekomsten ble dannet. Figur 7.1 skiller ressursens fornyelse fra virkningene av å utnytte den (Hofstad & Seip, 2025; Olerud, 2025).
 
 ```widget
 GeoRessursFornyelse
@@ -181,7 +181,7 @@ Kommunene har et sentralt ansvar for lokal arealplanlegging etter plan- og bygni
 
 Kommunestyret vedtar kommunale planer innenfor lovverk og nasjonale og regionale rammer. En privat utbygger kan foreslå en plan uten å overta kommunens myndighet til å avgjøre den. Enkelte myndigheter kan fremme **innsigelse**, en formell innvending som følger særskilte regler. En innsigelse er derfor noe annet enn en vanlig merknad fra en innbygger. Det er også viktig å skille kommunal arealplanlegging fra statlige ordninger for blant annet større energianlegg (Kommunal- og distriktsdepartementet, 2026).
 
-En **konsekvensutredning** undersøker mulige virkninger av en plan eller et tiltak når regelverket krever det. Vi bør se etter alternativer, usikkerhet og virkninger for både miljø og samfunn. En vedtatt arealplan betyr ikke automatisk at alle andre nødvendige tillatelser er på plass. Dessuten setter menneskerettighetene grenser som ikke kan gjøres om til vanlige plusser og minuser. Figur 7.8 viser spørsmål vi trenger å stille, ikke et poengsystem som avgjør en utbygging (Kommunal- og distriktsdepartementet, 2026; Høyesterett, 2021).
+En **konsekvensutredning** undersøker mulige virkninger av en plan eller et tiltak når regelverket krever det. Vi bør se etter alternativer, usikkerhet og virkninger for både miljø og samfunn. En vedtatt arealplan betyr ikke automatisk at alle andre nødvendige tillatelser er på plass. Dessuten setter menneskerettighetene grenser som ikke kan gjøres om til vanlige plusser og minuser. Figur 7.6 viser spørsmål vi trenger å stille, ikke et poengsystem som avgjør en utbygging (Kommunal- og distriktsdepartementet, 2026; Høyesterett, 2021).
 
 ```widget
 GeoRessursVindAvveining
@@ -349,7 +349,7 @@ c) Formuler to spørsmål om senere gjennomføring. Finn nyere kilder hvis de er
 
 a) Velg vannkraft, vindkraft på land, havvind og solkraft. Lag en tabell med energikilde, variasjon og mulige arealspørsmål.
 
-b) Bruk spørsmålene i figur 7.8 til å undersøke ett tenkt prosjekt. Ikke gi menneskerettigheter en poengsum som kan kjøpes opp av kraftnytte.
+b) Bruk spørsmålene i figur 7.6 til å undersøke ett tenkt prosjekt. Ikke gi menneskerettigheter en poengsum som kan kjøpes opp av kraftnytte.
 
 c) Begrunn hvilke opplysninger du trenger om sted, natur, nettilknytning og rettigheter før du anbefaler et alternativ.
 

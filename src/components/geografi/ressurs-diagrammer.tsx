@@ -6,7 +6,7 @@ export function GeografiRessursFornyelse() {
     { x: 320, title: "Betinget fornybar", example: "Skog og fisk", note: "Produksjonsgrunnlaget må bevares" },
     { x: 620, title: "Fornybare energistrømmer", example: "Sol og vind", note: "Bruken tømmer ikke energikilden" },
   ];
-  return <Diagram title="Tre ressurstyper ordnet etter fornyelse og vilkår for bruk" heading="Figur 7.2 – Hva er det som fornyes?"
+  return <Diagram title="Tre ressurstyper ordnet etter fornyelse og vilkår for bruk" heading="Figur 7.1 – Hva er det som fornyes?"
     caption="Egen kvalitativ modell etter Olerud (2025) og Hofstad og Seip (2025). Plasseringen har ingen tallakse og er ingen miljø- eller bærekraftrangering. Metaller kan gjenvinnes uten at malmforekomsten blir fornybar. Avlinger kan fornyes, men selve jordsmonnet behandles som ikke-fornybart på menneskelige tidsskalaer (NIBIO, u.å.)." viewBox="0 0 920 235" wide scroll>
     {() => <>
       <line x1="35" y1="30" x2="885" y2="30" stroke={C.teal} strokeWidth="8" />

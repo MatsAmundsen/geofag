@@ -651,7 +651,7 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-7-/);
-    assert.doesNotMatch(md, /[Ss]e figur 7\.(?:1|5|6|7|9)\b/);
+    assert.doesNotMatch(md, /[Ss]e figur 7\.(?:2|5|7|8|9)\b/);
   });
 
   it("registrerer 43 eksterne kilder uten bibliotek eller lærebok", () => {
