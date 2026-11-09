@@ -76,7 +76,7 @@ En **innlandsis** er en svært stor, sammenhengende ismasse som dekker et omfatt
 
 **Akkumulasjon** er tilførsel av snø og is, mens **ablasjon** er tap av bremasse. **Massebalanse** er forskjellen mellom tilførsel og tap gjennom en bestemt periode (NVE, 2024). Ved positiv massebalanse øker massen i regnskapet, mens negativ massebalanse betyr et underskudd. NVE måler blant annet snødybde, snøens tetthet og endringer ved målestaker på breene.
 
-For å sammenlikne snø og is brukes **vannekvivalent**, som er tykkelsen tilsvarende mengde smeltevann ville hatt. NVE bruker dette i beregninger av massebalanse over breens areal (NVE, 2024). I figur 4.4 bruker vi konstruerte tall for tilførsel og tap på samme areal. Regnskapet er en øvelse, ikke en måling av en navngitt norsk bre.
+For å sammenlikne snø og is brukes **vannekvivalent**, som er tykkelsen tilsvarende mengde smeltevann ville hatt. NVE bruker dette i beregninger av massebalanse over breens areal (NVE, 2024). I figur 4.2 bruker vi konstruerte tall for tilførsel og tap på samme areal. Regnskapet er en øvelse, ikke en måling av en navngitt norsk bre.
 
 ```widget
 GeoLandskapMassebalanse
@@ -98,7 +98,7 @@ Breer kan både erodere fast berg og transportere løsmasser som senere blir avs
 
 ### Fra elvedal til U-dal og fjord
 
-En **V-dal** er en dal med et tverrsnitt som er smalt nederst og brattere oppover sidene. Elveerosjon kan utvikle slike daler, mens breer kan utvide og fordype tidligere elvedaler (Bryhni & Røthe, 2025). En **U-dal** har et bredere dalbunnsparti og bratte sider, formet gjennom breerosjon. Figur 4.2 viser en forenklet kjede fra elvelandskap til breformet dal, sett fra samme perspektiv.
+En **V-dal** er en dal med et tverrsnitt som er smalt nederst og brattere oppover sidene. Elveerosjon kan utvikle slike daler, mens breer kan utvide og fordype tidligere elvedaler (Bryhni & Røthe, 2025). En **U-dal** har et bredere dalbunnsparti og bratte sider, formet gjennom breerosjon. Figur 4.4 viser en forenklet kjede fra elvelandskap til breformet dal, sett fra samme perspektiv.
 
 ```widget
 GeoLandskapBrelandskap
@@ -110,7 +110,7 @@ Når en breutgravd dal ligger lavt nok og har forbindelse til havet, kan sjøvan
 
 En **botn** er en skålformet fordypning med bratt bakkant, utviklet der en mindre bre har arbeidet. Breerosjon, forvitring og materiale fra sidene bidrar sammen til formen vi ser etterpå (Lilleøren, 2025). Når breer eroderer på hver sin side av en rygg, kan ryggen bli smal og skarp. En slik skarp fjellrygg kaller vi en **egg** (Mæhlum, 2026a).
 
-En **tind** er en spiss fjelltopp, som kan stå igjen mellom breformede fordypninger. Botnbreer har bidratt til slike alpine former i blant annet Jotunheimen (Bryhni & Fossen, 2024). I figur 4.3 følger vi hvordan flere fordypninger kan avgrense rygger og topper. Modellen viser en mulig utvikling, ikke en tidsmåling eller en kopi av et bestemt fjell.
+En **tind** er en spiss fjelltopp, som kan stå igjen mellom breformede fordypninger. Botnbreer har bidratt til slike alpine former i blant annet Jotunheimen (Bryhni & Fossen, 2024). I figur 4.5 følger vi hvordan flere fordypninger kan avgrense rygger og topper. Modellen viser en mulig utvikling, ikke en tidsmåling eller en kopi av et bestemt fjell.
 
 ```widget
 GeoLandskapBotn
@@ -130,7 +130,7 @@ Smeltevann kan transportere materiale videre og sortere det på en annen måte e
 
 **Marin grense** er det høyeste nivået havet nådde et sted etter siste istid. Høyden varierer mellom steder, og kan ikke erstattes av én felles høydegrense for hele Norge (NGU, u.å.-c). Den lokale strandhistorien avhenger både av landbevegelse, havnivå og når området ble isfritt. Vi må altså skille mellom landets bevegelse og havets nivå i forhold til landet (Fossen & Mæhlum, 2026).
 
-Breelver fraktet fine partikler ut i sjøen, der materialet kunne synke og avsettes. Da landet senere hevet seg, kom tidligere havbunn med marine avsetninger opp på land. Derfor kan vi finne leire under marin grense, blant annet i lavlandsområder på Østlandet (NGU, u.å.-a; Bryhni & Fossen, 2024). Figur 4.5 viser denne rekkefølgen, men beregner ikke marin grense på et virkelig sted.
+Breelver fraktet fine partikler ut i sjøen, der materialet kunne synke og avsettes. Da landet senere hevet seg, kom tidligere havbunn med marine avsetninger opp på land. Derfor kan vi finne leire under marin grense, blant annet i lavlandsområder på Østlandet (NGU, u.å.-a; Bryhni & Fossen, 2024). Figur 4.6 viser denne rekkefølgen, men beregner ikke marin grense på et virkelig sted.
 
 ```widget
 GeoLandskapMarinGrense
@@ -140,7 +140,7 @@ GeoLandskapMarinGrense
 
 **Havleire** er leire som er avsatt i sjøen, ofte kalt **marin leire** i kart og rapporter. Ved avsetning i saltvann kan leirpartiklene danne en åpen struktur med vann mellom partiklene. Når ferskvann over tid vasker ut salt, kan denne strukturen bli mindre stabil (NGU, u.å.-b). Men saltutvasking betyr ikke at all havleire automatisk blir kvikkleire.
 
-**Kvikkleire** er leire som kan miste mye av styrken og bli flytende ved omrøring eller sammenbrudd. Leira kan ligge fast i bakken før belastning eller andre endringer utløser et slikt sammenbrudd. Resultatet kan bli skred, og konsekvensene avhenger også av terrenget og hva som finnes i området (NGU, u.å.-b). Figur 4.6 knytter den forenklede partikkelmodellen til mulig skredutvikling i landskapet.
+**Kvikkleire** er leire som kan miste mye av styrken og bli flytende ved omrøring eller sammenbrudd. Leira kan ligge fast i bakken før belastning eller andre endringer utløser et slikt sammenbrudd. Resultatet kan bli skred, og konsekvensene avhenger også av terrenget og hva som finnes i området (NGU, u.å.-b). Figur 4.7 knytter den forenklede partikkelmodellen til mulig skredutvikling i landskapet.
 
 ```widget
 GeoLandskapKvikkleire
@@ -306,7 +306,7 @@ c. Lag en alternativ vei der is eller vind deltar i transporten. Forklar hvorfor
 
 ### 2. Les et brelandskap
 
-a. Bruk figur 4.2 og 4.3. Beskriv hva du faktisk ser i hvert trinn før du forklarer hvordan formen kan ha blitt dannet.
+a. Bruk figur 4.4 og 4.5. Beskriv hva du faktisk ser i hvert trinn før du forklarer hvordan formen kan ha blitt dannet.
 
 b. Tegn tverrsnitt av en V-dal og en U-dal. Forklar hva som i tillegg må til for at en breutgravd dal skal bli en fjord.
 
@@ -314,7 +314,7 @@ c. Sammenlikn med et datert landskapsbilde læreren har valgt. Skill synlige spo
 
 ### 3. Breens tenkte regnskap
 
-a. Bruk figur 4.4 med konstruert tilførsel på 2,5 meter vannekvivalent og tap på 3,0 meter. Regn ut forskjellen for samme areal og periode.
+a. Bruk figur 4.2 med konstruert tilførsel på 2,5 meter vannekvivalent og tap på 3,0 meter. Regn ut forskjellen for samme areal og periode.
 
 b. Velg deretter én kombinasjon med positiv balanse og én med balanse lik null. Forklar hva regnskapene sier om tilførsel og tap.
 
@@ -322,7 +322,7 @@ c. Forklar hvorfor resultatene ikke er en prognose for frontposisjonen til en be
 
 ### 4. Havbunn på land
 
-a. Tegn en enkel kjede fra innlandsis til havleire som senere ligger over havnivået. Bruk figur 4.5, og merk at tegningen ikke har målestokk.
+a. Tegn en enkel kjede fra innlandsis til havleire som senere ligger over havnivået. Bruk figur 4.6, og merk at tegningen ikke har målestokk.
 
 b. Les NGUs [forklaring av marin grense](https://www.ngu.no/om-geologi/om-kart-over-marin-grense). Forklar forskjellen mellom mulig marin leire og påvist kvikkleire, uten å gjøre en vurdering av en bestemt eiendom.
 

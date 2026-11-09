@@ -5,7 +5,7 @@ export function GeografiGeirangerFoto() {
   return (
     <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
-        Figur 4.10 – Geirangerfjorden sett ovenfra
+        Figur 4.10b – Geirangerfjorden sett ovenfra
       </h3>
       <img
         src="/images/geografi/geirangerfjorden-beck-2025.webp"

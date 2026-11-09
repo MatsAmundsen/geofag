@@ -469,7 +469,7 @@ describe("Geografi kapittel 4: ytre krefter og landskap", () => {
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoLandskapIstidskart", "GeoLandskapFrost", "GeoLandskapMassebalanse", "GeoLandskapBrekart", "GeoLandskapBrelandskap", "GeoLandskapBotn", "GeoLandskapMarinGrense", "GeoLandskapKvikkleire", "GeoLandskapElv", "GeoLandskapKyst", "GeoLandskapFjordLokator", "GeoLandskapGeirangerFoto", "GeoLandskapLeirslette"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap4-redaksjon|figur-4-/);
-    assert.doesNotMatch(md, /[Ss]e figur 4\.(?:0|7|8|9|10|11)\b/);
+    assert.doesNotMatch(md, /[Ss]e figur 4\.(?:0|3|8|9|10b|11)\b/);
   });
 
   it("har 39 verifiserte kilder uten elevrettede bibliotek- eller lærebokhenvisninger", () => {
