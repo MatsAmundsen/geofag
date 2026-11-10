@@ -29,18 +29,21 @@ function velgJordposter(): string {
 }
 
 /**
- * Geografi-heltens video lastes først når kolonnen nærmer seg skjermen, og aldri ved redusert
- * bevegelse. Ellers er oppsettet som G1/G2 (autoplay, muted, loop, playsInline, poster).
+ * Heltevideo lastes først etter at JS har sjekket redusert bevegelse, og aldri når det er slått
+ * på. G1 og G2 startes med en gang (umiddelbart), Geografi når kolonnen nærmer seg skjermen.
+ * Ellers er oppsettet autoplay, muted, loop, playsInline og poster.
  * Til den er lastet viser stillbildet under seg.
  */
 function LatHeltevideo({
   src,
   poster,
   className,
+  umiddelbart = false,
 }: {
   src: string;
   poster: string | (() => string);
   className: string;
+  umiddelbart?: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [aktiv, setAktiv] = useState(false);
@@ -48,7 +51,7 @@ function LatHeltevideo({
     const v = ref.current;
     if (!v || aktiv) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!("IntersectionObserver" in window)) {
+    if (umiddelbart || !("IntersectionObserver" in window)) {
       setAktiv(true);
       return;
     }
@@ -63,7 +66,7 @@ function LatHeltevideo({
     );
     io.observe(v);
     return () => io.disconnect();
-  }, [aktiv]);
+  }, [aktiv, umiddelbart]);
   useEffect(() => {
     const v = ref.current;
     if (!v || !aktiv) return;
@@ -124,18 +127,12 @@ function Hub() {
                 fetchPriority="high"
                 className="absolute inset-0 h-full w-full object-cover object-top"
               />
-              <video
-                className="absolute inset-0 h-full w-full object-cover object-top motion-reduce:hidden"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              <LatHeltevideo
+                src="/videos/hero-volcano.mp4"
                 poster="/images/hero-volcano.jpg"
-                aria-hidden="true"
-              >
-                <source src="/videos/hero-volcano.mp4" type="video/mp4" />
-              </video>
+                className="absolute inset-0 h-full w-full object-cover object-top motion-reduce:hidden"
+                umiddelbart
+              />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#4a1608]/80 via-lava/25 to-transparent" />
               {/* Headeren tar 4rem over 100dvh-feltet, så kortet må løftes for å bli helt synlig. */}
@@ -161,18 +158,12 @@ function Hub() {
                 alt="Tornado over åpent sletteland"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
-              <video
-                className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              <LatHeltevideo
+                src="/videos/hero-tornado.mp4"
                 poster="/images/hero-tornado.jpg"
-                aria-hidden="true"
-              >
-                <source src="/videos/hero-tornado.mp4" type="video/mp4" />
-              </video>
+                className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
+                umiddelbart
+              />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background/75 to-transparent" />
               <div className={HERO_KORT_PLASS}>
