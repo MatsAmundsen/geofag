@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -10,6 +11,71 @@ const HERO_SIZES = "(min-width: 768px) max(33.34vw, 55.5vh), max(100vw, 55.5vh)"
 
 // Felles minstehøyde gir like høye kort i alle tre heltene (QC PR #312).
 const HERO_KORT_HOYDE = "min-h-[11.5rem] md:min-h-[15rem] lg:min-h-[12rem]";
+
+// Kortet ligger i flyt nederst i kolonnen. Toppfeltet holder av plass til H1 (topp + inntil fire
+// linjer, i rem), så kortene ikke legger seg over H1 ved 200 % tekst; kolonnen vokser i stedet.
+const HERO_KORT_PLASS =
+  "relative px-4 pb-20 pt-[19rem] sm:px-6 sm:pb-[5.5rem] sm:pt-[23rem] lg:pt-[26rem] [overflow-wrap:anywhere]";
+
+/**
+ * Geografi-heltens video lastes først når kolonnen nærmer seg skjermen, og aldri ved redusert
+ * bevegelse. Ellers er oppsettet som G1/G2 (autoplay, muted, loop, playsInline, poster).
+ * Til den er lastet viser stillbildet under seg.
+ */
+function LatHeltevideo({
+  src,
+  poster,
+  className,
+}: {
+  src: string;
+  poster: string;
+  className: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [aktiv, setAktiv] = useState(false);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || aktiv) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) {
+      setAktiv(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (e) => {
+        if (e.some((x) => x.isIntersecting)) {
+          setAktiv(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, [aktiv]);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || !aktiv) return;
+    v.muted = true;
+    v.load();
+    void v.play().catch(() => {});
+  }, [aktiv]);
+  return (
+    <video
+      ref={ref}
+      className={className}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload={aktiv ? "metadata" : "none"}
+      poster={aktiv ? poster : undefined}
+      aria-hidden="true"
+    >
+      {aktiv ? <source src={src} type="video/mp4" /> : null}
+    </video>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -40,7 +106,7 @@ function Hub() {
           </h1>
 
           <div id="fag" className="grid md:grid-cols-3">
-            <article className="relative min-h-[100dvh]">
+            <article className="relative flex min-h-[100dvh] flex-col justify-end">
               <img
                 src="/images/hero-volcano.jpg"
                 alt="Vulkanutbrudd i mørket med glødende lava"
@@ -61,7 +127,7 @@ function Hub() {
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#4a1608]/80 via-lava/25 to-transparent" />
               {/* Headeren tar 4rem over 100dvh-feltet, så kortet må løftes for å bli helt synlig. */}
-              <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
+              <div className={HERO_KORT_PLASS}>
                 <Link
                   to="/geofag-1"
                   className={`flex ${HERO_KORT_HOYDE} flex-col rounded-2xl border border-lava bg-[#3a140c]/80 p-5 shadow-[0_16px_50px_-10px_color-mix(in_oklab,var(--color-lava)_70%,transparent)] backdrop-blur-md transition-colors hover:bg-[#3a140c]/90 sm:p-6`}
@@ -77,7 +143,7 @@ function Hub() {
               </div>
             </article>
 
-            <article className="relative min-h-[100dvh]">
+            <article className="relative flex min-h-[100dvh] flex-col justify-end">
               <img
                 src="/images/hero-tornado.jpg"
                 alt="Tornado over åpent sletteland"
@@ -97,7 +163,7 @@ function Hub() {
               </video>
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background/75 to-transparent" />
-              <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
+              <div className={HERO_KORT_PLASS}>
                 <Link
                   to="/geofag-2"
                   className={`flex ${HERO_KORT_HOYDE} flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6`}
@@ -113,8 +179,8 @@ function Hub() {
               </div>
             </article>
 
-            <article className="relative min-h-[100dvh]">
-              {/* Stående utsnitt av NASA-foto ISS066-E-9147 (ikke opphavsrettsbeskyttet). Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center, eol.jsc.nasa.gov. Kilde og bearbeiding: docs/forside-helter-kilder.json. */}
+            <article className="relative flex min-h-[100dvh] flex-col justify-end">
+              {/* NASA, ikke opphavsrettsbeskyttet. Stillbilde/poster: stående utsnitt av ISS066-E-9147. Video: tidsforløp av ISS066-E-9137–9246 (22.10.2021, natt over Stillehavet). Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center, eol.jsc.nasa.gov. Kilde og bearbeiding: docs/forside-helter-kilder.json. */}
               <picture>
                 <source
                   type="image/avif"
@@ -130,16 +196,26 @@ function Hub() {
                   src="/images/hero-earth-staaende-1008.jpg"
                   srcSet="/images/hero-earth-staaende-768.jpg 768w, /images/hero-earth-staaende-1008.jpg 1008w"
                   sizes={HERO_SIZES}
-                  alt="Jorda sett fra lav bane over hav og skyer"
+                  alt="Jorda om natten sett fra romstasjonen ISS: stjerner, et tynt oransje lysbånd langs horisonten og skyer over havet"
                   width={1008}
                   height={1792}
+                  loading="lazy"
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover object-center"
                 />
               </picture>
+              <LatHeltevideo
+                src="/videos/hero-earth-iss.mp4"
+                poster="/images/hero-earth-staaende-1008.avif"
+                className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
+              />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background/75 to-transparent" />
-              <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
+              <div className={HERO_KORT_PLASS}>
+                {/* Kreditering rett over kortet, så den er synlig sammen med kortet også på mobil (sticky header dekker kolonnetoppen). */}
+                <p data-kreditering className="mb-2 ml-auto w-fit rounded-md bg-background/95 px-2 py-1 text-xs text-[#d5dde3]">
+                  Foto/video: NASA (ISS)
+                </p>
                 <Link
                   to="/geografi"
                   className={`flex ${HERO_KORT_HOYDE} flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6`}

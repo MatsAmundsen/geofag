@@ -1,5 +1,5 @@
 {
-  "bilde": "hero-earth-staaende (forsiden, Geografi-helten)",
+  "bilde": "hero-earth-staaende + hero-earth-iss.mp4 (forsiden, Geografi-helten)",
   "erstatter_paa_forsiden": "public/images/hero-earth.jpg (1792x1008, liggende). Filen er beholdt og brukes fortsatt av /geografi, geofag-2 og nav. Opphav ukjent: ingen EXIF/IPTC/XMP, ingen kreditering i repoet, lagt til i 3fd6faab 28.08.2026.",
   "kilde": {
     "foto_id": "ISS066-E-9147",
@@ -19,7 +19,7 @@
     ],
     "kreditering": "Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center (ISS066-E-9147, eol.jsc.nasa.gov)",
     "kontrollert": "2026-11-10",
-    "merknad": "NASA ber om kreditering. Synlig kreditering på siden er ikke lagt til (tekst/innhold), bare i kildekommentar og denne fila."
+    "merknad": "NASA ber om kreditering. Kort synlig kreditering «Foto/video: NASA (ISS)» står på siden; full kreditering i kildekommentar og denne fila."
   },
   "bearbeiding": "Stående utsnitt 1912x3400 fra x=2496, y=150 i originalen (fokus på horisont/luftglød i øvre tredel, hav og skyer under). Skalert med Lanczos. Ingen farge- eller innholdsendring.",
   "filer": {
@@ -31,5 +31,32 @@
     "hero-earth-staaende-768.avif": "fdba588a2b6a1e31760a36cb31ffd422b4f44e033cacff577bb7b13da4981088",
     "hero-earth-staaende-768.jpg": "e4efa664e20b3557435ee463761f13cb7d32141c8f82b3191b438fabea1f547f",
     "hero-earth-staaende-768.webp": "2fbd3ede631a4f89bea013e9f7cd11dfc882883949683b5531547aabf7b5ccae"
+  },
+  "synlig_kreditering": {
+    "tekst": "Foto/video: NASA (ISS)",
+    "plassering": "Rett over Geografi-kortet, høyrejustert, 12 px, #d5dde3 på bg-background/95 (kontrast ≥12,99:1 målt bak teksten). Godkjent av Mats 10.11.2026 kl. 21:20.",
+    "dekker": "stillbilde/poster ISS066-E-9147 og videoen ISS066-E-9137–9246"
+  },
+  "video": {
+    "fil": "public/videos/hero-earth-iss.mp4",
+    "kilde": {
+      "foto_ider": "ISS066-E-9137 til ISS066-E-9246 (110 enkeltbilder, ca. 1 s mellom bildene), samme serie og kamera som stillbildet",
+      "tatt": "2021-10-22 ca. 14:11–14:13 GMT, Expedition 66, natt over Stillehavet sør for Hawaii (solhøyde ca. −34°), Nikon D5, 28 mm, ISO 10000",
+      "serie": "NASAs tidsforløpserie «2021-10-22 ISS066 627 Night Photos» (ISS066-E-8727–9353)",
+      "serieside": "https://eol.jsc.nasa.gov/SearchPhotos/mrf.pl?scope=both&MRFList=ISS066-E-8727-9353",
+      "kildeside_eksempel": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=ISS066&roll=E&frame=9147",
+      "nedlastet_fra": "https://eol.jsc.nasa.gov/DatabaseImages/ESC/large/ISS066/ISS066-E-<nr>.JPG (5568x3712)",
+      "merknad": "NASAs ferdige tidsforløpvideo (540x270) er ikke brukt; videoen er satt sammen fra originalbildene. Ingen NASA-logo eller tekst i bildet."
+    },
+    "lisens": "Som stillbildet: NASA-materiale, ikke opphavsrettsbeskyttet (https://eol.jsc.nasa.gov/FAQ/default.htm, kontrollert 2026-11-10). Kreditering: Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center (ISS066-E-9137–9246, eol.jsc.nasa.gov).",
+    "bearbeiding": [
+      "Samme stående utsnitt som stillbildet (1912x3400 fra x=2496, y=150), skalert til 1008x1792 med Lanczos.",
+      "Støyreduksjon hqdn3d=3:2:4:3 (ISO 10000).",
+      "10 bilder/s, bevegelsesinterpolert til 24 bilder/s (ffmpeg minterpolate mci/aobmc).",
+      "Første bilde i videoen = ISS066-E-9147 (= poster/stillbilde). Sømløs loop: siste 1,0 s krysstones til ISS066-E-9137–9146, som leder rett inn i første bilde.",
+      "H.264 High@4.0, yuv420p, CRF 28, keyint 48, faststart, uten lydspor. 9,83 s."
+    ],
+    "storrelse_byte": 2001646,
+    "sha256": "6a003ae55f31c0ebebee08235dbce759c085f09b70b5684e17875adf03fd9589"
   }
 }
