@@ -572,14 +572,26 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /13 millioner|9 prosent av|1\.1 °C|hele august skyldtes bare/);
   });
 
-  it("gjenbruker sju komponenter bare gjennom uttrykkelig Vg1-valg", () => {
-    for (const [file, names] of [
-      ["wind", ["WindCellsDiagram", "GlobalClimateZonesDiagram"]], ["coriolis", ["CoriolisDiagram"]], ["ocean", ["AmocDiagram"]],
-      ["weather", ["FoehnAdiabaticDiagram"]], ["climate-radiation", ["EarthRadiationBudgetDiagram"]], ["spheres", ["CarbonCycleDiagram"]],
-    ] as const) for (const name of names) {
-      assert.ok(read(`../components/diagrams/${file}.tsx`).includes(`export function ${name}({ geografi = false }`), name);
-      assert.ok(read("../components/poster-widget-renderer.tsx").includes(`<${name} geografi />`), name);
+  it("bruker lastede modeller for figur 5.2–5.9: Geofag 2-cellene og nye modeller uten tall", () => {
+    const reg = read("../components/poster-widget-renderer.tsx");
+    for (const [widget, komp, fil] of [
+      ["GeoKlimaCoriolis", "KlimaCoriolisFigur", "klima-coriolis-figur"], ["GeoKlimaHav", "KlimaAmocFigur", "klima-amoc-figur"],
+      ["GeoKlimaSoner", "KlimaKoppenFigur", "klima-koppen-figur"], ["GeoKlimaFon", "KlimaFonFigur", "klima-fon-figur"],
+      ["GeoKlimaStraling", "KlimaDrivhusFigur", "klima-drivhus-figur"], ["GeoKlimaKarbon", "KlimaKarbonFigur", "klima-karbon-figur"],
+      ["GeoKlimaScenario", "KlimaScenarioFigur", "klima-scenario-figur"],
+    ] as const) {
+      assert.match(reg, new RegExp(`${widget}: \\(\\) => <${komp} heading="Figur 5\\.`), widget);
+      assert.ok(reg.includes(`const ${komp} = lazy(() => import("@/components/diagrams/${fil}")`), komp);
+      assert.doesNotMatch(reg, new RegExp(`^import .*${fil}`, "m"), fil);
+      assert.doesNotMatch(read(`../components/diagrams/${fil}.tsx`), /\d+\s?(?:°C|W\/m|GtC|prosent)/, fil);
     }
+    // Figur 5.2 gjenbruker Geofag 2-figuren «Fra én celle til tre» med kapitlets overskrift og bildetekst.
+    assert.match(reg, /GeoKlimaVindceller: \(\) => <TreCellerFigur heading="Figur 5\.2 – Vindceller og dominerende vindbelter"/);
+    for (const gammel of ["WindCellsDiagram", "CoriolisDiagram", "AmocDiagram", "GlobalClimateZonesDiagram", "FoehnAdiabaticDiagram", "EarthRadiationBudgetDiagram", "CarbonCycleDiagram"])
+      assert.ok(!reg.includes(`<${gammel} geografi />`), gammel);
+    // Köppen-kartet bygger på Beck mfl. (2023) med lisensfil og kreditering i figuren.
+    assert.match(read("../components/diagrams/klima-koppen-figur.tsx"), /Beck mfl\. \(2023\)[\s\S]*CC BY 4\.0/);
+    assert.match(read("../../public/images/koppen-verden-grupper-beck-1991-2020.lisens.txt"), /CC BY 4\.0/);
   });
 
   it("viser en dokumentert stasjonsnormal med tabell, periode og datakreditering", () => {
