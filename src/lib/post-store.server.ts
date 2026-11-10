@@ -1660,6 +1660,52 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv",
     stale: ["magnitude 6 omtrent hvert hundrede år, og et med magnitude 7 omtrent hvert tusende år"],
   },
+  {
+    flag: "g1-jordskjelv-tsunami-anker-2026-11-06",
+    slug: "jordskjelv",
+    stale: ["[Tsunami](/geofag-1/tsunami)."],
+  },
+  {
+    flag: "g1-skred-tsunami-anker-2026-11-06",
+    slug: "skred",
+    stale: ["[Tsunami](/geofag-1/tsunami)."],
+  },
+  {
+    flag: "g1-vulkaner-tsunami-anker-2026-11-06",
+    slug: "vulkaner",
+    stale: ["[Tsunami](/geofag-1/tsunami)."],
+  },
+  {
+    flag: "g1-tsunami-jordskjelv-anker-2026-11-06",
+    slug: "jordskjelv-naturfare",
+    stale: ["](/geofag-1/jordskjelv)."],
+  },
+  {
+    flag: "g2-coriolis-enso-adresse-2026-11-06",
+    slug: "coriolis",
+    stale: ["[ENSO](/tema/enso)"],
+  },
+  {
+    flag: "g2-numeriske-modeller-enso-adresse-2026-11-06",
+    slug: "numeriske-modeller",
+    stale: ["[ENSO](/tema/enso)"],
+  },
+  {
+    flag: "g1-tsunami-japan-noaa-tall-2026-11-06",
+    slug: "jordskjelv-naturfare",
+    stale: ["I jordskjelvkapitlet står et annet tall, om døde eller savnede, fra en annen kilde."],
+  },
+  {
+    flag: "g1-jordskjelv-mexico-skala-2026-11-06",
+    slug: "jordskjelv",
+    stale: ["Eldre rapporter kan oppgi Ms 8,1."],
+  },
+  {
+    // M1 og M3 flyttet, nye innledninger til M1–M3, M5-setningen følger gangtidsmodellen.
+    flag: "g1-tsunami-m1-m7-integrasjon-2026-11-09",
+    slug: "jordskjelv-naturfare",
+    stale: ["Ankomsttid i et idealisert hav, der land stopper den rette linjen"],
+  },
 ];
 COPY_RESEEDS.push(...COPY_RESEEDS_B);
 

@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PhotoFigure } from "@/components/photo-figure";
 import { TableScroll } from "@/components/scroll-frame";
+import { AnchoredHeading, type HeadingIdCursor } from "@/lib/poster-heading";
 import { getPosterPhotoFigure } from "@/lib/poster-figures";
 import { cn } from "@/lib/utils";
 
@@ -171,6 +172,7 @@ export function Markdown({
   wrapTables = false,
   captionFallback = "",
   searchable = false,
+  headingIds,
 }: {
   children: string;
   className?: string;
@@ -182,6 +184,8 @@ export function Markdown({
   captionFallback?: string;
   /** Marker teksten som brødtekst for søket (treffene i søkeindeksen ligger her). */
   searchable?: boolean;
+  /** Delt kø for hele kapitlet. Uten kø får overskriftene ingen id. */
+  headingIds?: HeadingIdCursor;
 }) {
   const nowrap = scrollTables && !wrapTables;
   return (
@@ -199,14 +203,22 @@ export function Markdown({
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="mt-8 font-display text-2xl font-medium tracking-tight text-foreground">
+            <AnchoredHeading
+              tag="h2"
+              cursor={headingIds}
+              className="mt-8 font-display text-2xl font-medium tracking-tight text-foreground"
+            >
               {children}
-            </h2>
+            </AnchoredHeading>
           ),
           h3: ({ children }) => (
-            <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-foreground">
+            <AnchoredHeading
+              tag="h3"
+              cursor={headingIds}
+              className="mt-6 font-display text-xl font-medium tracking-tight text-foreground"
+            >
               {children}
-            </h3>
+            </AnchoredHeading>
           ),
           h4: ({ children }) => (
             <h4 className="mt-4 font-display text-lg font-medium tracking-tight text-foreground">

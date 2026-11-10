@@ -5,6 +5,136 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  * Flaggene overskriver CMS-redigeringer i disse kapitlene (se copy-reseed.ts).
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
+  { flag: "geo-migrasjon-figurnummer-kap11-2026-11-09", slug: "geo-migrasjon", stale: ["er i figur 11.7 for 2015"] },
+  { flag: "geo-befolkning-figurnummer-kap10-2026-11-09", slug: "geo-befolkning", stale: ["Bruk figur 10.6 og tabel"] },
+  { flag: "geo-naering-figurnummer-kap9-2026-11-09", slug: "geo-naering", stale: ["Figur 9.4 skiller "] },
+  { flag: "geo-ressurser-et-al-kap7-2026-11-09", slug: "geo-ressurser", stale: ["026b; Hofstad mfl., 2026"] },
+  { flag: "geo-ressurser-figurnummer-kap7-2026-11-09", slug: "geo-ressurser", stale: ["nnet. Figur 7.2 skiller "] },
+  { flag: "geo-klima-et-al-kap5-2026-11-09", slug: "geo-klima", stale: [".-a; Dannevig mfl., u.å."] },
+  { flag: "geo-landskap-figurnummer-kap4-2026-11-09", slug: "geo-landskap", stale: ["4). I figur 4.4 bruker v"] },
+  { flag: "geo-indre-krefter-figurnummer-kap3-2026-11-09", slug: "geo-indre-krefter", stale: ["len i figur 3.6 lar oss "] },
+  { flag: "geo-baerekraft-figurnummer-kap8-2026-11-09", slug: "geo-baerekraft", stale: ["[figur-8-6]: # (FIG"] },
+  { flag: "geo-naturfare-figurnummer-kap6-2026-11-09", slug: "geo-naturfare", stale: ["Figur 6.10 gir en "] },
+  { flag: "geo-migrasjon-skjulte-kap11-2026-11-07", slug: "geo-migrasjon", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-naering-skjulte-kap9-2026-11-07", slug: "geo-naering", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-ressurser-skjulte-kap7-2026-11-07", slug: "geo-ressurser", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-klima-skjulte-kap5-2026-11-07", slug: "geo-klima", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-landskap-skjulte-kap4-2026-11-07", slug: "geo-landskap", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-indre-krefter-skjulte-kap3-2026-11-07", slug: "geo-indre-krefter", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-baerekraft-skjulte-kap8-2026-11-07", slug: "geo-baerekraft", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-naturfare-skjulte-kap6-2026-11-07", slug: "geo-naturfare", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-feltarbeid-skjulte-kap2-2026-11-07", slug: "geo-feltarbeid", stale: ["FIGURPLASSHOLDER"] },
+  { flag: "geo-verktoy-skjulte-kap1-2026-11-07", slug: "geo-verktoy", stale: ["FIGURPLASSHOLDER"] },
+  {
+    flag: "geo-migrasjon-mats-valg-kap11-2026-11-06",
+    slug: "geo-migrasjon",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-befolkning-mats-valg-kap10-2026-11-06",
+    slug: "geo-befolkning",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-naering-mats-valg-kap9-2026-11-06",
+    slug: "geo-naering",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-ressurser-mats-valg-kap7-2026-11-06",
+    slug: "geo-ressurser",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-landskap-mats-valg-kap4-2026-11-06",
+    slug: "geo-landskap",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-indre-krefter-mats-valg-kap3-2026-11-06",
+    slug: "geo-indre-krefter",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-baerekraft-mats-valg-kap8-2026-11-06",
+    slug: "geo-baerekraft",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-naturfare-mats-valg-kap6-2026-11-06",
+    slug: "geo-naturfare",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-feltarbeid-mats-valg-kap2-2026-11-06",
+    slug: "geo-feltarbeid",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
+    slug: "geo-verktoy",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    // Geografi: kapittel 11 alene; ingen produksjonsinnlasting før godkjent merge.
+    flag: "geo-migrasjon-kap11-2026-11-06",
+    slug: "geo-migrasjon",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Geografi: kapittel 10 alene; ingen produksjonsinnlasting før godkjent merge.
+    flag: "geo-befolkning-kap10-2026-11-06",
+    slug: "geo-befolkning",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Geografi: kapittel 9 alene; ingen produksjonsinnlasting før godkjent merge.
+    flag: "geo-naering-kap9-2026-11-06",
+    slug: "geo-naering",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Geografi: kapittel 7 alene; aktiveres først etter godkjent merge.
+    flag: "geo-ressurser-kap7-2026-11-06",
+    slug: "geo-ressurser",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Nytt reseed: stasjonsnormaler erstatter øvingsdata, uten å endre tidligere flagg.
+    flag: "geo-klima-normaler-blindern-1991-2020-2026-11-06",
+    slug: "geo-klima",
+    stale: ["konstruert øvingsdatasett", "gjennom øvingsåret"],
+  },
+  {
+    // Geografi: kapittel 5 alene; aktiveres først etter godkjent merge.
+    flag: "geo-klima-kap5-2026-11-06",
+    slug: "geo-klima",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Geografi: kapittel 4 alene; aktiveres først etter godkjent merge.
+    flag: "geo-landskap-kap4-2026-11-06",
+    slug: "geo-landskap",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Geografi PR F: kapittel 3 alene; aktiveres først etter godkjent merge.
+    flag: "geo-indre-krefter-kap3-2026-11-06",
+    slug: "geo-indre-krefter",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Geografi PR E: kapittel 8; ingen produksjonsendring før godkjent merge.
+    flag: "geo-baerekraft-kap8-2026-11-06",
+    slug: "geo-baerekraft",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
+    // Geografi PR D: kapittel 6; ingen produksjonsendring før godkjent merge.
+    flag: "geo-naturfare-kap6-2026-11-06",
+    slug: "geo-naturfare",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
   {
     // Geografi PR C: erstatt kapittel 2-stubben med fagtekst; aktiveres først ved godkjent merge.
     flag: "geo-feltarbeid-kap2-2026-11-06",

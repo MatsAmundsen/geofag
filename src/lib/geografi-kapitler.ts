@@ -94,6 +94,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "indre-krefter",
+    tekstKlar: true,
     slug: "geo-indre-krefter",
     title: "Indre krefter: platetektonikk, jordskjelv og vulkaner",
     navLabel: "Indre",
@@ -126,6 +127,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "landskap",
+    tekstKlar: true,
     slug: "geo-landskap",
     title: "Ytre krefter og landskapet i Norge",
     navLabel: "Landskap",
@@ -155,6 +157,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "klima",
+    tekstKlar: true,
     slug: "geo-klima",
     title: "Vær, klima og klimaendringer",
     navLabel: "Klima",
@@ -188,6 +191,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "naturfare",
+    tekstKlar: true,
     slug: "geo-naturfare",
     title: "Naturfare og katastrofer",
     navLabel: "Naturfare",
@@ -219,6 +223,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "ressurser",
+    tekstKlar: true,
     slug: "geo-ressurser",
     title: "Naturressurser og arealbruk",
     navLabel: "Ressurser",
@@ -249,6 +254,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "baerekraft",
+    tekstKlar: true,
     slug: "geo-baerekraft",
     title: "Bærekraftig utvikling",
     navLabel: "Bærekraft",
@@ -280,6 +286,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "naering",
+    tekstKlar: true,
     slug: "geo-naering",
     title: "Næringsliv og globalisering",
     navLabel: "Næring",
@@ -309,6 +316,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "befolkning",
+    tekstKlar: true,
     slug: "geo-befolkning",
     title: "Befolkning og levekår",
     navLabel: "Befolkning",
@@ -340,6 +348,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "migrasjon",
+    tekstKlar: true,
     slug: "geo-migrasjon",
     title: "Migrasjon",
     navLabel: "Migrasjon",

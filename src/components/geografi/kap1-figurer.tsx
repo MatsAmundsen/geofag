@@ -50,7 +50,7 @@ function Bilde({
 function Monsterkart() {
   return (
     <GeoFigur
-      heading="Mønsterkart: verden uten landegrenser"
+      heading="Figur 1.0 – Mønsterkart: verden uten landegrenser"
       caption="Kartet har ingen landegrenser og ingen navn. Prikkene er store byer, og jo større prikk, desto flere innbyggere. Hvor ligger byene tett, og hvor er det nesten ingen? Hvilke forklaringer kan du foreslå, og hvilke opplysninger ville du trengt for å prøve dem?"
       kilde={`Kartdata: ${NE}, landflater og befolkede steder (1:110 mill.), innbyggertall slik datasettet oppgir dem. Projeksjon: plate carrée. Utforming: geofag.com.`}
     >
@@ -90,7 +90,7 @@ const GALL_ALT =
 function Mercator() {
   return (
     <GeoFigur
-      heading="Mercators projeksjon med like store sirkler"
+      heading="Figur 1.1 – Mercators projeksjon med like store sirkler"
       caption="Alle de røde sirklene er like store på jordkloden. I Mercators projeksjon blir de større jo lenger fra ekvator de ligger. Sammenlikn Grønland og Afrika: Hvorfor kan vi ikke bruke størrelsen på dette kartet til å sammenlikne arealer?"
       kilde={`Kartdata: ${NE}. Sirklene har radius 6° og er beregnet av geofag.com. Kartet er kuttet ved 80° nord og sør.`}
     >
@@ -104,7 +104,7 @@ function Mercator() {
 function GallPeters() {
   return (
     <GeoFigur
-      heading="Samme sirkler i to projeksjoner"
+      heading="Figur 1.2 – Samme sirkler i to projeksjoner"
       caption="Bytt mellom kartene. I Gall–Peters' projeksjon har sirklene samme areal overalt, men formen endres: mot polene blir de flate. Et flateriktig kart egner seg til å sammenlikne arealer, mens Mercator bevarer vinkler og former i små områder."
       kilde={`Kartdata: ${NE}. Egen utforming av geofag.com med egne beregnede sirkler (radius 6°). Ikke kopiert fra andre kart.`}
     >
@@ -182,7 +182,7 @@ function Gradnett({ aktiv }: { aktiv: number }) {
 function Koordinater() {
   return (
     <GeoFigur
-      heading="Finn øvingspunktet 60,0° nord og 10,0° øst"
+      heading="Figur 1.3 – Finn øvingspunktet 60,0° nord og 10,0° øst"
       caption="Gå gjennom trinnene. Breddesirklene går øst–vest og angir grader nord for ekvator. Meridianene går nord–sør og angir grader øst for nullmeridianen. Punktet er valgt til øving og viser ikke en bestemt bygning."
       kilde={`Kartdata: ${NE}, landflater (1:50 mill.). Gradnett for hver femte grad. Utforming: geofag.com.`}
     >
@@ -194,88 +194,6 @@ function Koordinater() {
           { tittel: "60° nord", tekst: "Finn breddesirkelen merket 60° N. Alle punkter på denne linja ligger 60 grader nord for ekvator." },
           { tittel: "10° øst", tekst: "Finn meridianen merket 10° Ø. Alle punkter på denne linja ligger 10 grader øst for Greenwich." },
           { tittel: "Punktet", tekst: "Punktet ligger der de to linjene krysser hverandre, i Sør-Norge. Skriv alltid hvilket koordinatsystem du bruker." },
-        ]}
-      />
-    </GeoFigur>
-  );
-}
-
-/* 1.4 Høydekurver – oppdiktet øvingsås, ekvidistanse 20 m */
-const KURVER = [100, 120, 140, 160].map((h, k) => ({ h, cx: 206 + k * 28, rx: 150 - k * 40, ry: 92 - k * 20 }));
-
-function Hoydekart({ aktiv }: { aktiv: number }) {
-  const cy = 120;
-  return (
-    <svg viewBox="0 0 400 380" className="h-auto w-full rounded-lg bg-[#f4efe1]" role="img" aria-label={
-      ["Oppdiktet øvingskart med fire høydekurver rundt en ås. På vestsiden ligger kurvene langt fra hverandre, på østsiden ligger de tett.",
-        "Kurvene er merket 100, 120, 140 og 160 meter. Ekvidistansen er 20 meter. Fra 100 til 160 meter er det tre mellomrom, altså 60 meter.",
-        "Høydeprofil langs linja A–B: slak stigning fra vest og bratt fall mot øst, der kurvene ligger tettest."][aktiv]
-    }>
-      <rect width="400" height="240" fill="#f4efe1" />
-      {KURVER.map((c, i) => (
-        <ellipse key={c.h} cx={c.cx} cy={cy} rx={c.rx} ry={c.ry} fill={i === 3 ? "#e9dcc0" : "none"} stroke="#9a5b1e" strokeWidth={i === 0 ? 2.4 : 1.6} />
-      ))}
-      {KURVER.map((c) => (
-        <g key={`l${c.h}`}>
-          <rect x={c.cx - c.rx + 2} y={cy - 32 - (c.h - 100) / 5} width={34} height={18} rx={3} fill="#f4efe1" />
-          <text x={c.cx - c.rx + 5} y={cy - 18 - (c.h - 100) / 5} fontSize={15} fill="#6b3a10" fontWeight={600}>{c.h}</text>
-        </g>
-      ))}
-      <path d="M297 116 l5 -9 l5 9 z" fill="#6b3a10" />
-      <text x={288} y={140} fontSize={15} fill="#6b3a10">topp</text>
-      <line x1={14} y1={cy} x2={386} y2={cy} stroke="#1e3a8a" strokeWidth={2} strokeDasharray={aktiv === 2 ? "0" : "6 4"} />
-      <text x={6} y={cy - 6} fontSize={15} fill="#1e3a8a" fontWeight={700}>A</text>
-      <text x={384} y={cy - 6} fontSize={15} fill="#1e3a8a" fontWeight={700} textAnchor="end">B</text>
-      {aktiv === 1 ? (
-        <g>
-          <rect x={14} y={200} width={250} height={30} rx={6} fill="#111827" />
-          <text x={24} y={220} fontSize={15} fill="#ffffff">Ekvidistanse 20 m · 3 mellomrom = 60 m</text>
-          <text x={308} y={64} fontSize={15} fill="#7f1d1d" fontWeight={600}>tett = bratt</text>
-          <text x={60} y={64} fontSize={15} fill="#14532d" fontWeight={600}>glissent = slakt</text>
-        </g>
-      ) : null}
-      {/* Profil */}
-      <g transform="translate(0 250)">
-        <rect width="400" height="130" fill="#141c22" />
-        {[100, 120, 140, 160].map((h) => {
-          const y = 112 - (h - 90) * 1.25;
-          return (
-            <g key={h}>
-              <line x1={52} x2={392} y1={y} y2={y} stroke={MUTED} strokeOpacity={0.4} />
-              <text x={6} y={y + 5} fontSize={15} fill={FG}>{h} m</text>
-            </g>
-          );
-        })}
-        {aktiv === 2 ? (
-          <path
-            d={`M56 ${112 - 10 * 1.25} L124 ${112 - 30 * 1.25} L192 ${112 - 50 * 1.25} L260 ${112 - 70 * 1.25}
-               Q296 ${112 - 82 * 1.25} 320 ${112 - 70 * 1.25} L332 ${112 - 50 * 1.25} L344 ${112 - 30 * 1.25} L356 ${112 - 10 * 1.25} L390 ${112 - 6 * 1.25}`}
-            fill="none" stroke={PRIM} strokeWidth={3}
-          />
-        ) : (
-          <text x={200} y={70} fontSize={15} fill={MUTED} textAnchor="middle">Høydeprofil A–B vises i trinn 3</text>
-        )}
-        <text x={392} y={118} fontSize={15} fill={MUTED} textAnchor="end">A → B</text>
-      </g>
-    </svg>
-  );
-}
-
-function Hoydekurver() {
-  return (
-    <GeoFigur
-      heading="Fra høydekurver til terreng"
-      caption="Øvingskartet viser en oppdiktet ås med ekvidistanse 20 meter. Tell mellomrommene, ikke kurvene: fra 100 til 160 meter er det tre mellomrom og 60 meter. Høydeprofilen viser at terrenget er brattest der kurvene ligger tettest."
-      kilde="Egen skisse av geofag.com. Ikke et utsnitt av et virkelig kart, og uten målestokk."
-      action={<Merkelapp>Oppdiktet øvingskart</Merkelapp>}
-    >
-      <StegFigur
-        label="Trinn for å lese høydekurvene"
-        felles={(a) => <Hoydekart aktiv={a} />}
-        steg={[
-          { tittel: "Kurvene", tekst: "Hver kurve binder sammen punkter som ligger like høyt. Åsen har toppen der den innerste kurven er." },
-          { tittel: "Ekvidistansen", tekst: "Kurvene står for 100, 120, 140 og 160 meter. Høydeforskjellen mellom nabokurver er 20 meter." },
-          { tittel: "Profilen", tekst: "Profilen langs A–B stiger slakt fra vest og faller bratt mot øst, der kurvene ligger tett." },
         ]}
       />
     </GeoFigur>
@@ -327,7 +245,7 @@ function Temakart() {
   );
   return (
     <GeoFigur
-      heading="Samme sted: topografisk kart og temakart"
+      heading="Figur 1.5 – Samme sted: topografisk kart og temakart"
       caption="Bytt mellom kartene. Det topografiske kartet viser mange slags trekk samtidig. Temakartet viser bare ett tema, arealbruk, og utelater resten. Hvilket kart ville du valgt for å planlegge en tur, og hvilket for å undersøke arealbruken?"
       kilde="Egen skisse av geofag.com over et oppdiktet område."
       action={<Merkelapp>Oppdiktet område</Merkelapp>}
@@ -404,7 +322,7 @@ function Skisse({ variant }: { variant: "a" | "b" }) {
 function MentaltKart() {
   return (
     <GeoFigur
-      heading="To mentale kart over den samme skoleveien"
+      heading="Figur 1.6 – To mentale kart over den samme skoleveien"
       caption="To elever har tegnet den samme veien fra hukommelsen. Skissene har ingen målestokk og viser hva hver av dem legger merke til: kiosken og fotballbanen hos den ene, snarveien og et farlig kryss hos den andre. Forskjellene sier noe om erfaringer, ikke om hvem som tegner riktigst."
       kilde="Egne skisser av geofag.com. Oppdiktet eksempel."
     >
@@ -426,7 +344,7 @@ function MentaltKart() {
 function BlueMarble() {
   return (
     <GeoFigur
-      heading="Jorda sett fra satellitt: en sammensatt mosaikk"
+      heading="Figur 1.7 – Jorda sett fra satellitt: en sammensatt mosaikk"
       caption="Bildet ser ut som ett fotografi, men er satt sammen av mange satellittopptak tatt over flere måneder, slik at skyene er fjernet. Det er altså bearbeidede data. Hva kan bildet fortelle om vegetasjon og ørken, og hva kan det ikke fortelle?"
       kilde={
         <>
@@ -436,7 +354,7 @@ function BlueMarble() {
       }
     >
       <Bilde
-        src="/images/geografi/blue-marble-2002.webp"
+        src="/images/geografi/blue-marble-land-2002.webp"
         width={1600}
         height={800}
         alt="Satellittmosaikk av hele jordoverflaten uten skyer, flatt utbrettet. Ørkenene i Nord-Afrika, Midtøsten og Australia er lysbrune, regnskogene i Amazonas, Kongo og Sørøst-Asia er mørkegrønne, og polområdene er hvite."
@@ -496,7 +414,7 @@ function GisModell() {
   const synlige = GIS_LAG.filter((l) => vis[l.id]);
   return (
     <GeoFigur
-      heading="GIS: lag på lag over samme sted"
+      heading="Figur 1.8 – GIS: lag på lag over samme sted"
       caption="Hvert lag viser ett slags innhold om det samme området. Slå lagene av og på, og bytt mellom stablet og samlet visning. I et GIS kan vi sammenholde lagene, for eksempel for å se hvilke steder som ligger nær vei og i lavt terreng."
       kilde="Egen modell av geofag.com over et oppdiktet område."
       action={<Merkelapp>Oppdiktet område</Merkelapp>}
@@ -567,7 +485,7 @@ function GisModell() {
 function SnowKart() {
   return (
     <GeoFigur
-      heading="John Snows kart over kolerautbruddet i Soho, London 1854"
+      heading="Figur 1.9 – John Snows kart over kolerautbruddet i Soho, London 1854"
       caption="De svarte strekene langs husveggene er registrerte dødsfall, og PUMP markerer vannpumper. Utsnittet viser området rundt pumpen i Broad Street, der strekene ligger tettest. Kartet ble trykt i Snows bok i 1855, året etter utbruddet. Det støttet en hypotese Snow allerede hadde, og var ikke et bevis alene."
       kilde={
         <>
@@ -630,7 +548,7 @@ function ToKart() {
   );
   return (
     <GeoFigur
-      heading="Innblikk: to kart over det samme oppdiktede området"
+      heading="Figur 1.10 – Innblikk: to kart over det samme oppdiktede området"
       caption="Begge kartene bruker samme bakgrunn, men formålet bestemmer hva som er framhevet. Kart 1 viser hvor elever møtes. Kart 2 viser hvilke strekninger klassen vil undersøke nærmere. Ingen av kartene sier noe om fare. Hva kan du ikke slutte fra kartene?"
       kilde="Egne skisser av geofag.com over et oppdiktet område."
       action={<Merkelapp>Oppdiktet område</Merkelapp>}
@@ -647,17 +565,16 @@ function ToKart() {
 }
 
 const KAP1: Record<string, () => JSX.Element> = {
-  GeoKart1Monster: Monsterkart,
-  GeoKart1Mercator: Mercator,
-  GeoKart1GallPeters: GallPeters,
-  GeoKart1Gradnett: Koordinater,
-  GeoKart1Hoydekurver: Hoydekurver,
-  GeoKart1Temakart: Temakart,
-  GeoKart1Mentalt: MentaltKart,
-  GeoKart1BlueMarble: BlueMarble,
-  GeoKart1GisLag: GisModell,
-  GeoKart1Snow: SnowKart,
-  GeoKart1ToKart: ToKart,
+  GeoVerktoyMonster: Monsterkart,
+  GeoVerktoyMercator: Mercator,
+  GeoVerktoyGallPeters: GallPeters,
+  GeoVerktoyGradnett: Koordinater,
+  GeoVerktoyKartSammenlikning: Temakart,
+  GeoVerktoyMentalt: MentaltKart,
+  GeoVerktoyBlueMarble: BlueMarble,
+  GeoVerktoyGisLag: GisModell,
+  GeoVerktoySnow: SnowKart,
+  GeoVerktoyTemaValg: ToKart,
 };
 
 export const GEOGRAFI_KAP1_FIGUR_IDER = Object.keys(KAP1);

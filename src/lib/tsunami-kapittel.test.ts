@@ -3,7 +3,16 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { injectPosterWidgets } from "./poster-markdown.ts";
+import { createElement, type ReactNode } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import ReactMarkdown from "react-markdown";
+import { prepareChapterScan, posterHeadingAnchorIds } from "./chapter-scan.ts";
+import { injectPosterWidgets, stripChapterEditorNotice } from "./poster-markdown.ts";
+import {
+  AnchoredHeading,
+  posterHeadingAnchorsEnabled,
+  type HeadingIdCursor,
+} from "./poster-heading.ts";
 import {
   QUIZ_JORDSKJELV,
   QUIZ_SJEKK_JORDSKJELV_VARSLING,
@@ -12,9 +21,16 @@ import {
   QUIZ_TSUNAMI,
 } from "./poster-quizzes.ts";
 import {
+  ENSO_PATH,
+  ENSO_REDIRECT_STATUS,
+  JORDSKJELV_PATH,
+  LEGACY_ENSO_PATH,
+  LEGACY_NATURFARE_ANCHORS,
   LEGACY_NATURFARE_PATH,
   TSUNAMI_PATH,
   TSUNAMI_REDIRECT_STATUS,
+  ensoRedirectHref,
+  legacyNaturfareRedirect,
   tsunamiRedirectHref,
 } from "./tsunami-redirect.ts";
 import { GEO_MARIA_VIDEOS } from "./youtube-geo-maria.ts";
@@ -33,6 +49,27 @@ function fenceCount(markdown: string, widgetId: string): number {
   return markdown.split(`\`\`\`widget\n${widgetId}\n\`\`\``).length - 1;
 }
 
+function posterHtml(name: string): string {
+  const prepared = injectPosterWidgets(stripChapterEditorNotice(readSeed(name)));
+  const cursor: HeadingIdCursor = { ids: posterHeadingAnchorIds(prepared), index: 0 };
+  const html = renderToStaticMarkup(
+    createElement(ReactMarkdown, {
+      children: prepared,
+      components: {
+        h2: ({ children }: { children?: ReactNode }) =>
+          createElement(AnchoredHeading, { tag: "h2", className: "h2", cursor, children }),
+        h3: ({ children }: { children?: ReactNode }) =>
+          createElement(AnchoredHeading, { tag: "h3", className: "h3", cursor, children }),
+      },
+    }),
+  );
+  const scanIds = prepareChapterScan(readSeed(name)).sections.map((section) => section.id);
+  const renderedH2 = [...html.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(renderedH2, scanIds);
+  assert.equal(cursor.index, cursor.ids.length);
+  return html;
+}
+
 describe("tsunami redirect", () => {
   it("sends the old chapter address to /geofag-1/tsunami and keeps the query", () => {
     assert.equal(tsunamiRedirectHref(""), TSUNAMI_PATH);
@@ -41,6 +78,70 @@ describe("tsunami redirect", () => {
     assert.equal(TSUNAMI_REDIRECT_STATUS, 308);
     assert.equal(tsunamiRedirectHref("?a=1").includes(LEGACY_NATURFARE_PATH), false);
     assert.equal(tsunamiRedirectHref("?neste=/geofag-1/tsunami"), `${TSUNAMI_PATH}?neste=/geofag-1/tsunami`);
+  });
+
+  it("sends the old ENSO address to /tema/klima/enso and keeps the query", () => {
+    assert.equal(ensoRedirectHref(""), ENSO_PATH);
+    assert.equal(ensoRedirectHref("?kilde=coriolis"), `${ENSO_PATH}?kilde=coriolis`);
+    assert.equal(ENSO_REDIRECT_STATUS, 308);
+    assert.equal(ensoRedirectHref("").includes(LEGACY_ENSO_PATH), false);
+  });
+});
+
+describe("legacy naturfare anchors", () => {
+  const oldHeadings = [
+    "tsunami-skjelv-eller-skred",
+    "hvilke-skader-gjoer-jordskjelv",
+    "er-det-mulig-a-varsle-jordskjelv",
+    "fare-og-risiko",
+    "viktige-begreper",
+    "sammendrag",
+    "test-deg-selv",
+  ];
+
+  it("sends moved headings to the chapter that owns them now", () => {
+    for (const id of oldHeadings) {
+      assert.equal(LEGACY_NATURFARE_ANCHORS.some((row) => row.from === id), true, id);
+    }
+    assert.equal(legacyNaturfareRedirect("#fare-og-risiko", "?kilde=plakat"), `${JORDSKJELV_PATH}?kilde=plakat#fare-risiko-og-forebygging`);
+    assert.equal(legacyNaturfareRedirect("hvilke-skader-gjoer-jordskjelv"), `${JORDSKJELV_PATH}#jordskjelv-som-naturfare`);
+    assert.equal(legacyNaturfareRedirect("#er-det-mulig-a-varsle-jordskjelv"), `${JORDSKJELV_PATH}#kan-jordskjelv-varsles`);
+    assert.equal(legacyNaturfareRedirect("#tsunami-skjelv-eller-skred"), `${TSUNAMI_PATH}#hva-er-en-tsunami`);
+    assert.equal(legacyNaturfareRedirect("#tsunamivarsling"), `${TSUNAMI_PATH}#hvordan-varsles-en-tsunami`);
+    assert.equal(legacyNaturfareRedirect("#viktige-begreper"), null);
+    assert.equal(legacyNaturfareRedirect("#sammendrag"), null);
+    assert.equal(legacyNaturfareRedirect("#ukjent-anker"), null);
+    assert.equal(legacyNaturfareRedirect(""), null);
+    assert.equal(legacyNaturfareRedirect("#%"), null);
+  });
+
+  it("lands on a heading that exists in the destination chapter", () => {
+    const wave = new Set(prepareChapterScan(readSeed("jordskjelv-naturfare.md")).sections.map((section) => section.id));
+    const quake = new Set(prepareChapterScan(readSeed("jordskjelv.md")).sections.map((section) => section.id));
+    for (const row of LEGACY_NATURFARE_ANCHORS) {
+      const ids = row.path === TSUNAMI_PATH ? wave : quake;
+      assert.equal(ids.has(row.id), true, `${row.from} -> ${row.id}`);
+    }
+  });
+
+  it("renders each target anchor as an id in the poster HTML", () => {
+    assert.equal(posterHeadingAnchorsEnabled("jordskjelv"), true);
+    assert.equal(posterHeadingAnchorsEnabled("jordskjelv-naturfare"), true);
+    assert.equal(posterHeadingAnchorsEnabled("vulkaner"), false);
+    assert.equal(posterHeadingAnchorsEnabled("enso"), false);
+
+    const rendered = {
+      [JORDSKJELV_PATH]: posterHtml("jordskjelv.md"),
+      [TSUNAMI_PATH]: posterHtml("jordskjelv-naturfare.md"),
+    };
+    for (const row of LEGACY_NATURFARE_ANCHORS) {
+      const html = rendered[row.path];
+      assert.equal(html.includes(`id="${row.id}"`), true, `${row.from} -> ${row.id}`);
+    }
+    for (const html of Object.values(rendered)) {
+      const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]!);
+      assert.equal(new Set(ids).size, ids.length);
+    }
   });
 });
 
@@ -85,16 +186,59 @@ describe("tsunami models", () => {
     assert.equal(fenceCount(injectPosterWidgets(wave), "TsunamiM2"), 1);
   });
 
-  it("merker gangtid, Green-tilnærming og at modellene ikke er en faresone", () => {
-    const source = readFileSync(join(lib, "..", "components", "diagrams", "tsunami-modeller.tsx"), "utf8");
-    assert.match(source, /Andel av gangtid/);
-    assert.match(source, /Bølgelengde på valgt dyp/);
-    assert.match(source, /Bølgelengde ved markøren/);
-    assert.match(source, /ikke-brytende langbølge/);
-    assert.match(source, /Ikke oppskylling eller faresone/);
-    assert.match(source, /4-koblet rutenett/);
-    assert.match(source, /Lokalt tiltak/);
-    assert.match(source, /Fremtidig utbygging i sonen: stanset/);
+  it("setter M1 etter kildeforklaringen og M3 etter måledefinisjonene, også ved gjeninnsetting", () => {
+    const wave = readSeed("jordskjelv-naturfare.md");
+    const order = (markdown: string, before: string, id: string, after: string) => {
+      const a = markdown.indexOf(before);
+      const f = markdown.indexOf(`\`\`\`widget\n${id}\n\`\`\``);
+      const b = markdown.indexOf(after);
+      assert.ok(a >= 0 && f > a && b > f, `${id} står mellom «${before}» og «${after}»`);
+    };
+    const m1Before = "Modellen viser en idealisert kilde, ikke en rekonstruksjon";
+    const m1After = "Magnituden alene er ikke nok";
+    const m3Before = "Modellen er en begrepsmodell og gir ikke lokale flomnivåer.";
+    const m3After = "NOAA skriver at de fleste oppskyllinger";
+    order(wave, m1Before, "TsunamiM1", m1After);
+    order(wave, m3Before, "TsunamiM3", m3After);
+    const stripped = wave.replace(/```widget\nTsunamiM[13]\n```\n*/g, "");
+    const injected = injectPosterWidgets(stripped);
+    order(injected, m1Before, "TsunamiM1", m1After);
+    order(injected, m3Before, "TsunamiM3", m3After);
+    // En eldre tekst uten innledningene får likevel modellene på samme faglige sted.
+    const older = stripped
+      .replace(/I modell M1 kan du følge[^\n]*\n\n/, "")
+      .replace(/Bruk modell M3 til å skille[^\n]*\n\n/, "");
+    const olderInjected = injectPosterWidgets(older);
+    order(olderInjected, "har alle noe å si for hvor stor tsunamien kan bli", "TsunamiM1", m1After);
+    order(olderInjected, "er hvor langt inn over land vannet går, målt vannrett.", "TsunamiM3", m3After);
+    for (const id of ["TsunamiM1", "TsunamiM3"]) assert.equal(fenceCount(olderInjected, id), 1, `eldre ${id}`);
+  });
+
+  it("eksporterer M1–M7 og merker forbehold i de nye modellene", () => {
+    const diagrams = join(lib, "..", "components", "diagrams");
+    const entry = readFileSync(join(diagrams, "tsunami-modeller.tsx"), "utf8");
+    for (let k = 1; k <= 7; k++) assert.match(entry, new RegExp(`as TsunamiM${k}\\b`), `TsunamiM${k}`);
+    const model = (name: string) => readFileSync(join(diagrams, "tsunami", name), "utf8");
+    assert.match(model("m3-runup.tsx"), /ikke et farekart/);
+    for (const name of ["m1-source.tsx", "m2-shoal.tsx", "m3-runup.tsx"]) {
+      assert.match(model(name), /forstørret ca\./, `${name} merker forstørrelsen`);
+    }
+    // M2 holder seg til kapitlets grense: fart, bølgelengde og kvalitativ grunning, uten Greens lov.
+    const m2 = model("m2-shoal.tsx");
+    assert.equal(/Green/.test(m2), false);
+    assert.match(m2, /Bølgelengde på valgt dyp/);
+    assert.match(m2, /Bølgelengde ved markøren/);
+    assert.match(m2, /ikke-brytende langbølge/);
+    assert.match(m2, /Ikke oppskylling eller faresone/);
+    assert.equal(/greenRatio/.test(model("sim/profiles.ts")), false);
+    // M3 har fire atskilte mål, målt fra havnivået i ro.
+    const m3 = model("m3-runup.tsx");
+    for (const word of ["Bølgehøyde", "Oppskylling", "Oversvømmelsesdybde", "Inntrenging", "havnivået i ro"]) {
+      assert.match(m3, new RegExp(word), word);
+    }
+    assert.match(model("m5-ocean.tsx"), /Ikke oppskylling/);
+    assert.match(model("m7-risk.tsx"), /ikke en faresone/);
+    assert.match(model("m7-risk.tsx"), /ikke en godkjent evakueringsrute/);
   });
 });
 

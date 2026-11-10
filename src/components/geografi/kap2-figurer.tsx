@@ -1,6 +1,5 @@
 import { useState, type JSX, type ReactNode } from "react";
 import { ArrowDown, ArrowRight, Camera, Eye, Hash, MapPin, MessageCircle, Thermometer } from "lucide-react";
-import { FieldworkObservationModel } from "@/components/models/fieldwork-observation-model";
 import {
   GeoFigur,
   LagSammenligning,
@@ -65,7 +64,7 @@ function UtvalgFigur() {
   };
   return (
     <GeoFigur
-      heading="Mønsterkart: hvor skal vi måle?"
+      heading="Figur 2.0 – Mønsterkart: hvor skal vi måle?"
       caption="Velg utvalgsmetode og se hvilke deler av skolegården som blir med. Hvor mange og hvilke punkter trengs før vi kan si noe om et mønster?"
       kilde={EGEN}
       action={<Merkelapp>Oppdiktet skolegård</Merkelapp>}
@@ -139,7 +138,7 @@ function StegSirkel({ aktiv }: { aktiv: number }) {
 function FireSteg() {
   return (
     <GeoFigur
-      heading="Feltarbeid i fire steg"
+      heading="Figur 2.1 – Feltarbeid i fire steg"
       caption="Kapitlets arbeidsmodell. Pilen tilbake viser at vi kan justere spørsmål og metode underveis, men da skriver vi ned hva vi endret og hvorfor."
       kilde="Egen figur av geofag.com."
     >
@@ -172,7 +171,7 @@ const PLAN = [
 function Planmal() {
   return (
     <GeoFigur
-      heading="Planleggingsmal for feltarbeid"
+      heading="Figur 2.2 – Planleggingsmal for feltarbeid"
       caption="Åtte felt som må være fylt ut før dere går ut. Du kan skrive rett i feltene for å øve, men teksten lagres ikke. Bruk CSV-malen under for å ta vare på planen."
       kilde="Egen mal av geofag.com. Samme innhold som tabellen og CSV-filen i teksten."
     >
@@ -207,7 +206,7 @@ const METODER: { navn: string; ikon: ReactNode; gir: string; eks: string; husk: 
 function Metoder() {
   return (
     <GeoFigur
-      heading="Seks metoder i felt"
+      heading="Figur 2.3 – Seks metoder i felt"
       caption="Hver metode gir en bestemt type data. Ofte kombinerer vi to eller flere: et tall sier hvor mange, mens et intervju kan si hvordan stedet oppleves."
       kilde="Egen oversikt av geofag.com, bygd på kapitteltekstens metodeavsnitt."
     >
@@ -230,24 +229,6 @@ function Metoder() {
   );
 }
 
-/* 2.4 Georeferert feltlogg – gjenbruk av Geofag 1-modellen */
-function Feltlogg() {
-  return (
-    <div className="my-8">
-      <aside className="rounded-xl border border-border bg-card p-4 text-sm leading-relaxed text-card-foreground">
-        <p className="font-semibold">Modell fra Geofag 1: fra måling til rad i feltloggen</p>
-        <p className="mt-1 text-muted-foreground">
-          Modellen under er hentet fra Geofag 1 og bruker geofaglige stasjoner som strøk og fall, sediment og vannføring.
-          Legg merke til mønsteret: hver måling får punkt-ID, posisjon, tid og metode, og blir én rad i loggen. I
-          geografi kan radene like gjerne være temperaturer eller tellinger. Risikotallet i stasjon 4 er en øvelse og
-          erstatter ikke lærerens sikkerhetsvurdering.
-        </p>
-      </aside>
-      <FieldworkObservationModel />
-    </div>
-  );
-}
-
 /* 2.5 Punktkart */
 function Punktkart() {
   const [spor, setSpor] = useState<"punkter" | "spor">("punkter");
@@ -259,7 +240,7 @@ function Punktkart() {
   ];
   return (
     <GeoFigur
-      heading="Målepunkter på kartet"
+      heading="Figur 2.5 – Målepunkter på kartet"
       caption="Samme punkt-ID står på kartet, i feltloggen og i filnavnene til bildene. Et helt GPS-spor viser hvor gruppa gikk; ofte er det nok å registrere bare de avtalte målepunktene. Ingen private posisjoner tas med."
       kilde={EGEN}
       action={<Merkelapp>Oppdiktet skolegård</Merkelapp>}
@@ -346,7 +327,7 @@ function Diagram() {
   );
   return (
     <GeoFigur
-      heading="Fra feltlogg til tabell, diagram og kart"
+      heading="Figur 2.7 – Fra feltlogg til tabell, diagram og kart"
       caption="De samme tallene i tre framstillinger. Tabellen viser alle registreringene, diagrammet sammenlikner gjennomsnittene, og kartet viser hvor de ble målt. Skriv alltid om figuren viser enkeltregistreringer eller oppsummerte verdier."
       kilde="Egen figur av geofag.com med kapitlets konstruerte øvingstall."
       action={<Merkelapp>Konstruerte tall</Merkelapp>}
@@ -363,7 +344,7 @@ function Diagram() {
   );
 }
 
-/* 2.7 Feilkilder */
+/* 2.8 Feilkilder (plassholder 2.7) */
 const FEIL = [
   {
     navn: "Sol på sensoren",
@@ -392,7 +373,7 @@ function Feilkilder() {
   const kol = ["Feilkilde", "Mulig virkning", "Forbedring", "Begrensning for konklusjonen"] as const;
   return (
     <GeoFigur
-      heading="Fra feilkilde til forbedring"
+      heading="Figur 2.8 – Fra feilkilde til forbedring"
       caption="Les hver rad fra venstre mot høyre, eller ovenfra og ned på mobil. Pålitelighet handler om like resultater under like forhold. Gyldighet handler om at vi faktisk måler det problemstillingen spør om."
       kilde="Egen figur av geofag.com, eksemplene er hentet fra kapitteltekstene."
     >
@@ -428,7 +409,7 @@ function Feilkilder() {
   );
 }
 
-/* 2.8 Sikkerhet og etikk */
+/* 2.6 Sikkerhet og etikk (plassholder 2.8) */
 function Sikkerhet() {
   const sikker = [
     ["Vurder", "Hva kan skade noen her?"],
@@ -445,7 +426,7 @@ function Sikkerhet() {
   ];
   return (
     <GeoFigur
-      heading="Sikkerhet og etikk på én side"
+      heading="Figur 2.6 – Sikkerhet og etikk på én side"
       caption="Oppsummeringen er en støtte til samtalen med læreren. Den gir ingen poengsum og er ingen sikkerhetsgodkjenning. Læreren avgjør om et arbeidssted er forsvarlig."
       kilde="Egen oppsummering av geofag.com, bygd på kapitteltekstene."
     >
@@ -479,7 +460,7 @@ function Mikroklima() {
   const y = (v: number) => 220 - (v - 9.6) * 90;
   return (
     <GeoFigur
-      heading="Innblikk: mikroklima i en oppdiktet skolegård"
+      heading="Figur 2.9 – Innblikk: mikroklima i en oppdiktet skolegård"
       caption="Skissen viser hvor punktene A og B ligger. Grafen viser hver av de tre registreringene som en prikk og gjennomsnittet som en strek. Spredningen er 0,4 grader ved begge punkter. Tallene er konstruert til regneøving og er ikke målt i en virkelig skolegård."
       kilde="Egen figur av geofag.com med kapitlets konstruerte øvingstall."
       action={<Merkelapp>Konstruerte tall</Merkelapp>}
@@ -523,16 +504,15 @@ function Mikroklima() {
 }
 
 const KAP2: Record<string, () => JSX.Element> = {
-  GeoFelt2Utvalg: UtvalgFigur,
-  GeoFelt2Steg: FireSteg,
-  GeoFelt2Plan: Planmal,
-  GeoFelt2Metoder: Metoder,
-  GeoFelt2Feltlogg: Feltlogg,
-  GeoFelt2Punktkart: Punktkart,
-  GeoFelt2Diagram: Diagram,
-  GeoFelt2Feilkilder: Feilkilder,
-  GeoFelt2Sikkerhet: Sikkerhet,
-  GeoFelt2Mikroklima: Mikroklima,
+  GeoFeltUtvalg: UtvalgFigur,
+  GeoFeltProsess: FireSteg,
+  GeoFeltPlanmal: Planmal,
+  GeoFeltMetodevalg: Metoder,
+  GeoFeltMaalepunkter: Punktkart,
+  GeoFeltEtikk: Sikkerhet,
+  GeoFeltBearbeiding: Diagram,
+  GeoFeltFeilkilder: Feilkilder,
+  GeoFeltMikroklimaEget: Mikroklima,
 };
 
 export const GEOGRAFI_KAP2_FIGUR_IDER = Object.keys(KAP2);

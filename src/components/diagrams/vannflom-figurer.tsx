@@ -869,11 +869,20 @@ function HyPanel({
   );
 }
 
+const GEOGRAFI_HY_STATUS = [
+  "I skissen får regnflommen mye vann på kort tid. Snøsmelteflommen får tilførsel over lengre tid. Grunnvannstilsiget er et forenklet bakgrunnsbidrag (Varsom, u.å.-a).",
+  "Vannet bruker tid fra tilførsel i feltet til økt vannføring i elva. Kurvene viser en prinsipiell forsinkelse (Varsom, u.å.-a).",
+  "Flomtoppen er den høyeste vannføringen i en hendelse. Her sammenlikner vi kurveformer, ikke målte verdier eller gjentaksintervall (Varsom, u.å.-a).",
+  "Når tilførselen avtar, synker vannføringen igjen i skissen. Forløpet er forenklet og beskriver ikke alle virkelige nedbørfelt (Varsom, u.å.-a).",
+];
+
 export function HydrogramFigur({
   heading = "To hydrogram ved siden av hverandre: regnflom og snøsmelteflom",
   caption,
   initialStep,
-}: VannFigurProps) {
+  urbanizationCitation = "NVE, u.å.-i",
+  geografi = false,
+}: VannFigurProps & { urbanizationCitation?: string; geografi?: boolean }) {
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
@@ -915,8 +924,8 @@ export function HydrogramFigur({
     { text: "Nedbør eller smelting", color: C.rain, kind: "fill" },
   ];
   const status =
-    HY_STATUS[i] +
-    (tett > 0 ? " Tette flater som asfalt og tak slipper lite vann ned i bakken. Vannet renner raskere av, så flomtoppen kommer tidligere og blir høyere, og mindre vann går til grunnvannet. (NVE, u.å.-i)" : "");
+    (geografi ? GEOGRAFI_HY_STATUS : HY_STATUS)[i] +
+    (tett > 0 ? ` Tette flater som asfalt og tak slipper lite vann ned i bakken. Vannet renner raskere av, så flomtoppen kommer tidligere og blir høyere, og mindre vann går til grunnvannet. (${urbanizationCitation})` : "");
   return (
     <div ref={wrapRef}>
       <IsbreFigur

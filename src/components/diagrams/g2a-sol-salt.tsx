@@ -333,23 +333,39 @@ function Venn({ cx, cy, r, d }: { cx: number; cy: number; r: number; d: number }
   );
 }
 
-export function BaerekraftTreFigur() {
+// Samme Venn-tegning og responsive kort, med egne generelle eksempler for Geografi Vg1.
+const GEOGRAFI_DIM = DIM.map((dimension) => ({
+  ...dimension,
+  w: dimension.id === "miljo"
+    ? ["Ta vare på klima, naturmangfold og", "ressurser for framtidige generasjoner."]
+    : dimension.id === "sosial"
+      ? ["Sikre grunnleggende behov, rettigheter", "og muligheter til å påvirke eget liv."]
+      : ["Skape økonomisk trygghet, arbeid", "og en mer rettferdig ressursfordeling."],
+  n: dimension.id === "miljo"
+    ? ["Ta vare på klima, naturmangfold", "og ressurser for framtidige", "generasjoner."]
+    : dimension.id === "sosial"
+      ? ["Sikre grunnleggende behov,", "rettigheter og muligheter", "til å påvirke eget liv."]
+      : ["Skape økonomisk trygghet,", "arbeid og en mer rettferdig", "ressursfordeling."],
+}));
+
+export function BaerekraftTreFigur({ geografi = false }: { geografi?: boolean } = {}) {
+  const dimensions = geografi ? GEOGRAFI_DIM : DIM;
   return (
     <G2Figur
       title="Bærekraft i tre dimensjoner: miljø, sosial og økonomi"
-      desc="Tre overlappende sirkler: miljø, sosial og økonomi. Eksempler fra kapitlet: vindkraft på land beslaglegger store landområder og Hywind Tampen dekker bare om lag 35 prosent av behovet til plattformene. Fosen-saken viser sosial bærekraft, der Høyesterett i 2021 slo fast at konsesjonene var ugyldige. Havsul I og saltkraft stoppet av økonomiske grunner, og Hywind Tampen fikk støtte fra Enova. En energikilde er ikke bærekraftig bare fordi den er fornybar."
-      heading="Bærekraft har tre dimensjoner"
-      caption="Eksemplene er hentet fra kapitlet. Kilder: Store norske leksikon (u.å.-j, u.å.-k), Equinor (2023) og Statkraft (2013)."
-      narrow={{ w: 300, h: 760 }}
-      wide={{ w: 720, h: 452 }}
+      desc={geografi ? "Tre overlappende sirkler viser miljø, sosiale forhold og økonomi. Kortene beskriver hensyn som må vurderes sammen, ikke størrelser som er beregnet eller kan veies direkte mot hverandre." : "Tre overlappende sirkler: miljø, sosial og økonomi. Eksempler fra kapitlet: vindkraft på land beslaglegger store landområder og Hywind Tampen dekker bare om lag 35 prosent av behovet til plattformene. Fosen-saken viser sosial bærekraft, der Høyesterett i 2021 slo fast at konsesjonene var ugyldige. Havsul I og saltkraft stoppet av økonomiske grunner, og Hywind Tampen fikk støtte fra Enova. En energikilde er ikke bærekraftig bare fordi den er fornybar."}
+      heading={geografi ? "Figur 8.3: Bærekraft har tre dimensjoner" : "Bærekraft har tre dimensjoner"}
+      caption={geografi ? "En forenklet begrepsmodell, ikke et målt arealregnskap. Overlappet viser at miljø, sosiale forhold og økonomi må vurderes i sammenheng. Sirklene betyr ikke at naturtap alltid kan oppveies med penger (FN-sambandet, 2026)." : "Eksemplene er hentet fra kapitlet. Kilder: Store norske leksikon (u.å.-j, u.å.-k), Equinor (2023) og Statkraft (2013)."}
+      narrow={{ w: 300, h: geografi ? 660 : 760 }}
+      wide={{ w: 720, h: geografi ? 350 : 452 }}
       animated
       name="bærekraft-figuren"
     >
       {({ bred }) => {
         const ys = bred ? [14, 138, 242] : [250, 392, 514];
         const hs = bred
-          ? DIM.map((m) => 40 + m.w.length * 18)
-          : DIM.map((m) => 42 + m.n.length * 18);
+          ? dimensions.map((m) => 40 + m.w.length * 18)
+          : dimensions.map((m) => 42 + m.n.length * 18);
         const x0 = bred ? 376 : 10;
         const w = bred ? 334 : 280;
         const yy = bred ? [14, 14 + hs[0] + 12, 14 + hs[0] + hs[1] + 24] : [250, 250 + hs[0] + 12, 250 + hs[0] + hs[1] + 24];
@@ -358,7 +374,7 @@ export function BaerekraftTreFigur() {
         return (
           <>
             {bred ? <Venn cx={190} cy={140} r={88} d={46} /> : <Venn cx={150} cy={122} r={76} d={40} />}
-            {DIM.map((m, i) => (
+            {dimensions.map((m, i) => (
               <g key={m.id}>
                 <Box x={x0} y={yy[i]} w={w} h={hs[i]} stroke={m.f} fill={G.panel} sw={1.6} />
                 <rect x={x0} y={yy[i]} width={6} height={hs[i]} rx={3} fill={m.f} />
@@ -370,7 +386,7 @@ export function BaerekraftTreFigur() {
             <T
               x={bred ? 360 : 150}
               y={ender + (bred ? 29 : 26)}
-              lines={bred ? "En energikilde er ikke bærekraftig bare fordi den er fornybar." : ["En energikilde er ikke bærekraftig", "bare fordi den er fornybar."]}
+              lines={geografi ? (bred ? "Vi må vurdere alle tre dimensjonene i sammenheng." : ["Vi må vurdere alle tre", "dimensjonene i sammenheng."]) : (bred ? "En energikilde er ikke bærekraftig bare fordi den er fornybar." : ["En energikilde er ikke bærekraftig", "bare fordi den er fornybar."])}
               size={16}
               weight={700}
               fill={C.teal}

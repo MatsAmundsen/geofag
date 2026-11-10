@@ -1,0 +1,44 @@
+{
+  "kontroll": "2026-11-09",
+  "kobber": {
+    "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-copper.pdf",
+    "sha256": "c4971f7edfa38feefc51952c5f24889c46f468d936c6620d388233313ae8ae85",
+    "tabell": "World Mine and Refinery Production and Reserves, 2025e, tusen tonn kobberinnhold",
+    "lisens": "USGS, Public Domain"
+  },
+  "litium": {
+    "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lithium.pdf",
+    "sha256": "53f92ea45c367c36f05919151f7784feda5776095afaf3a25aec795a27be106f",
+    "vurdering": "Kontrollert, ikke brukt: USA er tilbakeholdt (W), og tabellen skiller ikke gruve fra raffinering."
+  },
+  "felt": {
+    "url": "https://factmaps.sodir.no/api/rest/services/Factmaps/FactMapsED50UTM32/MapServer/502/query (outSR=4326, maxAllowableOffset=0.005)",
+    "hentet": "2026-11-09",
+    "antall": 142,
+    "tegnet": 141,
+    "uten_geometri": [
+      "SINDRE (Producing)"
+    ],
+    "sha256": "adf35eaadd6174d5e4ec537197f5c27e58aaf136db751a2c8ec43602b90287b5",
+    "lisens": "NLOD 2.0, bekreftet på factpages.sodir.no/no («Bruk av innhold») og i Geonorge-metadata for FactMapsData"
+  },
+  "soner": {
+    "url": "https://nedlasting.geonorge.no/geonorge/Basisdata/NorgesMaritimeGrenser/GML/Basisdata_0000_Norge_4258_NorgesMaritimeGrenser_GML.zip",
+    "datauttak": "2025-04-11",
+    "sha256": "688a93d42417c6e7bd50b3dfbc9e20e0c640e23bd4b18c73e17ea57d9e4fa9fe",
+    "objekter": [
+      "NorgesØkonomiskeSone",
+      "Fiskevernsone",
+      "Fiskerisone",
+      "Kontinentalsokkel",
+      "Territorialfarvann"
+    ],
+    "lisens": "CC BY 3.0 NO (Geonorge-metadata e106adf4-c9d8-4fce-a9b5-7886a4126d23)"
+  },
+  "land": {
+    "url": "https://naciscdn.org/naturalearth/50m/physical/ne_50m_land.zip",
+    "versjon": "4.1.0",
+    "lisens": "Public Domain"
+  },
+  "bygging": "mats-valg-arbeid/kap7/build76.py: Lambert likearealprojeksjon sentrert 15 Ø, 70 N; forenkling 2 km (soner/land) og 1 km (felt)."
+}

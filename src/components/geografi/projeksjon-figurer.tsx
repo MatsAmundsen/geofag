@@ -1,0 +1,6 @@
+import { C, Diagram, L } from "@/components/diagrams/svg-kit";
+export function GeografiTopokart() {
+  return <div><Diagram heading="Figur 1.4 – Topografisk utsnitt ved Gjende" title="Kart ved Gjende, Bessheim og Besshøe med innsjøer, høydekurver, veier og stier" caption="Nord er opp. Utsnitt 61,439–61,606° N og 8,613–8,965° Ø. Målestokken er tilnærmet ved midten av utsnittet og følger bildet når det skaleres. Tette høydekurver viser brattere terreng. Det er ikke et oppdatert tur- eller sikkerhetskart. Kartverket (u.å.), Topografisk rasterkart, hentet 6. november 2026." viewBox="0 0 600 600" wide scroll>
+    {() => <><image href="/images/geografi/gjende-toporaster.png" x="44" y="20" width="512" height="512"/><L x="570" y="30" anchor="middle" weight={700}>N</L><line x1="570" x2="570" y1="70" y2="42" stroke={C.fg} strokeWidth="2"/><path d="M565 49 L570 40 L575 49" fill="none" stroke={C.fg}/><line x1="44" x2="181" y1="558" y2="558" stroke={C.fg} strokeWidth="4"/><L x="44" y="584" size={14}>Omtrent 5 km ved 61,52° nord</L></>}
+  </Diagram><p className="text-sm text-muted-foreground">Kart: <a href="https://www.kartverket.no/" className="underline">© Kartverket</a>, <a href="https://creativecommons.org/licenses/by/4.0/" className="underline">CC BY 4.0</a>. Fire rasterfliser satt sammen, zoom 11. Ingen detaljerte Geovekst-lag er kopiert.</p></div>;
+}

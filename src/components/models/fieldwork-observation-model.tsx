@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TableScroll } from "@/components/scroll-frame";
 import { Button } from "@/components/ui/button";
-import { ModelFrame, ModelPanel, ModelTab } from "./model-chrome";
+import { ModelFrame, ModelPanel, ModelTab, ModelNote } from "./model-chrome";
 
 export function FieldworkObservationModel() {
   type StationKey = "strike_dip" | "sediment" | "hydrology" | "hms_risk";
@@ -34,7 +34,6 @@ export function FieldworkObservationModel() {
 
   return (
     <ModelFrame
-      stackHeader
       kicker="Interaktiv vitenskapelig feltmetodikk"
       title="Georeferert feltlogg og observasjonskjede"
       lead="Utforsk fire feltstasjoner og se hvordan hver måling blir en rad i en georeferert feltlogg."
@@ -106,7 +105,7 @@ export function FieldworkObservationModel() {
                     className="w-full accent-teal-500"
                     aria-label="Fallvinkel"
                   />
-                  <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                  <div className="flex justify-between text-[10px] text-muted-foreground">
                     <span>0° (Helt vannrett)</span>
                     <span>45° (Skråstilt)</span>
                     <span>90° (Loddrett)</span>
@@ -119,7 +118,7 @@ export function FieldworkObservationModel() {
                 <p className="font-mono text-sm text-primary font-bold">
                   {String(strikeAngle).padStart(3, "0")}° / {dipAngle}° SØ
                 </p>
-                <p className="text-xs text-muted-foreground pt-1">
+                <p className="text-[11px] text-muted-foreground pt-1">
                   <strong>Høyrehåndsregelen:</strong> Hvis du ser i strøkretningen ({strikeAngle}°), faller lagene
                   alltid 90° til høyre for siktelinjen ({dipAngle}° mot sørøst).
                 </p>
@@ -128,7 +127,7 @@ export function FieldworkObservationModel() {
 
             {/* 3D-blokkdiagram med strøk og fall */}
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/60 p-4 lg:col-span-7">
-              <svg role="img" viewBox="0 0 520 300" className="w-full h-auto select-none" aria-label="Strøk og fall 3D blokk">
+              <svg viewBox="0 0 520 300" className="w-full h-auto select-none" aria-label="Strøk og fall 3D blokk">
                 {/* 3D Isometrisk terrengblokk */}
                 {/* Toppflate */}
                 <polygon points="120,40 420,40 480,100 180,100" fill="#1e293b" stroke="#475569" strokeWidth="1.5" />
@@ -150,31 +149,31 @@ export function FieldworkObservationModel() {
                 <line x1="160" y1="70" x2="370" y2="70" stroke="#f59e0b" strokeWidth="3" />
                 <circle cx="160" cy="70" r="4" fill="#f59e0b" />
                 <circle cx="370" cy="70" r="4" fill="#f59e0b" />
-
+                <text x="265" y="60" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
+                  Strøklinje (Vannrett: {strikeAngle}°)
+                </text>
 
                 {/* Fall-linje (Bratteste vinkel vinkelrett på strøk) */}
                 <line x1="265" y1="70" x2="295" y2="160" stroke="#ef4444" strokeWidth="3" />
                 <polygon points="295,160 288,150 298,152" fill="#ef4444" />
-
+                <text x="310" y="125" fill="#f87171" fontSize="11" fontWeight="bold">
+                  Fallvinkel ({dipAngle}°)
+                </text>
 
                 {/* Karteringssymbol for strøk og fall */}
                 <g transform="translate(80, 180)">
                   <rect x="0" y="0" width="80" height="80" rx="8" fill="#1e293b" stroke="#334155" />
-
+                  <text x="40" y="20" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="bold">Kartsymbol</text>
                   {/* T-symbol */}
                   <line x1="15" y1="45" x2="65" y2="45" stroke="#f59e0b" strokeWidth="3" />
                   <line x1="40" y1="45" x2="40" y2="65" stroke="#ef4444" strokeWidth="3" />
-
+                  <text x="52" y="62" fill="#ffffff" fontSize="10" fontWeight="bold">{dipAngle}°</text>
                 </g>
 
-
+                <text x="250" y="275" textAnchor="middle" fill="#cbd5e1" fontSize="11">
+                  Bergart i blotning: Kambrosilursk kalkstein med fossiler av brachiopoder
+                </text>
               </svg>
-              <ul className="mt-3 space-y-2 text-xs leading-relaxed text-foreground">
-                <li className="text-amber-300">Strøklinje (Vannrett: {strikeAngle}°)</li>
-                <li className="text-rose-200">Fallvinkel ({dipAngle}°)</li>
-                <li>Kartsymbol: {dipAngle}°</li>
-                <li>Bergart i blotning: Kambrosilursk kalkstein med fossiler av brachiopoder</li>
-              </ul>
             </div>
           </ModelPanel>
         </div>
@@ -300,9 +299,9 @@ export function FieldworkObservationModel() {
 
             {/* Mikroskopi / siktevisning */}
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/60 p-4 lg:col-span-7">
-              <svg role="img" viewBox="0 0 520 280" className="w-full h-auto select-none" aria-label="Sedimentkorn visning">
+              <svg viewBox="0 0 520 280" className="w-full h-auto select-none" aria-label="Sedimentkorn visning">
                 <rect x="20" y="20" width="480" height="240" rx="8" fill="#18181b" stroke="#3f3f46" />
-
+                <text x="35" y="45" fill="#a1a1aa" fontSize="11" fontWeight="bold">LUPESYSTEM (Feltforstørrelse 20×)</text>
 
                 {/* Kornvisualisering basert på valg */}
                 {sorting === "poor" ? (
@@ -314,7 +313,9 @@ export function FieldworkObservationModel() {
                     <circle cx="280" cy="190" r="4" fill="#e4e4e7" />
                     <circle cx="230" cy="170" r="3" fill="#e4e4e7" />
                     <circle cx="310" cy="110" r="2" fill="#e4e4e7" />
-
+                    <text x="260" y="240" textAnchor="middle" fill="#f87171" fontSize="12" fontWeight="bold">
+                      Usortert matriks (Morenejord / Till)
+                    </text>
                   </g>
                 ) : (
                   <g>
@@ -336,14 +337,12 @@ export function FieldworkObservationModel() {
                         />
                       );
                     })}
-
+                    <text x="260" y="240" textAnchor="middle" fill="#34d399" fontSize="12" fontWeight="bold">
+                      Godt sortert sediment ({grainScale}) – Transport i rennende vann
+                    </text>
                   </g>
                 )}
               </svg>
-              <ul className="mt-3 space-y-2 text-xs leading-relaxed text-foreground">
-                <li>LUPESYSTEM (Feltforstørrelse 20×)</li>
-                <li>{sorting === "poor" ? "Usortert matriks (Morenejord / Till)" : <>Godt sortert sediment ({grainScale}) – Transport i rennende vann</>}</li>
-              </ul>
             </div>
           </ModelPanel>
         </div>
@@ -423,7 +422,7 @@ export function FieldworkObservationModel() {
               <div className="rounded-lg border border-border bg-card p-3 text-xs space-y-1">
                 <span className="font-semibold text-foreground">Beregnet vannføring:</span>
                 <p className="font-mono text-xl text-primary font-bold">{dischargeM3s} m³/s</p>
-                <p className="text-xs text-muted-foreground pt-1">
+                <p className="text-[11px] text-muted-foreground pt-1">
                   Kontinuitetslikningen: $Q = B \cdot d \cdot v = A \cdot v$.
                   Tilsvarer <strong>{(parseFloat(dischargeM3s) * 1000).toLocaleString("no-NO")} liter i sekundet</strong>.
                 </p>
@@ -431,32 +430,34 @@ export function FieldworkObservationModel() {
             </div>
 
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/60 p-4 lg:col-span-7">
-              <svg role="img" viewBox="0 0 520 280" className="w-full h-auto select-none" aria-label="Elvetverrsnitt profil">
+              <svg viewBox="0 0 520 280" className="w-full h-auto select-none" aria-label="Elvetverrsnitt profil">
                 {/* Terreng og elveleie */}
                 <polygon points="20,100 80,100 120,220 400,220 440,100 500,100 500,260 20,260" fill="#1e293b" />
                 {/* Vannflate */}
                 <polygon points="80,110 440,110 400,220 120,220" fill="#0284c7" opacity="0.65" />
 
                 <line x1="80" y1="110" x2="440" y2="110" stroke="#38bdf8" strokeWidth="2" />
-
+                <text x="260" y="100" textAnchor="middle" fill="#38bdf8" fontSize="11" fontWeight="bold">
+                  Vannspeil (Bredde B = {riverWidth} m)
+                </text>
 
                 {/* Vingemåler stav */}
                 <line x1="260" y1="60" x2="260" y2="180" stroke="#f59e0b" strokeWidth="2.5" />
                 <circle cx="260" cy="176" r="6" fill="#f59e0b" />
-
+                <text x="275" y="165" fill="#fbbf24" fontSize="10" fontWeight="bold">
+                  Ott-flygel på 0.6·d (v = {meanVelocity} m/s)
+                </text>
 
                 {/* Dybdepil */}
                 <line x1="190" y1="110" x2="190" y2="220" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="3 2" />
+                <text x="180" y="170" textAnchor="end" fill="#ffffff" fontSize="10">
+                  d = {meanDepth} m
+                </text>
 
-
-
+                <text x="260" y="250" textAnchor="middle" fill="#94a3b8" fontSize="11">
+                  Målefeilkilder i felt: Bunnruhet, strømturbulens, skråstilte strømlinjebestemmelser
+                </text>
               </svg>
-              <ul className="mt-3 space-y-2 text-xs leading-relaxed text-foreground">
-                <li className="text-sky-300">Vannspeil (Bredde B = {riverWidth} m)</li>
-                <li className="text-amber-300">Ott-flygel på 0.6·d (v = {meanVelocity} m/s)</li>
-                <li>d = {meanDepth} m</li>
-                <li>Målefeilkilder i felt: Bunnruhet, strømturbulens, skråstilte strømlinjebestemmelser</li>
-              </ul>
             </div>
           </ModelPanel>
         </div>
@@ -496,7 +497,7 @@ export function FieldworkObservationModel() {
                     className="w-full accent-amber-500"
                     aria-label="Sannsynlighet"
                   />
-                  <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                  <div className="flex justify-between text-[10px] text-muted-foreground">
                     <span>1 (Svært usannsynlig)</span>
                     <span>3 (Mulig)</span>
                     <span>5 (Nesten sikkert)</span>
@@ -518,7 +519,7 @@ export function FieldworkObservationModel() {
                     className="w-full accent-rose-500"
                     aria-label="Konsekvens"
                   />
-                  <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                  <div className="flex justify-between text-[10px] text-muted-foreground">
                     <span>1 (Ubetydelig skrubbsår)</span>
                     <span>3 (Medisinsk behandling)</span>
                     <span>5 (Fatalt / Livsfare)</span>
@@ -535,14 +536,18 @@ export function FieldworkObservationModel() {
 
             {/* 5x5 Risikomatrise SVG */}
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/60 p-4 lg:col-span-7">
-              <p className="text-xs font-semibold text-foreground">RISIKOMATRISE (P × C)</p>
-              <p className="mt-2 text-xs text-foreground">Sannsynlighet (P) ↑</p>
-              <svg role="img" viewBox="0 0 420 320" className="w-full h-auto select-none" aria-label="Risikomatrise 5x5">
-
+              <svg viewBox="0 0 420 320" className="w-full h-auto select-none" aria-label="Risikomatrise 5x5">
+                <text x="210" y="25" textAnchor="middle" fill="#e2e8f0" fontSize="12" fontWeight="bold">
+                  RISIKOMATRISE (P × C)
+                </text>
 
                 {/* Aksebetegnelser */}
-
-
+                <text x="20" y="170" textAnchor="middle" fill="#94a3b8" fontSize="11" transform="rotate(-90 20 170)">
+                  Sannsynlighet (P) ↑
+                </text>
+                <text x="230" y="305" textAnchor="middle" fill="#94a3b8" fontSize="11">
+                  Konsekvens (C) →
+                </text>
 
                 {/* 5x5 Ruter */}
                 {[1, 2, 3, 4, 5].map((pVal) => {
@@ -565,7 +570,7 @@ export function FieldworkObservationModel() {
                           stroke={isSelected ? "#ffffff" : "#1e293b"}
                           strokeWidth={isSelected ? 3 : 1}
                         />
-                        <text x={x + 30} y={y + 28} textAnchor="middle" fill="#ffffff" fontSize="26" fontWeight="bold">
+                        <text x={x + 30} y={y + 24} textAnchor="middle" fill="#ffffff" fontSize="11" fontWeight="bold">
                           {r}
                         </text>
                       </g>
@@ -573,7 +578,6 @@ export function FieldworkObservationModel() {
                   });
                 })}
               </svg>
-              <p className="text-xs text-foreground">Konsekvens (C) →</p>
 
               <div className="mt-2 text-xs text-muted-foreground">
                 <strong>Nødvendige HMS-barrierer for denne stasjonen:</strong> Hjelm mot steinsprang ved fjellskjæring,

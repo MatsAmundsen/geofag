@@ -9,7 +9,7 @@ export function EnergySourcesDiagram() {
       viewBox="0 0 900 300"
       wide
     >
-      {(m) => (
+      {() => (
         <>
           {[
             {
@@ -84,7 +84,8 @@ export function EnergySourcesDiagram() {
   );
 }
 
-export function WindPowerTradeoffDiagram() {
+export function WindPowerTradeoffDiagram({ geografi = false }: { geografi?: boolean } = {}) {
+  if (geografi) return <GeografiVindSporsmal />;
   return (
     <Diagram
       title="Bærekraftig avveining i energiutbygging: Klima, natur, samfunn og forsyning"
@@ -93,7 +94,7 @@ export function WindPowerTradeoffDiagram() {
       viewBox="0 0 860 320"
       wide
     >
-      {(m) => (
+      {() => (
         <>
           {/* Sentrumsboks */}
           <circle cx="430" cy="160" r="55" fill="#182732" stroke={C.teal} strokeWidth="2.5" />
@@ -301,7 +302,7 @@ export function OtecRankineCycleDiagram() {
       viewBox="0 0 920 440"
       wide
     >
-      {(m) => (
+      {() => (
         <>
           {/* Skillelinje */}
           <line x1="380" y1="35" x2="380" y2="405" stroke={C.dim} strokeDasharray="4 4" />
@@ -421,4 +422,29 @@ export function OtecRankineCycleDiagram() {
       )}
     </Diagram>
   );
+}
+
+function GeografiVindSporsmal() {
+  const questions = [
+    { x: 30, y: 25, title: "Energi og klima", lines: ["Hva kan produseres?", "Hvilket alternativ sammenlikner vi med?"] },
+    { x: 575, y: 25, title: "Natur og areal", lines: ["Hvilke områder berøres?", "Hva vet vi om samlet belastning?"] },
+    { x: 30, y: 235, title: "Kraftsystem og samfunn", lines: ["Når er kraften tilgjengelig?", "Hvem får nytten og ulempene?"] },
+    { x: 575, y: 235, title: "Rettigheter og prosess", lines: ["Hvilke rettslige grenser gjelder?", "Hvem skal delta og konsulteres?"] },
+  ];
+  return <Diagram title="Fire grupper av spørsmål om et energiprosjekt, med rettslige rammer" heading="Figur 7.6 – Undersøk før vi veier hensyn"
+    caption="Spørsmålene er en kvalitativ lesestøtte, ikke en beregning eller rangering. Menneskerettigheter setter rettslige grenser og kan ikke kjøpes opp med poeng for kraftnytte. Alternativer, usikkerhet og berørte grupper må undersøkes konkret (Kommunal- og distriktsdepartementet, 2026; Høyesterett, 2021; Landbruksdirektoratet, 2025a, 2025c)."
+    viewBox="0 0 900 395" wide scroll>
+    {() => <>
+      <circle cx="450" cy="190" r="66" fill="#182732" stroke={C.teal} strokeWidth="2.5" />
+      <L x="450" y="185" size={17} anchor="middle" weight={700}>Energiprosjekt</L>
+      <L x="450" y="212" size={14} anchor="middle">Hvilket sted?</L>
+      {questions.map(({ x, y, title, lines }) => <g key={title}>
+        <line x1={x === 30 ? 320 : 575} y1={y === 25 ? 105 : 270} x2={x === 30 ? 390 : 510} y2={y === 25 ? 150 : 230} stroke={C.teal} strokeWidth="2" strokeDasharray="4 4" />
+        <rect x={x} y={y} width="295" height="115" rx="10" fill="#182732" stroke={C.teal} />
+        <L x={x + 147} y={y + 30} size={18} anchor="middle" weight={700}>{title}</L>
+        {lines.map((line, i) => <L key={line} x={x + 147} y={y + 62 + i * 25} size={13} anchor="middle">{line}</L>)}
+      </g>)}
+      <L x="450" y="385" size={16} anchor="middle">Rettigheter er rammer, ikke byttbare poeng.</L>
+    </>}
+  </Diagram>;
 }

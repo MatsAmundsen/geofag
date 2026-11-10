@@ -538,3 +538,42 @@ export const StormfloFigur = lagFigur(stormflo);
 export const PolartLavtrykkFigur = lagFigur(polartLavtrykk);
 export const TornadoFigur = lagFigur(tornado);
 export const KlimaFordelingFigur = lagFigur(klimaFordeling);
+
+
+// Gjenbruk tegninger og stegkontroller, med eget Vg1-språk og kapittelspesifikke kilder.
+// Originaldefinisjonene for Geofag 2 er ikke endret.
+export const GeografiOrkanSnittFigur = lagFigur({
+  ...orkanSnitt,
+  id: "geografi-orkan-snitt",
+  tekst: {
+    heading: "Figur 6.8: En tropisk orkan i snitt",
+    title: "Forenklet snitt av en tropisk orkan: fuktig luft strømmer inn, stiger i øyeveggen og strømmer ut i høyden. Midt i systemet ligger øyet.",
+    caption: "Varmt hav gir fuktighet til systemet. Når vanndamp kondenserer, frigjøres varme som støtter oppstigningen. I en utviklet orkan ligger øyeveggen rundt øyet. Kurvene viser bare et skjematisk mønster, ikke målte verdier (Met Office, 2025).",
+  },
+  status: [
+    "Fuktig luft strømmer inn ved havflaten. Havet gir varme og vanndamp.",
+    "I øyeveggen stiger lufta. Når vanndamp blir til dråper, frigjøres varme.",
+    "Høyt oppe strømmer lufta utover fra sentrum.",
+    "Øyet ligger innenfor øyeveggen, der den sterkeste vinden i skissen er vist.",
+  ],
+  etiketter: orkanSnitt.etiketter.map((labels) => labels
+    .filter((label) => label.text !== "tropopausen")
+    .map((label) => ({ ...label, text: label.text.startsWith("varmt hav:") ? "varmt hav gir varme og vanndamp" : label.text === "latent varme frigjøres" ? "kondensasjon frigjør varme" : label.text }))),
+});
+
+export const GeografiStormfloFigur = lagFigur({
+  ...stormflo,
+  id: "geografi-stormflo",
+  tekst: {
+    heading: "Figur 6.9: Vær, tidevann og bølger ved kysten",
+    title: "Forenklet kai sett fra siden: tidevann, lavt lufttrykk og vind påvirker vannstanden. Bølger kan nå høyere enn selve vannstanden.",
+    caption: "Stormflo er værets bidrag til høy vannstand. Tidevannet kommer i tillegg, og bølger kan forsterke skadene. Bidragene i skissen er ikke målte verdier; én centimeter per hektopascal er en tommelfingerregel for lufttrykkets virkning (Meteorologisk institutt, 2023).",
+  },
+  status: [
+    "Tidevannet bidrar til vannstanden. Springflo gir særlig høyt tidevann.",
+    "Lavt lufttrykk kan heve vannstanden. Skissen viser en forenklet tommelfingerregel.",
+    "Vind kan stue vann inn mot kysten og fjordene.",
+    "Bølger kan slå høyere inn over land når vannstanden allerede er høy.",
+  ],
+  bryter: undefined,
+});

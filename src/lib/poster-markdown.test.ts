@@ -389,7 +389,7 @@ describe("jordskjelv-naturfare poster", () => {
     assert.equal(ids.has("QuizJordskjelv"), false);
     assert.equal(md.includes("FIGUR"), false);
     assert.equal(md.includes("[KILDE]"), false);
-    assert.equal(md.includes("](/geofag-1/jordskjelv)"), true);
+    assert.equal(md.includes("](/geofag-1/jordskjelv#jordskjelv-som-naturfare)"), true);
   });
 });
 

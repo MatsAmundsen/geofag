@@ -118,7 +118,7 @@ const snoLag = lat(() => {
   return Array.from({ length: 9 }, () => 0.7 + r() * 0.6);
 });
 
-export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, caption }: { heading?: string; caption?: React.ReactNode }) {
+export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, caption, geografi = false }: { heading?: string; caption?: React.ReactNode; geografi?: boolean }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
   const tl = useTidslinje({ antall: BOTN_FASER.length, synlig: visible, faseMs: 3800, holdMs: 1700, element: ref });
@@ -376,7 +376,7 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
         toolbar={
           <div className={small ? "flex w-full flex-col gap-2 [&_button]:text-sm" : "flex w-full flex-col gap-2"}>
             <TidslinjeKontroller tl={tl} faser={BOTN_FASER} />
-            <StegVelger
+            {!geografi && <StegVelger
               labels={["Isen beveger seg", "Isen står stille (tankeeksperiment)"]}
               step={stille ? 2 : 1}
               onStep={(n) =>
@@ -386,15 +386,15 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
                 })
               }
               label="Isen"
-            />
+            />}
           </div>
         }
         status={status}
         keys={keys}
         labels={labels}
-        notes={["Terrengmodell, skjematisk", "Typeområder: Jotunheimen og Sunnmørsalpene", "Målerne viser retning, ikke tall"]}
+        notes={geografi ? ["Skjematisk utvikling, ikke i målestokk", "Ikke et bestemt fjell eller tidsforløp"] : ["Terrengmodell, skjematisk", "Typeområder: Jotunheimen og Sunnmørsalpene", "Målerne viser retning, ikke tall"]}
         viewBox={`0 0 ${vbW} ${vbH}`}
-        below={
+        below={geografi ? undefined :
           <Maalere
             maalere={[
               { navn: "Isen beveger seg", verdi: isFinnes && beveger ? 1 : 0, ender: ["nei", "ja"], farge: "#8eb4d4", tekst: !isFinnes ? "ingen is" : beveger ? "ja" : "nei" },

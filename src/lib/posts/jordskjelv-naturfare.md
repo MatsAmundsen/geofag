@@ -19,7 +19,7 @@
 
 > **Jordskjelvstoffet er flyttet**
 >
-> Skader, resonans, likvefaksjon, varsling av selve skjelvet og risikovurderingen for Oslo og Bergen står nå i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv). Dette kapitlet handler om tsunami. Jordskjelv omtales her bare når det forklarer hvordan vannet flyttes.
+> Skader, resonans, likvefaksjon, varsling av selve skjelvet og risikovurderingen for Oslo og Bergen står nå i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv#jordskjelv-som-naturfare). Dette kapitlet handler om tsunami. Jordskjelv omtales her bare når det forklarer hvordan vannet flyttes.
 
 > **Hva tror du?**
 >
@@ -46,19 +46,23 @@ En tsunami er heller ikke alltid en surfende vegg. Når den når land, kan den s
 
 ## Hvordan settes vannet i bevegelse?
 
-De fleste store tsunamier i verdenshavene henger sammen med en *subduksjonssone*, et område der en havbunnsplate synker under en annen. Mekanikken i selve skjelvet står i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv). Her trenger vi bare den delen som flytter vannet.
+De fleste store tsunamier i verdenshavene henger sammen med en *subduksjonssone*, et område der en havbunnsplate synker under en annen. Mekanikken i selve skjelvet står i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv#hvor-skjer-de-store-skjelvene). Her trenger vi bare den delen som flytter vannet.
 
 Der platene henger fast, kan kanten av den øvre plata bli dratt ned og bøyd. Når låsen ryker, kan havbunnen løftes eller senkes brått. Vannet over følger med. Så søker vannflaten tilbake mot likevekt, og bølger brer seg utover (NOAA, u.å.-a). Hvor mye bunnen flytter seg, hvor stort område som flyttes, og hvor dypt vannet er ved kilden, har alle noe å si for hvor stor tsunamien kan bli (NOAA, u.å.-a).
+
+I modell M1 kan du følge hvordan heving og senkning av havbunnen flytter vannet og setter i gang bølger. Modellen viser en idealisert kilde, ikke en rekonstruksjon av et bestemt jordskjelv.
+
+```widget
+TsunamiM1
+```
+
+Legg merke til at det er forskyvningen av vannet som setter bølgen i gang. En N-form, med en topp på den ene siden og en dal på den andre, er ett mulig utgangspunkt. Havet trekker seg ikke alltid tilbake før vannet stiger.
 
 Magnituden alene er ikke nok. NOAA skriver at ikke alle jordskjelv lager tsunami. Skjelvet må være stort nok og nært nok havbunnen til å gi den vertikale bevegelsen som vanligvis setter en tsunami i gang (NOAA, u.å.-a). Et skjelv som hovedsakelig flytter berget sidelengs, løfter lite vann, selv om magnituden er høy. Et grunt skjelv med tydelig løft eller senkning av bunnen er en annen sak. Varigheten kan også si noe om hvor stort område som brast (NOAA, u.å.-a).
 
 Skred er den andre store gruppen. Et skred kan treffe vannet ovenfra, eller gli ut under vann og skyve vann foran og bak seg. Hvor mye masse som flytter vann, hvor raskt den beveger seg, og til hvilket dyp, avgjør om det blir en tsunami (NOAA, u.å.-a). Nær kilden kan en skredtsunami bli større enn en skjelvtsunami, og den kan nå land i løpet av minutter, med lite eller ingen varslingstid. Den taper vanligvis energi fort og når sjelden fjerne kyster (NOAA, u.å.-a). Mange slike skred utløses av jordskjelv, men tyngdekraft, vind og mye nedbør kan også få en bratt, ustabil skråning til å svikte. Et skjelv som er for lite til å lage tsunami direkte, kan likevel utløse et skred som lager en (NOAA, u.å.-a). Hvordan skred oppfører seg i fjell og leire, tar kapitlet [Skred](/geofag-1/skred).
 
 Vulkaner kan lage tsunami når masse beveger seg: et skred fra vulkanen, en kollaps, eller et utbrudd som fortrenger vann. Meteorittnedslag kan også flytte vann, men det er en sjelden utløser (NOAA, u.å.-a). Et meteorittnedslag må ikke blandes med en *meteotsunami*. En meteotsunami lages av kraftige værfenomener over hav eller en stor innsjø. Den kan ligne en seismisk tsunami, og den kan også forveksles med stormflo. Den er et værfenomen, ikke et nedslag fra verdensrommet (NOAA, u.å.-a). I dette kapitlet er meteotsunami bare en avgrensning, ikke hovedtema.
-
-```widget
-TsunamiM1
-```
 
 ```widget
 YtMaria07
@@ -90,6 +94,8 @@ Når bølgen kommer inn på grunnere vann, går *bølgefronten* saktere, fordi f
 
 Havbunnens form kan også bøye bølgefronten. Det kalles brytning når ulike deler av fronten går med ulik fart. Bølgen kan reflekteres fra en bratt kyst og gå tilbake utover. Bukter, grunner og øyer gjør at samme bølge ikke ser lik ut noen kilometer lenger borte (NOAA, u.å.-c). En enkel formel for ett dyp forklarer ikke hele dette mønsteret.
 
+I modell M2 sammenligner du den samme lange bølgen på ulike dyp. Følg hvordan farten og bølgelengden avtar når vannet blir grunnere. Farten gjelder bølgefronten, ikke vannets strømning.
+
 ```widget
 TsunamiM2
 ```
@@ -104,6 +110,12 @@ Tall fra en tsunami blir fort blandet sammen fordi ordet «høyde» brukes om fl
 
 *Bølgehøyde* ute i vannet er den loddrette avstanden fra bølgedal til bølgetopp der bølgen fortsatt er en bølge. *Oppskylling*, på engelsk run-up, er hvor høyt over havnivået vannet når opp på land på ett sted (NOAA, u.å.-c). *Oversvømmelsesdybde* er hvor dypt vannet står på et punkt på land. *Inntrenging* er hvor langt inn over land vannet går, målt vannrett.
 
+Bruk modell M3 til å skille de fire målene. Bølgehøyde måles ute i vannet, oppskylling over havnivået, oversvømmelsesdybde over bakken og inntrenging vannrett inn fra strandlinjen. Modellen er en begrepsmodell og gir ikke lokale flomnivåer.
+
+```widget
+TsunamiM3
+```
+
 NOAA skriver at de fleste oppskyllinger er under om lag 3 m, men at de i ekstreme tilfeller nær kilden kan bli over om lag 30 m (NOAA, u.å.-c). Et maksimum ett sted er ikke høyden langs hele kysten. Et rev, en bukt, en elvemunning, undersjøiske former og hvor bratt stranden er, endrer størrelse, utseende og skade (NOAA, u.å.-c). En liten, ufarlig bølge ett sted kan være voldsom noen kilometer unna.
 
 Tsunamien kommer som en serie av topper og daler. Hvis dalen kommer først, kan havet trekke seg unormalt tilbake og legge bunnen bar før vannet stiger (NOAA, u.å.-c). Det er et naturlig tegn, men det kommer ikke alltid først. Noen steder kommer toppen først, og da er tilbaketrekking et dårlig tegn å vente på.
@@ -111,10 +123,6 @@ Tsunamien kommer som en serie av topper og daler. Hvis dalen kommer først, kan 
 Den første bølgen trenger ikke være den siste, den største eller den mest ødeleggende. Store tsunamier kan vare i dager noen steder. Tiden mellom toppene varierer, typisk fra om lag fem minutter til to timer, og farlige strømmer kan vare i dager (NOAA, u.å.-c). Derfor er faren ikke over når den første bølgen har trukket seg tilbake. Lang bølgelengde gir også mer vann som kan gå inn over land enn en kort vindbølge. En stor tsunami kan oversvømme lavt land mer enn om lag 1,6 km inn fra kysten (NOAA, u.å.-c).
 
 Skadene kommer ikke bare av vannhøyden. Strømmen eroderer, og drivgods som båter, trestammer og bygningsdeler treffer det som står i veien. Fjordform, havnedyp og terreng bak strandlinjen avgjør hvor vannet samles.
-
-```widget
-TsunamiM3
-```
 
 ```widget
 SjekkTsunami3
@@ -152,7 +160,7 @@ Storeggaskredet gikk i Norskehavet for ca. 8150 år siden. Volumet er vurdert ti
 
 Dette var et undersjøisk skred i sedimenter, ikke en plategrense som «røk». Skredet utviklet seg bakover, retrogressivt: da en del gled ut, ble skråningen bak ustabil og gled etter. En teori er at et jordskjelv utløste den første utglidingen. Det er en hypotese, ikke et observert faktum (SNL, u.å.). Storegga er derfor ikke et bevis på at Norge ligger på en aktiv plategrense.
 
-Når vi leser Storegga, må tre lag holdes fra hverandre. *Feltspor* er avsetninger geologene finner på land, lagt igjen av vannet den gangen. *Rekonstruert kilde* er forskernes bilde av hvor skredet løsnet og hvor stort det var, bygget ut fra havbunnen og avsetningene. *Modellert spredning* er en beregning av hvordan en bølge kan ha beveget seg, gitt den kilden. Et spor i bakken er ikke det samme som en kartlagt bølgehøyde langs hele kysten, og en modell er ikke det samme som en måling fra 8150 år siden. Havnivået var også et annet. Høydene 3–20 m er målt mot datidens havnivå, ikke mot dagens (SNL, u.å.). Ankomsttid i et idealisert hav, der land stopper den rette linjen, står i modellen ved de to globale katastrofene. Den regner ikke ut en bølgehøyde for Storegga.
+Når vi leser Storegga, må tre lag holdes fra hverandre. *Feltspor* er avsetninger geologene finner på land, lagt igjen av vannet den gangen. *Rekonstruert kilde* er forskernes bilde av hvor skredet løsnet og hvor stort det var, bygget ut fra havbunnen og avsetningene. *Modellert spredning* er en beregning av hvordan en bølge kan ha beveget seg, gitt den kilden. Et spor i bakken er ikke det samme som en kartlagt bølgehøyde langs hele kysten, og en modell er ikke det samme som en måling fra 8150 år siden. Havnivået var også et annet. Høydene 3–20 m er målt mot datidens havnivå, ikke mot dagens (SNL, u.å.). Modellen ved de to globale katastrofene viser idealisert gangtid over et hav med konstant dyp, der bølgeveien må gå rundt land. Den gir ingen bølgehøyde, verken for de to katastrofene eller for Storegga.
 
 ```widget
 SjekkTsunami4
@@ -172,7 +180,7 @@ To hendelser i dette århundret viser at magnitude ikke er hele historien. NOAA 
 
 Indiahavet 2004: kilden lå ved Sumatra. Bølgen spredte seg mellom mange land rundt havet. NOAA skriver at tsunamien, ikke skjelvet, sto for mesteparten av skadene, og at de ble observert i 17 land. Et offisielt varslingssystem for Indiahavet fantes ikke, og kunnskapen om tsunami var begrenset. Det er en del av forklaringen på tapene (NOAA, u.å.-d). NOAA oppgir omtrent 230 000 døde. Tallet kan omfatte dødsfall fra skjelvet, og det skal ikke uten videre sammenlignes med andre kilders tall for døde og savnede (NOAA, u.å.-d). Etter katastrofen ble nye regionale varslingssystemer og varslingssentre utviklet i Indiahavet (NOAA, u.å.-e).
 
-Tohoku 2011: også dette var en stor subduksjonshendelse. NOAA skriver at jordskjelvet og tsunamien til sammen tok over 18 000 liv i Japan, og at de fleste dødsfallene og mesteparten av skadene skyldtes tsunamien. Tabelltallet i samme kilde kan inkludere skjelvdødsfall (NOAA, u.å.-d). I jordskjelvkapitlet står et annet tall, om døde eller savnede, fra en annen kilde. De to tallene skal ikke legges oppå hverandre som om de målte det samme.
+Tohoku 2011: også dette var en stor subduksjonshendelse. NOAA skriver at jordskjelvet og tsunamien til sammen tok over 18 000 liv i Japan, og at de fleste dødsfallene og mesteparten av skadene skyldtes tsunamien. Tabelltallet i samme kilde kan inkludere skjelvdødsfall (NOAA, u.å.-d). Begge kapitlene bruker dette NOAA-tallet.
 
 Utenfor Japan var det svært få dødsfall. NOAA forklarer det med varsler i tide og med lang avstand fra kilden, som ga tid til evakuering (NOAA, u.å.-d). Nær kilden var beskyttelsen likevel ikke nok til å fjerne restfaren. Lokal topografi og hvor folk og anlegg lå, avgjorde mye av skaden. Et varsel og et fysisk vern senker risiko, men de gjør ikke faren lik null.
 
@@ -334,7 +342,7 @@ Perioden er omtrent den samme når bølgen går inn på grunnere vann. Farten sy
 
 Inngangsspørsmålet var hvordan en nesten usynlig bølge ute på havet kan oversvømme land. Svaret er at bølgen er lang og involverer hele vannsøylen. Den går fort på dypt vann og er lav der. Når dypet minker, samles energien, og vannet kan gå langt inn over land. Ett tall fra ett sted forteller ikke hele historien.
 
-Hvordan selve jordskjelvet oppstår og måles, står i [Jordskjelv og jordas indre](/geofag-1/jordskjelv). Hvordan skred løsner, står i [Skred](/geofag-1/skred).
+Hvordan selve jordskjelvet oppstår og måles, står i [Jordskjelv og jordas indre](/geofag-1/jordskjelv#hva-er-et-jordskjelv). Hvordan skred løsner, står i [Skred](/geofag-1/skred).
 
 ## Test deg selv
 

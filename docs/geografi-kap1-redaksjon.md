@@ -1,5 +1,7 @@
 # Geografi kapittel 1 – redaksjonelt vedlegg til PR B
 
+Oppdatert figurstatus står i `geografi-kap1-mats-valg.md` (Mats sine valg) og `geografi-kap1-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 Dette er ikke elevtekst og lastes ikke av nettstedet. Fagtekst: `src/lib/posts/geo-verktoy.md`.
 
 ## Leveransen
@@ -38,7 +40,7 @@ Alle 16 kilder i `kilder-geografi.ts` er åpnet med WebFetch 6. november 2026 (E
 | Kartets utvalg, målestokk, koordinater, ekvidistanse | Kartverket: Kva er eit kart? (2023). |
 | Karttyper | Kartverket: Karttypar (2020). |
 | Projeksjonenes egenskaper | Rød: Kartprojeksjon (2026). |
-| Symboler, skala, rammeinformasjon og digital zoom | Hunt mfl.: Map (2026), National Geographic Society. |
+| Symboler, skala, rammeinformasjon og digital zoom | Hunt et al.: Map (2026), National Geographic Society. |
 | Kartogram og proporsjonale sirkler | Mæhlum: Kartogram (2025). |
 | Mentale kart | Sahr: Mental map (Spektrum). Forfatter bekreftet gjennom signaturen WDS og sidens forfatteroversikt. |
 | Fjernmåling, vektor/raster og kartlag | USGS: GIS educational resources (2025). |

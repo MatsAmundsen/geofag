@@ -1,11 +1,36 @@
 @import "tailwindcss";
 
+/* Lokal skrifttype med samme bredde som webfonten, så kald lasting ikke flytter meny eller brødtekst. */
+@font-face {
+  font-family: "Source Sans Fallback";
+  src: local("Liberation Sans"), local("Arial"), local("Nimbus Sans");
+  size-adjust: 92.5%;
+  ascent-override: 90%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Liberation Serif"), local("Georgia"), local("Times New Roman");
+  size-adjust: 108%;
+  ascent-override: 80%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: optional;
+}
+
 /* Variant «lys:» gjelder når kapittelsidene står i lyst tema (standard). Mørkt tema = data-tema="mork" på <html>. */
 @custom-variant lys (:root:not([data-tema="mork"]) &);
 
 @theme {
-  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", "Source Sans Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Fraunces Fallback", ui-serif, Georgia, "Times New Roman", serif;
 
   --color-background: #0b1014;
   --color-foreground: #e8eef2;
@@ -59,6 +84,209 @@
     html {
       scroll-padding-top: calc(var(--site-header-h, 10rem) + 0.75rem);
     }
+  }
+
+  /* Plass til tsunami-modellene før JS-en er lastet. Høyden er den ferdige lab-boksen.
+     Fra 64rem står notatkortene ved siden av hverandre. Den enda lavere høyden gjelder
+     bare når artikkelspalten selv er bred, så plakaten ikke får kapittelhøyden. */
+  .tsunami-plass[data-modell="m1"] { height: 1865px; }
+  .tsunami-plass[data-modell="m2"] { height: 1948px; }
+  .tsunami-plass[data-modell="m3"] { height: 1960px; }
+  .tsunami-plass[data-modell="m4"] { height: 1400px; }
+  .tsunami-plass[data-modell="m5"] { height: 1739px; }
+  .tsunami-plass[data-modell="m6"] { height: 1713px; }
+  .tsunami-plass[data-modell="m7"] { height: 2092px; }
+
+  @media (min-width: 360px) {
+    .tsunami-plass[data-modell="m1"] { height: 1797px; }
+    .tsunami-plass[data-modell="m2"] { height: 1805px; }
+    .tsunami-plass[data-modell="m3"] { height: 1843px; }
+    .tsunami-plass[data-modell="m4"] { height: 1283px; }
+    .tsunami-plass[data-modell="m5"] { height: 1640px; }
+    .tsunami-plass[data-modell="m6"] { height: 1535px; }
+    .tsunami-plass[data-modell="m7"] { height: 1940px; }
+  }
+
+  @media (min-width: 390px) {
+    .tsunami-plass[data-modell="m1"] { height: 1750px; }
+    .tsunami-plass[data-modell="m2"] { height: 1759px; }
+    .tsunami-plass[data-modell="m3"] { height: 1796px; }
+    .tsunami-plass[data-modell="m4"] { height: 1261px; }
+    .tsunami-plass[data-modell="m5"] { height: 1573px; }
+    .tsunami-plass[data-modell="m6"] { height: 1493px; }
+    .tsunami-plass[data-modell="m7"] { height: 1897px; }
+  }
+
+  @media (min-width: 40rem) {
+    .tsunami-plass[data-modell="m1"] { height: 1400px; }
+    .tsunami-plass[data-modell="m2"] { height: 1179px; }
+    .tsunami-plass[data-modell="m3"] { height: 1225px; }
+    .tsunami-plass[data-modell="m4"] { height: 922px; }
+    .tsunami-plass[data-modell="m5"] { height: 1502px; }
+    .tsunami-plass[data-modell="m6"] { height: 1198px; }
+    .tsunami-plass[data-modell="m7"] { height: 1385px; }
+  }
+
+  @media (min-width: 64rem) {
+    .tsunami-plass[data-modell="m1"] { height: 1091px; }
+    .tsunami-plass[data-modell="m2"] { height: 1164px; }
+    .tsunami-plass[data-modell="m3"] { height: 1210px; }
+    .tsunami-plass[data-modell="m4"] { height: 884px; }
+    .tsunami-plass[data-modell="m5"] { height: 1510px; }
+    .tsunami-plass[data-modell="m6"] { height: 1160px; }
+    .tsunami-plass[data-modell="m7"] { height: 1415px; }
+  }
+
+  /* Jordskjelv-figurene. Målt ferdig boks. Diagrammene har et rullende minstemål, så høyden følger ikke beholderens sideforhold. */
+  .kapittel-plass[data-widget="HyposenterForklaring"] { height: 217px; }
+  .kapittel-plass[data-widget="ElasticRebound"] { height: 791px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 760px; }
+  .kapittel-plass[data-widget="BoundaryQuakes"] { height: 367px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 726px; }
+  .kapittel-plass[data-widget="Partikkelbolger"] { height: 818px; }
+  .kapittel-plass[data-widget="Bolgegenerering"] { height: 1624px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 644px; }
+  .kapittel-plass[data-widget="Seismogram"] { height: 426px; }
+  .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 742px; }
+  .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 446px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 748px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 710px; }
+  .kapittel-plass[data-widget="JordasBolger"] { height: 938px; }
+  .kapittel-plass[data-widget="IntraplateForklaring"] { height: 217px; }
+  .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 432px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 750px; }
+  .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2704px; }
+
+  @media (min-width: 360px) {
+    .kapittel-plass[data-widget="HyposenterForklaring"] { height: 217px; }
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 791px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 700px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 364px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 704px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 776px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 1542px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 608px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 406px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 720px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 428px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 728px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 688px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 892px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 195px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 429px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 706px; }
+    .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2562px; }
+  }
+
+  @media (min-width: 390px) {
+    .kapittel-plass[data-widget="HyposenterForklaring"] { height: 195px; }
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 726px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 662px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 356px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 662px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 776px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 1493px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 608px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 399px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 700px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 408px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 708px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 648px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 859px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 195px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 402px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 686px; }
+    .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2484px; }
+  }
+
+  @media (min-width: 48rem) {
+    .kapittel-plass[data-widget="HyposenterForklaring"] { height: 126px; }
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 618px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 594px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 491px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 594px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 675px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 984px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 594px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 555px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 594px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 380px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 612px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 594px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 701px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 126px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 515px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 612px; }
+    .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2060px; }
+  }
+
+  /* Plakaten er smalere enn kapittelsiden ved samme vindu. Den brede høyden gjelder først når spalten faktisk er bred. */
+  article {
+    container-name: kapittel-spalte;
+    container-type: inline-size;
+  }
+
+  @container kapittel-spalte (min-width: 50rem) {
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 672px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 535px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 713px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 1046px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 581px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 594px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 761px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 104px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 559px; }
+    .tsunami-plass[data-modell="m1"] { height: 1048px; }
+    .tsunami-plass[data-modell="m2"] { height: 1078px; }
+    .tsunami-plass[data-modell="m3"] { height: 1144px; }
+    .tsunami-plass[data-modell="m4"] { height: 884px; }
+    .tsunami-plass[data-modell="m5"] { height: 1552px; }
+    .tsunami-plass[data-modell="m6"] { height: 1093px; }
+    .tsunami-plass[data-modell="m7"] { height: 1330px; }
+  }
+
+  /* Quizene er tekst. Høyden er målt ferdig boks ved 320, 390, 768 og 1280. */
+  .quiz-plass[data-quiz="SjekkTsunami1"] { height: 762px; }
+  .quiz-plass[data-quiz="SjekkTsunami2"] { height: 762px; }
+  .quiz-plass[data-quiz="SjekkTsunami3"] { height: 700px; }
+  .quiz-plass[data-quiz="SjekkTsunami4"] { height: 428px; }
+  .quiz-plass[data-quiz="SjekkTsunami5"] { height: 492px; }
+  .quiz-plass[data-quiz="SjekkTsunami6"] { height: 742px; }
+  .quiz-plass[data-quiz="QuizTsunami"] { height: 1868px; }
+
+  @media (min-width: 360px) {
+    .quiz-plass[data-quiz="SjekkTsunami1"] { height: 666px; }
+    .quiz-plass[data-quiz="SjekkTsunami2"] { height: 666px; }
+    .quiz-plass[data-quiz="SjekkTsunami3"] { height: 640px; }
+    .quiz-plass[data-quiz="SjekkTsunami4"] { height: 390px; }
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 470px; }
+    .quiz-plass[data-quiz="SjekkTsunami6"] { height: 702px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1724px; }
+  }
+
+  @media (min-width: 390px) {
+    .quiz-plass[data-quiz="SjekkTsunami1"] { height: 648px; }
+    .quiz-plass[data-quiz="SjekkTsunami2"] { height: 648px; }
+    .quiz-plass[data-quiz="SjekkTsunami3"] { height: 622px; }
+    .quiz-plass[data-quiz="SjekkTsunami4"] { height: 390px; }
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 470px; }
+    .quiz-plass[data-quiz="SjekkTsunami6"] { height: 702px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1624px; }
+  }
+
+  @media (min-width: 40rem) {
+    .quiz-plass[data-quiz="SjekkTsunami1"] { height: 594px; }
+    .quiz-plass[data-quiz="SjekkTsunami2"] { height: 594px; }
+    .quiz-plass[data-quiz="SjekkTsunami3"] { height: 594px; }
+    .quiz-plass[data-quiz="SjekkTsunami4"] { height: 380px; }
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 402px; }
+    .quiz-plass[data-quiz="SjekkTsunami6"] { height: 594px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1262px; }
+  }
+
+  @container kapittel-spalte (min-width: 50rem) {
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 380px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1222px; }
   }
 
   body {
@@ -785,7 +1013,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 /* Reserve Geografi figure slots before the lazy registry or chapter arrives.
  * flow-root contains the figure's margins: fallback and loaded widget share a
  * persistent box. Per-widget responsive sizes follow below. */
-[data-widget^="GeoKart1"], [data-widget^="GeoFelt2"] {
+.geo-plass {
   display: flow-root;
   min-height: var(--geo-slot, 0px);
 }
@@ -793,116 +1021,116 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 /* Default-state heights measured on the real chapter pages, including contained
  * margins and 24 px wrapping slack. Keep these in sync with figure layout changes.
  * Only a min-height: keyboard interaction may grow the slot, never clip it. */
-  [data-widget="GeoKart1Monster"] { --geo-slot: 659px; }
-  [data-widget="GeoKart1Mercator"] { --geo-slot: 667px; }
-  [data-widget="GeoKart1GallPeters"] { --geo-slot: 837px; }
-  [data-widget="GeoKart1Gradnett"] { --geo-slot: 872px; }
-  [data-widget="GeoKart1Hoydekurver"] { --geo-slot: 892px; }
-  [data-widget="GeoKart1Temakart"] { --geo-slot: 746px; }
-  [data-widget="GeoKart1Mentalt"] { --geo-slot: 852px; }
-  [data-widget="GeoKart1BlueMarble"] { --geo-slot: 532px; }
-  [data-widget="GeoKart1GisLag"] { --geo-slot: 984px; }
-  [data-widget="GeoKart1Snow"] { --geo-slot: 994px; }
-  [data-widget="GeoKart1ToKart"] { --geo-slot: 768px; }
-  [data-widget="GeoFelt2Utvalg"] { --geo-slot: 690px; }
-  [data-widget="GeoFelt2Steg"] { --geo-slot: 776px; }
-  [data-widget="GeoFelt2Plan"] { --geo-slot: 1577px; }
-  [data-widget="GeoFelt2Metoder"] { --geo-slot: 1385px; }
-  [data-widget="GeoFelt2Feltlogg"] { --geo-slot: 2255px; }
-  [data-widget="GeoFelt2Punktkart"] { --geo-slot: 760px; }
-  [data-widget="GeoFelt2Sikkerhet"] { --geo-slot: 933px; }
-  [data-widget="GeoFelt2Diagram"] { --geo-slot: 616px; }
-  [data-widget="GeoFelt2Feilkilder"] { --geo-slot: 1545px; }
-  [data-widget="GeoFelt2Mikroklima"] { --geo-slot: 878px; }
+  .geo-plass[data-widget="GeoVerktoyMonster"] { --geo-slot: 659px; }
+  .geo-plass[data-widget="GeoVerktoyMercator"] { --geo-slot: 667px; }
+  .geo-plass[data-widget="GeoVerktoyGallPeters"] { --geo-slot: 837px; }
+  .geo-plass[data-widget="GeoVerktoyGradnett"] { --geo-slot: 872px; }
+  .geo-plass[data-widget="GeoVerktoyTopokart"] { --geo-slot: 892px; }
+  .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 746px; }
+  .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 852px; }
+  .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 532px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 984px; }
+  .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 994px; }
+  .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 768px; }
+  .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 690px; }
+  .geo-plass[data-widget="GeoFeltProsess"] { --geo-slot: 776px; }
+  .geo-plass[data-widget="GeoFeltPlanmal"] { --geo-slot: 1577px; }
+  .geo-plass[data-widget="GeoFeltMetodevalg"] { --geo-slot: 1385px; }
+  .geo-plass[data-widget="GeoFeltloggVg1"] { --geo-slot: 2255px; }
+  .geo-plass[data-widget="GeoFeltMaalepunkter"] { --geo-slot: 760px; }
+  .geo-plass[data-widget="GeoFeltEtikk"] { --geo-slot: 933px; }
+  .geo-plass[data-widget="GeoFeltBearbeiding"] { --geo-slot: 616px; }
+  .geo-plass[data-widget="GeoFeltFeilkilder"] { --geo-slot: 1545px; }
+  .geo-plass[data-widget="GeoFeltMikroklimaEget"] { --geo-slot: 878px; }
 @media (min-width: 390px) {
-  [data-widget="GeoKart1Monster"] { --geo-slot: 646px; }
-  [data-widget="GeoKart1Mercator"] { --geo-slot: 804px; }
-  [data-widget="GeoKart1GallPeters"] { --geo-slot: 899px; }
-  [data-widget="GeoKart1Gradnett"] { --geo-slot: 996px; }
-  [data-widget="GeoKart1Hoydekurver"] { --geo-slot: 1023px; }
-  [data-widget="GeoKart1Temakart"] { --geo-slot: 762px; }
-  [data-widget="GeoKart1Mentalt"] { --geo-slot: 1210px; }
-  [data-widget="GeoKart1BlueMarble"] { --geo-slot: 588px; }
-  [data-widget="GeoKart1GisLag"] { --geo-slot: 1110px; }
-  [data-widget="GeoKart1Snow"] { --geo-slot: 1438px; }
-  [data-widget="GeoKart1ToKart"] { --geo-slot: 762px; }
-  [data-widget="GeoFelt2Utvalg"] { --geo-slot: 765px; }
-  [data-widget="GeoFelt2Steg"] { --geo-slot: 803px; }
-  [data-widget="GeoFelt2Plan"] { --geo-slot: 1535px; }
-  [data-widget="GeoFelt2Metoder"] { --geo-slot: 1182px; }
-  [data-widget="GeoFelt2Feltlogg"] { --geo-slot: 2112px; }
-  [data-widget="GeoFelt2Punktkart"] { --geo-slot: 909px; }
-  [data-widget="GeoFelt2Sikkerhet"] { --geo-slot: 865px; }
-  [data-widget="GeoFelt2Diagram"] { --geo-slot: 554px; }
-  [data-widget="GeoFelt2Feilkilder"] { --geo-slot: 1423px; }
-  [data-widget="GeoFelt2Mikroklima"] { --geo-slot: 1179px; }
+  .geo-plass[data-widget="GeoVerktoyMonster"] { --geo-slot: 646px; }
+  .geo-plass[data-widget="GeoVerktoyMercator"] { --geo-slot: 804px; }
+  .geo-plass[data-widget="GeoVerktoyGallPeters"] { --geo-slot: 899px; }
+  .geo-plass[data-widget="GeoVerktoyGradnett"] { --geo-slot: 996px; }
+  .geo-plass[data-widget="GeoVerktoyTopokart"] { --geo-slot: 1023px; }
+  .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 762px; }
+  .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 1210px; }
+  .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 588px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1110px; }
+  .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 1438px; }
+  .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 762px; }
+  .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 765px; }
+  .geo-plass[data-widget="GeoFeltProsess"] { --geo-slot: 803px; }
+  .geo-plass[data-widget="GeoFeltPlanmal"] { --geo-slot: 1535px; }
+  .geo-plass[data-widget="GeoFeltMetodevalg"] { --geo-slot: 1182px; }
+  .geo-plass[data-widget="GeoFeltloggVg1"] { --geo-slot: 2112px; }
+  .geo-plass[data-widget="GeoFeltMaalepunkter"] { --geo-slot: 909px; }
+  .geo-plass[data-widget="GeoFeltEtikk"] { --geo-slot: 865px; }
+  .geo-plass[data-widget="GeoFeltBearbeiding"] { --geo-slot: 554px; }
+  .geo-plass[data-widget="GeoFeltFeilkilder"] { --geo-slot: 1423px; }
+  .geo-plass[data-widget="GeoFeltMikroklimaEget"] { --geo-slot: 1179px; }
 }
 @media (min-width: 640px) {
-  [data-widget="GeoKart1Monster"] { --geo-slot: 637px; }
-  [data-widget="GeoKart1Mercator"] { --geo-slot: 790px; }
-  [data-widget="GeoKart1GallPeters"] { --geo-slot: 885px; }
-  [data-widget="GeoKart1Gradnett"] { --geo-slot: 978px; }
-  [data-widget="GeoKart1Hoydekurver"] { --geo-slot: 1002px; }
-  [data-widget="GeoKart1Temakart"] { --geo-slot: 753px; }
-  [data-widget="GeoKart1Mentalt"] { --geo-slot: 539px; }
-  [data-widget="GeoKart1BlueMarble"] { --geo-slot: 585px; }
-  [data-widget="GeoKart1GisLag"] { --geo-slot: 1086px; }
-  [data-widget="GeoKart1Snow"] { --geo-slot: 659px; }
-  [data-widget="GeoKart1ToKart"] { --geo-slot: 753px; }
-  [data-widget="GeoFelt2Utvalg"] { --geo-slot: 753px; }
-  [data-widget="GeoFelt2Steg"] { --geo-slot: 794px; }
-  [data-widget="GeoFelt2Plan"] { --geo-slot: 906px; }
-  [data-widget="GeoFelt2Metoder"] { --geo-slot: 829px; }
-  [data-widget="GeoFelt2Feltlogg"] { --geo-slot: 1843px; }
-  [data-widget="GeoFelt2Punktkart"] { --geo-slot: 897px; }
-  [data-widget="GeoFelt2Sikkerhet"] { --geo-slot: 591px; }
-  [data-widget="GeoFelt2Diagram"] { --geo-slot: 489px; }
-  [data-widget="GeoFelt2Feilkilder"] { --geo-slot: 824px; }
-  [data-widget="GeoFelt2Mikroklima"] { --geo-slot: 541px; }
+  .geo-plass[data-widget="GeoVerktoyMonster"] { --geo-slot: 637px; }
+  .geo-plass[data-widget="GeoVerktoyMercator"] { --geo-slot: 790px; }
+  .geo-plass[data-widget="GeoVerktoyGallPeters"] { --geo-slot: 885px; }
+  .geo-plass[data-widget="GeoVerktoyGradnett"] { --geo-slot: 978px; }
+  .geo-plass[data-widget="GeoVerktoyTopokart"] { --geo-slot: 1002px; }
+  .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 753px; }
+  .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 539px; }
+  .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 585px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1086px; }
+  .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 659px; }
+  .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 753px; }
+  .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 753px; }
+  .geo-plass[data-widget="GeoFeltProsess"] { --geo-slot: 794px; }
+  .geo-plass[data-widget="GeoFeltPlanmal"] { --geo-slot: 906px; }
+  .geo-plass[data-widget="GeoFeltMetodevalg"] { --geo-slot: 829px; }
+  .geo-plass[data-widget="GeoFeltloggVg1"] { --geo-slot: 1843px; }
+  .geo-plass[data-widget="GeoFeltMaalepunkter"] { --geo-slot: 897px; }
+  .geo-plass[data-widget="GeoFeltEtikk"] { --geo-slot: 591px; }
+  .geo-plass[data-widget="GeoFeltBearbeiding"] { --geo-slot: 489px; }
+  .geo-plass[data-widget="GeoFeltFeilkilder"] { --geo-slot: 824px; }
+  .geo-plass[data-widget="GeoFeltMikroklimaEget"] { --geo-slot: 541px; }
 }
 @media (min-width: 768px) {
-  [data-widget="GeoKart1Monster"] { --geo-slot: 715px; }
-  [data-widget="GeoKart1Mercator"] { --geo-slot: 950px; }
-  [data-widget="GeoKart1GallPeters"] { --geo-slot: 1045px; }
-  [data-widget="GeoKart1Gradnett"] { --geo-slot: 1166px; }
-  [data-widget="GeoKart1Hoydekurver"] { --geo-slot: 1200px; }
-  [data-widget="GeoKart1Temakart"] { --geo-slot: 896px; }
-  [data-widget="GeoKart1Mentalt"] { --geo-slot: 610px; }
-  [data-widget="GeoKart1BlueMarble"] { --geo-slot: 674px; }
-  [data-widget="GeoKart1GisLag"] { --geo-slot: 1274px; }
-  [data-widget="GeoKart1Snow"] { --geo-slot: 765px; }
-  [data-widget="GeoKart1ToKart"] { --geo-slot: 896px; }
-  [data-widget="GeoFelt2Utvalg"] { --geo-slot: 910px; }
-  [data-widget="GeoFelt2Steg"] { --geo-slot: 932px; }
-  [data-widget="GeoFelt2Plan"] { --geo-slot: 886px; }
-  [data-widget="GeoFelt2Metoder"] { --geo-slot: 729px; }
-  [data-widget="GeoFelt2Feltlogg"] { --geo-slot: 1772px; }
-  [data-widget="GeoFelt2Punktkart"] { --geo-slot: 1054px; }
-  [data-widget="GeoFelt2Sikkerhet"] { --geo-slot: 551px; }
-  [data-widget="GeoFelt2Diagram"] { --geo-slot: 489px; }
-  [data-widget="GeoFelt2Feilkilder"] { --geo-slot: 717px; }
-  [data-widget="GeoFelt2Mikroklima"] { --geo-slot: 608px; }
+  .geo-plass[data-widget="GeoVerktoyMonster"] { --geo-slot: 715px; }
+  .geo-plass[data-widget="GeoVerktoyMercator"] { --geo-slot: 950px; }
+  .geo-plass[data-widget="GeoVerktoyGallPeters"] { --geo-slot: 1045px; }
+  .geo-plass[data-widget="GeoVerktoyGradnett"] { --geo-slot: 1166px; }
+  .geo-plass[data-widget="GeoVerktoyTopokart"] { --geo-slot: 1200px; }
+  .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 896px; }
+  .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 610px; }
+  .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 674px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1274px; }
+  .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 765px; }
+  .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 896px; }
+  .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 910px; }
+  .geo-plass[data-widget="GeoFeltProsess"] { --geo-slot: 932px; }
+  .geo-plass[data-widget="GeoFeltPlanmal"] { --geo-slot: 886px; }
+  .geo-plass[data-widget="GeoFeltMetodevalg"] { --geo-slot: 729px; }
+  .geo-plass[data-widget="GeoFeltloggVg1"] { --geo-slot: 1772px; }
+  .geo-plass[data-widget="GeoFeltMaalepunkter"] { --geo-slot: 1054px; }
+  .geo-plass[data-widget="GeoFeltEtikk"] { --geo-slot: 551px; }
+  .geo-plass[data-widget="GeoFeltBearbeiding"] { --geo-slot: 489px; }
+  .geo-plass[data-widget="GeoFeltFeilkilder"] { --geo-slot: 717px; }
+  .geo-plass[data-widget="GeoFeltMikroklimaEget"] { --geo-slot: 608px; }
 }
 @media (min-width: 1024px) {
-  [data-widget="GeoKart1Monster"] { --geo-slot: 715px; }
-  [data-widget="GeoKart1Mercator"] { --geo-slot: 950px; }
-  [data-widget="GeoKart1GallPeters"] { --geo-slot: 1045px; }
-  [data-widget="GeoKart1Gradnett"] { --geo-slot: 1166px; }
-  [data-widget="GeoKart1Hoydekurver"] { --geo-slot: 1200px; }
-  [data-widget="GeoKart1Temakart"] { --geo-slot: 896px; }
-  [data-widget="GeoKart1Mentalt"] { --geo-slot: 610px; }
-  [data-widget="GeoKart1BlueMarble"] { --geo-slot: 674px; }
-  [data-widget="GeoKart1GisLag"] { --geo-slot: 1274px; }
-  [data-widget="GeoKart1Snow"] { --geo-slot: 765px; }
-  [data-widget="GeoKart1ToKart"] { --geo-slot: 896px; }
-  [data-widget="GeoFelt2Utvalg"] { --geo-slot: 910px; }
-  [data-widget="GeoFelt2Steg"] { --geo-slot: 932px; }
-  [data-widget="GeoFelt2Plan"] { --geo-slot: 886px; }
-  [data-widget="GeoFelt2Metoder"] { --geo-slot: 639px; }
-  [data-widget="GeoFelt2Feltlogg"] { --geo-slot: 1282px; }
-  [data-widget="GeoFelt2Punktkart"] { --geo-slot: 1054px; }
-  [data-widget="GeoFelt2Sikkerhet"] { --geo-slot: 539px; }
-  [data-widget="GeoFelt2Diagram"] { --geo-slot: 466px; }
-  [data-widget="GeoFelt2Feilkilder"] { --geo-slot: 649px; }
-  [data-widget="GeoFelt2Mikroklima"] { --geo-slot: 608px; }
+  .geo-plass[data-widget="GeoVerktoyMonster"] { --geo-slot: 715px; }
+  .geo-plass[data-widget="GeoVerktoyMercator"] { --geo-slot: 950px; }
+  .geo-plass[data-widget="GeoVerktoyGallPeters"] { --geo-slot: 1045px; }
+  .geo-plass[data-widget="GeoVerktoyGradnett"] { --geo-slot: 1166px; }
+  .geo-plass[data-widget="GeoVerktoyTopokart"] { --geo-slot: 1200px; }
+  .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 896px; }
+  .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 610px; }
+  .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 674px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1274px; }
+  .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 765px; }
+  .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 896px; }
+  .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 910px; }
+  .geo-plass[data-widget="GeoFeltProsess"] { --geo-slot: 932px; }
+  .geo-plass[data-widget="GeoFeltPlanmal"] { --geo-slot: 886px; }
+  .geo-plass[data-widget="GeoFeltMetodevalg"] { --geo-slot: 639px; }
+  .geo-plass[data-widget="GeoFeltloggVg1"] { --geo-slot: 1282px; }
+  .geo-plass[data-widget="GeoFeltMaalepunkter"] { --geo-slot: 1054px; }
+  .geo-plass[data-widget="GeoFeltEtikk"] { --geo-slot: 539px; }
+  .geo-plass[data-widget="GeoFeltBearbeiding"] { --geo-slot: 466px; }
+  .geo-plass[data-widget="GeoFeltFeilkilder"] { --geo-slot: 649px; }
+  .geo-plass[data-widget="GeoFeltMikroklimaEget"] { --geo-slot: 608px; }
 }

@@ -1,0 +1,17 @@
+{
+  "kontroll": "2026-11-07",
+  "skjelv": {
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-01-01&endtime=2024-01-01&minmagnitude=6&orderby=time-asc",
+    "antall": 147,
+    "type": "alle earthquake",
+    "lisens": "USGS offentlige data, Public Domain i USA (US Government work)",
+    "sha256": "322c16b7f5bd29cf7acf12bcd8570ee7dc68481d7a2f6fa53b0add1e43ce32b0"
+  },
+  "plater": {
+    "url": "https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer/1",
+    "antallObjekter": 1175,
+    "grunnlag": "Bird (2003), via USGS-tjenesten",
+    "lisens": "USGS, Public Domain",
+    "sha256": "871acb1d685ce6e92781d37afbf31a252eacd0bbcab9a9ffba07427c2a86229f"
+  }
+}

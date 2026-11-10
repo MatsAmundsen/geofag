@@ -94,12 +94,12 @@ export function SkredKrefterDiagram() {
   );
 }
 
-export function SkredSonerDiagram() {
+export function SkredSonerDiagram({ caption }: { caption?: string } = {}) {
   return (
     <Diagram
       title="Løsneområde, transportsone og utløpsområde i en skråning med hus i utløpet"
       heading="Der skredet løsner, går og stopper"
-      caption="Et skred løsner høyt i skråningen, går nedover og stopper i et utløpsområde der terrenget blir slakere. Aktsomhetskartene bygger på regler for hvor skred kan løsne og hvor de kan havne. Hvor langt et skred kan gå, beregnes med utløpsmodeller (NVE, 2020b; NVE, 2023b)."
+      caption={caption ?? "Et skred løsner høyt i skråningen, går nedover og stopper i et utløpsområde der terrenget blir slakere. Aktsomhetskartene bygger på regler for hvor skred kan løsne og hvor de kan havne. Hvor langt et skred kan gå, beregnes med utløpsmodeller (NVE, 2020b; NVE, 2023b)."}
       viewBox="0 0 840 400"
     >
       {(m) => (
@@ -300,12 +300,69 @@ export function SkredTyperDiagram() {
   );
 }
 
-export function KvikkleireDiagram() {
+/** Samme figurverktøy og skråningsgeometri, men en enkel mikro–landskap-kjede for Vg1. */
+function GeografiKvikkleireDiagram({ caption }: { caption?: string }) {
+  return (
+    <Diagram
+      title="Fra marin leire og saltutvasking til mulig strukturkollaps og skred. Ikke all havleire blir kvikkleire."
+      heading="Figur 4.7 – Fra partikler til mulig skred"
+      caption={caption ?? "En åpen partikkelstruktur kan bli mindre stabil når salt vaskes ut. Leire med kvikke egenskaper kan miste styrke ved omrøring. Skred krever egnede grunnforhold og en utløsning. Skissen er ikke et farekart eller en naturtro avbildning av partiklene (NGU, u.å.-b)."}
+      viewBox="0 0 840 500"
+      scroll
+    >
+      {(m) => (
+        <>
+          {[
+            { x: 30, title: "1 Avsatt i saltvann", note: "Åpen struktur med porevann" },
+            { x: 310, title: "2 Salt kan vaskes ut", note: "Mulig svekkelse, ikke alltid kvikk" },
+            { x: 590, title: "3 Mulig sammenbrudd", note: "Omrøring kan gi stort styrketap" },
+          ].map((panel, index) => (
+            <g key={panel.title} transform={`translate(${panel.x} 30)`}>
+              <L x="0" y="20" size={14} weight={600}>{panel.title}</L>
+              <rect x="0" y="40" width="220" height="100" rx="8" fill={C.rain} opacity="0.1" />
+              {[0, 1, 2, 3, 4, 5].map((particle) => (
+                <ellipse
+                  key={particle}
+                  cx={35 + (particle % 3) * 70}
+                  cy={index === 2 ? 110 + Math.floor(particle / 3) * 12 : 67 + Math.floor(particle / 3) * 47}
+                  rx="22" ry="5"
+                  transform={index === 2 ? undefined : `rotate(${particle % 2 ? -45 : 45} ${35 + (particle % 3) * 70} ${67 + Math.floor(particle / 3) * 47})`}
+                  fill={C.sand}
+                />
+              ))}
+              <L x="0" y="167" size={11} fill={C.muted}>{panel.note}</L>
+            </g>
+          ))}
+          <Arrow d="M 260 120 h 36" marker={m.teal} color={C.teal} width={2} />
+          <Arrow d="M 540 120 h 36" marker={m.teal} color={C.teal} width={2} />
+          {[
+            { x: 30, collapse: false, title: "Landskap før en mulig utløsning" },
+            { x: 440, collapse: true, title: "Mulig skred når grunnen svikter" },
+          ].map((panel) => (
+            <g key={panel.title} transform={`translate(${panel.x} 250)`}>
+              <L x="0" y="20" size={14} weight={600}>{panel.title}</L>
+              <path
+                d={panel.collapse ? "M 0 75 L 180 75 L 190 135 L 350 135 L 350 180 L 0 180 Z" : "M 0 75 L 280 75 L 325 135 L 350 135 L 350 180 L 0 180 Z"}
+                fill="#7a8a86" opacity="0.6" stroke={C.dim} strokeWidth="1.4"
+              />
+              {panel.collapse && <path d="M 190 135 L 325 135" stroke={C.low} strokeWidth="12" opacity="0.5" />}
+              <path d="M 325 135 h 25" stroke={C.rain} strokeWidth="4" />
+              <L x="0" y="205" size={11} fill={C.muted}>{panel.collapse ? "Ikke et bestemt sted eller scenario" : "Terreng og grunnforhold må undersøkes"}</L>
+            </g>
+          ))}
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function KvikkleireDiagram({ caption, geografi = false }: { caption?: string; geografi?: boolean } = {}) {
+  if (geografi) return <GeografiKvikkleireDiagram caption={caption} />;
   return (
     <Diagram
       title="Retrogressivt kvikkleireskred i fire steg, fra erosjon i bekken til stor skredgrop"
       heading="Hvorfor kvikkleireskred spiser seg bakover"
-      caption="Steg 1: bekken graver i foten av skråningen, år etter år. Foten er det som holder massen over oppe. Steg 2: skråningen svikter, leira omrøres og flyter unna som en væske. Steg 3: da mister kanten bak sin støtte, og den svikter også. Steg 4: prosessen gjentar seg bakover, bort fra bekken og inn i flatt terreng. Det kalles retrogressivt, og det er derfor et kvikkleireskred kan ende langt fra der det startet — og hvorfor flatt land ikke er noen garanti."
+      caption={caption ?? "Steg 1: bekken graver i foten av skråningen, år etter år. Foten er det som holder massen over oppe. Steg 2: skråningen svikter, leira omrøres og flyter unna som en væske. Steg 3: da mister kanten bak sin støtte, og den svikter også. Steg 4: prosessen gjentar seg bakover, bort fra bekken og inn i flatt terreng. Det kalles retrogressivt, og det er derfor et kvikkleireskred kan ende langt fra der det startet — og hvorfor flatt land ikke er noen garanti."}
       viewBox="0 0 840 540"
     >
       {(m) => (
@@ -401,12 +458,12 @@ export function KvikkleireDiagram() {
   );
 }
 
-export function FjellskredBolgeDiagram() {
+export function FjellskredBolgeDiagram({ caption }: { caption?: string } = {}) {
   return (
     <Diagram
       title="Fjellskred i fjord som lager flodbølge med stor oppskyllingshøyde på motsatt side"
       heading="Fjellskred i fjord blir flodbølge"
-      caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde. Når bølgen når land, kan den skylle høyere opp enn bølgen var ute på fjorden. I Tafjord i 1934 nådde oppskyllingen ca. 60 m over havet (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
+      caption={caption ?? "Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde. Når bølgen når land, kan den skylle høyere opp enn bølgen var ute på fjorden. I Tafjord i 1934 nådde oppskyllingen ca. 60 m over havet (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."}
       viewBox="0 0 840 400"
     >
       {(m) => (
