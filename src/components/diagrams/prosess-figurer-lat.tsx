@@ -9,6 +9,7 @@
 import { lazy, Suspense, useEffect, useRef, useState, type ComponentType, type CSSProperties, type JSX } from "react";
 import { FigureFrame } from "@/components/figure-frame";
 import { BOTN_EGG_TIND_TEKST } from "./botn-egg-tind-tekst";
+import { BRE_ARBEID_TEKST } from "./bre-arbeid-tekst";
 import { DIAGENESE_TEKST } from "./diagenese-tekst";
 import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
@@ -304,6 +305,12 @@ export const IonBytteV2FigurLat = lat<FigurProps>(
 export const BotnEggTindFigurLat = lat<FigurProps>(
   { ...BOTN_EGG_TIND_TEKST, smal: [520, 790], bred: [960, 600], over: [194.5, 14], under: [493, 265] },
   () => import("./botn-egg-tind-figur").then((m) => m.BotnEggTindFigur),
+);
+
+/** Breen i arbeid (geografi kap. 4): SVG med tidslinje, lastes først når figuren nærmer seg skjermen. Målene er målt i Chrome ved 390, 700 og 1280 px. */
+export const BreArbeidFigurLat = lat<FigurProps>(
+  { ...BRE_ARBEID_TEKST, smal: [520, 738], bred: [960, 640], over: [204.5, 14], under: [320, 190] },
+  () => import("./bre-arbeid-figur").then((m) => m.BreArbeidFigur),
 );
 
 /** Gamle vidder, unge fjorder og strandflaten (landformer): terrenget tegnes i canvas på klienten, serveren viser bare plassholderen. */
