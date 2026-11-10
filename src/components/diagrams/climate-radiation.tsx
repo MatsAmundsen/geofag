@@ -41,8 +41,8 @@ export function EarthRadiationBudgetDiagram({ geografi = false }: { geografi?: b
           <L x="515" y="342" fill={C.muted} size={12}>Langbølget varmestråling</L>
 
           <Arrow d="M 540 230 C 580 270, 600 310, 600 350" marker={m.teal} color={C.teal} width={4.8} />
-          <L x="615" y="300" fill={C.teal} size={15} weight={700}>{geografi ? "Stråling tilbake" : "Drivhusgasser sender varme tilbake"}</L>
-          <L x="615" y="318" fill={C.muted} size={12}>De holder igjen varme nær bakken</L>
+          <L x={geografi ? 680 : 615} y="300" fill={C.teal} size={15} weight={700}>{geografi ? "Stråling tilbake" : "Drivhusgasser sender varme tilbake"}</L>
+          <L x={geografi ? 680 : 615} y="318" fill={C.muted} size={12}>De holder igjen varme nær bakken</L>
 
           <Arrow d="M 500 210 L 500 45" marker={m.rain} color={C.rain} width={4.2} />
           <L x="515" y="65" fill={C.rain} size={16} weight={700}>Ut i rommet</L>

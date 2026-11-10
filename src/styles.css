@@ -90,7 +90,7 @@
      Fra 64rem står notatkortene ved siden av hverandre. Den enda lavere høyden gjelder
      bare når artikkelspalten selv er bred, så plakaten ikke får kapittelhøyden. */
   .tsunami-plass[data-modell="m1"] { height: 1865px; }
-  .tsunami-plass[data-modell="m2"] { height: 1980px; }
+  .tsunami-plass[data-modell="m2"] { height: 1948px; }
   .tsunami-plass[data-modell="m3"] { height: 1960px; }
   .tsunami-plass[data-modell="m4"] { height: 1400px; }
   .tsunami-plass[data-modell="m5"] { height: 1739px; }
@@ -101,14 +101,14 @@
     .tsunami-plass[data-modell="m1"] { height: 1797px; }
     .tsunami-plass[data-modell="m2"] { height: 1805px; }
     .tsunami-plass[data-modell="m3"] { height: 1843px; }
-    .tsunami-plass[data-modell="m4"] { height: 1307px; }
-    .tsunami-plass[data-modell="m5"] { height: 1664px; }
-    .tsunami-plass[data-modell="m6"] { height: 1567px; }
-    .tsunami-plass[data-modell="m7"] { height: 1972px; }
+    .tsunami-plass[data-modell="m4"] { height: 1283px; }
+    .tsunami-plass[data-modell="m5"] { height: 1640px; }
+    .tsunami-plass[data-modell="m6"] { height: 1535px; }
+    .tsunami-plass[data-modell="m7"] { height: 1940px; }
   }
 
   @media (min-width: 390px) {
-    .tsunami-plass[data-modell="m1"] { height: 1774px; }
+    .tsunami-plass[data-modell="m1"] { height: 1750px; }
     .tsunami-plass[data-modell="m2"] { height: 1759px; }
     .tsunami-plass[data-modell="m3"] { height: 1796px; }
     .tsunami-plass[data-modell="m4"] { height: 1261px; }
@@ -252,7 +252,7 @@
   .quiz-plass[data-quiz="SjekkTsunami4"] { height: 428px; }
   .quiz-plass[data-quiz="SjekkTsunami5"] { height: 492px; }
   .quiz-plass[data-quiz="SjekkTsunami6"] { height: 742px; }
-  .quiz-plass[data-quiz="QuizTsunami"] { height: 1888px; }
+  .quiz-plass[data-quiz="QuizTsunami"] { height: 1868px; }
 
   @media (min-width: 360px) {
     .quiz-plass[data-quiz="SjekkTsunami1"] { height: 666px; }
@@ -261,7 +261,7 @@
     .quiz-plass[data-quiz="SjekkTsunami4"] { height: 390px; }
     .quiz-plass[data-quiz="SjekkTsunami5"] { height: 470px; }
     .quiz-plass[data-quiz="SjekkTsunami6"] { height: 702px; }
-    .quiz-plass[data-quiz="QuizTsunami"] { height: 1744px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1724px; }
   }
 
   @media (min-width: 390px) {
