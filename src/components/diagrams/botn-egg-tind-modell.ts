@@ -191,14 +191,35 @@ export function overflate(x: number, y: number, t: BotnTilstand) {
 
 /* ---------- farger ---------- */
 
-const BERG: Rgb = [128, 128, 118];
-const BERG_MORK: Rgb = [92, 86, 80];
-const LYNG: Rgb = [92, 106, 80];
-const SNO: Rgb = [236, 242, 246];
-const IS: Rgb = [188, 216, 232];
+const BERG: Rgb = [132, 129, 120];
+const BERG_LYS: Rgb = [164, 159, 146];
+const BERG_MORK: Rgb = [82, 78, 73];
+/** Lav og mose på slakt berg: grønngrå. */
+const LAV: Rgb = [120, 122, 100];
+const LYNG: Rgb = [80, 98, 66];
+const LYNG_LYS: Rgb = [112, 122, 82];
+/** Ur: løse blokker under bratte vegger, lysere og flekkete. */
+const UR: Rgb = [150, 144, 132];
+const SNO: Rgb = [238, 243, 247];
+const FIRN: Rgb = [232, 239, 244];
+const IS: Rgb = [184, 213, 231];
+const IS_BLA: Rgb = [132, 178, 210];
 const IS_KANT: Rgb = [150, 186, 208];
+const SPREKK: Rgb = [84, 126, 160];
+const SKITT: Rgb = [126, 124, 116];
 
 const VANN: Rgb = [58, 104, 132];
+
+/** Breen som ligger nærmest punktet (minst normalisert avstand i skålen), eller null. */
+function naermesteBre(x: number, y: number, t: BotnTilstand) {
+  let best: ReturnType<typeof skaal> | null = null;
+  for (let k = 0; k < 4; k++) {
+    if (t.is[k] <= 0.001) continue;
+    const s = skaal(k, x, y, t.grav[k]);
+    if (!best || s.e < best.e) best = s;
+  }
+  return best;
+}
 
 export function farge(x: number, y: number, z: number, helning: number, t: BotnTilstand): Rgb {
   const { fbm } = stoy();
@@ -208,14 +229,44 @@ export function farge(x: number, y: number, z: number, helning: number, t: BotnT
   }
   const T = isHoyde(x, y, t);
   const v = fbm(x / 18, y / 18, 2);
-  let c = blandRgb(BERG, BERG_MORK, smooth((helning - 0.9) / 1.2) * 0.85 + v * 0.12);
-  c = blandRgb(LYNG, c, smooth((z - 70) / 70) * 0.85 + 0.15);
-  // snø på slake, høye flater (glir av bratte vegger)
-  const snoAndel = smooth((z - 214) / 30) * (1 - smooth((helning - 0.45) / 0.35)) * t.sno;
-  c = blandRgb(c, SNO, snoAndel * (0.85 + v * 0.15));
+  // fin tekstur (sprekker og flekker i berget) og strøk nedover bratte flater
+  const fin = fbm(x / 11, y / 11, 3);
+  const strok = fbm(x / 7, y / 26, 2);
+  const bratt = smooth((helning - 0.8) / 1.0);
+  let c = blandRgb(BERG, BERG_MORK, bratt * 0.72 + v * 0.14 + strok * 0.2 * bratt);
+  c = fin > 0 ? blandRgb(c, BERG_LYS, fin * 0.6 * (1 - bratt * 0.4)) : blandRgb(c, BERG_MORK, -fin * 0.45);
+  // benker og lag i bratte vegger: mørkere bånd som følger høyden
+  const benk = smooth((Math.sin(z * 0.32 + v * 4 + strok * 2) - 0.55) / 0.4);
+  c = blandRgb(c, BERG_MORK, benk * bratt * 0.45);
+  // lav på slakt berg i midtre høyder
+  c = blandRgb(c, LAV, (1 - bratt) * smooth((210 - z) / 70) * 0.32);
+  // ur ved foten av bakveggene, der løse blokker samler seg
+  for (let k = 0; k < 4; k++) {
+    const a = t.grav[k];
+    if (a < 0.35) continue;
+    const s = skaal(k, x, y, a);
+    if (s.dl >= -0.15 || s.e < 0.5 || s.e > 1.12) continue;
+    const ur = (1 - Math.abs(s.e - 0.82) / 0.3) * smooth((a - 0.35) / 0.3) * (1 - bratt * 0.75);
+    if (ur > 0) c = blandRgb(c, blandRgb(UR, BERG_MORK, clamp(0.35 - fin * 0.9)), ur * 0.8);
+  }
+  // lyng og gras lavt, i flekker, ikke på bratte flater
+  const veg = smooth((135 - z) / 60 + v * 0.6) * (1 - smooth((helning - 0.6) / 0.45));
+  c = blandRgb(c, blandRgb(LYNG, LYNG_LYS, fin * 0.5 + 0.5), veg * 0.88);
+  // snø på slake, høye flater (glir av bratte vegger), i flekker
+  const snoAndel = smooth((z - 206) / 34) * (1 - smooth((helning - 0.48) / 0.38)) * t.sno * smooth(0.55 + v * 1.5 + fin * 0.5);
+  c = blandRgb(c, SNO, snoAndel * (0.86 + fin * 0.12));
   if (T > 0.05) {
-    // ny bre: snøflekk først, så is (blåhvit) med mørkere kant
+    // ny bre: snøflekk først, så is: firn øverst, blåere nedover, sprekker ved terskelen og skitten kant
     let isF = blandRgb(IS_KANT, IS, smooth(T / 14));
+    const s = naermesteBre(x, y, t);
+    if (s) {
+      isF = blandRgb(isF, FIRN, smooth((-s.dl - 0.05) / 0.6) * 0.85);
+      isF = blandRgb(isF, IS_BLA, smooth((s.dl - 0.15) / 0.7) * 0.55);
+      const band = smooth((s.dl - 0.3) / 0.15) * (1 - smooth((s.dl - 1.05) / 0.2));
+      const sprekk = smooth((Math.sin(s.langs * 0.55) - 0.8) / 0.15) * band * smooth((T - 10) / 8);
+      isF = blandRgb(isF, SPREKK, sprekk * 0.75);
+    }
+    isF = blandRgb(isF, SKITT, (1 - smooth(T / 5)) * 0.45);
     isF = blandRgb(isF, SNO, breerVed(x, y, t, T));
     c = blandRgb(c, isF, smooth(T / 6));
   }
