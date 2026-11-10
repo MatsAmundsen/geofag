@@ -1048,7 +1048,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 811px; }
 .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 788px; }
 .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 604px; }
-.geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 904px; }
+.geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 897px; }
 .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 918px; }
 .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 688px; }
 .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 630px; }
@@ -1070,7 +1070,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 883px; }
   .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 829px; }
   .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 594px; }
-  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 881px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 872px; }
   .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 998px; }
   .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 597px; }
   .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 637px; }
@@ -1093,7 +1093,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 432px; }
   .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 455px; }
   .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 538px; }
-  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1002px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 988px; }
   .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 579px; }
   .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 669px; }
   .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 669px; }
@@ -1116,7 +1116,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 476px; }
   .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 479px; }
   .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 538px; }
-  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1111px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1093px; }
   .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 629px; }
   .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 752px; }
   .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 759px; }
@@ -1139,7 +1139,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   .geo-plass[data-widget="GeoVerktoyKartSammenlikning"] { --geo-slot: 540px; }
   .geo-plass[data-widget="GeoVerktoyMentalt"] { --geo-slot: 526px; }
   .geo-plass[data-widget="GeoVerktoyBlueMarble"] { --geo-slot: 495px; }
-  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1190px; }
+  .geo-plass[data-widget="GeoVerktoyGisLag"] { --geo-slot: 1169px; }
   .geo-plass[data-widget="GeoVerktoySnow"] { --geo-slot: 681px; }
   .geo-plass[data-widget="GeoVerktoyTemaValg"] { --geo-slot: 812px; }
   .geo-plass[data-widget="GeoFeltUtvalg"] { --geo-slot: 826px; }

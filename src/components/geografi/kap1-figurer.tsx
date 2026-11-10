@@ -165,14 +165,24 @@ function Gradnett({ aktiv }: { aktiv: number }) {
       <g fontSize={fs} fontWeight={600}>
         {lats.map((la) => (
           <g key={la}>
-            <rect x={4} y={ny(la) - 40} width={104} height={40} rx={6} fill="#111827" fillOpacity={0.78} />
-            <text x={12} y={ny(la) - 12} fill={la === 60 && aktiv >= 1 ? "#fdba74" : "#ffffff"}>{la}° N</text>
+            <rect x={14} y={ny(la) - 44} width={122} height={44} rx={6} fill="#111827" fillOpacity={0.78} />
+            <text x={22} y={ny(la) - 12} fill={la === 60 && aktiv >= 1 ? "#fdba74" : "#ffffff"}>{la}° N</text>
           </g>
         ))}
         {[0, 10, 20, 30].map((lo) => (
+          /* 30° Ø står venstrejustert mot kanten, så etiketten holder seg inne i viewBoxen også med større skrift ved 320 px. */
           <g key={lo}>
-            <rect x={nx(lo) + 4} y={6} width={lo === 0 ? 52 : 94} height={40} rx={6} fill="#111827" fillOpacity={0.78} />
-            <text x={nx(lo) + 10} y={34} fill={lo === 10 && aktiv >= 2 ? "#93c5fd" : "#ffffff"}>{lo === 0 ? "0°" : `${lo}° Ø`}</text>
+            {lo === 30 ? (
+              <>
+                <rect x={754} y={22} width={124} height={44} rx={6} fill="#111827" fillOpacity={0.78} />
+                <text x={868} y={54} textAnchor="end" fill="#ffffff">{`${lo}° Ø`}</text>
+              </>
+            ) : (
+              <>
+                <rect x={nx(lo) + 4} y={22} width={lo === 0 ? 60 : 112} height={44} rx={6} fill="#111827" fillOpacity={0.78} />
+                <text x={nx(lo) + 10} y={54} fill={lo === 10 && aktiv >= 2 ? "#93c5fd" : "#ffffff"}>{lo === 0 ? "0°" : `${lo}° Ø`}</text>
+              </>
+            )}
           </g>
         ))}
       </g>
@@ -241,7 +251,7 @@ function Skisse({ variant }: { variant: "a" | "b" }) {
       <path {...hand} strokeDasharray="4 7" d="M40 180 C120 190 190 150 236 74" />
       <text {...tekst} x={120} y={190}>snarvei</text>
       <rect {...hand} x={214} y={10} width={74} height={50} />
-      <text {...tekst} x={226} y={40}>SKOLEN</text>
+      <text {...tekst} x={251} y={41} textAnchor="middle">SKOLEN</text>
       <path {...hand} d="M20 196 l14 -14 l14 14 v14 h-28 z" />
       <text {...tekst} x={52} y={208}>hjem</text>
       <path {...hand} d="M100 104 l20 20 M120 104 l-20 20" stroke="#fca5a5" />
@@ -378,7 +388,7 @@ function GisModell() {
           ))}
         </fieldset>
         <svg
-          viewBox={modus === "stablet" ? "0 0 400 410" : "0 0 400 260"}
+          viewBox={modus === "stablet" ? "0 0 410 410" : "0 0 400 260"}
           className="h-auto w-full"
           role="img"
           aria-label={`${modus === "stablet" ? "Stablede" : "Samlede"} kartlag: ${synlige.map((l) => l.navn).join(", ") || "ingen lag valgt"}.`}
@@ -392,8 +402,12 @@ function GisModell() {
                     <rect width={200} height={200} fill="#1b262e" stroke={PRIM} strokeWidth={2.5} />
                     <GisInnhold id={l.id} />
                   </g>
-                  <text x={345} y={ty + 2} fontSize={15} fill={FG} fontWeight={600} textAnchor="middle">{l.navn}</text>
-                  <text x={345} y={ty + 20} fontSize={15} fill={MUTED} textAnchor="middle">{l.type}</text>
+                  {/* Typen brytes etter kolon, så etiketten får plass innenfor viewBoxen ved 320 px. Teksten er den samme. */}
+                  <text x={352} y={ty - 8} fontSize={15} fill={FG} fontWeight={600} textAnchor="middle">{l.navn}</text>
+                  <text x={352} y={ty + 11} fontSize={15} fill={MUTED} textAnchor="middle">
+                    <tspan x={352}>{l.type.slice(0, l.type.indexOf(":") + 1)}</tspan>
+                    <tspan x={352} dy={18}>{l.type.slice(l.type.indexOf(":") + 2)}</tspan>
+                  </text>
                 </g>
               );
             })
