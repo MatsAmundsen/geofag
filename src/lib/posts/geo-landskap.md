@@ -120,6 +120,8 @@ GeoLandskapBotn
 
 En **morene** kan bety både materiale avsatt av en bre og en landform av slikt materiale. En **endemorene** er en rygg av løsmasser ved en tidligere eller nåværende brefront (Røthe & Mangerud, u.å.). Morenemateriale kan inneholde svært ulike kornstørrelser, fra fint materiale til store blokker (Bryhni & Fossen, 2024). Vi må derfor ikke forvente at alt materiale fra en bre ser likt ut.
 
+I figur 4.5b følger vi breen steg for steg, fra frostforvitring, plukking og skuring til transport og avsetning av morener.
+
 ```widget
 GeoLandskapBreArbeid
 ```
