@@ -115,7 +115,7 @@ function WidgetFallback({ id }: { id: string }) {
 }
 
 /** Geografi kap. 1–2: figurene har målte høyder i styles.css (`.geo-plass`). */
-const GEO_PLASS = /^Geo(?:Verktoy|Felt)[A-Z]/;
+const GEO_PLASS = /^Geo(?:Verktoy|Felt)/;
 
 /**
  * Rammen står både mens registeret og figurmodulen lastes og etter at figuren er

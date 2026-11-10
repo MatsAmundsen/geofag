@@ -9,7 +9,7 @@ test('Geografi kap. 1–2 reserves all 21 lazy slots before the registry has loa
   const md = read('src/lib/posts/geo-verktoy.md') + read('src/lib/posts/geo-feltarbeid.md');
   const ids = [...md.matchAll(/^```widget\n(Geo(?:Verktoy|Felt)\w+)\n```$/gm)].map((m) => m[1]);
   assert.equal(new Set(ids).size, 21);
-  assert.match(body, /const GEO_PLASS = \/\^Geo\(\?:Verktoy\|Felt\)\[A-Z\]\//);
+  assert.match(body, /const GEO_PLASS = \/\^Geo\(\?:Verktoy\|Felt\)\//);
   assert.match(body, /<div className="geo-plass" data-widget=\{id\}>/);
   assert.match(css, /\.geo-plass \{\s+display: flow-root;\s+min-height: var\(--geo-slot/);
   for (const id of ids) {
