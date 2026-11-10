@@ -17,6 +17,8 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
   const next =
     index >= 0 && index < GEOGRAFI_KAPITLER.length - 1 ? GEOGRAFI_KAPITLER[index + 1] : undefined;
   const kilder = KILDER_GEOGRAFI[kapittel.slug] ?? [];
+  // Kap. 1–2 har målte figurreserver og reserverer også teksthøyden (CLS).
+  const reserverTekst = kapittel.path === "verktoy" || kapittel.path === "feltarbeid";
 
   const [post, setPost] = useState<Post | null>(null);
   useEffect(() => {
@@ -103,10 +105,14 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
             </>
           ) : null}
 
-          {kapittel.tekstKlar || post?.bodyMarkdown ? (
-            // Keep sources/navigation below the viewport while the CMS text loads.
-            // Reserving figure slots alone cannot prevent this earlier fetch shift.
-            <section className="prose-geofag mt-10 min-h-dvh" aria-busy={!post}>
+          {(reserverTekst && kapittel.tekstKlar) || post?.bodyMarkdown ? (
+            // Kap. 1–2: hold kilder og navigasjon under skjermkanten mens CMS-teksten
+            // lastes. Figurreservene alene hindrer ikke dette tidligere hoppet (CLS 0,25
+            // ved 1280 uten). Andre kapitler er som i main.
+            <section
+              className={reserverTekst ? "prose-geofag mt-10 min-h-dvh" : "prose-geofag mt-10"}
+              aria-busy={reserverTekst ? !post : undefined}
+            >
               {post?.bodyMarkdown ? <PosterBody>{post.bodyMarkdown}</PosterBody> : null}
             </section>
           ) : null}

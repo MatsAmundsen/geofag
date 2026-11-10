@@ -360,7 +360,7 @@ const GeografiFeltlogg = lazy(() => import("@/components/geografi/feltlogg-vg1")
 const GeografiKap1Figur = lazy(() => import("@/components/geografi/kap1-figurer").then((m) => ({ default: m.GeografiKap1Figur })));
 const GeografiKap2Figur = lazy(() => import("@/components/geografi/kap2-figurer").then((m) => ({ default: m.GeografiKap2Figur })));
 const GEOGRAFI_KAP1_IDER = [
-  "GeoVerktoyMonster", "GeoVerktoyMercator", "GeoVerktoyGallPeters", "GeoVerktoyGradnett", "GeoVerktoyKartSammenlikning",
+  "GeoVerktoyMonster", "GeoVerktoyMercator", "GeoVerktoyGallPeters", "GeoVerktoyGradnett",
   "GeoVerktoyMentalt", "GeoVerktoyBlueMarble", "GeoVerktoyGisLag", "GeoVerktoySnow", "GeoVerktoyTemaValg",
 ] as const;
 const GEOGRAFI_KAP2_IDER = [
@@ -371,6 +371,8 @@ const GEOGRAFI_KAP1_KAP2: Record<string, () => JSX.Element> = Object.fromEntries
   ...GEOGRAFI_KAP1_IDER.map((id) => [id, () => <GeografiKap1Figur id={id} />]),
   ...GEOGRAFI_KAP2_IDER.map((id) => [id, () => <GeografiKap2Figur id={id} />]),
 ]);
+
+const GeografiKartSammenlikningSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiKartSammenlikning})));
 
 const GeografiTopokart = lazy(() => import("@/components/geografi/projeksjon-figurer").then((m) => ({ default: m.GeografiTopokart })));
 
@@ -507,6 +509,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
   GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
   ...GEOGRAFI_KAP1_KAP2,
+  GeoVerktoyKartSammenlikning: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiKartSammenlikningSkjultLat /></Suspense>,
   GeoFeltloggVg1: () => <GeografiFeltlogg />,
   GeoVerktoyTopokart: () => <GeografiTopokart />,
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).

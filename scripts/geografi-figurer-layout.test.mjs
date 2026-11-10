@@ -11,7 +11,7 @@ test('Geografi kap. 1–2 reserves all 21 lazy slots before the registry has loa
   assert.equal(new Set(ids).size, 21);
   assert.match(body, /const GEO_PLASS = \/\^Geo\(\?:Verktoy\|Felt\)\//);
   assert.match(body, /<div className="geo-plass" data-widget=\{id\}>/);
-  assert.match(css, /\.geo-plass \{\s+display: flow-root;\s+min-height: var\(--geo-slot/);
+  assert.match(css, /\.geo-plass \{\s+display: flow-root;\s+margin-block: 2rem;\s+min-height: var\(--geo-slot/);
   for (const id of ids) {
     assert.equal(css.split(`.geo-plass[data-widget="${id}"]`).length - 1, 5, id);
   }
@@ -34,8 +34,22 @@ test('pattern map has a keyboard-native full-size link', () => {
 });
 
 
-test('ready chapter reserves text space before the CMS response', () => {
+test('only chapters 1–2 reserve text space before the CMS response', () => {
   const source = read('src/components/geografi/kapittel-side.tsx');
-  assert.match(source, /kapittel.tekstKlar \|\| post\?\.bodyMarkdown \? \(/);
-  assert.match(source, /<section className="prose-geofag mt-10 min-h-dvh" aria-busy=\{!post\}>/);
+  assert.match(source, /const reserverTekst = kapittel\.path === "verktoy" \|\| kapittel\.path === "feltarbeid";/);
+  assert.match(source, /\(reserverTekst && kapittel\.tekstKlar\) \|\| post\?\.bodyMarkdown \? \(/);
+  assert.match(source, /reserverTekst \? "prose-geofag mt-10 min-h-dvh" : "prose-geofag mt-10"/);
+  assert.equal(source.split('mt-10 min-h-dvh').length - 1, 1);
+});
+
+test('chapter 1.2 opens on Gall–Peters and source lines are 14 px', () => {
+  assert.match(read('src/components/geografi/kap1-figurer.tsx'), /label="Velg projeksjon"\n\s+start="gall"/);
+  assert.match(read('src/components/geografi/figur-kit.tsx'), /block text-sm text-muted-foreground">\{kilde\}/);
+});
+
+test('slots carry the margin and reserve exact heights', () => {
+  const css = read('src/styles.css');
+  assert.match(css, /\.geo-plass \{\s+display: flow-root;\s+margin-block: 2rem;/);
+  assert.match(css, /\.geo-plass > \* \{\s+margin-block: 0;/);
+  assert.match(css, /@media \(max-width: 389\.98px\) \{\s+\.geo-figur svg \[font-size="15"\] \{ font-size: 18px; \}/);
 });

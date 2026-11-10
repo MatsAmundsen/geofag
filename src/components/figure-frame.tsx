@@ -7,6 +7,7 @@ export function FigureFrame({
   action,
   children,
   scroll,
+  className,
 }: {
   heading?: string;
   caption: ReactNode;
@@ -14,6 +15,8 @@ export function FigureFrame({
   children: ReactNode;
   /** On narrow screens the graphic keeps a readable width and scrolls inside the frame. */
   scroll?: boolean;
+  /** Ekstra klasser på <figure>. */
+  className?: string;
 }) {
   const headingId = useId();
   const body = scroll ? (
@@ -29,7 +32,7 @@ export function FigureFrame({
     <div className="min-w-0 px-2 py-4 sm:px-5 sm:py-6">{children}</div>
   );
   return (
-    <figure className="my-8 max-w-full overflow-hidden rounded-xl border border-border bg-card">
+    <figure className={`my-8 max-w-full overflow-hidden rounded-xl border border-border bg-card${className ? ` ${className}` : ""}`}>
       {heading || action ? (
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-2.5 sm:px-6">
           {heading ? (

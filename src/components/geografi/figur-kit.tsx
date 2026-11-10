@@ -27,12 +27,13 @@ export function GeoFigur({
 }) {
   return (
     <FigureFrame
+      className="geo-figur"
       heading={heading}
       action={action}
       caption={
         <>
           {caption}
-          {kilde ? <span className="mt-1.5 block text-xs text-muted-foreground">{kilde}</span> : null}
+          {kilde ? <span className="mt-1.5 block text-sm text-muted-foreground">{kilde}</span> : null}
         </>
       }
     >
@@ -162,8 +163,8 @@ export function StegFigur({
 export type Lag = { id: string; navn: string; innhold: ReactNode; beskrivelse: ReactNode };
 
 /** Samme sted eller samme data i to–fire framstillinger. Brukeren bytter mellom dem. */
-export function LagSammenligning({ lag, label }: { lag: readonly Lag[]; label: string }) {
-  const [aktiv, setAktiv] = useState(lag[0].id);
+export function LagSammenligning({ lag, label, start }: { lag: readonly Lag[]; label: string; /** Laget som vises først. */ start?: string }) {
+  const [aktiv, setAktiv] = useState(start ?? lag[0].id);
   const valgt = lag.find((l) => l.id === aktiv) ?? lag[0];
   return (
     <div className="space-y-4">

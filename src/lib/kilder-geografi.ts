@@ -16,6 +16,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://archive.org/details/b28985266/page/n57/mode/2up",
     },
     {
+      prefix: "NASA. (2011, 13. april).",
+      italic: "Blue marble.",
+      suffix: " Visualisering fra 2002. NASA Goddard Space Flight Center.",
+      href: "https://science.nasa.gov/resource/blue-marble/",
+    },
+    {
       prefix: "Kartverket. (u.å.). ",
       italic: "Topografisk rasterkart WMTS",
       suffix: " [Kart]. Utsnitt ved Gjende, zoom 11. Fire fliser sammenstilt 6. november 2026. © Kartverket, CC BY 4.0.",
@@ -124,12 +130,6 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       italic: "Landsat 8",
       suffix: ". Hentet 6. november 2026.",
       href: "https://www.usgs.gov/landsat-missions/landsat-8",
-    },
-    {
-      prefix: "NASA Goddard Space Flight Center. (2002). ",
-      italic: "Blue Marble: Land surface, shallow water, and shaded topography",
-      suffix: " [Satellittmosaikk, MODIS/Terra]. NASA Visible Earth. Public domain. Figurkilde.",
-      href: "https://visibleearth.nasa.gov/images/57752/blue-marble-land-surface-shallow-water-and-shaded-topography",
     },
     {
       prefix: "Utdanningsdirektoratet. (u.å.). ",

@@ -142,16 +142,17 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
       "GeoVerktoySnow",
       "GeoVerktoyTemaValg",
     ]);
-    // Én implementasjon per plass: ti fra kap1-figurer, Topokart fra projeksjon-figurer.
+    // Én implementasjon per plass: ni fra kap1-figurer, Topokart (1.4) og Kartverket-sammenlikningen (1.5) fra main.
     const renderer = read("../components/poster-widget-renderer.tsx");
     const kap1 = read("../components/geografi/kap1-figurer.tsx");
-    for (const id of widgets.filter((id) => id !== "GeoVerktoyTopokart")) {
+    for (const id of widgets.filter((id) => id !== "GeoVerktoyTopokart" && id !== "GeoVerktoyKartSammenlikning")) {
       assert.ok(renderer.includes(`"${id}"`), id);
       assert.ok(kap1.includes(`  ${id}: `), id);
     }
     assert.match(renderer, /GeoVerktoyTopokart: \(\) => <GeografiTopokart \/>/);
     assert.match(renderer, /lazy\(\(\) => import\("@\/components\/geografi\/kap1-figurer"\)/);
-    assert.doesNotMatch(renderer, /verktoy-skjulte/);
+    assert.match(renderer, /GeoVerktoyKartSammenlikning: \(\) => <Suspense fallback=\{<p>Laster figur\.<\/p>\}><GeografiKartSammenlikningSkjultLat \/><\/Suspense>/);
+    assert.doesNotMatch(kap1, /GeoVerktoyKartSammenlikning/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap1-redaksjon|figur-1-/);
     assert.match(html, /John Snows kolerakart/);
@@ -161,8 +162,9 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
 
   it("har kilder, hypotetiske eksempler og korrekt avgrenset Snow-case", () => {
     const sources = read("kilder-geografi.ts").split('"geo-feltarbeid"')[0];
-    // NASA (2011, globusbildet) er byttet mot NASA Visible Earth (2002, flat mosaikk) som figur 1.7 bruker.
-    assert.match(sources, /visibleearth\.nasa\.gov\/images\/57752/);
+    // Figur 1.7 bruker globusbildet som NASA (2011)-kilden beskriver.
+    assert.match(sources, /science\.nasa\.gov\/resource\/blue-marble/);
+    assert.match(read("../components/geografi/kap1-figurer.tsx"), /blue-marble-2002\.webp/);
     assert.equal((sources.match(/href: /g) ?? []).length, 22);
     for (const domain of [
       "udir.no",

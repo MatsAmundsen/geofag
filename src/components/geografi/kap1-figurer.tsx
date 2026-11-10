@@ -110,6 +110,7 @@ function GallPeters() {
     >
       <LagSammenligning
         label="Velg projeksjon"
+        start="gall"
         lag={[
           {
             id: "mercator",
@@ -200,7 +201,7 @@ function Koordinater() {
   );
 }
 
-/* Felles oppdiktet område for 1.5 og 1.10 */
+/* Felles oppdiktet område for 1.10 */
 function Grunnlag({ dempet = false, children }: { dempet?: boolean; children?: ReactNode }) {
   const o = dempet ? 0.45 : 1;
   return (
@@ -213,73 +214,6 @@ function Grunnlag({ dempet = false, children }: { dempet?: boolean; children?: R
       <rect x={244} y={190} width={70} height={46} fill="#c7e1b6" stroke="#4d7c0f" opacity={o} />
       {children}
     </>
-  );
-}
-
-function Temakart() {
-  const topo = (
-    <svg viewBox="0 0 400 260" className="h-auto w-full rounded-lg" role="img" aria-label="Topografisk kart over et oppdiktet område med høydekurver, et vann, to veier, skolebygningen, en ballbane og skog.">
-      <Grunnlag>
-        {[0, 1, 2].map((i) => (
-          <ellipse key={i} cx={80} cy={70} rx={70 - i * 20} ry={46 - i * 13} fill="none" stroke="#9a5b1e" strokeWidth={1.5} />
-        ))}
-        {[[40, 120], [60, 140], [30, 150], [100, 120], [330, 140], [360, 130], [350, 220], [372, 236]].map(([x, y]) => (
-          <circle key={`${x}${y}`} cx={x} cy={y} r={6} fill="#4d7c0f" />
-        ))}
-        <text x={172} y={222} fontSize={15} fill="#111827">skole</text>
-        <text x={248} y={252} fontSize={15} fill="#111827">ballbane</text>
-        <text x={286} y={70} fontSize={15} fill="#1e3a8a">vann</text>
-      </Grunnlag>
-    </svg>
-  );
-  const tema = (
-    <svg viewBox="0 0 400 260" className="h-auto w-full rounded-lg" role="img" aria-label="Temakart over samme område. Bare arealbruk er vist med farger: bebyggelse rundt skolen, skog i vest og øst, jordbruk i nord og vann.">
-      <rect width="400" height="260" fill="#eef2e6" />
-      <path d="M0 100 L150 90 L170 160 L120 200 L0 210 Z" fill="#4d7c0f" />
-      <path d="M150 0 L262 0 L250 90 L150 90 Z" fill="#d9b44a" />
-      <path d="M140 160 L330 150 L340 260 L120 260 Z" fill="#b45309" />
-      <path d="M330 110 L400 100 L400 260 L340 260 Z" fill="#4d7c0f" />
-      <path d="M262 30 C300 16 352 30 360 64 C368 98 330 116 296 104 C268 94 244 52 262 30 Z" fill="#2563eb" />
-      <path d="M0 196 C80 186 150 150 214 150 C276 150 330 176 400 168" fill="none" stroke="#ffffff" strokeWidth={2} opacity={0.6} />
-    </svg>
-  );
-  return (
-    <GeoFigur
-      heading="Figur 1.5 – Samme sted: topografisk kart og temakart"
-      caption="Bytt mellom kartene. Det topografiske kartet viser mange slags trekk samtidig. Temakartet viser bare ett tema, arealbruk, og utelater resten. Hvilket kart ville du valgt for å planlegge en tur, og hvilket for å undersøke arealbruken?"
-      kilde="Egen skisse av geofag.com over et oppdiktet område."
-      action={<Merkelapp>Oppdiktet område</Merkelapp>}
-    >
-      <LagSammenligning
-        label="Velg karttype"
-        lag={[
-          {
-            id: "topo",
-            navn: "Topografisk kart",
-            innhold: topo,
-            beskrivelse: "Topografisk kart: høydekurver, vann, veier, bygning, ballbane og skog i samme bilde.",
-          },
-          {
-            id: "tema",
-            navn: "Temakart: arealbruk",
-            innhold: (
-              <>
-                {tema}
-                <Tegnforklaring
-                  poster={[
-                    { symbol: <Flate farge="#b45309" />, tekst: "Bebyggelse" },
-                    { symbol: <Flate farge="#4d7c0f" />, tekst: "Skog" },
-                    { symbol: <Flate farge="#d9b44a" />, tekst: "Jordbruk" },
-                    { symbol: <Flate farge="#2563eb" />, tekst: "Vann" },
-                  ]}
-                />
-              </>
-            ),
-            beskrivelse: "Temakart: bare arealbruk er tatt med. Høydekurver og navn er utelatt.",
-          },
-        ]}
-      />
-    </GeoFigur>
   );
 }
 
@@ -340,24 +274,27 @@ function MentaltKart() {
   );
 }
 
-/* 1.7 Blue Marble */
+/* 1.7 Blue Marble – samme bilde og kilde som main (NASA, 2011) */
 function BlueMarble() {
   return (
     <GeoFigur
       heading="Figur 1.7 – Jorda sett fra satellitt: en sammensatt mosaikk"
-      caption="Bildet ser ut som ett fotografi, men er satt sammen av mange satellittopptak tatt over flere måneder, slik at skyene er fjernet. Det er altså bearbeidede data. Hva kan bildet fortelle om vegetasjon og ørken, og hva kan det ikke fortelle?"
+      caption="Bildet ser ut som ett fotografi av jordkloden, men det er satt sammen av observasjoner fra flere måneder, ikke ett samtidig opptak. Det er altså bearbeidede data. Hva kan bildet fortelle om hav, land og skyer, og hva kan det ikke fortelle?"
       kilde={
         <>
-          «Blue Marble» (2002), NASA Goddard Space Flight Center, MODIS-data fra Terra-satellitten, via{" "}
-          <a className="underline" href="https://commons.wikimedia.org/wiki/File:Blue_Marble_2002.jpg">Wikimedia Commons</a>. Public domain (NASA).
+          NASA Goddard Space Flight Center: Reto Stöckli, Robert Simmon og MODIS-teamene. Visualisering fra 2002,
+          publisert på{" "}
+          <a className="underline" href="https://science.nasa.gov/resource/blue-marble/">NASA sin Blue marble-side</a>{" "}
+          13. april 2011. Offentlig NASA-verk, public domain i USA, brukt uten logo eller påstand om godkjenning (NASA, 2011).
         </>
       }
     >
       <Bilde
-        src="/images/geografi/blue-marble-land-2002.webp"
-        width={1600}
-        height={800}
-        alt="Satellittmosaikk av hele jordoverflaten uten skyer, flatt utbrettet. Ørkenene i Nord-Afrika, Midtøsten og Australia er lysbrune, regnskogene i Amazonas, Kongo og Sørøst-Asia er mørkegrønne, og polområdene er hvite."
+        src="/images/geografi/blue-marble-2002.webp"
+        width={700}
+        height={525}
+        className="mx-auto h-auto w-full max-w-sm rounded-lg"
+        alt="NASA-visualisering av jordkloden sett fra verdensrommet, med Nord- og Mellom-Amerika midt i bildet, blått hav og hvite skyer mot svart bakgrunn."
       />
     </GeoFigur>
   );
@@ -569,7 +506,6 @@ const KAP1: Record<string, () => JSX.Element> = {
   GeoVerktoyMercator: Mercator,
   GeoVerktoyGallPeters: GallPeters,
   GeoVerktoyGradnett: Koordinater,
-  GeoVerktoyKartSammenlikning: Temakart,
   GeoVerktoyMentalt: MentaltKart,
   GeoVerktoyBlueMarble: BlueMarble,
   GeoVerktoyGisLag: GisModell,
