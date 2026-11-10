@@ -486,6 +486,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://commons.wikimedia.org/wiki/File:Norway_-_Parabolic_Valley_(37810193741).jpg",
     },
     {
+      prefix: "Bryhni, I. (2024, 26. november). ",
+      italic: "Midtmorene",
+      suffix: ". Store norske leksikon.",
+      href: "https://snl.no/midtmorene",
+    },
+    {
       prefix: "Bryhni, I., & Fossen, H. (2024, 2. juli). ",
       italic: "Norges geologi",
       suffix: ". Store norske leksikon.",
@@ -532,6 +538,18 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       italic: "Botn",
       suffix: ". Store norske leksikon.",
       href: "https://snl.no/botn",
+    },
+    {
+      prefix: "Linge, H. (2024, 26. november). ",
+      italic: "Rundsva",
+      suffix: ". Store norske leksikon.",
+      href: "https://snl.no/rundsva",
+    },
+    {
+      prefix: "Mangerud, J. (2026, 28. april). ",
+      italic: "Bunnmorene",
+      suffix: ". Store norske leksikon.",
+      href: "https://snl.no/bunnmorene",
     },
     {
       prefix: "Mæhlum, L. (2026a, 22. mai). ",

@@ -10,13 +10,13 @@
  * Terrenget tegnes i canvas som nøkkelbilder (terreng-kit), bare på klienten. Serveren viser en
  * plassholder (prosess-figurer-lat.tsx). Ingen plukking ved bakveggen og ikke vann i botnene.
  */
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { clamp, figureFont, lerp, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
 import { lagKornTekstur, lat, prng, useFigurSmal, useTidslinje, type Korn } from "./prosess-kit";
-import { lagTerrengNett, skraaProj, tegnSider, terrengJobb, type SkraaProj } from "./terreng-kit";
+import { lagTerrengNett, relieffJobb, skraaProj, tegnSider, type SkraaProj } from "./terreng-kit";
 import { Flytstrok, Hoydeprofil, TerrengLerret } from "./terreng-figur";
 import { useNokkelbilder, type BildeJobb } from "./terreng-nokkelbilder";
 import {
@@ -52,7 +52,7 @@ const BRED: Oppsett = {
   vb: [960, 600],
   blokk: { x: 0, y: 0, w: 700, h: 492 },
   proj: { ox: 46, oy: 466, skala: 0.86 },
-  nett: [88, 64],
+  nett: [116, 84],
   profil: { y: 500, h: 92 },
   linse: { cx: 836, cy: 176, r: 108 },
 };
@@ -61,7 +61,7 @@ const SMAL: Oppsett = {
   vb: [520, 790],
   blokk: { x: 0, y: 0, w: 520, h: 414 },
   proj: { ox: 26, oy: 394, skala: 0.66 },
-  nett: [64, 46],
+  nett: [84, 60],
   profil: { y: 424, h: 104 },
   linse: { cx: 260, cy: 664, r: 112 },
 };
@@ -143,10 +143,17 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
       const ts = tilstandVed(Number(q) / PER_FASE, f === "-" ? Infinity : Number(f));
       const nett = lagTerrengNett(L.nett[0], L.nett[1], BT_W, BT_D);
       return function* (ctx) {
-        const Z = yield* terrengJobb(ctx, nett, (x, y) => overflate(x, y, ts), {
+        // relieff med kastede skygger, omgivelsesskygge og dis bakover (realisme, se terreng-kit.ts)
+        const Z = yield* relieffJobb(ctx, nett, (x, y) => overflate(x, y, ts), {
           proj,
           farge: (x, y, z, hl) => farge(x, y, z, hl, ts),
-        });
+          lys: [-0.72, -0.28, 0.56],
+          omgivelse: 0.34,
+          skygge: 0.55,
+          hulrom: 0.45,
+          dis: { farge: [70, 98, 116], styrke: 0.22 },
+          trinn: 96,
+        }, 4);
         tegnSider(ctx, nett, Z, proj, { bunn: -34, fyll: "#4b4741", side: "#3a3833", lag: "rgba(18,16,14,0.38)" });
       };
     },
@@ -171,12 +178,22 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
     const forran = [na, nb];
     if (tl.playing) for (let d = 2; d <= 4; d++) forran.push(nokkelFor((qa + d) % (BOTN_FASER.length * PER_FASE + 1)));
     lager.bestill(forran);
-    // står figuren stille, venter brukeren på akkurat dette bildet: tegn det med en gang
+    // står stille uten ferdig bilde: tegnes i biter over noen få bilder (ingen lang oppgave, som i
+    // LandskapBlokk), og til da vises forrige bilde
     if (!tl.playing) {
-      if (!bildeA) bildeA = lager.tving(na);
-      if (!bildeB && vekt > 0.005) bildeB = lager.tving(nb);
+      const mangler: string[] = [];
+      if (!bildeA) mangler.push(na);
+      if (!bildeB && vekt > 0.005) mangler.push(nb);
+      if (mangler.length) lager.hast(mangler);
     }
   }
+  const vist = useRef<{ small: boolean; a: HTMLCanvasElement | null; b: HTMLCanvasElement | null; vekt: number }>({ small, a: null, b: null, vekt: 0 });
+  let visVekt = vekt;
+  if (!bildeA && !bildeB && vist.current.small === small) {
+    bildeA = vist.current.a;
+    bildeB = vist.current.b;
+    visVekt = vist.current.vekt;
+  } else if (bildeA || bildeB) vist.current = { small, a: bildeA, b: bildeB, vekt };
 
   /* ---- 3D-punkter og etiketter ---- */
   const P3 = (x: number, y: number, dz = 0) => proj(x, y, overflate(x, y, t) + dz);
@@ -409,12 +426,34 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
             <g data-figur="botn-egg-tind" data-step={fase} data-p={tl.p.toFixed(2)} data-tilstand={`${tilstandNokkel(t)}|${stille ? "stille" : "beveger"}`}>
               <defs>
                 <linearGradient id={himmelId} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stopColor="#0f1d26" />
-                  <stop offset="1" stopColor="#24404f" />
+                  <stop offset="0" stopColor="#0d1a24" />
+                  <stop offset="0.55" stopColor="#22394a" />
+                  <stop offset="1" stopColor="#3e5d70" />
                 </linearGradient>
               </defs>
               <rect x={L.blokk.x} y={L.blokk.y} width={L.blokk.w} height={L.blokk.h} fill={`url(#${himmelId})`} rx="10" />
               {/* fjerne fjell i bakgrunnen */}
+              {/* fjerne fjell i to lag med dis, og snø på toppene */}
+              <path
+                data-nocheck=""
+                d={
+                  small
+                    ? "M0 196 L40 170 L70 182 L120 140 L160 168 L210 132 L262 170 L310 128 L370 166 L420 140 L470 170 L520 150 L520 260 L0 260 Z"
+                    : "M0 214 L60 180 L110 198 L170 150 L220 186 L290 140 L350 182 L420 130 L480 176 L540 146 L610 184 L660 160 L700 172 L700 300 L0 300 Z"
+                }
+                fill="#2b4252"
+                opacity="0.85"
+              />
+              <path
+                data-nocheck=""
+                d={
+                  small
+                    ? "M112 146 L120 140 L130 148 L122 150 Z M202 138 L210 132 L220 140 L211 142 Z M302 134 L310 128 L320 136 L311 138 Z"
+                    : "M162 156 L170 150 L181 158 L171 160 Z M282 146 L290 140 L301 148 L291 150 Z M411 137 L420 130 L432 139 L421 141 Z M532 152 L540 146 L550 153 L541 155 Z"
+                }
+                fill="#c9d8e2"
+                opacity="0.6"
+              />
               <path
                 data-nocheck=""
                 d={
@@ -425,7 +464,7 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
                 fill="#1a2b35"
               />
               <Skala verdi={scale} sett={setSkala} />
-              <TerrengLerret x={L.blokk.x} y={L.blokk.y} bredde={L.blokk.w} hoyde={L.blokk.h} skala={skala} a={bildeA} b={bildeB} vekt={vekt} />
+              <TerrengLerret x={L.blokk.x} y={L.blokk.y} bredde={L.blokk.w} hoyde={L.blokk.h} skala={skala} a={bildeA} b={bildeB} vekt={visVekt} />
               {/* isen flyter: strøk som beveger seg nedover og utover */}
               {beveger
                 ? flyt.map((f, i) => <Flytstrok key={i} baner={f.baner} sek={sek} fart={12} farge={FARGE.flyt} bredde={small ? 2.2 : 1.8} opasitet={f.op * 0.85} />)

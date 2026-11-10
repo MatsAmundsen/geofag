@@ -255,6 +255,184 @@ export function* terrengJobb(
   return Z;
 }
 
+export type RelieffStil = TerrengStil & {
+  /** Hvor mørke kastede skygger blir (0 = ingen, 1 = svarte). Standard 0.55. */
+  skygge?: number;
+  /** Mørkning i forsenkninger og lysning på rygger (omgivelsesskygge). Standard 0.35. */
+  hulrom?: number;
+  /** Luftperspektiv: bakre rader blandes mot denne fargen. */
+  dis?: { farge: Rgb; styrke: number };
+};
+
+/**
+ * Som `terrengJobb`, men mer realistisk relieff: høydene regnes først for hele nettet, så får hvert hjørne
+ * lys fra glatte normaler, kastede skygger (stråler mot lyset gjennom høydefeltet), omgivelsesskygge
+ * (forsenkninger mørkere, rygger lysere) og luftperspektiv bakover. Fargene kvantiseres finere (160 trinn).
+ * Rutene tegnes bakerst først som i `terrengJobb`; generatoren gir fra seg kontrollen underveis.
+ */
+export function* relieffJobb(
+  ctx: CanvasRenderingContext2D,
+  nett: TerrengNett,
+  h: (x: number, y: number) => number,
+  stil: RelieffStil,
+  radPerBit = 6,
+): Generator<void, Float32Array, void> {
+  const { nx, ny, W, D } = nett;
+  const { proj } = stil;
+  const lys = stil.lys ?? [-0.55, -0.35, 0.75];
+  const ln = Math.hypot(...lys);
+  const L0 = lys[0] / ln;
+  const L1 = lys[1] / ln;
+  const L2 = lys[2] / ln;
+  const amb = stil.omgivelse ?? 0.36;
+  const trinn = stil.trinn ?? 160;
+  const kv = 255 / trinn;
+  const skyggeStyrke = stil.skygge ?? 0.55;
+  const hulStyrke = stil.hulrom ?? 0.35;
+  const dx = W / nx;
+  const dy = D / ny;
+  const rad = nx + 1;
+  const n = rad * (ny + 1);
+  const Z = new Float32Array(n);
+  const sx = new Float32Array(n);
+  const sy = new Float32Array(n);
+  const V = new Float32Array(n);
+  // 1) høyder og skjermpunkter
+  for (let j = 0; j <= ny; j++) {
+    for (let i = 0; i <= nx; i++) {
+      const k = j * rad + i;
+      const z = h(nett.xs[k], nett.ys[k]);
+      Z[k] = z;
+      const [a, b] = proj(nett.xs[k], nett.ys[k], z);
+      sx[k] = a;
+      sy[k] = b;
+    }
+    if (j % radPerBit === 0) yield;
+  }
+  const zVed = (fi: number, fj: number) => {
+    const i0 = clamp(Math.floor(fi), 0, nx - 1);
+    const j0 = clamp(Math.floor(fj), 0, ny - 1);
+    const u = clamp(fi - i0, 0, 1);
+    const v = clamp(fj - j0, 0, 1);
+    const k = j0 * rad + i0;
+    return lerp(lerp(Z[k], Z[k + 1], u), lerp(Z[k + rad], Z[k + rad + 1], u), v);
+  };
+  // 2) lys per hjørne: glatt normal, kastet skygge og omgivelsesskygge
+  const lh = Math.hypot(L0, L1) || 1;
+  const ui = L0 / lh / dx;
+  const uj = L1 / lh / dy;
+  const stig = L2 / lh;
+  const steg = Math.min(dx, dy) * 1.25;
+  const STEG = 48;
+  const ring = Math.max(2, 22 / Math.min(dx, dy));
+  for (let j = 0; j <= ny; j++) {
+    for (let i = 0; i <= nx; i++) {
+      const k = j * rad + i;
+      const z = Z[k];
+      const zl = Z[j * rad + Math.max(0, i - 1)];
+      const zr = Z[j * rad + Math.min(nx, i + 1)];
+      const zf = Z[Math.max(0, j - 1) * rad + i];
+      const zb = Z[Math.min(ny, j + 1) * rad + i];
+      const gx = (zr - zl) / (dx * (Math.min(nx, i + 1) - Math.max(0, i - 1)));
+      const gy = (zb - zf) / (dy * (Math.min(ny, j + 1) - Math.max(0, j - 1)));
+      const nl = Math.hypot(gx, gy, 1);
+      let lam = Math.max(0, (-gx * L0 - gy * L1 + L2) / nl);
+      // kastet skygge: myk overgang etter hvor høyt terrenget stikker over strålen
+      let over = 0;
+      for (let s = 1; s <= STEG; s++) {
+        const d = s * steg;
+        const fi = i + ui * d;
+        const fj = j + uj * d;
+        if (fi < 0 || fi > nx || fj < 0 || fj > ny) break;
+        const diff = zVed(fi, fj) - (z + d * stig);
+        if (diff > over) over = diff;
+      }
+      lam *= 1 - skyggeStyrke * smoothSkygge(over / 10);
+      // omgivelsesskygge: snitthøyden i en ring rundt hjørnet
+      let sum = 0;
+      let m = 0;
+      for (let a = 0; a < 8; a++) {
+        const v = (a / 8) * Math.PI * 2;
+        const fi = i + Math.cos(v) * ring;
+        const fj = j + Math.sin(v) * ring;
+        if (fi < 0 || fi > nx || fj < 0 || fj > ny) continue;
+        sum += zVed(fi, fj);
+        m++;
+      }
+      const hul = m ? (sum / m - z) / 22 : 0;
+      const hulF = 1 - hulStyrke * clamp(hul, 0, 1) + 0.3 * hulStyrke * clamp(-hul, 0, 1);
+      V[k] = (amb + (1 - amb) * lam * 1.3) * hulF;
+    }
+    if (j % radPerBit === 0) yield;
+  }
+  // 3) rutene, bakerst først
+  const iFram = proj.blikk[0] <= 0;
+  ctx.lineWidth = stil.som ?? 0.6;
+  ctx.lineJoin = "round";
+  const dis = stil.dis;
+  for (let j = ny - 1; j >= 0; j--) {
+    let aktiv = "";
+    let open = false;
+    const flush = () => {
+      if (!open) return;
+      ctx.fill();
+      ctx.stroke();
+      open = false;
+    };
+    const disT = dis ? dis.styrke * Math.pow(j / ny, 1.4) : 0;
+    for (let s = 0; s < nx; s++) {
+      const i = iFram ? s : nx - 1 - s;
+      const k00 = j * rad + i;
+      const k10 = k00 + 1;
+      const k01 = k00 + rad;
+      const k11 = k01 + 1;
+      const z00 = Z[k00];
+      const z10 = Z[k10];
+      const z01 = Z[k01];
+      const z11 = Z[k11];
+      const gx = (z10 + z11 - z00 - z01) / (2 * dx);
+      const gy = (z01 + z11 - z00 - z10) / (2 * dy);
+      const base = stil.farge((i + 0.5) * dx, (j + 0.5) * dy, (z00 + z10 + z01 + z11) / 4, Math.hypot(gx, gy), i, j);
+      const f = (V[k00] + V[k10] + V[k01] + V[k11]) / 4;
+      let r = base[0] * f;
+      let g = base[1] * f;
+      let b = base[2] * f;
+      if (dis && disT > 0) {
+        r = lerp(r, dis.farge[0], disT);
+        g = lerp(g, dis.farge[1], disT);
+        b = lerp(b, dis.farge[2], disT);
+      }
+      r = Math.round(clamp(r, 0, 255) / kv) * kv;
+      g = Math.round(clamp(g, 0, 255) / kv) * kv;
+      b = Math.round(clamp(b, 0, 255) / kv) * kv;
+      const c = `rgb(${r | 0},${g | 0},${b | 0})`;
+      if (c !== aktiv) {
+        flush();
+        ctx.fillStyle = c;
+        ctx.strokeStyle = c;
+        aktiv = c;
+      }
+      if (!open) {
+        ctx.beginPath();
+        open = true;
+      }
+      ctx.moveTo(sx[k00], sy[k00]);
+      ctx.lineTo(sx[k10], sy[k10]);
+      ctx.lineTo(sx[k11], sy[k11]);
+      ctx.lineTo(sx[k01], sy[k01]);
+      ctx.closePath();
+    }
+    flush();
+    if (j % radPerBit === 0) yield;
+  }
+  return Z;
+}
+
+function smoothSkygge(t: number) {
+  const k = clamp(t, 0, 1);
+  return k * k * (3 - 2 * k);
+}
+
 /** Tegner hele nettet på én gang (samme som å kjøre `terrengJobb` til slutt). */
 export function tegnTerreng(ctx: CanvasRenderingContext2D, nett: TerrengNett, h: (x: number, y: number) => number, stil: TerrengStil) {
   const jobb = terrengJobb(ctx, nett, h, stil, 1e9);
