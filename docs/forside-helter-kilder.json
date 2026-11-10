@@ -1,0 +1,35 @@
+{
+  "bilde": "hero-earth-staaende (forsiden, Geografi-helten)",
+  "erstatter_paa_forsiden": "public/images/hero-earth.jpg (1792x1008, liggende). Filen er beholdt og brukes fortsatt av /geografi, geofag-2 og nav. Opphav ukjent: ingen EXIF/IPTC/XMP, ingen kreditering i repoet, lagt til i 3fd6faab 28.08.2026.",
+  "kilde": {
+    "foto_id": "ISS066-E-9147",
+    "tatt": "2021-10-22 14:11:23 GMT, Expedition 66, ISS, over Stillehavet sør for Hawaii, Nikon D5, 28 mm",
+    "beskrivelse_nasa": "The airglow blankets the Earth's horizon in this photograph from the International Space Station as it orbited 262 miles above the Pacific Ocean just south of the Hawaiian island chain.",
+    "kildeside": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=ISS066&roll=E&frame=9147",
+    "nedlastet_fra": "https://images-assets.nasa.gov/image/iss066e009147/iss066e009147~orig.jpg",
+    "bibliotekside": "https://images.nasa.gov/details/iss066e009147",
+    "original_storrelse": "5568x3712",
+    "original_sha256": "38964cc46760783e5550fc2f7b04eec237f44d60fcdd3c86456e7ba47b659c15"
+  },
+  "lisens": {
+    "status": "Ikke opphavsrettsbeskyttet (NASA-materiale, public domain i USA). Ingen tredjeparts copyright oppgitt på kildesiden.",
+    "vilkaar": [
+      "https://eol.jsc.nasa.gov/FAQ/default.htm (Conditions of use: «NASA material is not protected by copyright unless noted»)",
+      "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    ],
+    "kreditering": "Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center (ISS066-E-9147, eol.jsc.nasa.gov)",
+    "kontrollert": "2026-11-10",
+    "merknad": "NASA ber om kreditering. Synlig kreditering på siden er ikke lagt til (tekst/innhold), bare i kildekommentar og denne fila."
+  },
+  "bearbeiding": "Stående utsnitt 1912x3400 fra x=2496, y=150 i originalen (fokus på horisont/luftglød i øvre tredel, hav og skyer under). Skalert med Lanczos. Ingen farge- eller innholdsendring.",
+  "filer": {
+    "hero-earth-staaende-1008.avif": "6b37e1f58a1d6db3e43d52f9190fdc07f448229d898471ed7e8972cd7e01d7e7",
+    "hero-earth-staaende-1008.jpg": "13b75fb04b054060eabf831bbb970f07411e489233c38ee63534d6f3da33a16d",
+    "hero-earth-staaende-1008.webp": "c614086989d41cd4dff088371ef07d42f7759af5db257d4f8793ebd79a7c585f",
+    "hero-earth-staaende-1512.avif": "b3e79db48212ab0bb998532af8870948fa98d36905244668c7af849f69e05536",
+    "hero-earth-staaende-1512.webp": "6c84da56fed1bf73a04502d99712616bc723e96bb3a2d033075721710b34f489",
+    "hero-earth-staaende-768.avif": "fdba588a2b6a1e31760a36cb31ffd422b4f44e033cacff577bb7b13da4981088",
+    "hero-earth-staaende-768.jpg": "e4efa664e20b3557435ee463761f13cb7d32141c8f82b3191b438fabea1f547f",
+    "hero-earth-staaende-768.webp": "2fbd3ede631a4f89bea013e9f7cd11dfc882883949683b5531547aabf7b5ccae"
+  }
+}

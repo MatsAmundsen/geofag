@@ -3,6 +3,14 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { topicHead } from "@/lib/seo";
 
+// Kolonnen er stående og fyller minst hele skjermhøyden, så object-cover styres av høyden:
+// nødvendig bildebredde er max(kolonnebredde, ca. 1008/1792 av høyden). 55,5vh (ikke 56,25) lar
+// 1008w holde opp til ca. 908 px høyde med skala ≤1,02.
+const HERO_SIZES = "(min-width: 768px) max(33.34vw, 55.5vh), max(100vw, 55.5vh)";
+
+// Felles minstehøyde gir like høye kort i alle tre heltene (QC PR #312).
+const HERO_KORT_HOYDE = "min-h-[11.5rem] md:min-h-[15rem] lg:min-h-[12rem]";
+
 export const Route = createFileRoute("/")({
   head: () =>
     topicHead({
@@ -56,7 +64,7 @@ function Hub() {
               <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
                 <Link
                   to="/geofag-1"
-                  className="flex min-h-11 flex-col rounded-2xl border border-lava bg-[#3a140c]/80 p-5 shadow-[0_16px_50px_-10px_color-mix(in_oklab,var(--color-lava)_70%,transparent)] backdrop-blur-md transition-colors hover:bg-[#3a140c]/90 sm:p-6"
+                  className={`flex ${HERO_KORT_HOYDE} flex-col rounded-2xl border border-lava bg-[#3a140c]/80 p-5 shadow-[0_16px_50px_-10px_color-mix(in_oklab,var(--color-lava)_70%,transparent)] backdrop-blur-md transition-colors hover:bg-[#3a140c]/90 sm:p-6`}
                 >
                   <p className="text-xs uppercase tracking-wider text-[#f3d2b0]">
                     Geosfære og hydrosfære
@@ -92,7 +100,7 @@ function Hub() {
               <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
                 <Link
                   to="/geofag-2"
-                  className="flex min-h-11 flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6"
+                  className={`flex ${HERO_KORT_HOYDE} flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6`}
                 >
                   <p className="text-xs uppercase tracking-wider text-[#c5d0d8]">
                     Atmosfære, hav og kryosfære
@@ -106,19 +114,35 @@ function Hub() {
             </article>
 
             <article className="relative min-h-[100dvh]">
-              <img
-                src="/images/hero-earth.jpg"
-                alt="Jorda sett fra lav bane over hav og skyer"
-                width={1792}
-                height={1008}
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
+              {/* Stående utsnitt av NASA-foto ISS066-E-9147 (ikke opphavsrettsbeskyttet). Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center, eol.jsc.nasa.gov. Kilde og bearbeiding: docs/forside-helter-kilder.json. */}
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet="/images/hero-earth-staaende-768.avif 768w, /images/hero-earth-staaende-1008.avif 1008w, /images/hero-earth-staaende-1512.avif 1512w"
+                  sizes={HERO_SIZES}
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/images/hero-earth-staaende-768.webp 768w, /images/hero-earth-staaende-1008.webp 1008w, /images/hero-earth-staaende-1512.webp 1512w"
+                  sizes={HERO_SIZES}
+                />
+                <img
+                  src="/images/hero-earth-staaende-1008.jpg"
+                  srcSet="/images/hero-earth-staaende-768.jpg 768w, /images/hero-earth-staaende-1008.jpg 1008w"
+                  sizes={HERO_SIZES}
+                  alt="Jorda sett fra lav bane over hav og skyer"
+                  width={1008}
+                  height={1792}
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                />
+              </picture>
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background/75 to-transparent" />
               <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
                 <Link
                   to="/geografi"
-                  className="flex min-h-11 flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6"
+                  className={`flex ${HERO_KORT_HOYDE} flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6`}
                 >
                   <p className="text-xs uppercase tracking-wider text-[#c5d0d8]">GEO01-02 · Vg1</p>
                   <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Geografi</h2>
