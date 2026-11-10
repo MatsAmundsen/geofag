@@ -7,7 +7,7 @@
   --tl-card: #fbf7f0;
   --tl-sea: #154556;
   color: var(--tl-ink);
-  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-family: "Source Sans 3", "Source Sans Fallback", "Segoe UI", sans-serif;
 }
 .tsunami-pakke .border-line {
   border-color: var(--tl-line);
@@ -40,7 +40,7 @@
   border-color: var(--tl-sea);
 }
 .tsunami-pakke .font-display {
-  font-family: Fraunces, Georgia, "Iowan Old Style", serif;
+  font-family: Fraunces, "Fraunces Fallback", Georgia, "Iowan Old Style", serif;
 }
 .tsunami-pakke .lab-range {
   accent-color: var(--tl-sea);
