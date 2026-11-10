@@ -31,7 +31,7 @@ function Hub() {
             <span className="block">til atmosfæren</span>
           </h1>
 
-          <div id="fag" className="grid md:grid-cols-2">
+          <div id="fag" className="grid md:grid-cols-3">
             <article className="relative min-h-[100dvh]">
               <img
                 src="/images/hero-volcano.jpg"
@@ -100,6 +100,31 @@ function Hub() {
                   <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Geofag 2</h2>
                   <p className="mt-2 text-sm leading-relaxed text-foreground/85">
                     Atmosfærisk sirkulasjon, Coriolis-effekten, havstrømmer, klima og ekstremvær.
+                  </p>
+                </Link>
+              </div>
+            </article>
+
+            <article className="relative min-h-[100dvh]">
+              <img
+                src="/images/hero-earth.jpg"
+                alt="Jorda sett fra lav bane over hav og skyer"
+                width={1792}
+                height={1008}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background/75 to-transparent" />
+              <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
+                <Link
+                  to="/geografi"
+                  className="flex min-h-11 flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6"
+                >
+                  <p className="text-xs uppercase tracking-wider text-[#c5d0d8]">GEO01-02 · Vg1</p>
+                  <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Geografi</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                    Geografiske verktøy, feltarbeid, landskap, klima, naturfare, ressurser, bærekraft,
+                    næring, befolkning og migrasjon.
                   </p>
                 </Link>
               </div>
