@@ -32,7 +32,8 @@ import { GeografiTopokart } from "@/components/geografi/projeksjon-figurer";
 import { GeografiGallPeters } from "@/components/geografi/projeksjon-figurer";
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { TermiskVindV5 } from "@/components/diagrams/termisk-vind-v5";
-import { lazy, Suspense, type JSX } from "react";
+import { TsunamiPlass } from "@/components/tsunami-plass";
+import { lazy, Suspense, useEffect, useState, type JSX } from "react";
 import {
   AdaptationExamFrameworkDiagram,
   ImpactLevelsDiagram,
@@ -351,8 +352,14 @@ const TsunamiM5 = lazy(() => import("@/components/diagrams/tsunami-modeller").th
 const TsunamiM6 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM6 })));
 const TsunamiM7 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM7 })));
 
-function TsunamiLaster({ children }: { children: JSX.Element }) {
-  return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
+function TsunamiLaster({ modell, children }: { modell: string; children: JSX.Element }) {
+  const [klar, setKlar] = useState(false);
+  useEffect(() => setKlar(true), []);
+  return (
+    <Suspense fallback={<TsunamiPlass modell={modell} />}>
+      {klar ? children : <TsunamiPlass modell={modell} />}
+    </Suspense>
+  );
 }
 
 const GeografiIstidskartLat = lazy(() => import("@/components/geografi/landskap-iskart").then((m) => ({default:m.GeografiIstidskart})));
@@ -1417,37 +1424,37 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_TSUNAMI} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   TsunamiM1: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m1">
       <TsunamiM1 />
     </TsunamiLaster>
   ),
   TsunamiM2: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m2">
       <TsunamiM2 />
     </TsunamiLaster>
   ),
   TsunamiM3: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m3">
       <TsunamiM3 />
     </TsunamiLaster>
   ),
   TsunamiM4: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m4">
       <TsunamiM4 />
     </TsunamiLaster>
   ),
   TsunamiM5: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m5">
       <TsunamiM5 />
     </TsunamiLaster>
   ),
   TsunamiM6: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m6">
       <TsunamiM6 />
     </TsunamiLaster>
   ),
   TsunamiM7: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m7">
       <TsunamiM7 />
     </TsunamiLaster>
   ),

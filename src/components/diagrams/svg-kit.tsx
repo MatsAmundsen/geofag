@@ -16,7 +16,7 @@ export const C = {
   white: "#f3f6f8",
 };
 
-export const font = "Source Sans 3, ui-sans-serif, system-ui, sans-serif";
+export const font = '"Source Sans 3", "Source Sans Fallback", ui-sans-serif, system-ui, sans-serif';
 
 export function PlayPauseToggle({
   isPlaying,

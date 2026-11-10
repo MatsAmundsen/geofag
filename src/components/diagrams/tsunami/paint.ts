@@ -1,6 +1,6 @@
 import { ink } from "./sim/palette";
 
-export const FONT = '"Source Sans 3", "Segoe UI", sans-serif';
+export const FONT = '"Source Sans 3", "Source Sans Fallback", "Segoe UI", sans-serif';
 /** Minste skriftstørrelse i figurene, i CSS-piksler. */
 export const LABEL_PX = 14;
 

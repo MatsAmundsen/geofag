@@ -41,6 +41,7 @@ import { Route as PosterIndexRouteImport } from './routes/poster/index'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaEnergiHavLuftRouteImport } from './routes/tema/energi-hav-luft'
 import { Route as TemaEnergiRegningRouteImport } from './routes/tema/energi-regning'
+import { Route as TemaEnsoRouteImport } from './routes/tema/enso'
 import { Route as TemaFeltHavLuftIsRouteImport } from './routes/tema/felt-hav-luft-is'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
@@ -236,6 +237,11 @@ const TemaEnergiRegningRoute = TemaEnergiRegningRouteImport.update({
   path: '/tema/energi-regning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaEnsoRoute = TemaEnsoRouteImport.update({
+  id: '/tema/enso',
+  path: '/tema/enso',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemaFeltHavLuftIsRoute = TemaFeltHavLuftIsRouteImport.update({
   id: '/tema/felt-hav-luft-is',
   path: '/tema/felt-hav-luft-is',
@@ -415,6 +421,7 @@ export interface FileRoutesByFullPath {
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
   '/tema/energi-regning': typeof TemaEnergiRegningRoute
+  '/tema/enso': typeof TemaEnsoRoute
   '/tema/felt-hav-luft-is': typeof TemaFeltHavLuftIsRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
@@ -478,6 +485,7 @@ export interface FileRoutesByTo {
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
   '/tema/energi-regning': typeof TemaEnergiRegningRoute
+  '/tema/enso': typeof TemaEnsoRoute
   '/tema/felt-hav-luft-is': typeof TemaFeltHavLuftIsRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
@@ -542,6 +550,7 @@ export interface FileRoutesById {
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
   '/tema/energi-regning': typeof TemaEnergiRegningRoute
+  '/tema/enso': typeof TemaEnsoRoute
   '/tema/felt-hav-luft-is': typeof TemaFeltHavLuftIsRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
@@ -607,6 +616,7 @@ export interface FileRouteTypes {
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
     | '/tema/energi-regning'
+    | '/tema/enso'
     | '/tema/felt-hav-luft-is'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
@@ -670,6 +680,7 @@ export interface FileRouteTypes {
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
     | '/tema/energi-regning'
+    | '/tema/enso'
     | '/tema/felt-hav-luft-is'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
@@ -733,6 +744,7 @@ export interface FileRouteTypes {
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
     | '/tema/energi-regning'
+    | '/tema/enso'
     | '/tema/felt-hav-luft-is'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
@@ -797,6 +809,7 @@ export interface RootRouteChildren {
   TemaCoriolisRoute: typeof TemaCoriolisRoute
   TemaEnergiHavLuftRoute: typeof TemaEnergiHavLuftRoute
   TemaEnergiRegningRoute: typeof TemaEnergiRegningRoute
+  TemaEnsoRoute: typeof TemaEnsoRoute
   TemaFeltHavLuftIsRoute: typeof TemaFeltHavLuftIsRoute
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
@@ -1058,6 +1071,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaEnergiRegningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/enso': {
+      id: '/tema/enso'
+      path: '/tema/enso'
+      fullPath: '/tema/enso'
+      preLoaderRoute: typeof TemaEnsoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/felt-hav-luft-is': {
       id: '/tema/felt-hav-luft-is'
       path: '/tema/felt-hav-luft-is'
@@ -1293,6 +1313,7 @@ const rootRouteChildren: RootRouteChildren = {
   TemaCoriolisRoute: TemaCoriolisRoute,
   TemaEnergiHavLuftRoute: TemaEnergiHavLuftRoute,
   TemaEnergiRegningRoute: TemaEnergiRegningRoute,
+  TemaEnsoRoute: TemaEnsoRoute,
   TemaFeltHavLuftIsRoute: TemaFeltHavLuftIsRoute,
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,

@@ -117,7 +117,8 @@ function subscribeNarrow(onChange: () => void) {
   media.addEventListener("change", onChange);
   return () => media.removeEventListener("change", onChange);
 }
-/** Smal skjerm (under Tailwinds sm-grense). */
+
+/** Smal skjerm (under Tailwinds sm-grense). Første render er false på server og klient, så hydreringen treffer server-HTML-en. */
 export function useNarrow() {
   return useSyncExternalStore(
     subscribeNarrow,

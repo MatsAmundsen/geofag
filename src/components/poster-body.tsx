@@ -1,6 +1,10 @@
 import { lazy, Suspense } from "react";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
+import { TsunamiPlass } from "@/components/tsunami-plass";
 import { cn } from "@/lib/utils";
+import { posterHeadingAnchorIds } from "@/lib/chapter-scan";
+import type { HeadingIdCursor } from "@/lib/poster-heading";
+import { GEO_MARIA_CHANNEL, GEO_MARIA_VIDEOS } from "@/lib/youtube-geo-maria";
 import {
   EARTH_LAYERS_PHOTO_SRC,
   injectPosterWidgets,
@@ -26,6 +30,90 @@ function withoutDuplicateEarthFigure(parts: PosterPart[]): PosterPart[] {
   return parts.filter((part) => !(part.type === "widget" && part.id === "EarthLayers"));
 }
 
+function tsunamiModell(id: string): string | null {
+  const match = /^TsunamiM([1-7])$/.exec(id);
+  return match ? `m${match[1]}` : null;
+}
+
+const CALLOUT_WIDGETS = new Set(["HyposenterForklaring", "IntraplateForklaring"]);
+const DIAGRAM_WIDGETS = new Set([
+  "ElasticRebound",
+  "BoundaryQuakes",
+  "Partikkelbolger",
+  "Bolgegenerering",
+  "Seismogram",
+  "JordasBolger",
+  "NorwayEarthquakes",
+]);
+
+function WidgetFallback({ id }: { id: string }) {
+  const modell = tsunamiModell(id);
+  if (modell) return <TsunamiPlass modell={modell} />;
+  if (id.startsWith("YtMaria")) {
+    const video = GEO_MARIA_VIDEOS.find((item) => item.widgetId === id);
+    return (
+      <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-card" aria-busy="true">
+        <figcaption className="border-b border-border px-4 py-3 sm:px-5">
+          <p className="text-xs font-medium uppercase tracking-wider text-primary">
+            Video · {GEO_MARIA_CHANNEL}
+          </p>
+          <p className="mt-1 font-display text-lg font-medium tracking-tight">{video?.title}</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            <span>{video?.duration}</span>
+            <span aria-hidden="true"> · </span>
+            Åpne på YouTube
+          </p>
+        </figcaption>
+        <div className="aspect-video w-full bg-black" />
+        <p className="sr-only">Laster figuren…</p>
+      </figure>
+    );
+  }
+  if (id.startsWith("SjekkTsunami") || id === "QuizTsunami") {
+    return (
+      <div className="quiz-plass my-10 w-full rounded-xl border border-border bg-card" data-quiz={id} aria-busy="true">
+        <p className="sr-only">Laster figuren…</p>
+      </div>
+    );
+  }
+  if (id.startsWith("Sjekk") || id.startsWith("Quiz")) {
+    return (
+      <div
+        className="kapittel-plass my-10 w-full rounded-xl border border-border bg-card"
+        data-widget={id}
+        aria-busy="true"
+      >
+        <p className="sr-only">Laster figuren…</p>
+      </div>
+    );
+  }
+  if (CALLOUT_WIDGETS.has(id)) {
+    return (
+      <aside className="kapittel-plass my-6 rounded-xl border border-border bg-muted" data-widget={id} aria-busy="true">
+        <p className="sr-only">Laster figuren…</p>
+      </aside>
+    );
+  }
+  if (DIAGRAM_WIDGETS.has(id)) {
+    return (
+      <figure
+        className="kapittel-plass my-8 max-w-full overflow-hidden rounded-xl border border-border bg-card"
+        data-widget={id}
+        aria-busy="true"
+      >
+        <p className="sr-only">Laster figuren…</p>
+      </figure>
+    );
+  }
+  return (
+    <div className="my-6 min-h-32 rounded-xl bg-muted/30 p-4" aria-busy="true">
+      <p className="text-sm text-muted-foreground" role="status">
+        Laster figuren…
+      </p>
+    </div>
+  );
+}
+
 /**
  * Published post + editor preview. Diagrams, quizzes, map and the plate model
  * are injected from chapter headings when the stored markdown has none.
@@ -36,15 +124,22 @@ export function PosterBody({
   cleanChapter,
   scrollTables = false,
   wrapTables = false,
+  headingAnchors = false,
 }: {
   children: string;
   className?: string;
   cleanChapter?: boolean;
   scrollTables?: boolean;
   wrapTables?: boolean;
+  /** Stabile overskrifts-id-er, samme slug som scan-modus. Av som standard. */
+  headingAnchors?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
-  const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
+  const prepared = injectPosterWidgets(content);
+  const headingIds: HeadingIdCursor | undefined = headingAnchors
+    ? { ids: posterHeadingAnchorIds(prepared), index: 0 }
+    : undefined;
+  const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(prepared));
   let runningHeading = "";
   return (
     <div className={cn("space-y-4", className)}>
@@ -53,13 +148,7 @@ export function PosterBody({
           return (
             <Suspense
               key={`w-${part.id}-${index}`}
-              fallback={
-                <div className="my-6 min-h-32 rounded-xl bg-muted/30 p-4" aria-busy="true">
-                  <p className="text-sm text-muted-foreground" role="status">
-                    Laster figuren…
-                  </p>
-                </div>
-              }
+              fallback={<WidgetFallback id={part.id} />}
             >
               <PosterWidget id={part.id} />
             </Suspense>
@@ -75,6 +164,7 @@ export function PosterBody({
             wrapTables={wrapTables}
             captionFallback={captionFallback}
             searchable
+            headingIds={headingIds}
           >
             {part.value}
           </Markdown>

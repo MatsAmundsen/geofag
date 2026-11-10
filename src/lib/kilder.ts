@@ -589,6 +589,12 @@ export const KILDER = {
       href: "https://earthquake.usgs.gov/earthquakes/search/",
     },
     {
+      prefix: "NOAA National Centers for Environmental Information [NOAA NCEI]. (u.å.). ",
+      italic: "NCEI/WDS Global Significant Earthquake Database",
+      suffix: " (Mexico, 19. september 1985, Ms 8,1).",
+      href: "https://www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-more-info/5076",
+    },
+    {
       prefix: "U.S. Geological Survey [USGS]. (u.å.-e). ",
       italic: "At what depth do earthquakes occur? What is the significance of the depth?",
       href: "https://www.usgs.gov/faqs/what-depth-do-earthquakes-occur-what-significance-depth",
