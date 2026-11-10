@@ -29,10 +29,11 @@ function velgJordposter(): string {
 }
 
 /**
- * Heltevideo lastes først etter at JS har sjekket redusert bevegelse, og aldri når det er slått
- * på. G1 og G2 startes med en gang (umiddelbart), Geografi når kolonnen nærmer seg skjermen.
- * Ellers er oppsettet autoplay, muted, loop, playsInline og poster.
- * Til den er lastet viser stillbildet under seg.
+ * Heltevideo rendres bare når den er aktiv på klienten, så SSR og JS av viser stillbildet.
+ * src settes først etter at JS har sjekket redusert bevegelse. G1 og G2 startes med en gang
+ * (umiddelbart), Geografi når kolonnen nærmer seg skjermen. En matchMedia-lytter avmonterer
+ * videoen ved redusert bevegelse og starter den igjen når det slås av.
+ * autoPlay uten ekstra last-kall gir én forespørsel. Til videoen er lastet viser stillbildet under seg.
  */
 function LatHeltevideo({
   src,
@@ -45,48 +46,71 @@ function LatHeltevideo({
   className: string;
   umiddelbart?: boolean;
 }) {
-  const ref = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sentinellRef = useRef<HTMLSpanElement>(null);
   const [aktiv, setAktiv] = useState(false);
   useEffect(() => {
-    const v = ref.current;
-    if (!v || aktiv) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (umiddelbart || !("IntersectionObserver" in window)) {
-      setAktiv(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (e) => {
-        if (e.some((x) => x.isIntersecting)) {
-          setAktiv(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "200px 0px" },
-    );
-    io.observe(v);
-    return () => io.disconnect();
-  }, [aktiv, umiddelbart]);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let io: IntersectionObserver | undefined;
+    const rydd = () => {
+      io?.disconnect();
+      io = undefined;
+    };
+    const startHvisSynlig = () => {
+      if (umiddelbart || !("IntersectionObserver" in window)) {
+        setAktiv(true);
+        return;
+      }
+      const el = sentinellRef.current;
+      if (!el) return;
+      io = new IntersectionObserver(
+        (e) => {
+          if (e.some((x) => x.isIntersecting)) {
+            setAktiv(true);
+            rydd();
+          }
+        },
+        { rootMargin: "200px 0px" },
+      );
+      io.observe(el);
+    };
+    const synk = () => {
+      rydd();
+      if (mq.matches) {
+        setAktiv(false);
+        return;
+      }
+      startHvisSynlig();
+    };
+    synk();
+    mq.addEventListener("change", synk);
+    return () => {
+      mq.removeEventListener("change", synk);
+      rydd();
+    };
+  }, [umiddelbart]);
   useEffect(() => {
-    const v = ref.current;
-    if (!v || !aktiv) return;
+    const v = videoRef.current;
+    if (!v) return;
     v.muted = true;
-    v.load();
     void v.play().catch(() => {});
   }, [aktiv]);
+  if (!aktiv) {
+    return <span ref={sentinellRef} className="pointer-events-none absolute inset-0" aria-hidden="true" />;
+  }
   return (
     <video
-      ref={ref}
+      ref={videoRef}
       className={className}
       autoPlay
       muted
       loop
       playsInline
-      preload={aktiv ? "metadata" : "none"}
-      poster={aktiv ? (typeof poster === "function" ? poster() : poster) : undefined}
+      preload="metadata"
+      poster={typeof poster === "function" ? poster() : poster}
       aria-hidden="true"
     >
-      {aktiv ? <source src={src} type="video/mp4" /> : null}
+      <source src={src} type="video/mp4" />
     </video>
   );
 }
