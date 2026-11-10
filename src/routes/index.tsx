@@ -17,6 +17,17 @@ const HERO_KORT_HOYDE = "min-h-[11.5rem] md:min-h-[15rem] lg:min-h-[12rem]";
 const HERO_KORT_PLASS =
   "relative px-4 pb-20 pt-[19rem] sm:px-6 sm:pb-[5.5rem] sm:pt-[23rem] lg:pt-[26rem] [overflow-wrap:anywhere]";
 
+/** Velg AVIF-poster i samme størrelse som <picture> (HERO_SIZES, 768/1008/1512). */
+function velgJordposter(): string {
+  const css =
+    window.innerWidth >= 768
+      ? Math.max(0.3334 * window.innerWidth, 0.555 * window.innerHeight)
+      : Math.max(window.innerWidth, 0.555 * window.innerHeight);
+  const px = css * (window.devicePixelRatio || 1);
+  const n = px <= 768 ? 768 : px <= 1008 ? 1008 : 1512;
+  return `/images/hero-earth-staaende-${n}.avif`;
+}
+
 /**
  * Geografi-heltens video lastes først når kolonnen nærmer seg skjermen, og aldri ved redusert
  * bevegelse. Ellers er oppsettet som G1/G2 (autoplay, muted, loop, playsInline, poster).
@@ -28,7 +39,7 @@ function LatHeltevideo({
   className,
 }: {
   src: string;
-  poster: string;
+  poster: string | (() => string);
   className: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -69,7 +80,7 @@ function LatHeltevideo({
       loop
       playsInline
       preload={aktiv ? "metadata" : "none"}
-      poster={aktiv ? poster : undefined}
+      poster={aktiv ? (typeof poster === "function" ? poster() : poster) : undefined}
       aria-hidden="true"
     >
       {aktiv ? <source src={src} type="video/mp4" /> : null}
@@ -121,6 +132,7 @@ function Hub() {
                 playsInline
                 preload="metadata"
                 poster="/images/hero-volcano.jpg"
+                aria-hidden="true"
               >
                 <source src="/videos/hero-volcano.mp4" type="video/mp4" />
               </video>
@@ -199,14 +211,13 @@ function Hub() {
                   alt="Jorda om natten sett fra romstasjonen ISS: stjerner, et tynt oransje lysbånd langs horisonten og skyer over havet"
                   width={1008}
                   height={1792}
-                  loading="lazy"
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover object-center"
                 />
               </picture>
               <LatHeltevideo
                 src="/videos/hero-earth-iss.mp4"
-                poster="/images/hero-earth-staaende-1008.avif"
+                poster={velgJordposter}
                 className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
               />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />

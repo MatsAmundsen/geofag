@@ -52,11 +52,11 @@
     "bearbeiding": [
       "Samme stående utsnitt som stillbildet (1912x3400 fra x=2496, y=150), skalert til 1008x1792 med Lanczos.",
       "Støyreduksjon hqdn3d=3:2:4:3 (ISO 10000).",
-      "10 bilder/s, bevegelsesinterpolert til 24 bilder/s (ffmpeg minterpolate mci/aobmc).",
-      "Første bilde i videoen = ISS066-E-9147 (= poster/stillbilde). Sømløs loop: siste 1,0 s krysstones til ISS066-E-9137–9146, som leder rett inn i første bilde.",
-      "H.264 High@4.0, yuv420p, CRF 28, keyint 48, faststart, uten lydspor. 9,83 s."
+      "10 bilder/s, blend-interpolert til 24 bilder/s (krysstoning mellom nabobilder, ikke minterpolate/MCI).",
+      "Første bilde i videoen = ISS066-E-9147 (= poster/stillbilde). Sømløs loop: siste 1,0 s krysstones 9237–9246 til ISS066-E-9137–9146, som leder rett inn i første bilde. Siste 24-fps-bilde tones mot første, så steget i loopen matcher øvrige bilder.",
+      "H.264 High@4.0, yuv420p, CRF 27, én GOP (keyint 240, scenecut av), bt709/tv (colorspace, primaries, trc, range), faststart, uten lydspor. 10,00 s."
     ],
-    "storrelse_byte": 2001646,
-    "sha256": "6a003ae55f31c0ebebee08235dbce759c085f09b70b5684e17875adf03fd9589"
+    "storrelse_byte": 2598678,
+    "sha256": "0f74b9c429d7804c2fb42e678a46f7c620ac19bf4fb27ca56290c3490ce3fc99"
   }
 }
