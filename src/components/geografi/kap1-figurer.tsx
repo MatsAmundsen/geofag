@@ -388,7 +388,7 @@ function GisModell() {
           ))}
         </fieldset>
         <svg
-          viewBox={modus === "stablet" ? "0 0 410 410" : "0 0 400 260"}
+          viewBox={modus === "stablet" ? "0 0 400 400" : "0 0 400 260"}
           className="h-auto w-full"
           role="img"
           aria-label={`${modus === "stablet" ? "Stablede" : "Samlede"} kartlag: ${synlige.map((l) => l.navn).join(", ") || "ingen lag valgt"}.`}
@@ -402,11 +402,11 @@ function GisModell() {
                     <rect width={200} height={200} fill="#1b262e" stroke={PRIM} strokeWidth={2.5} />
                     <GisInnhold id={l.id} />
                   </g>
-                  {/* Typen brytes etter kolon, så etiketten får plass innenfor viewBoxen ved 320 px. Teksten er den samme. */}
-                  <text x={352} y={ty - 8} fontSize={15} fill={FG} fontWeight={600} textAnchor="middle">{l.navn}</text>
-                  <text x={352} y={ty + 11} fontSize={15} fill={MUTED} textAnchor="middle">
-                    <tspan x={352}>{l.type.slice(0, l.type.indexOf(":") + 1)}</tspan>
-                    <tspan x={352} dy={18}>{l.type.slice(l.type.indexOf(":") + 2)}</tspan>
+                  {/* Typen brytes etter kolon, og viewBox 400 gir minst 12 px tekst ved 320. Teksten er den samme. */}
+                  <text x={342} y={ty - 8} fontSize={15} fill={FG} fontWeight={600} textAnchor="middle">{l.navn}</text>
+                  <text x={342} y={ty + 11} fontSize={15} fill={MUTED} textAnchor="middle">
+                    <tspan x={342}>{l.type.slice(0, l.type.indexOf(":") + 1)}</tspan>
+                    <tspan x={342} dy={18}>{l.type.slice(l.type.indexOf(":") + 2)}</tspan>
                   </text>
                 </g>
               );

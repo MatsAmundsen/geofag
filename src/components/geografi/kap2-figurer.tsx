@@ -287,7 +287,8 @@ function Soyler() {
           <text x={48} y={y(v) + 5} fontSize={15} fill={FG} textAnchor="end">{v}</text>
         </g>
       ))}
-      <text x={14} y={24} fontSize={15} fill={FG}>°C</text>
+      {/* Enheten står til høyre for aksen, så den ikke berører «12» når teksten er 18 px under 390 px. */}
+      <text x={64} y={24} fontSize={15} fill={FG}>°C</text>
       {(["A", "B"] as const).map((k, i) => (
         <g key={k}>
           <rect x={110 + i * 150} y={y(SNITT[k])} width={80} height={210 - y(SNITT[k])} fill={i ? "#f59e0b" : PRIM} rx={4} />
