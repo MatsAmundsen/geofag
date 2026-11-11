@@ -63,7 +63,7 @@ GeoKlimaDiagram
 
 Solstrålene treffer jordoverflaten med ulike vinkler, og derfor fordeles energien ujevnt over kloden. Områdene rundt ekvator mottar gjennom året mer solenergi per areal enn polarområdene. Luft og hav flytter energi mellom områdene og reduserer forskjellene som ellers ville oppstått. **Global sirkulasjon** er de store bevegelsesmønstrene som fordeler varme og fuktighet rundt jorda. Vi undersøker et mønster over lang tid, ikke et detaljert værkart for i dag (Lindsey, 2009; Met Office, u.å.).
 
-I en forenklet modell beskriver vi tre sirkulasjonsceller på hver halvkule, som vist i figur 5.2. Nær ekvator stiger varm luft, mens luft synker i de subtropiske områdene lenger unna. Denne delen av sirkulasjonen kalles **Hadleycellen**, en stor sirkulasjon mellom ekvatorområdet og subtropene. Lenger mot polene beskriver vi Ferrelcellen og polarcellen, som inngår i det samlede mønsteret. Cellene er ikke lukkede rør med faste grenser, og virkelig vær er mer sammensatt (Met Office, u.å.).
+I en forenklet modell beskriver vi tre sirkulasjonsceller på hver halvkule, som vist i figur 5.2. Nær ekvator stiger varm luft, mens luft synker i de subtropiske områdene lenger unna. Den stigende lufta gir lavtrykk nær ekvator, og den synkende lufta gir høytrykk i subtropene (L og H i figur 5.2). Denne delen av sirkulasjonen kalles **Hadleycellen**, en stor sirkulasjon mellom ekvatorområdet og subtropene. Lenger mot polene beskriver vi Ferrelcellen og polarcellen, som inngår i det samlede mønsteret. Cellene er ikke lukkede rør med faste grenser, og virkelig vær er mer sammensatt (Met Office, u.å.).
 
 ```widget
 GeoKlimaVindceller

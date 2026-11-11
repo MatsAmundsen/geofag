@@ -550,6 +550,12 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /[Ss]e figur 5\.(?:0|10|11)\b/);
   });
 
+  it("knytter lavtrykk ved ekvator og høytrykk i subtropene til figur 5.2, med eget reseed-flagg", () => {
+    assert.ok(md.includes("Den stigende lufta gir lavtrykk nær ekvator, og den synkende lufta gir høytrykk i subtropene (L og H i figur 5.2)."));
+    assert.ok(!md.includes("lenger unna. Denne delen"));
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-lavtrykk-hoytrykk-setning-kap5-2026-11-11", slug: "geo-klima", stale: \["lenger unna\. Denne delen"\]/);
+  });
+
   it("registrerer 34 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
     assert.equal((sources.match(/href: /g) ?? []).length, 34);
     assert.ok(sources.includes("https://doi.org/10.1038/s41597-023-02549-6"), "Beck mfl. (2023)");
