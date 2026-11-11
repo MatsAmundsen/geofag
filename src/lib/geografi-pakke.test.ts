@@ -550,8 +550,9 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /[Ss]e figur 5\.(?:0|10|11)\b/);
   });
 
-  it("registrerer 33 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 33);
+  it("registrerer 34 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 34);
+    assert.ok(sources.includes("https://doi.org/10.1038/s41597-023-02549-6"), "Beck mfl. (2023)");
     for (const domain of ["ipcc.ch", "met.no", "nve.no", "snl.no", "science.nasa.gov", "scied.ucar.edu", "metoffice.gov.uk", "noaa.gov", "kartverket.no", "worldbank.org", "regjeringen.no", "ec.europa.eu", "miljodirektoratet.no", "udir.no"])
       assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);

@@ -716,6 +716,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.naturalearthdata.com/downloads/",
     },
     {
+      prefix: "Beck, H. E., McVicar, T. R., Vergopolan, N., Berg, A., Lutsko, N. J., Dufour, A., Zeng, Z., Jiang, X., van Dijk, A. I. J. M., & Miralles, D. G. (2023). ",
+      italic: "High-resolution (1 km) Köppen-Geiger maps for 1901–2099 based on constrained CMIP6 projections",
+      suffix: ". Scientific Data, 10, Artikkel 724. Kart for 1991–2020 via Wikimedia Commons, CC BY 4.0.",
+      href: "https://doi.org/10.1038/s41597-023-02549-6",
+    },
+    {
       prefix: "Barthel, K. (u.å.). ",
       italic: "Golfstrømmen",
       suffix: ". I Store norske leksikon. Hentet 6. november 2026.",
