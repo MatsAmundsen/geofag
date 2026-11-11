@@ -125,12 +125,34 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.ok(md.indexOf("## To kart") < md.indexOf("## Læringsmål"));
   });
 
-  it("bevarer resterende figurplasser uten synlige redaktørnotater", () => {
+  it("har elleve figurer som widgets og ingen synlige redaktørnotater", () => {
     const placeholders = [...md.matchAll(/^\[figur-1-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
-    assert.deepEqual(
-      placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
-      [],
-    );
+    assert.deepEqual(placeholders, []);
+    const widgets = [...md.matchAll(/^```widget\n(GeoVerktoy\w+)\n```$/gm)].map((m) => m[1]);
+    assert.deepEqual(widgets, [
+      "GeoVerktoyMonster",
+      "GeoVerktoyMercator",
+      "GeoVerktoyGallPeters",
+      "GeoVerktoyGradnett",
+      "GeoVerktoyTopokart",
+      "GeoVerktoyKartSammenlikning",
+      "GeoVerktoyMentalt",
+      "GeoVerktoyBlueMarble",
+      "GeoVerktoyGisLag",
+      "GeoVerktoySnow",
+      "GeoVerktoyTemaValg",
+    ]);
+    // Én implementasjon per plass: ni fra kap1-figurer, Topokart (1.4) og Kartverket-sammenlikningen (1.5) fra main.
+    const renderer = read("../components/poster-widget-renderer.tsx");
+    const kap1 = read("../components/geografi/kap1-figurer.tsx");
+    for (const id of widgets.filter((id) => id !== "GeoVerktoyTopokart" && id !== "GeoVerktoyKartSammenlikning")) {
+      assert.ok(renderer.includes(`"${id}"`), id);
+      assert.ok(kap1.includes(`  ${id}: `), id);
+    }
+    assert.match(renderer, /GeoVerktoyTopokart: \(\) => <GeografiTopokart \/>/);
+    assert.match(renderer, /lazy\(\(\) => import\("@\/components\/geografi\/kap1-figurer"\)/);
+    assert.match(renderer, /GeoVerktoyKartSammenlikning: \(\) => <Suspense fallback=\{<p>Laster figur\.<\/p>\}><GeografiKartSammenlikningSkjultLat \/><\/Suspense>/);
+    assert.doesNotMatch(kap1, /GeoVerktoyKartSammenlikning/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap1-redaksjon|figur-1-/);
     assert.match(html, /John Snows kolerakart/);
@@ -140,6 +162,9 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
 
   it("har kilder, hypotetiske eksempler og korrekt avgrenset Snow-case", () => {
     const sources = read("kilder-geografi.ts").split('"geo-feltarbeid"')[0];
+    // Figur 1.7 bruker globusbildet som NASA (2011)-kilden beskriver.
+    assert.match(sources, /science\.nasa\.gov\/resource\/blue-marble/);
+    assert.match(read("../components/geografi/kap1-figurer.tsx"), /blue-marble-2002\.webp/);
     assert.equal((sources.match(/href: /g) ?? []).length, 22);
     for (const domain of [
       "udir.no",
@@ -206,12 +231,32 @@ describe("Geografi kapittel 2: feltarbeid (PR C)", () => {
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|Tekst, figurer og oppgaver kommer/i);
   });
 
-  it("bevarer ti skjulte figurplasser uten avhengighet av manglende figurer", () => {
+  it("har ti figurer som widgets og ingen synlige redaktørnotater", () => {
     const placeholders = [...md.matchAll(/^\[figur-2-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
-    assert.deepEqual(
-      placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
-      [],
-    );
+    assert.deepEqual(placeholders, []);
+    const widgets = [...md.matchAll(/^```widget\n(GeoFelt\w+)\n```$/gm)].map((m) => m[1]);
+    assert.deepEqual(widgets, [
+      "GeoFeltUtvalg",
+      "GeoFeltProsess",
+      "GeoFeltPlanmal",
+      "GeoFeltMetodevalg",
+      "GeoFeltloggVg1",
+      "GeoFeltMaalepunkter",
+      "GeoFeltEtikk",
+      "GeoFeltBearbeiding",
+      "GeoFeltFeilkilder",
+      "GeoFeltMikroklimaEget",
+    ]);
+    // Én implementasjon per plass: ni fra kap2-figurer, Vg1-feltloggen fra feltlogg-vg1.
+    const renderer = read("../components/poster-widget-renderer.tsx");
+    const kap2 = read("../components/geografi/kap2-figurer.tsx");
+    for (const id of widgets.filter((id) => id !== "GeoFeltloggVg1")) {
+      assert.ok(renderer.includes(`"${id}"`), id);
+      assert.ok(kap2.includes(`  ${id}: `), id);
+    }
+    assert.match(renderer, /GeoFeltloggVg1: \(\) => <GeografiFeltlogg \/>/);
+    assert.match(renderer, /lazy\(\(\) => import\("@\/components\/geografi\/kap2-figurer"\)/);
+    assert.doesNotMatch(renderer, /feltarbeid-skjulte/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap2-redaksjon|figur-2-/);
     assert.match(html, /Mikroklima som skoleundersøkelse/);

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
 import { TsunamiPlass } from "@/components/tsunami-plass";
 import { cn } from "@/lib/utils";
@@ -114,6 +114,23 @@ function WidgetFallback({ id }: { id: string }) {
   );
 }
 
+/** Geografi kap. 1–2: figurene har målte høyder i styles.css (`.geo-plass`). */
+const GEO_PLASS = /^Geo(?:Verktoy|Felt)/;
+
+/**
+ * Rammen står både mens registeret og figurmodulen lastes og etter at figuren er
+ * på plass, så min-høyden holder teksten under i ro (CLS). Andre widgeter får
+ * ingen ekstra omslutning.
+ */
+function ReservertRamme({ id, children }: { id: string; children: ReactNode }) {
+  if (!GEO_PLASS.test(id)) return <>{children}</>;
+  return (
+    <div className="geo-plass" data-widget={id}>
+      {children}
+    </div>
+  );
+}
+
 /**
  * Published post + editor preview. Diagrams, quizzes, map and the plate model
  * are injected from chapter headings when the stored markdown has none.
@@ -146,12 +163,11 @@ export function PosterBody({
       {parts.map((part, index) => {
         if (part.type === "widget") {
           return (
-            <Suspense
-              key={`w-${part.id}-${index}`}
-              fallback={<WidgetFallback id={part.id} />}
-            >
-              <PosterWidget id={part.id} />
-            </Suspense>
+            <ReservertRamme key={`w-${part.id}-${index}`} id={part.id}>
+              <Suspense fallback={<WidgetFallback id={part.id} />}>
+                <PosterWidget id={part.id} />
+              </Suspense>
+            </ReservertRamme>
           );
         }
         const captionFallback = runningHeading;
