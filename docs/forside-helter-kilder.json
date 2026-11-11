@@ -1,0 +1,62 @@
+{
+  "bilde": "hero-earth-staaende + hero-earth-iss.mp4 (forsiden, Geografi-helten)",
+  "erstatter_paa_forsiden": "public/images/hero-earth.jpg (1792x1008, liggende). Filen er beholdt og brukes fortsatt av /geografi, geofag-2 og nav. Opphav ukjent: ingen EXIF/IPTC/XMP, ingen kreditering i repoet, lagt til i 3fd6faab 28.08.2026.",
+  "kilde": {
+    "foto_id": "ISS066-E-9147",
+    "tatt": "2021-10-22 14:11:23 GMT, Expedition 66, ISS, over Stillehavet sør for Hawaii, Nikon D5, 28 mm",
+    "beskrivelse_nasa": "The airglow blankets the Earth's horizon in this photograph from the International Space Station as it orbited 262 miles above the Pacific Ocean just south of the Hawaiian island chain.",
+    "kildeside": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=ISS066&roll=E&frame=9147",
+    "nedlastet_fra": "https://images-assets.nasa.gov/image/iss066e009147/iss066e009147~orig.jpg",
+    "bibliotekside": "https://images.nasa.gov/details/iss066e009147",
+    "original_storrelse": "5568x3712",
+    "original_sha256": "38964cc46760783e5550fc2f7b04eec237f44d60fcdd3c86456e7ba47b659c15"
+  },
+  "lisens": {
+    "status": "Ikke opphavsrettsbeskyttet (NASA-materiale, public domain i USA). Ingen tredjeparts copyright oppgitt på kildesiden.",
+    "vilkaar": [
+      "https://eol.jsc.nasa.gov/FAQ/default.htm (Conditions of use: «NASA material is not protected by copyright unless noted»)",
+      "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    ],
+    "kreditering": "Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center (ISS066-E-9147, eol.jsc.nasa.gov)",
+    "kontrollert": "2026-11-10",
+    "merknad": "NASA ber om kreditering. Kort synlig kreditering «Foto/video: NASA (ISS)» står på siden; full kreditering i kildekommentar og denne fila."
+  },
+  "bearbeiding": "Stående utsnitt 1912x3400 fra x=2496, y=150 i originalen (fokus på horisont/luftglød i øvre tredel, hav og skyer under). Skalert med Lanczos. Ingen farge- eller innholdsendring.",
+  "filer": {
+    "hero-earth-staaende-1008.avif": "6b37e1f58a1d6db3e43d52f9190fdc07f448229d898471ed7e8972cd7e01d7e7",
+    "hero-earth-staaende-1008.jpg": "13b75fb04b054060eabf831bbb970f07411e489233c38ee63534d6f3da33a16d",
+    "hero-earth-staaende-1008.webp": "c614086989d41cd4dff088371ef07d42f7759af5db257d4f8793ebd79a7c585f",
+    "hero-earth-staaende-1512.avif": "b3e79db48212ab0bb998532af8870948fa98d36905244668c7af849f69e05536",
+    "hero-earth-staaende-1512.webp": "6c84da56fed1bf73a04502d99712616bc723e96bb3a2d033075721710b34f489",
+    "hero-earth-staaende-768.avif": "fdba588a2b6a1e31760a36cb31ffd422b4f44e033cacff577bb7b13da4981088",
+    "hero-earth-staaende-768.jpg": "e4efa664e20b3557435ee463761f13cb7d32141c8f82b3191b438fabea1f547f",
+    "hero-earth-staaende-768.webp": "2fbd3ede631a4f89bea013e9f7cd11dfc882883949683b5531547aabf7b5ccae"
+  },
+  "synlig_kreditering": {
+    "tekst": "Foto/video: NASA (ISS)",
+    "plassering": "Rett over Geografi-kortet, høyrejustert, 12 px, #d5dde3 på bg-background/95 (kontrast ≥12,99:1 målt bak teksten). Godkjent av Mats 10.11.2026 kl. 21:20.",
+    "dekker": "stillbilde/poster ISS066-E-9147 og videoen ISS066-E-9137–9246"
+  },
+  "video": {
+    "fil": "public/videos/hero-earth-iss.mp4",
+    "kilde": {
+      "foto_ider": "ISS066-E-9137 til ISS066-E-9246 (110 enkeltbilder, ca. 1 s mellom bildene), samme serie og kamera som stillbildet",
+      "tatt": "2021-10-22 ca. 14:11–14:13 GMT, Expedition 66, natt over Stillehavet sør for Hawaii (solhøyde ca. −34°), Nikon D5, 28 mm, ISO 10000",
+      "serie": "NASAs tidsforløpserie «2021-10-22 ISS066 627 Night Photos» (ISS066-E-8727–9353)",
+      "serieside": "https://eol.jsc.nasa.gov/SearchPhotos/mrf.pl?scope=both&MRFList=ISS066-E-8727-9353",
+      "kildeside_eksempel": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=ISS066&roll=E&frame=9147",
+      "nedlastet_fra": "https://eol.jsc.nasa.gov/DatabaseImages/ESC/large/ISS066/ISS066-E-<nr>.JPG (5568x3712)",
+      "merknad": "NASAs ferdige tidsforløpvideo (540x270) er ikke brukt; videoen er satt sammen fra originalbildene. Ingen NASA-logo eller tekst i bildet."
+    },
+    "lisens": "Som stillbildet: NASA-materiale, ikke opphavsrettsbeskyttet (https://eol.jsc.nasa.gov/FAQ/default.htm, kontrollert 2026-11-10). Kreditering: Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center (ISS066-E-9137–9246, eol.jsc.nasa.gov).",
+    "bearbeiding": [
+      "Samme stående utsnitt som stillbildet (1912x3400 fra x=2496, y=150), skalert til 1008x1792 med Lanczos.",
+      "Støyreduksjon hqdn3d=3:2:4:3 (ISO 10000).",
+      "10 bilder/s, blend-interpolert til 24 bilder/s (krysstoning mellom nabobilder, ikke minterpolate/MCI).",
+      "Første bilde i videoen = ISS066-E-9147 (= poster/stillbilde). Sømløs loop: siste 1,0 s krysstones 9237–9246 til ISS066-E-9137–9146, som leder rett inn i første bilde. Siste 24-fps-bilde tones mot første, så steget i loopen matcher øvrige bilder.",
+      "H.264 High@4.0, yuv420p, CRF 27, én GOP (keyint 240, scenecut av), bt709/tv (colorspace, primaries, trc, range), faststart, uten lydspor. 10,00 s."
+    ],
+    "storrelse_byte": 2598678,
+    "sha256": "0f74b9c429d7804c2fb42e678a46f7c620ac19bf4fb27ca56290c3490ce3fc99"
+  }
+}
