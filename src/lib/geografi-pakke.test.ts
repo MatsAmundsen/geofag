@@ -573,9 +573,10 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /13 millioner|9 prosent av|1\.1 °C|hele august skyldtes bare/);
   });
 
-  it("bruker lastede modeller for figur 5.2–5.9: Geofag 2-cellene og nye modeller uten tall", () => {
+  it("bruker lastede modeller for figur 5.2–5.9 uten tall, og en enkel geografiversjon av vindcellene", () => {
     const reg = read("../components/poster-widget-renderer.tsx");
     for (const [widget, komp, fil] of [
+      ["GeoKlimaVindceller", "KlimaVindcellerFigur", "klima-vindceller-figur"],
       ["GeoKlimaCoriolis", "KlimaCoriolisFigur", "klima-coriolis-figur"], ["GeoKlimaHav", "KlimaAmocFigur", "klima-amoc-figur"],
       ["GeoKlimaSoner", "KlimaKoppenFigur", "klima-koppen-figur"], ["GeoKlimaFon", "KlimaFonFigur", "klima-fon-figur"],
       ["GeoKlimaStraling", "KlimaDrivhusFigur", "klima-drivhus-figur"], ["GeoKlimaKarbon", "KlimaKarbonFigur", "klima-karbon-figur"],
@@ -586,8 +587,12 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
       assert.doesNotMatch(reg, new RegExp(`^import .*${fil}`, "m"), fil);
       assert.doesNotMatch(read(`../components/diagrams/${fil}.tsx`), /\d+\s?(?:°C|W\/m|GtC|prosent)/, fil);
     }
-    // Figur 5.2 gjenbruker Geofag 2-figuren «Fra én celle til tre» med kapitlets overskrift og bildetekst.
-    assert.match(reg, /GeoKlimaVindceller: \(\) => <TreCellerFigur heading="Figur 5\.2 – Vindceller og dominerende vindbelter"/);
+    // Figur 5.2 er en egen, enklere geografimodell (ikke Geofag 2-figuren) med bare kapitlets begreper.
+    assert.match(reg, /GeoKlimaVindceller: \(\) => <KlimaVindcellerFigur heading="Figur 5\.2 – Vindceller og dominerende vindbelter"/);
+    const celler = read("../components/diagrams/klima-vindceller-figur.tsx");
+    for (const ord of ["Hadleycellen", "Ferrelcellen", "polarcellen", "passatvind", "vestavindsbeltet", "subtropene", "ekvator"])
+      assert.ok(celler.includes(ord), ord);
+    assert.doesNotMatch(celler, /ITCZ|subsidens|hestebredde|jetstrøm|tropopause|\d+\s?°/i);
     for (const gammel of ["WindCellsDiagram", "CoriolisDiagram", "AmocDiagram", "GlobalClimateZonesDiagram", "FoehnAdiabaticDiagram", "EarthRadiationBudgetDiagram", "CarbonCycleDiagram"])
       assert.ok(!reg.includes(`<${gammel} geografi />`), gammel);
     // Köppen-kartet bygger på Beck mfl. (2023) med lisensfil og kreditering i figuren.
