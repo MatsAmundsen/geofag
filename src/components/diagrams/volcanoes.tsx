@@ -413,9 +413,6 @@ export function CalderaFormationDiagram() {
                     ? "3. Taket faller ned"
                     : "4. Senkning med kratersjø og oppadstigende kuppel"}
             </L>
-            <L x="744" y="408" anchor="end" size={11} fill={C.muted}>
-              Skjematisk, ikke i målestokk
-            </L>
 
             {step === 1 ? (
               <g data-caldera-step="1">
@@ -533,6 +530,10 @@ export function CalderaFormationDiagram() {
                 )}
               </g>
             ) : null}
+            {/* Merknaden tegnes sist så skorpen ikke dekker den */}
+            <L x="744" y="408" anchor="end" size={11} fill={C.fg} opacity={0.75}>
+              Skjematisk, ikke i målestokk
+            </L>
           </g>
         </>
       )}

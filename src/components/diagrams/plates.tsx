@@ -2624,9 +2624,6 @@ export function HotspotPlumeDiagram() {
           {/* Lufta og havet: øyene stikker opp over havflaten */}
           <rect x="40" y="30" width="860" height="34" fill="url(#hp-sky)" />
           <rect x="40" y="64" width="860" height="56" fill="url(#hp-sea)" />
-          <L x="60" y="84" fill="#bae6fd" size={13} weight={600}>
-            Stillehavet
-          </L>
 
           {/* Oseanisk litosfære (skorpe og øvre mantel) som glir mot venstre, låst til tiden */}
           <rect x="40" y="120" width="860" height="55" fill="url(#hp-lith)" stroke="#18241f" strokeWidth="1.2" />
@@ -2648,9 +2645,6 @@ export function HotspotPlumeDiagram() {
           </g>
           <L x="60" y="166" fill="#cbd5e1" size={11} weight={600}>
             Litosfære
-          </L>
-          <L x="890" y="114" fill="#bae6fd" size={11} anchor="end">
-            Høyden er sterkt overdrevet
           </L>
           <Arrow d="M 450 148 L 360 148" marker={m.teal} color={C.teal} width={3.6} />
 
@@ -2701,6 +2695,9 @@ export function HotspotPlumeDiagram() {
           {/* Havet over de dykkede delene av øyene */}
           <rect x="40" y="64" width="860" height="56" fill="#0b3a55" opacity="0.38" />
           <line x1="40" y1="64" x2="900" y2="64" stroke="#7dd3fc" strokeWidth="1" opacity="0.7" />
+          <L x="60" y="84" fill="#bae6fd" size={13} weight={600}>
+            Stillehavet
+          </L>
           <path d={`M ${plumeX - 22} 42 Q ${plumeX - 40} 52 ${plumeX - 58} 64`} stroke="#ff7a1a" strokeWidth="2.4" fill="none" strokeLinecap="round" />
           <ellipse cx={plumeX} cy="39" rx="14" ry="3" fill="#ff8a2a" />
           <circle cx={plumeX + 4} cy="30" r="4.5" fill="#cbd5e1" opacity="0.7" className="hp-smoke" />
@@ -2767,6 +2764,11 @@ export function HotspotPlumeDiagram() {
           </L>
           <L x="648" y="382" fill="#e5e7eb" size={11} anchor="end">
             Varm oppstrøm under platen
+          </L>
+
+          {/* Merknad om overhøyde: nede til venstre, synlig uten å sveipe på mobil, og tegnet etter øyene */}
+          <L x="60" y="420" fill="#e5e7eb" size={11}>
+            Høyden er sterkt overdrevet
           </L>
 
           {/* Kjerne-mantel-grensen nederst */}
