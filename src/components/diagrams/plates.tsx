@@ -2499,24 +2499,24 @@ export function HotspotPlumeDiagram() {
       id: "maui",
       formedAt: 6 - (plumeX - 560) / pxPerMa,
       label: "Maui",
-      peak: 55,
-      half: 40,
+      peak: 64,
+      half: 62,
       fill: "#35352c",
     },
     {
       id: "oahu",
       formedAt: 6 - (plumeX - 435) / pxPerMa,
       label: "Oahu",
-      peak: 40,
-      half: 35,
+      peak: 60,
+      half: 54,
       fill: "#2d3028",
     },
     {
       id: "kauai",
       formedAt: 0.5,
       label: "Kauai (ca. 5,5 mill. år)",
-      peak: 25,
-      half: 30,
+      peak: 57,
+      half: 48,
       fill: "#252822",
     },
   ];
@@ -2589,56 +2589,89 @@ export function HotspotPlumeDiagram() {
             <clipPath id="hp-plate-clip">
               <rect x="40" y="120" width="860" height="55" />
             </clipPath>
+            <linearGradient id="hp-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#0c1520" />
+              <stop offset="1" stopColor="#1c2c38" />
+            </linearGradient>
+            <linearGradient id="hp-sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#1f6f98" />
+              <stop offset="1" stopColor="#0b2a3e" />
+            </linearGradient>
+            <linearGradient id="hp-mantle" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#3a2a22" />
+              <stop offset="0.5" stopColor="#4a2e22" />
+              <stop offset="1" stopColor="#5c2a1c" />
+            </linearGradient>
+            <linearGradient id="hp-lith" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#3b4a43" />
+              <stop offset="1" stopColor="#2a3631" />
+            </linearGradient>
+            <linearGradient id="hp-plume" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stopColor="#b8320e" />
+              <stop offset="0.6" stopColor="#ea580c" />
+              <stop offset="1" stopColor="#fb923c" />
+            </linearGradient>
+            <linearGradient id="hp-cmb" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#7f1d1d" />
+              <stop offset="1" stopColor="#991b1b" />
+            </linearGradient>
+            <linearGradient id="hp-island" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#4d4843" />
+              <stop offset="1" stopColor="#2c2926" />
+            </linearGradient>
           </defs>
 
-          {/* Havbasseng øverst */}
-          <rect x="40" y="30" width="860" height="90" fill="#0b1d2c" />
-          <L x="60" y="55" fill="#38bdf8" size={13} weight={600}>
+          {/* Lufta og havet: øyene stikker opp over havflaten */}
+          <rect x="40" y="30" width="860" height="34" fill="url(#hp-sky)" />
+          <rect x="40" y="64" width="860" height="56" fill="url(#hp-sea)" />
+          <L x="60" y="84" fill="#bae6fd" size={13} weight={600}>
             Stillehavet
           </L>
 
-          {/* Oseanisk litosfære som glir mot venstre, låst til tiden */}
-          <rect x="40" y="120" width="860" height="55" fill="#273830" stroke="#18241f" strokeWidth="1.2" />
+          {/* Oseanisk litosfære (skorpe og øvre mantel) som glir mot venstre, låst til tiden */}
+          <rect x="40" y="120" width="860" height="55" fill="url(#hp-lith)" stroke="#18241f" strokeWidth="1.2" />
+          <rect x="40" y="120" width="860" height="8" fill="#2b2f2c" />
           <g clipPath="url(#hp-plate-clip)">
             <g transform={`translate(${-((ageMa * pxPerMa) % 48)} 0)`}>
               {Array.from({ length: 22 }, (_, index) => (
                 <line
                   key={index}
                   x1={20 + index * 48}
-                  y1="128"
+                  y1="132"
                   x2={38 + index * 48}
                   y2="168"
-                  stroke="#3d5248"
+                  stroke="#4a5d53"
                   strokeWidth="2"
                 />
               ))}
             </g>
           </g>
+          <L x="60" y="166" fill="#cbd5e1" size={11} weight={600}>
+            Litosfære
+          </L>
+          <L x="890" y="114" fill="#bae6fd" size={11} anchor="end">
+            Høyden er sterkt overdrevet
+          </L>
           <Arrow d="M 450 148 L 360 148" marker={m.teal} color={C.teal} width={3.6} />
 
-          {/* Aktiv vulkan blir stående over den faste plymen */}
-          <path d={`M ${plumeX - 60} 120 L ${plumeX} 45 L ${plumeX + 60} 120 Z`} fill="#423b32" stroke="#25211b" strokeWidth="1.5" />
-          <polygon points={`${plumeX - 5},45 ${plumeX},32 ${plumeX + 5},45`} fill="#ef4444" />
-          <circle cx={plumeX} cy="30" r="4.5" fill="#f97316" className="hp-smoke" />
-          <L x={plumeX} y="24" fill="#f8fafc" size={12} weight={800} anchor="middle">
-            Hawaii (aktiv nå)
-          </L>
-
+          {/* Eldre øyer: synker og eroderes etter hvert som platen fører dem bort */}
           {chain.map((island) => {
             if (ageMa + 0.02 < island.formedAt) return null;
             const x = plumeX - (ageMa - island.formedAt) * pxPerMa;
+            const peakY = 120 - island.peak;
+            const h = island.half;
             return (
               <g key={island.id} data-island={island.id}>
                 <path
-                  d={`M ${x - island.half} 120 L ${x} ${120 - island.peak} L ${x + island.half} 120 Z`}
-                  fill={island.fill}
+                  d={`M ${x - h} 120 C ${x - h * 0.55} ${peakY + (120 - peakY) * 0.3}, ${x - h * 0.3} ${peakY}, ${x} ${peakY} C ${x + h * 0.3} ${peakY}, ${x + h * 0.55} ${peakY + (120 - peakY) * 0.3}, ${x + h} 120 Z`}
+                  fill="url(#hp-island)"
                   stroke="#1f1f1a"
                 />
                 <L
-                  x={x > plumeX - 88 ? plumeX - 74 : x}
-                  y={120 - island.peak - 8}
-                  fill="#cbd5e1"
-                  size={island.id === "kauai" ? 10 : 11}
+                  x={x > plumeX - 88 ? plumeX - 96 : x}
+                  y={peakY - 8}
+                  fill="#e2e8f0"
+                  size={11}
                   weight={600}
                   anchor={x > plumeX - 88 ? "end" : "middle"}
                 >
@@ -2650,31 +2683,53 @@ export function HotspotPlumeDiagram() {
 
           {ageMa > 5.7 ? (
             <g data-island="midway" opacity={Math.min(1, (ageMa - 5.7) / 0.3)}>
-              <path d="M 140 120 L 165 112 L 190 120 Z" fill="#1b1f1a" />
-              <L x="165" y="104" fill="#64748b" size={9.5} anchor="middle">
-                Midway
+              <path d="M 128 120 C 145 96, 152 68, 165 68 C 178 68, 185 96, 202 120 Z" fill="url(#hp-island)" />
+              <rect x="150" y="62" width="30" height="4" rx="2" fill="#d9c9a3" />
+              <L x="165" y="54" fill="#cbd5e1" size={11} anchor="middle">
+                Midway (atoll)
               </L>
             </g>
           ) : null}
 
-          {/* Astenosfære og mantel under litosfæren */}
-          <rect x="40" y="175" width="860" height="255" fill="#1b2832" />
-          <L x="360" y="204" fill="#d1d5db" size={12} weight={700}>
+          {/* Aktiv skjoldvulkan over den faste plymen: bred og slak */}
+          <path
+            d={`M ${plumeX - 100} 120 C ${plumeX - 60} 66, ${plumeX - 30} 38, ${plumeX} 38 C ${plumeX + 30} 38, ${plumeX + 60} 66, ${plumeX + 100} 120 Z`}
+            fill="url(#hp-island)"
+            stroke="#25211b"
+            strokeWidth="1.5"
+          />
+          {/* Havet over de dykkede delene av øyene */}
+          <rect x="40" y="64" width="860" height="56" fill="#0b3a55" opacity="0.38" />
+          <line x1="40" y1="64" x2="900" y2="64" stroke="#7dd3fc" strokeWidth="1" opacity="0.7" />
+          <path d={`M ${plumeX - 22} 42 Q ${plumeX - 40} 52 ${plumeX - 58} 64`} stroke="#ff7a1a" strokeWidth="2.4" fill="none" strokeLinecap="round" />
+          <ellipse cx={plumeX} cy="39" rx="14" ry="3" fill="#ff8a2a" />
+          <circle cx={plumeX + 4} cy="30" r="4.5" fill="#cbd5e1" opacity="0.7" className="hp-smoke" />
+          <L x={plumeX} y="24" fill="#f8fafc" size={12} weight={800} anchor="middle">
+            Hawaii (aktiv nå)
+          </L>
+
+          {/* Mantelen under litosfæren */}
+          <rect x="40" y="175" width="860" height="255" fill="url(#hp-mantle)" />
+          <L x="360" y="204" fill="#e5e7eb" size={12} weight={700}>
             Stillehavsplaten glir mot nordvest ←
           </L>
 
-          {/* MANTELPLYM (SØYLE FRA DYPET VED x=700) */}
+          {/* MANTELPLYM: smal stamme og et flatt hode som brer seg under platen */}
           <path
-            d="M 685 430 L 685 240 C 670 200, 640 160, 680 135 L 720 135 C 760 160, 730 200, 715 240 L 715 430 Z"
-            fill="#ea580c"
-            opacity="0.92"
+            d="M 686 430 L 687 232 C 684 210, 640 202, 612 190 Q 650 176 700 176 Q 750 176 788 190 C 760 202, 716 210, 713 232 L 714 430 Z"
+            fill="url(#hp-plume)"
+            opacity="0.95"
           />
-          {/* Animerte oppstigende termiske strømmer inne i plymmen */}
+          {/* Smelte som stiger gjennom litosfæren til vulkanen */}
+          <path d={`M ${plumeX - 4} 178 L ${plumeX + 3} 160 L ${plumeX - 3} 142 L ${plumeX + 2} 124 L ${plumeX} 60`} stroke="#ff8a2a" strokeWidth="3" fill="none" strokeLinejoin="round" />
+          <path d={`M ${plumeX + 10} 178 L ${plumeX + 14} 156 L ${plumeX + 8} 132`} stroke="#ff8a2a" strokeWidth="1.6" fill="none" opacity="0.8" />
+          <ellipse cx={plumeX} cy="96" rx="16" ry="5" fill="#ff7a1a" opacity="0.85" />
+          {/* Animerte oppstigende termiske strømmer inne i plymen */}
           <line
             x1="700"
             y1="420"
             x2="700"
-            y2="155"
+            y2="190"
             stroke="#fed7aa"
             strokeWidth="3.5"
             strokeDasharray="8 6"
@@ -2684,7 +2739,7 @@ export function HotspotPlumeDiagram() {
             x1="693"
             y1="400"
             x2="693"
-            y2="180"
+            y2="200"
             stroke="#fef08a"
             strokeWidth="2"
             strokeDasharray="6 4"
@@ -2695,7 +2750,7 @@ export function HotspotPlumeDiagram() {
             x1="707"
             y1="400"
             x2="707"
-            y2="180"
+            y2="200"
             stroke="#fef08a"
             strokeWidth="2"
             strokeDasharray="6 4"
@@ -2703,19 +2758,19 @@ export function HotspotPlumeDiagram() {
             style={{ animationDelay: "1s" }}
           />
 
-          <ellipse cx="700" cy="145" rx="35" ry="18" fill="#f97316" className="hp-head-glow" />
+          <ellipse cx="700" cy="182" rx="48" ry="7" fill="#fb923c" className="hp-head-glow" />
           <L x="648" y="348" fill="#fff" size={13} weight={800} anchor="end">
             MANTELPLYM (HOTSPOT)
           </L>
           <L x="648" y="366" fill="#fed7aa" size={11} weight={600} anchor="end">
             Stasjonær termisk oppstrøm
           </L>
-          <L x="648" y="382" fill="#cbd5e1" size={10} anchor="end">
+          <L x="648" y="382" fill="#e5e7eb" size={11} anchor="end">
             Varm oppstrøm under platen
           </L>
 
           {/* Kjerne-mantel-grensen nederst */}
-          <rect x="40" y="430" width="860" height="25" fill="#991b1b" />
+          <rect x="40" y="430" width="860" height="25" fill="url(#hp-cmb)" />
           <L x="470" y="447" fill="#fef08a" size={11.5} weight={800} anchor="middle">
             Hvor dypt hotspots har røttene sine, er omdiskutert
           </L>
@@ -2728,7 +2783,7 @@ export function HotspotPlumeDiagram() {
             <L x="12" y="44" fill="#d1d5db" size={11}>
               Kauai ca. 5,5 mill. år.
             </L>
-            <L x="12" y="58" fill="#94a3b8" size={10}>
+            <L x="12" y="60" fill="#94a3b8" size={11}>
               Big Island yngre enn 0,7 mill. år.
             </L>
           </g>

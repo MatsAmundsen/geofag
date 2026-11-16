@@ -1,9 +1,53 @@
 import { VolcanoTypesDiagram } from "@/components/diagrams/volcanoes";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useAnimationPlaying } from "@/components/diagrams/use-motion";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
+import { BillowColumn, BillowSheet, LayeredCone, VolcArtDefs } from "@/components/diagrams/volcano-art";
+import {
+  flankPoints,
+  profilePath,
+  type ProfileSpec,
+  SHIELD_LAYERS,
+  STRATO_LAYERS,
+  surfacePath,
+  surfaceY,
+} from "@/components/diagrams/volcano-geometry";
+
+/* Profiler regnet ut fra helning: skjold ca. 6° i snitt, stratovulkan ca. 34° i toppen, sinderkjegle ca. 33°. */
+const VM_SHIELD: ProfileSpec = { kind: "shield", cx: 450, baseY: 320, height: 42, crater: 30, craterDepth: 3, halfWidth: 30 + 42 / 0.105 };
+const VM_STRATO: ProfileSpec = { kind: "strato", cx: 450, baseY: 320, height: 140, crater: 22, craterDepth: 6, halfWidth: 22 + 140 / 0.4 };
+const VM_CINDER: ProfileSpec = { kind: "cinder", cx: 450, baseY: 320, height: 126, crater: 36, craterDepth: 16, halfWidth: 36 + 126 / 0.65 };
+
+/** Lavastrøm langs flanken (side -1 = venstre, 1 = høyre). */
+function vmFlow(spec: ProfileSpec, side: -1 | 1) {
+  return vmFlowOffset(spec, side, -1.5);
+}
+
+function vmFlowOffset(spec: ProfileSpec, side: -1 | 1, dy: number) {
+  const pts: string[] = [];
+  for (let i = 0; i <= 20; i++) {
+    const d = spec.crater + 4 + ((spec.halfWidth - spec.crater - 30) * i) / 20;
+    const x = spec.cx + side * d;
+    pts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${((surfaceY(spec, x) ?? spec.baseY) + dy).toFixed(1)}`);
+  }
+  return pts.join(" ");
+}
+
+const vmLeft = flankPoints(VM_STRATO, 30).left;
+const vmRight = flankPoints(VM_STRATO, 30).right;
+const vmLahar = (() => {
+  const top = vmRight.filter((_, i) => i >= 10).map(([x, y]) => `${x.toFixed(1)} ${(y - 3).toFixed(1)}`);
+  const back = vmRight.filter((_, i) => i >= 10).map(([x, y]) => `${x.toFixed(1)} ${(y + 5).toFixed(1)}`).reverse();
+  return `M ${top.join(" L ")} L 880 317 L 880 324 L ${back.join(" L ")} Z`;
+})();
+const vmCalRim = surfaceY(VM_STRATO, 330) ?? 320;
+
+/* Vulkanovervåking: stratovulkan med konkav profil, ca. 34° i toppen. */
+const MON_CONE: ProfileSpec = { kind: "strato", cx: 230, baseY: 270, height: 88, crater: 10, craterDepth: 3, halfWidth: 10 + 88 / 0.4 };
+const MON_TOP = MON_CONE.baseY - MON_CONE.height;
+const MON_Y140 = surfaceY(MON_CONE, 140) ?? 270;
 
 type VolcanoScenario = "shield" | "stratovolcano" | "cinder" | "caldera" | "earthquake_sim" | "monitoring" | "tsunami_sim";
 
@@ -36,6 +80,7 @@ function GeografiVolcanoModel() {
 }
 function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?: boolean } = {}) {
   const [scenario, setScenario] = useState<VolcanoScenario>("stratovolcano");
+  const vmId = useId().replace(/:/g, "");
 
   // Kontroller for vulkan-simulering
   const [sio2, setSio2] = useState<number>(62); // 48% (basalt) til 73% (ryolitt)
@@ -558,7 +603,7 @@ function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?:
 
                   {/* Inflasjons-stiplet profil (referanse) */}
                   <path
-                    d="M 30 270 L 230 140 L 430 270 Z"
+                    d={surfacePath(MON_CONE)}
                     fill="none"
                     stroke="#64748b"
                     strokeWidth="1.5"
@@ -566,20 +611,18 @@ function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?:
                   />
 
                   {/* Faktisk fjellkropp (hever seg ved magmaopptrenging) */}
-                  <path
-                    d={`M 30 270 Q 130 ${210 - inflationPx} 220 ${140 - inflationPx} L 240 ${140 - inflationPx} Q 330 ${210 - inflationPx} 430 270 Z`}
-                    fill="#332a24"
-                    stroke="#785c4b"
-                    strokeWidth="2.5"
-                  />
+                  <g transform={`translate(0 ${(-inflationPx).toFixed(1)})`}>
+                    <LayeredCone spec={MON_CONE} colors={STRATO_LAYERS} layers={6} clipId={`${vmId}-mon`} />
+                    <path d={surfacePath(MON_CONE)} fill="none" stroke="#785c4b" strokeWidth="2" />
+                  </g>
 
                   {/* Fjellflanke GPS heving-vektorer */}
                   <g>
-                    <line x1="140" y1={210 - inflationPx} x2="135" y2={185 - inflationPx * 1.6} stroke="#38bdf8" strokeWidth="2.5" />
-                    <polygon points={`135,${180 - inflationPx * 1.6} 130,${190 - inflationPx * 1.6} 140,${190 - inflationPx * 1.6}`} fill="#38bdf8" />
-                    <line x1="320" y1={210 - inflationPx} x2="325" y2={185 - inflationPx * 1.6} stroke="#38bdf8" strokeWidth="2.5" />
-                    <polygon points={`325,${180 - inflationPx * 1.6} 320,${190 - inflationPx * 1.6} 330,${190 - inflationPx * 1.6}`} fill="#38bdf8" />
-                    <text x="135" y={170 - inflationPx * 1.6} fill="#7dd3fc" fontSize="11" fontWeight="bold" textAnchor="middle">
+                    <line x1="140" y1={MON_Y140 - inflationPx} x2="135" y2={MON_Y140 - 25 - inflationPx * 1.6} stroke="#38bdf8" strokeWidth="2.5" />
+                    <polygon points={`135,${MON_Y140 - 30 - inflationPx * 1.6} 130,${MON_Y140 - 20 - inflationPx * 1.6} 140,${MON_Y140 - 20 - inflationPx * 1.6}`} fill="#38bdf8" />
+                    <line x1="320" y1={MON_Y140 - inflationPx} x2="325" y2={MON_Y140 - 25 - inflationPx * 1.6} stroke="#38bdf8" strokeWidth="2.5" />
+                    <polygon points={`325,${MON_Y140 - 30 - inflationPx * 1.6} 320,${MON_Y140 - 20 - inflationPx * 1.6} 330,${MON_Y140 - 20 - inflationPx * 1.6}`} fill="#38bdf8" />
+                    <text x="135" y={MON_Y140 - 40 - inflationPx * 1.6} fill="#7dd3fc" fontSize="11" fontWeight="bold" textAnchor="middle">
                       GNSS +{monitorStatus.upliftVal.replace(".", ",")} cm
                     </text>
                   </g>
@@ -592,23 +635,23 @@ function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?:
                   </text>
 
                   {/* Magmatilførsel og oppstigende diapir */}
-                  <path d={`M 223 400 L 223 ${magmaHeadY} H 237 L 237 400 Z`} fill="#ff3700" />
+                  <path d={`M 225 400 L 226 ${magmaHeadY} H 234 L 235 400 Z`} fill="#ff3700" />
                   <ellipse cx="230" cy={magmaHeadY} rx="14" ry="10" fill="#ffcc00" filter="url(#monGlow)" />
 
                   {/* Seismiske sverm-episentre (harmonisk tremor) */}
                   {Array.from({ length: Math.min(18, Math.round(4 + prog * 14)) }).map((_, i) => {
                     const sx = 230 + (Math.sin(i * 2.3) * (25 + prog * 35));
-                    const sy = 390 - (i * 12 + Math.cos(i * 1.7) * 15);
+                    const sy = 390 - (i * 11 + Math.cos(i * 1.7) * 15);
                     return (
                       <circle key={i} cx={sx} cy={sy} r="3.5" fill="#f43f5e" stroke="#ffe4e6" strokeWidth="1" filter="url(#monGlow)" />
                     );
                   })}
 
                   {/* DOAS Gass-målestasjon og gassfane */}
-                  <ellipse cx="230" cy={135 - inflationPx} rx="12" ry="4" fill="#1c1917" />
+                  <ellipse cx="230" cy={MON_TOP + 2 - inflationPx} rx="10" ry="3" fill="#1c1917" />
                   {/* Gassfaner (større ved høyere SO2) */}
                   <path
-                    d={`M 230 ${135 - inflationPx} Q ${260 + prog * 30} ${100 - prog * 20} ${290 + prog * 40} ${60 - prog * 25}`}
+                    d={`M 230 ${MON_TOP - inflationPx} Q ${260 + prog * 30} ${100 - prog * 20} ${290 + prog * 40} ${60 - prog * 25}`}
                     fill="none"
                     stroke="#fef08a"
                     strokeWidth={4 + prog * 8}
@@ -924,6 +967,12 @@ function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?:
                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
               </filter>
             </defs>
+            <VolcArtDefs id={vmId} />
+            <defs>
+              <clipPath id={`${vmId}-calOut`}>
+                <path d="M 0 0 H 330 V 460 H 0 Z M 570 0 H 900 V 460 H 570 Z" />
+              </clipPath>
+            </defs>
 
             <style>{`
               .vm-lava { stroke-dasharray: 18 12; animation: vm-lava 1.4s linear infinite; animation-play-state: ${isErupting ? "running" : "paused"}; }
@@ -947,41 +996,60 @@ function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?:
             <rect x="0" y="0" width="900" height="340" fill="url(#skyGrad)" />
 
             {/* Fjellbakgrunn for dybdefølelse */}
-            <path d="M 0 320 L 120 250 L 260 300 L 400 240 L 520 290 L 700 230 L 900 310 L 900 340 L 0 340 Z" fill="#162029" opacity="0.6" />
+            <path d="M 0 320 L 60 292 L 120 262 L 170 284 L 260 300 L 330 270 L 400 246 L 470 276 L 520 290 L 610 262 L 700 236 L 790 280 L 900 306 L 900 340 L 0 340 Z" fill="#1a2630" opacity="0.6" />
 
-            {/* Jordskorpe og sedimentlag */}
-            <rect x="0" y="320" width="900" height="140" fill="url(#crustGrad)" />
-            <line x1="0" y1="320" x2="900" y2="320" stroke="#44392e" strokeWidth="2" />
+            {/* Jordskorpe med lagdeling */}
+            <rect x="0" y="320" width="900" height="140" fill={`url(#${vmId}-crust)`} />
+            {[350, 378, 432].map((y) => (
+              <line key={y} x1="0" y1={y} x2="900" y2={y} stroke="#4a3f35" strokeWidth="1" opacity="0.6" />
+            ))}
+            <rect x="0" y="320" width="900" height="140" fill={`url(#${vmId}-speckle)`} />
+            <line x1="0" y1="320" x2="900" y2="320" stroke="#5a4c40" strokeWidth="2" />
 
             {/* Magmakammer i dypet */}
-            <ellipse cx="450" cy="405" rx={eruptionStyle.draw === "ultra" ? 180 : 100} ry={eruptionStyle.draw === "ultra" ? 45 : 32} fill="url(#chamberGlow)" />
-            <ellipse cx="450" cy="405" rx={eruptionStyle.draw === "ultra" ? 150 : 80} ry={eruptionStyle.draw === "ultra" ? 35 : 24} fill="url(#magmaGrad)" />
+            <ellipse cx="450" cy="405" rx={eruptionStyle.draw === "ultra" ? 200 : 120} ry={eruptionStyle.draw === "ultra" ? 50 : 38} fill={`url(#${vmId}-halo)`} />
+            <ellipse cx="450" cy="405" rx={eruptionStyle.draw === "ultra" ? 160 : 90} ry={eruptionStyle.draw === "ultra" ? 34 : 24} fill={`url(#${vmId}-chamber)`} stroke="#5c1a08" />
             <text x="450" y="408" fill="#fff" fontSize="13" fontWeight="bold" textAnchor="middle">
               {eruptionStyle.draw === "ultra" ? "Stort ryolittkammer" : `Magmakammer (${temp} °C)`}
             </text>
-            <text x="450" y="424" fill="#fed7aa" fontSize="10" textAnchor="middle">
+            <text x="450" y="424" fill="#fed7aa" fontSize="11" textAnchor="middle">
               SiO₂: {sio2} % · Gass: {nb1(gasContent)} % · Viskositet: {viscosityShort(viscosityInfo.label)}
+            </text>
+            <text x="884" y="452" fill="#94a3b8" fontSize="11" textAnchor="end">
+              Ikke i målestokk. Magmakammeret ligger ofte flere km under bakken.
             </text>
 
             {/* Formen følger SiO₂, gass og temperatur, ikke bare fanen. */}
             {scenario === "cinder" ? (
               <g data-volcano-shape="cinder">
-                <path d="M40 320 H860" stroke="#3a332c" strokeWidth="2" />
-                <path d="M330 320 L430 168 L450 188 L470 168 L570 320 Z" fill="#5a3028" stroke="#8a5344" strokeWidth="2" />
-                <path d="M360 300 L434 190 L466 190 L540 300" fill="none" stroke="#3a201c" strokeWidth="3" />
-                <ellipse cx="450" cy="176" rx="22" ry="8" fill="#140e0c" stroke="#ff7a18" strokeWidth="1.6" />
+                <path d="M 560 320 Q 640 308 760 314 L 800 320 Z" fill="#2a2420" />
+                <path className="vm-lava" d="M 566 318 Q 650 309 780 316" fill="none" stroke="#ff6a1a" strokeWidth="2.4" strokeLinecap="round" />
+                <path d={profilePath(VM_CINDER)} fill={`url(#${vmId}-scoria)`} stroke="#8a5344" strokeWidth="1.6" />
+                <path d={profilePath(VM_CINDER)} fill="#2a1410" opacity="0.18" />
+                {[0.25, 0.5].map((f) => (
+                  <path
+                    key={f}
+                    d={profilePath({ ...VM_CINDER, height: VM_CINDER.height * (1 - f), halfWidth: VM_CINDER.halfWidth - (VM_CINDER.halfWidth - VM_CINDER.crater) * f * 0.6, crater: VM_CINDER.crater * (1 - f) })}
+                    fill="none"
+                    stroke="#2f1812"
+                    strokeOpacity="0.55"
+                    strokeWidth="1.2"
+                  />
+                ))}
+                <path d={`M 446 400 L 447 ${VM_CINDER.baseY - VM_CINDER.height + 14} H 453 L 454 400 Z`} fill={`url(#${vmId}-lava)`} />
                 <g className="vm-fountain">
-                  <path d="M444 176 Q438 140 444 118 Q450 108 456 118 Q462 140 456 176 Z" fill="#ff7700" />
-                  <circle cx="442" cy="112" r="4" fill="#ffcc00" />
-                  <circle cx="458" cy="100" r="3" fill="#ffb020" />
+                  <path d={`M 442 ${VM_CINDER.baseY - VM_CINDER.height + 14} Q 450 120 458 ${VM_CINDER.baseY - VM_CINDER.height + 14} Z`} fill={`url(#${vmId}-lava)`} />
+                  <circle cx="440" cy="118" r="4" fill="#ffcc00" />
+                  <circle cx="462" cy="106" r="3" fill="#ffb020" />
                 </g>
-                <circle className="vm-particle" cx="410" cy="150" r="4" fill="#6b3a2a" />
-                <circle className="vm-particle" cx="490" cy="160" r="3.5" fill="#8a5344" style={{ animationDelay: "0.4s" }} />
-                <circle className="vm-particle" cx="380" cy="210" r="3" fill="#a1624a" style={{ animationDelay: "0.8s" }} />
-                <circle className="vm-particle" cx="520" cy="220" r="3.2" fill="#6b3a2a" style={{ animationDelay: "1.1s" }} />
-                <text x="200" y="150" fill="#fed7aa" fontSize="13" fontWeight="bold" textAnchor="end">
+                <circle className="vm-particle" cx="400" cy="150" r="4" fill="#ff7a18" />
+                <circle className="vm-particle" cx="500" cy="160" r="3.5" fill="#8a5344" style={{ animationDelay: "0.4s" }} />
+                <circle className="vm-particle" cx="372" cy="176" r="3" fill="#ffb020" style={{ animationDelay: "0.8s" }} />
+                <circle className="vm-particle" cx="530" cy="182" r="3.2" fill="#6b3a2a" style={{ animationDelay: "1.1s" }} />
+                <text x="300" y="196" fill="#fed7aa" fontSize="13" fontWeight="bold" textAnchor="end">
                   Krater i toppen
                 </text>
+                <line x1="306" y1="192" x2="414" y2="192" stroke="#fed7aa" strokeWidth="1" />
                 <text x="48" y="300" fill="#e7c4a4" fontSize="13" fontWeight="bold">
                   Slagg og sinder
                 </text>
@@ -991,32 +1059,34 @@ function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?:
               </g>
             ) : eruptionStyle.draw === "effusive" ? (
               <g data-volcano-shape="shield">
-                <path d="M 60 320 Q 450 240 840 320 Z" fill="#2d2822" stroke="#574838" strokeWidth="2" />
-                <path d="M 160 318 Q 450 255 740 318" fill="none" stroke="#221d17" strokeWidth="3" />
-                <path d="M 260 316 Q 450 270 640 316" fill="none" stroke="#3d3329" strokeWidth="2.5" />
-                <ellipse cx="450" cy="242" rx="35" ry="8" fill="#1b1612" stroke="#e07a30" strokeWidth="1.5" />
-                <path d="M 444 380 L 444 242 H 456 L 456 380 Z" fill="#ff5500" opacity="0.9" />
+                <LayeredCone spec={VM_SHIELD} colors={SHIELD_LAYERS} layers={6} clipId={`${vmId}-shield`} />
+                <path d={surfacePath(VM_SHIELD)} fill="none" stroke="#6d6259" strokeWidth="1.6" />
+                <path d={`M 446 380 L 447 ${VM_SHIELD.baseY - VM_SHIELD.height + 2} H 453 L 454 380 Z`} fill={`url(#${vmId}-lava)`} opacity="0.95" />
                 <g className="vm-fountain">
-                  <path d="M 446 242 Q 440 200 445 180 Q 450 170 455 180 Q 460 200 454 242 Z" fill="#ff7700" filter="url(#glowEffect)" />
-                  <ellipse cx="450" cy="180" rx="6" ry="12" fill="#ffcc00" />
+                  <path d={`M 444 ${VM_SHIELD.baseY - VM_SHIELD.height} Q 450 210 456 ${VM_SHIELD.baseY - VM_SHIELD.height} Z`} fill={`url(#${vmId}-lava)`} filter="url(#glowEffect)" />
+                  <ellipse cx="450" cy="226" rx="5" ry="9" fill="#ffcc00" />
                 </g>
-                <path className="vm-lava" d="M 430 244 Q 300 260 140 320" fill="none" stroke="#ff4400" strokeWidth="6" strokeLinecap="round" />
-                <path className="vm-lava" d="M 470 244 Q 600 262 760 320" fill="none" stroke="#ffaa00" strokeWidth="5" strokeLinecap="round" />
-                <circle className="vm-particle" cx="442" cy="210" r="6" fill="#e2e8f0" />
-                <circle className="vm-particle" cx="462" cy="198" r="5" fill="#cbd5e1" style={{ animationDelay: "0.7s" }} />
-                <text x="450" y="158" fill="#fed7aa" fontSize="12" fontWeight="bold" textAnchor="middle">
+                <path className="vm-lava" d={vmFlow(VM_SHIELD, -1)} fill="none" stroke="#ff5a14" strokeWidth="4" strokeLinecap="round" />
+                <path className="vm-lava" d={vmFlow(VM_SHIELD, 1)} fill="none" stroke="#ffaa00" strokeWidth="3.5" strokeLinecap="round" />
+                <circle className="vm-particle" cx="442" cy="250" r="6" fill="#e2e8f0" />
+                <circle className="vm-particle" cx="462" cy="240" r="5" fill="#cbd5e1" style={{ animationDelay: "0.7s" }} />
+                <text x="450" y="198" fill="#fed7aa" fontSize="12" fontWeight="bold" textAnchor="middle">
                   Lavafontene og lavastrøm
+                </text>
+                <text x="90" y="300" fill="#c9b896" fontSize="11">
+                  Slake sider, ca. 2–10°
                 </text>
               </g>
             ) : eruptionStyle.draw === "strombolian" ? (
               <g data-volcano-shape="cone">
-                <path d="M 180 320 L 420 180 Q 450 190 480 180 L 720 320 Z" fill="#332a26" stroke="#57453d" strokeWidth="2" />
-                <path d="M 230 310 L 426 195 L 474 195 L 670 310" fill="none" stroke="#261d1a" strokeWidth="4" />
-                <ellipse cx="450" cy="182" rx="30" ry="9" fill="#1c1412" stroke="#ff5500" strokeWidth="2" />
-                <path d="M 444 380 L 444 182 H 456 L 456 380 Z" fill="#ff3b00" />
-                <path className="vm-plume" d="M 436 178 Q 424 120 418 96 Q 450 78 482 96 Q 476 120 464 178 Z" fill="#64748b" opacity="0.92" />
-                <circle className="vm-particle" cx="428" cy="150" r="5" fill="#f97316" />
-                <circle className="vm-particle" cx="470" cy="138" r="4.5" fill="#fbbf24" style={{ animationDelay: "0.5s" }} />
+                <LayeredCone spec={VM_STRATO} colors={STRATO_LAYERS} layers={8} clipId={`${vmId}-strom`} />
+                <path d={surfacePath(VM_STRATO)} fill="none" stroke="#7a6c5c" strokeWidth="1.6" />
+                <path d={`M 446 380 L 447 ${VM_STRATO.baseY - VM_STRATO.height + 2} H 453 L 454 380 Z`} fill={`url(#${vmId}-lava)`} />
+                <g className="vm-plume">
+                  <BillowColumn x0={450} y0={VM_STRATO.baseY - VM_STRATO.height - 8} x1={446} y1={92} r0={10} r1={30} count={8} fill={`url(#${vmId}-ash)`} shade="#3e3934" seed={71} />
+                </g>
+                <circle className="vm-particle" cx="420" cy="150" r="5" fill="#f97316" />
+                <circle className="vm-particle" cx="478" cy="140" r="4.5" fill="#fbbf24" style={{ animationDelay: "0.5s" }} />
                 <circle className="vm-particle" cx="450" cy="160" r="4" fill="#fb7185" style={{ animationDelay: "1s" }} />
                 <text x="450" y="62" fill="#f8fafc" fontSize="12" fontWeight="bold" textAnchor="middle">
                   Kort askesøyle
@@ -1024,61 +1094,62 @@ function AdvancedVolcanoModel({ showSeismicModes = false }: { showSeismicModes?:
               </g>
             ) : eruptionStyle.draw === "plinian" ? (
               <g data-volcano-shape="cone">
-                <path d="M 180 320 L 420 180 Q 450 190 480 180 L 720 320 Z" fill="#332a26" stroke="#57453d" strokeWidth="2" />
-                <path d="M 230 310 L 426 195 L 474 195 L 670 310" fill="none" stroke="#261d1a" strokeWidth="4" />
-                <path d="M 280 295 L 432 215 L 468 215 L 620 295" fill="none" stroke="#4a3b34" strokeWidth="3" />
-                <ellipse cx="450" cy="182" rx="30" ry="9" fill="#1c1412" stroke="#ff5500" strokeWidth="2" />
-                <path d="M 444 380 L 444 182 H 456 L 456 380 Z" fill="#ff3b00" />
-                <line x1="410" y1="260" x2="490" y2="260" stroke="#facc15" strokeWidth="1.5" strokeDasharray="3 3" />
-                <text x="500" y="264" fill="#facc15" fontSize="10">Fragmenteringsnivå</text>
+                <LayeredCone spec={VM_STRATO} colors={STRATO_LAYERS} layers={8} clipId={`${vmId}-plin`} />
+                <path d={surfacePath(VM_STRATO)} fill="none" stroke="#7a6c5c" strokeWidth="1.6" />
+                <path d={`M 446 380 L 447 262 H 453 L 454 380 Z`} fill={`url(#${vmId}-lava)`} />
+                <path d={`M 447 262 L 447 ${VM_STRATO.baseY - VM_STRATO.height + 2} H 453 L 453 262 Z`} fill="#c98a5a" />
+                <line x1="410" y1="262" x2="490" y2="262" stroke="#facc15" strokeWidth="1.5" strokeDasharray="3 3" />
+                <text x="500" y="266" fill="#facc15" fontSize="11">Fragmenteringsnivå</text>
                 <g className="vm-plume">
-                  <path d="M 440 180 Q 430 110 390 60 Q 350 20 280 18 L 620 18 Q 550 20 510 60 Q 470 110 460 180 Z" fill="#475569" opacity="0.85" />
+                  <BillowColumn x0={450} y0={VM_STRATO.baseY - VM_STRATO.height - 10} x1={452} y1={44} r0={14} r1={58} count={10} fill={`url(#${vmId}-ash)`} shade="#3e3934" seed={81} />
                 </g>
                 <g className="vm-umbrella">
-                  <ellipse cx="450" cy="24" rx="200" ry="22" fill="#334155" opacity="0.9" />
-                  <ellipse cx="410" cy="20" rx="140" ry="18" fill="#475569" opacity="0.85" />
-                  <text x="450" y="28" fill="#f1f5f9" fontSize="12" fontWeight="bold" textAnchor="middle">
+                  <BillowSheet cx={450} cy={26} halfWidth={220} thickness={22} fill={`url(#${vmId}-ash)`} shade="#3e3934" seed={83} count={26} />
+                  <text x="450" y="30" fill="#f1f5f9" fontSize="12" fontWeight="bold" textAnchor="middle">
                     Paraplysky (inn i stratosfæren)
                   </text>
                 </g>
-                <circle className="vm-particle" cx="390" cy="90" r="5" fill="#94a3b8" />
-                <circle className="vm-particle" cx="510" cy="80" r="4" fill="#cbd5e1" style={{ animationDelay: "0.6s" }} />
-                <path d="M 420 190 Q 360 220 290 260 Q 230 290 150 320 L 220 320 Q 320 280 430 210 Z" fill="#e11d48" opacity="0.75" />
-                <path className="vm-pdc" d="M 180 310 Q 240 270 320 230" stroke="#fb7185" strokeWidth="4" fill="none" />
-                <text x="210" y="275" fill="#ffe4e6" fontSize="11" fontWeight="bold" transform="rotate(-30 210 275)">
+                <circle className="vm-particle" cx="380" cy="100" r="5" fill="#94a3b8" />
+                <circle className="vm-particle" cx="520" cy="90" r="4" fill="#cbd5e1" style={{ animationDelay: "0.6s" }} />
+                <BillowColumn x0={vmLeft[24][0] + 10} y0={vmLeft[24][1] - 10} x1={150} y1={306} r0={12} r1={26} count={14} fill={`url(#${vmId}-pdc)`} shade="#4a3429" seed={87} opacity={0.95} />
+                <path className="vm-pdc" d={vmFlowOffset(VM_STRATO, -1, -8)} stroke="#fb7185" strokeWidth="3" fill="none" />
+                <text x="200" y="254" fill="#ffe4e6" fontSize="11" fontWeight="bold" transform="rotate(-22 200 254)">
                   Pyroklastisk tetthetsstrøm
                 </text>
-                <path d="M 475 200 Q 560 250 670 320 L 730 320 Q 600 250 485 200 Z" fill="#78716c" opacity="0.85" />
-                <text x="610" y="280" fill="#f5f5f4" fontSize="10" fontWeight="bold" transform="rotate(28 610 280)">
+                <path d={vmLahar} fill="#8a7862" stroke="#5a4c3d" strokeWidth="1" />
+                <text x="640" y="276" fill="#f5f5f4" fontSize="11" fontWeight="bold" transform="rotate(16 640 276)">
                   Lahar (slamstrøm)
                 </text>
               </g>
             ) : (
               <g data-volcano-shape="caldera">
-                <path d="M 120 320 L 290 220 L 330 270 L 570 270 L 610 220 L 780 320 Z" fill="#2e2523" stroke="#57453d" strokeWidth="2" />
-                <rect x="330" y="270" width="240" height="50" fill="#1b2024" />
-                <path d="M 330 285 Q 450 282 570 285 L 570 305 Q 450 308 330 305 Z" fill="#0284c7" opacity="0.75" />
-                <text x="450" y="298" fill="#e0f2fe" fontSize="12" fontWeight="bold" textAnchor="middle">
+                <g clipPath={`url(#${vmId}-calOut)`}>
+                  <LayeredCone spec={VM_STRATO} colors={STRATO_LAYERS} layers={8} clipId={`${vmId}-cal`} />
+                  <path d={surfacePath(VM_STRATO)} fill="none" stroke="#7a6c5c" strokeWidth="1.6" />
+                </g>
+                <path d={`M 330 ${vmCalRim} L 330 300 Q 450 312 570 300 L 570 ${vmCalRim}`} fill="none" stroke="#57453d" strokeWidth="2" />
+                <path d="M 332 270 H 568 V 300 Q 450 312 332 300 Z" fill={`url(#${vmId}-water)`} opacity="0.92" />
+                <line x1="332" y1="270" x2="568" y2="270" stroke="#8ec9e8" strokeWidth="1" />
+                <text x="450" y="292" fill="#e0f2fe" fontSize="12" fontWeight="bold" textAnchor="middle">
                   Kalderasjø (innsunket platetak)
                 </text>
-                <ellipse cx="450" cy="275" rx="35" ry="12" fill="#44352f" stroke="#78594c" strokeWidth="1.5" />
-                <text x="450" y="258" fill="#cbd5e1" fontSize="11" textAnchor="middle">Oppadstigende kuppel</text>
-                <line x1="330" y1="220" x2="330" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
-                <line x1="570" y1="220" x2="570" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
-                <text x="310" y="250" fill="#f43f5e" fontSize="10" textAnchor="end">Ringforkastning ↓</text>
-                <text x="590" y="250" fill="#f43f5e" fontSize="10" textAnchor="start">↓ Ringforkastning</text>
+                <path d="M 418 272 Q 432 248 450 246 Q 468 248 482 272 Z" fill="#4d443d" stroke="#78594c" strokeWidth="1.5" />
+                <text x="450" y="238" fill="#cbd5e1" fontSize="11" textAnchor="middle">Oppadstigende kuppel</text>
+                <line x1="330" y1={vmCalRim} x2="330" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
+                <line x1="570" y1={vmCalRim} x2="570" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
+                <text x="320" y="200" fill="#f43f5e" fontSize="11" textAnchor="end">Ringforkastning ↓</text>
+                <text x="580" y="200" fill="#f43f5e" fontSize="11" textAnchor="start">↓ Ringforkastning</text>
                 <g className="vm-umbrella">
-                  <ellipse cx="450" cy="70" rx="320" ry="45" fill="#475569" opacity="0.6" />
-                  <ellipse cx="450" cy="50" rx="260" ry="35" fill="#334155" opacity="0.75" />
-                  <text x="450" y="48" fill="#f8fafc" fontSize="13" fontWeight="bold" textAnchor="middle">
+                  <BillowSheet cx={450} cy={62} halfWidth={320} thickness={34} fill={`url(#${vmId}-ash)`} shade="#3e3934" seed={91} count={30} />
+                  <text x="450" y="58" fill="#f8fafc" fontSize="13" fontWeight="bold" textAnchor="middle">
                     Paraplysky
                   </text>
-                  <text x="450" y="66" fill="#e2e8f0" fontSize="11" textAnchor="middle">
+                  <text x="450" y="76" fill="#f1f5f9" fontSize="11" textAnchor="middle">
                     SO₂-aerosoler høyt i atmosfæren
                   </text>
                 </g>
-                <circle className="vm-particle" cx="280" cy="90" r="6" fill="#94a3b8" />
-                <circle className="vm-particle" cx="620" cy="80" r="5" fill="#cbd5e1" style={{ animationDelay: "0.8s" }} />
+                <circle className="vm-particle" cx="280" cy="110" r="6" fill="#94a3b8" />
+                <circle className="vm-particle" cx="620" cy="100" r="5" fill="#cbd5e1" style={{ animationDelay: "0.8s" }} />
               </g>
             )}
 
