@@ -595,8 +595,15 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /[Ss]e figur 5\.(?:0|10|11)\b/);
   });
 
-  it("registrerer 33 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 33);
+  it("knytter lavtrykk ved ekvator og høytrykk i subtropene til figur 5.2, med eget reseed-flagg", () => {
+    assert.ok(md.includes("Den stigende lufta gir lavtrykk nær ekvator, og den synkende lufta gir høytrykk i subtropene (L og H i figur 5.2)."));
+    assert.ok(!md.includes("lenger unna. Denne delen"));
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-lavtrykk-hoytrykk-setning-kap5-2026-11-11", slug: "geo-klima", stale: \["lenger unna\. Denne delen"\]/);
+  });
+
+  it("registrerer 34 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 34);
+    assert.ok(sources.includes("https://doi.org/10.1038/s41597-023-02549-6"), "Beck mfl. (2023)");
     for (const domain of ["ipcc.ch", "met.no", "nve.no", "snl.no", "science.nasa.gov", "scied.ucar.edu", "metoffice.gov.uk", "noaa.gov", "kartverket.no", "worldbank.org", "regjeringen.no", "ec.europa.eu", "miljodirektoratet.no", "udir.no"])
       assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
@@ -617,14 +624,31 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /13 millioner|9 prosent av|1\.1 °C|hele august skyldtes bare/);
   });
 
-  it("gjenbruker sju komponenter bare gjennom uttrykkelig Vg1-valg", () => {
-    for (const [file, names] of [
-      ["wind", ["WindCellsDiagram", "GlobalClimateZonesDiagram"]], ["coriolis", ["CoriolisDiagram"]], ["ocean", ["AmocDiagram"]],
-      ["weather", ["FoehnAdiabaticDiagram"]], ["climate-radiation", ["EarthRadiationBudgetDiagram"]], ["spheres", ["CarbonCycleDiagram"]],
-    ] as const) for (const name of names) {
-      assert.ok(read(`../components/diagrams/${file}.tsx`).includes(`export function ${name}({ geografi = false }`), name);
-      assert.ok(read("../components/poster-widget-renderer.tsx").includes(`<${name} geografi />`), name);
+  it("bruker lastede modeller for figur 5.2–5.9 uten tall, og en enkel geografiversjon av vindcellene", () => {
+    const reg = read("../components/poster-widget-renderer.tsx");
+    for (const [widget, komp, fil] of [
+      ["GeoKlimaVindceller", "KlimaVindcellerFigur", "klima-vindceller-figur"],
+      ["GeoKlimaCoriolis", "KlimaCoriolisFigur", "klima-coriolis-figur"], ["GeoKlimaHav", "KlimaAmocFigur", "klima-amoc-figur"],
+      ["GeoKlimaSoner", "KlimaKoppenFigur", "klima-koppen-figur"], ["GeoKlimaFon", "KlimaFonFigur", "klima-fon-figur"],
+      ["GeoKlimaStraling", "KlimaDrivhusFigur", "klima-drivhus-figur"], ["GeoKlimaKarbon", "KlimaKarbonFigur", "klima-karbon-figur"],
+      ["GeoKlimaScenario", "KlimaScenarioFigur", "klima-scenario-figur"],
+    ] as const) {
+      assert.match(reg, new RegExp(`${widget}: \\(\\) => <${komp} heading="Figur 5\\.`), widget);
+      assert.ok(reg.includes(`const ${komp} = lazy(() => import("@/components/diagrams/${fil}")`), komp);
+      assert.doesNotMatch(reg, new RegExp(`^import .*${fil}`, "m"), fil);
+      assert.doesNotMatch(read(`../components/diagrams/${fil}.tsx`), /\d+\s?(?:°C|W\/m|GtC|prosent)/, fil);
     }
+    // Figur 5.2 er en egen, enklere geografimodell (ikke Geofag 2-figuren) med bare kapitlets begreper.
+    assert.match(reg, /GeoKlimaVindceller: \(\) => <KlimaVindcellerFigur heading="Figur 5\.2 – Vindceller og dominerende vindbelter"/);
+    const celler = read("../components/diagrams/klima-vindceller-figur.tsx");
+    for (const ord of ["Hadleycellen", "Ferrelcellen", "polarcellen", "passatvind", "vestavindsbeltet", "subtropene", "ekvator"])
+      assert.ok(celler.includes(ord), ord);
+    assert.doesNotMatch(celler, /ITCZ|subsidens|hestebredde|jetstrøm|tropopause|\d+\s?°/i);
+    for (const gammel of ["WindCellsDiagram", "CoriolisDiagram", "AmocDiagram", "GlobalClimateZonesDiagram", "FoehnAdiabaticDiagram", "EarthRadiationBudgetDiagram", "CarbonCycleDiagram"])
+      assert.ok(!reg.includes(`<${gammel} geografi />`), gammel);
+    // Köppen-kartet bygger på Beck mfl. (2023) med lisensfil og kreditering i figuren.
+    assert.match(read("../components/diagrams/klima-koppen-figur.tsx"), /Beck mfl\. \(2023\)[\s\S]*CC BY 4\.0/);
+    assert.match(read("../../public/images/koppen-verden-grupper-beck-1991-2020.lisens.txt"), /CC BY 4\.0/);
   });
 
   it("viser en dokumentert stasjonsnormal med tabell, periode og datakreditering", () => {

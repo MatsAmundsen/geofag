@@ -1,0 +1,14 @@
+Köppen–Geiger-hovedgrupper for verden 1991–2020 (indekskart)
+Forfattere: Beck, H.E., McVicar, T.R., Vergopolan, N., Berg, A. (Alexis Berg), Lutsko, N.J., Dufour, A., Zeng, Z., Jiang, X. (Xin Jiang), van Dijk, A.I.J.M., Miralles, D.G.
+(Commons-metadata har feil navn, «Alexis, B.» og «Jian, X.»; riktige navn etter Crossref/Scientific Data 10, 724.)
+Verk: «Köppen–Geiger climate classification map at 1-km resolution 1991–2020» (Koppen-Geiger Map v2 World 1991–2020.svg).
+Kilde: https://commons.wikimedia.org/wiki/File:Koppen-Geiger_Map_v2_World_1991%E2%80%932020.svg
+Datagrunnlag: Beck et al. (2023), «High-resolution (1 km) Köppen-Geiger maps for 1901–2099 based on constrained CMIP6 projections», Scientific Data 10, 724. https://doi.org/10.1038/s41597-023-02549-6
+Lisens: Creative Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/
+Sjekket via Commons API 2026-11-10 (LicenseShortName CC BY 4.0).
+Endringer (gjort av Geofag): SVG-filen er et matplotlib-plott med ett innebygd rasterbilde (3 600 x 1 800 px, 0,1 grad).
+Rasterbildet er hentet ut og snudd riktig vei. Hver piksel er tilordnet nærmeste klassefarge i tegnforklaringen (største avvik 1 i én fargekanal),
+og de 30 klassene er slått sammen til de fem hovedgruppene A, B, C, D og E. Kartet er omprojisert fra lengde/bredde til Equal Earth
+(1 440 x 701 px, nærmeste nabo) og lagret som palett-PNG der pikselverdien er gruppenummeret (0 hav/uten data, 1 A … 5 E).
+Fargene i figuren er nye (én farge per hovedgruppe) og er ikke Becks klassefarger. Tittel, kildetekst og tegnforklaring i SVG-en er ikke med.
+Skript: scripts/koppen-verden-grupper.py.

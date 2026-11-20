@@ -37,6 +37,10 @@ export type Def<S extends Bilde> = {
   /** Valgfri av/på-knapp ved siden av stegene (f.eks. et kartutsnitt). Etikettene legges til når den er på. */
   bryter?: { navn: string; etiketter: Lab[]; status: string };
   tegn: Tegn<S>;
+  /** Valgfritt innhold rett under tegningen (HTML, f.eks. kvalitative målere), styrt av tilstanden. */
+  under?: (s: S, fase: number) => ReactNode;
+  /** Valgfri merknad under figuren (f.eks. kilde og lisens for kartdata). */
+  remark?: ReactNode;
 };
 
 type Pkt = [number, number] | undefined;
@@ -158,6 +162,8 @@ export function StegFigur<S extends Bilde>({ def, heading, caption }: { def: Def
         keys={def.keys}
         labels={bryterPaa && def.bryter ? [...lab, ...def.bryter.etiketter] : lab}
         notes={def.notes}
+        below={def.under ? def.under(s, fase) : undefined}
+        remark={def.remark}
         viewBox={def.viewBox}
         narrowViewBox={def.narrowViewBox}
       >

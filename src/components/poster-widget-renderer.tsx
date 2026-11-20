@@ -1,6 +1,3 @@
-import { WindCellsDiagram } from "@/components/diagrams/wind";
-import { CoriolisDiagram } from "@/components/diagrams/coriolis";
-import { CarbonCycleDiagram } from "@/components/diagrams/spheres";
 import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { TermiskVindV5 } from "@/components/diagrams/termisk-vind-v5";
@@ -330,7 +327,14 @@ const GeografiRessursFornyelse = lazy(() => import("@/components/geografi/ressur
 const PetroleumTrapModel = lazy(() => import("@/components/models/resource-ore-petroleum-model").then((m) => ({ default: m.PetroleumTrapModel })));
 
 const GeografiKlimadiagram = lazy(() => import("@/components/geografi/klima-diagrammer").then((m) => ({ default: m.GeografiKlimadiagram })));
-const GeografiKlimaScenario = lazy(() => import("@/components/geografi/klima-diagrammer").then((m) => ({ default: m.GeografiKlimaScenario })));
+const KlimaVindcellerFigur = lazy(() => import("@/components/diagrams/klima-vindceller-figur").then((m) => ({ default: m.KlimaVindcellerFigur })));
+const KlimaCoriolisFigur = lazy(() => import("@/components/diagrams/klima-coriolis-figur").then((m) => ({ default: m.KlimaCoriolisFigur })));
+const KlimaAmocFigur = lazy(() => import("@/components/diagrams/klima-amoc-figur").then((m) => ({ default: m.KlimaAmocFigur })));
+const KlimaKoppenFigur = lazy(() => import("@/components/diagrams/klima-koppen-figur").then((m) => ({ default: m.KlimaKoppenFigur })));
+const KlimaDrivhusFigur = lazy(() => import("@/components/diagrams/klima-drivhus-figur").then((m) => ({ default: m.KlimaDrivhusFigur })));
+const KlimaKarbonFigur = lazy(() => import("@/components/diagrams/klima-karbon-figur").then((m) => ({ default: m.KlimaKarbonFigur })));
+const KlimaScenarioFigur = lazy(() => import("@/components/diagrams/klima-scenario-figur").then((m) => ({ default: m.KlimaScenarioFigur })));
+const KlimaFonFigur = lazy(() => import("@/components/diagrams/klima-fon-figur").then((m) => ({ default: m.KlimaFonFigur })));
 
 const GeografiBrelandskapFoto = lazy(() => import("@/components/geografi/landskap-valg").then((m) => ({ default: m.GeografiBrelandskapFoto })));
 const GeografiFjordLokator = lazy(() => import("@/components/geografi/landskap-valg").then((m) => ({ default: m.GeografiFjordLokator })));
@@ -1665,14 +1669,14 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoRessursPetroleum: () => <PetroleumTrapModel geografi />,
   GeoRessursVindAvveining: () => <WindPowerTradeoffDiagram geografi />,
   GeoKlimaDiagram: () => <GeografiKlimadiagram />,
-  GeoKlimaVindceller: () => <WindCellsDiagram geografi />,
-  GeoKlimaCoriolis: () => <CoriolisDiagram geografi />,
-  GeoKlimaHav: () => <AmocDiagram geografi />,
-  GeoKlimaSoner: () => <GlobalClimateZonesDiagram geografi />,
-  GeoKlimaFon: () => <FoehnAdiabaticDiagram geografi />,
-  GeoKlimaStraling: () => <EarthRadiationBudgetDiagram geografi />,
-  GeoKlimaKarbon: () => <CarbonCycleDiagram geografi />,
-  GeoKlimaScenario: () => <GeografiKlimaScenario />,
+  GeoKlimaVindceller: () => <KlimaVindcellerFigur heading="Figur 5.2 – Vindceller og dominerende vindbelter" caption="Skissen viser et mønster over lang tid, ikke lukkede rør eller dagens vær. Grensene flytter seg. Pilene i tverrsnittet viser nord–sør-bevegelse, ikke vindens øst–vest-retning. Jordrotasjonen er med på å gi passatvind og vestavind. Ferrelcellen beskriver et gjennomsnitt av mer sammensatte bevegelser (Met Office, u.å.)." />,
+  GeoKlimaCoriolis: () => <KlimaCoriolisFigur heading="Figur 5.3 – Høyre i nord, venstre i sør" caption="Trykkforskjeller setter luft i bevegelse. Jordrotasjonen avbøyer bevegelsen mot høyre på nordlig halvkule og mot venstre på sørlig, sett i bevegelsesretningen. H betyr høytrykk, L betyr lavtrykk. Stiplede piler viser retningen uten avbøyning. Buene illustrerer prinsippet, ikke beregnede vindbaner. Landkonturene er fra Natural Earth (UCAR, u.å.-b)." />,
+  GeoKlimaHav: () => <KlimaAmocFigur heading="Figur 5.4 – Omveltning i Atlanterhavet" caption="Den atlantiske omveltningen (AMOC) knytter overflatestrømmer til returstrømmer i dypet. Avkjøling og saltholdighet påvirker vannets tetthet og dermed hvor vann synker. Skissen viser et prinsipp, ikke et kart eller en beregnet framtid. Golfstrømmen er en overflatestrøm og er ikke et annet navn på hele AMOC (Barthel, u.å.; NOAA, u.å.)." />,
+  GeoKlimaSoner: () => <KlimaKoppenFigur heading="Figur 5.5 – Klimasoner er mer enn breddegrader" caption="Kartet viser Köppens fem hovedgrupper for perioden 1991–2020, uten undertypene. Köppens hovedgrupper bruker temperatur og nedbør i sammenheng med vegetasjon. Høyde, hav og vind gir avvik fra enkle breddegradsbelter. Samme breddegrad betyr derfor ikke nødvendigvis samme klimasone (Mamen, u.å.; Dannevig & Harstveit, 2026)." />,
+  GeoKlimaFon: () => <KlimaFonFigur heading="Figur 5.6 – Fjellnedbør og fønvind" caption="På losiden stiger luft og avkjøles. Dersom lufta blir mettet, kan skyer og nedbør dannes. På lesiden synker lufta, trykket øker og lufta varmes. Uten tilført fuktighet faller den relative luftfuktigheten. Føn krever ikke at det først har regnet på losiden. Vindretningen avgjør hvilken side som er lo og le. Figuren er kvalitativ, uten temperaturer, høyder eller beregnet vindstyrke (Harstveit, 2024; Dannevig mfl., u.å.)." />,
+  GeoKlimaStraling: () => <KlimaDrivhusFigur heading="Figur 5.7 – Den naturlige drivhuseffekten" caption="Overflaten tar opp solenergi og sender ut varmestråling. Drivhusgasser tar opp og sender ut stråling i flere retninger, også nedover. Mer drivhusgass reduserer i utgangspunktet varmetapet til verdensrommet. Figuren viser utvalgte prosesser uten energitall. Pilbreddene er ikke mål på energimengder (Lindsey, 2009; NASA, u.å.-a)." />,
+  GeoKlimaKarbon: () => <KlimaKarbonFigur heading="Figur 5.8 – Karbon flyttes mellom lagre" caption="Karbon finnes i luft, levende organismer, jordsmonn, hav og berggrunn. Fotosyntese tar opp CO₂. Celleånding, nedbrytning og forbrenning kan sende karbon tilbake til lufta. Figuren viser utvalgte lagre og overføringer, uten tall eller fullstendig karbonregnskap. Pilbreddene angir ikke mengder (Riebeek, 2011)." />,
+  GeoKlimaScenario: () => <KlimaScenarioFigur heading="Figur 5.9 – Valg endrer utviklingen" caption="Dette er kvalitative årsakskjeder, ikke temperaturkurver eller beregnede IPCC-baner. Lavere framtidige utslipp gir mindre oppvarming enn høyere utslipp. Tilbakekoplingen nederst viser hvordan tap av reflekterende snø og is kan forsterke oppvarming. Hvert scenario har usikkerhet, og ingen sannsynlighet for politiske valg er angitt (IPCC, 2023; Lindsey, 2009)." />,
   GeoLandskapFrost: () => <Frostsprengning geografi heading="Figur 4.1 – Forvitring og flytting" caption="Vann som fryser i en sprekk, kan bidra til å dele opp berget. Når en stein løsner og faller, flyttes materialet ved tyngdekraften. Skissen viser et prinsipp, ikke et bestemt tidsforløp eller et skredvarsel (Sørbel, 2024; Bryhni & Røthe, 2025)." />,
   GeoLandskapBrelandskap: () => <GeografiBrelandskapFoto />,
   GeoLandskapBotn: () => <BotnEggTindFigurLat geografi heading="Figur 4.5 – Botn, egg og tind" caption="Breformede fordypninger kan etterlate skarpe rygger og topper. Følg formene gjennom trinnene. Terrenget er konstruert og viser ikke utviklingstiden eller et bestemt fjell (Lilleøren, 2025; Mæhlum, 2026a; Bryhni & Fossen, 2024)." />,
