@@ -9,13 +9,13 @@ import { GEOGRAFI_BEGREPER } from "@/lib/geografi-generert";
 import type { GeografiBegrep } from "@/lib/geografi-generert-bygg";
 import { topicHead } from "@/lib/seo";
 
-/** Felles begrepsregister. Hentet fra «Begreper»-tabellen i hvert kapittel (se geografi-generert-bygg.ts). */
+/** Felles begrepsregister. Pedagogs register (geografi-begreper.ts), lenker fra geografi-generert-bygg.ts. */
 export const Route = createFileRoute("/geografi/begreper")({
   head: () =>
     topicHead({
       title: "Begreper · Geografi",
       description:
-        "Alle begrepene fra de elleve Geografi-kapitlene (Vg1, GEO01-02), alfabetisk, med kort forklaring og lenke til kapitlet.",
+        "Begrepene fra de elleve Geografi-kapitlene (Vg1, GEO01-02), alfabetisk, med kort forklaring og lenke til kapitlet.",
       path: "/geografi/begreper",
     }),
   component: GeografiBegreper,
@@ -52,7 +52,7 @@ function GeografiBegreper() {
     const q = fold(utsattSok.trim());
     return GEOGRAFI_BEGREPER.filter(
       (b) =>
-        (!kapittel || b.kapittel === kapittel) &&
+        (!kapittel || b.steder.some((st) => st.kapittel === kapittel)) &&
         (!q || fold(b.begrep).includes(q) || fold(b.forklaring).includes(q)),
     );
   }, [utsattSok, kapittel]);
@@ -81,11 +81,13 @@ function GeografiBegreper() {
               · Begrepsregister
             </p>
             <h1 className="mt-2 font-display text-4xl font-medium tracking-tight sm:text-5xl">
-              Begreper
+              Begreper i geografi
             </h1>
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">
-              Alle {GEOGRAFI_BEGREPER.length} begrepene fra de elleve kapitlene, med forklaringen
-              slik den står i kapitlet. Lenken går til delen der begrepet blir brukt.
+              Her finner du de sentrale begrepene fra alle de elleve kapitlene i Geografi, samlet på
+              ett sted. Forklaringene er de samme som i kapitlene, men korte. Vil du forstå et
+              begrep bedre, kan du åpne kapitlet det hører til og lese det i sammenheng. Der finner
+              du også eksempler, figurer og oppgaver.
             </p>
           </div>
         </header>
@@ -172,45 +174,45 @@ function GeografiBegreper() {
                   {bokstav}
                 </h2>
                 <dl className="mt-2 divide-y divide-border">
-                  {rows.map((b) => {
-                    const kap = GEOGRAFI_KAPITLER[b.kapittelNr - 1]!;
-                    const under = kap.underkapitler.find((u) => u.id === b.under);
-                    const underNr = kap.underkapitler.findIndex((u) => u.id === b.under) + 1;
-                    return (
-                      <div
-                        key={`${b.kapittel}-${b.begrep}`}
-                        className="grid gap-1 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6"
-                      >
-                        <dt className="font-display text-lg font-medium leading-snug">
-                          {b.begrep}
-                        </dt>
-                        <dd className="text-sm leading-relaxed">
-                          <p>{b.forklaring}</p>
-                          <p className="mt-1.5 text-muted-foreground">
-                            {under ? (
-                              <Link
-                                to="/geografi/$kapittel/$under"
-                                params={{ kapittel: kap.path, under: under.id }}
-                                className="text-primary underline underline-offset-4"
-                              >
-                                {b.kapittelNr}.{underNr} {under.title}
-                              </Link>
-                            ) : (
-                              <Link
-                                to="/geografi/$kapittel"
-                                params={{ kapittel: kap.path }}
-                                hash="begreper"
-                                className="text-primary underline underline-offset-4"
-                              >
-                                Kapittel {b.kapittelNr}
-                              </Link>
-                            )}{" "}
-                            · Kapittel {b.kapittelNr}: {kap.title}
-                          </p>
-                        </dd>
-                      </div>
-                    );
-                  })}
+                  {rows.map((b) => (
+                    <div
+                      key={b.begrep}
+                      className="grid gap-1 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6"
+                    >
+                      <dt className="font-display text-lg font-medium leading-snug">{b.begrep}</dt>
+                      <dd className="text-sm leading-relaxed">
+                        <p>{b.forklaring}</p>
+                        {b.steder.map((st) => {
+                          const kap = GEOGRAFI_KAPITLER[st.kapittelNr - 1]!;
+                          const underNr = kap.underkapitler.findIndex((u) => u.id === st.under) + 1;
+                          const under = underNr > 0 ? kap.underkapitler[underNr - 1] : undefined;
+                          return (
+                            <p key={st.kapittel} className="mt-1.5 text-muted-foreground">
+                              {under ? (
+                                <Link
+                                  to="/geografi/$kapittel/$under"
+                                  params={{ kapittel: kap.path, under: under.id }}
+                                  className="text-primary underline underline-offset-4"
+                                >
+                                  {st.kapittelNr}.{underNr} {under.title}
+                                </Link>
+                              ) : (
+                                <Link
+                                  to="/geografi/$kapittel"
+                                  params={{ kapittel: kap.path }}
+                                  hash="begreper"
+                                  className="text-primary underline underline-offset-4"
+                                >
+                                  Kapittel {st.kapittelNr}
+                                </Link>
+                              )}{" "}
+                              · Kapittel {st.kapittelNr}: {kap.title}
+                            </p>
+                          );
+                        })}
+                      </dd>
+                    </div>
+                  ))}
                 </dl>
               </section>
             ))}

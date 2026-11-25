@@ -10,7 +10,7 @@ export const Route = createFileRoute("/geografi/")({
     topicHead({
       title: "Geografi",
       description:
-        "Geografi for Vg1 (GEO01-02): geografiske verktøy, feltarbeid, landskap, klima, naturfare, ressurser, bærekraft, næring, befolkning og migrasjon.",
+        "Geografi for Vg1 (GEO01-02): elleve kapitler om kart og feltarbeid, landskap, klima, naturfare, ressurser, bærekraft, næringsliv, befolkning og migrasjon.",
       path: "/geografi",
     }),
   component: GeografiOversikt,
@@ -44,8 +44,30 @@ function GeografiOversikt() {
               Sted, landskap og samfunn.
             </h1>
             <p className="mt-5 max-w-2xl text-base text-foreground/90 sm:text-lg">
-              Elleve kapitler for Vg1 Geografi, fra kart og feltarbeid til landskap, klima,
-              naturfare, ressurser, bærekraft, næring, befolkning og migrasjon.
+              Geografi handler om hvorfor steder er som de er, og hvordan de henger sammen med resten
+              av verden. Her finner du elleve kapitler for Vg1 Geografi, med fagtekst, kart, figurer og
+              oppgaver. Vi begynner med kart, kilder og feltarbeid. Så går vi videre til landskap, klima
+              og naturfare, og til slutt til ressurser, bærekraft, næringsliv, befolkning og migrasjon.
+            </p>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="slik-arbeider-vi"
+          className="mx-auto max-w-6xl px-4 pt-16 sm:px-6"
+        >
+          <div className="max-w-2xl">
+            <h2
+              id="slik-arbeider-vi"
+              className="font-display text-3xl font-medium tracking-tight"
+            >
+              Slik arbeider vi i geografi
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              I geografi stiller vi tre spørsmål om nesten alt vi undersøker: Hvor er det? Hvorfor
+              akkurat der? Hva betyr det for mennesker og natur? Vi bruker ekte og daterte tall fra
+              kilder som SSB, NVE, FN og Verdensbanken, og vi sier fra hva tallene ikke viser. Hver
+              påstand har en kilde, og kildelista står nederst i hvert kapittel.
             </p>
           </div>
         </section>
@@ -54,8 +76,13 @@ function GeografiOversikt() {
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl font-medium tracking-tight">Kapitler</h2>
             <p className="mt-3 text-muted-foreground">
-              Kortene viser tittel, kompetansemål og en kort beskrivelse. Alle begrepene fra
-              kapitlene er samlet i{" "}
+              Hvert kapittel starter med kompetansemålene og en konkret fortelling som åpner temaet.
+              Underveis får du forklaringer, kart og figurer, og Innblikk-bokser der vi går dypere inn i
+              én sak. Kapitlet avsluttes med oppsummering, begreper, spørsmål og oppgaver. Du kan lese
+              kapitlene i rekkefølge eller begynne med det temaet du arbeider med nå.
+            </p>
+            <p className="mt-3 text-muted-foreground">
+              Trenger du å slå opp et ord? Alle de sentrale begrepene står samlet i{" "}
               <Link to="/geografi/begreper" className="text-primary underline underline-offset-4">
                 begrepsregisteret
               </Link>

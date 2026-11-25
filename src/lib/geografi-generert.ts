@@ -5,1465 +5,2283 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
   {
     "begrep": "Aktsomhetsvurderinger",
     "forklaring": "Arbeid med å undersøke og håndtere risiko for negative konsekvenser. Her gjelder det menneskerettigheter og arbeidsforhold.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "forbruk-og-ansvar"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "forbruk-og-ansvar"
+      }
+    ]
   },
   {
     "begrep": "Allmenningens tragedie",
     "forklaring": "Modell som forklarer hvordan individuelle fordeler kan føre til overbruk av en felles ressurs.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "fornybare-ressurser"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "fornybare-ressurser"
+      }
+    ]
   },
   {
     "begrep": "Antropocen",
     "forklaring": "Begrep om menneskelig påvirkning på jordsystemet, ikke en vedtatt formell geologisk epoke.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "planetare-grenser"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "planetare-grenser"
+      }
+    ]
   },
   {
     "begrep": "Arbeidsinnvandring",
     "forklaring": "Flytting til et annet land med arbeid som formål.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "global-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "global-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Arealbruk",
     "forklaring": "Måten et område brukes på, for eksempel til jordbruk, bebyggelse eller energianlegg.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "arealbruk-og-konflikter"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "arealbruk-og-konflikter"
+      }
+    ]
   },
   {
     "begrep": "Arealkonflikt",
     "forklaring": "Kollisjon mellom ønsker om bruk eller vern av samme område.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "arealbruk-og-konflikter"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "arealbruk-og-konflikter"
+      }
+    ]
   },
   {
     "begrep": "Astenosfære",
     "forklaring": "Svakere sone i øvre mantel som deformeres langsomt under platene.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordas-oppbygning"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordas-oppbygning"
+      }
+    ]
   },
   {
     "begrep": "Asylsøker",
     "forklaring": "Person som søker internasjonal beskyttelse og venter på endelig behandling.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "flyktninger"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "flyktninger"
+      }
+    ]
   },
   {
     "begrep": "Avgangsmasser",
     "forklaring": "Finknust stein som er igjen når det verdifulle mineralet er skilt ut av malmen.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "arealbruk-og-konflikter"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "arealbruk-og-konflikter"
+      }
+    ]
   },
   {
     "begrep": "Avsetning",
     "forklaring": "Materiale blir liggende etter transport, eller massene som da dannes.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "ytre-krefter"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "ytre-krefter"
+      }
+    ]
   },
   {
     "begrep": "Befolkningsframskriving",
     "forklaring": "Beregning av framtidig befolkning under bestemte forutsetninger.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "befolkning-i-norge"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "befolkning-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Befolkningspyramide",
     "forklaring": "Framstilling av aldersfordeling etter kjønn, med antall eller andeler.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "befolkningspyramider"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "befolkningspyramider"
+      }
+    ]
   },
   {
     "begrep": "Beholdning",
     "forklaring": "Størrelsen på en avgrenset befolkningsgruppe på et bestemt tidspunkt.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hva-er-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hva-er-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Beredskap",
     "forklaring": "Forberedte planer, kunnskap og ressurser for å håndtere hendelser.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "forebygging-og-varsling"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "forebygging-og-varsling"
+      }
+    ]
   },
   {
     "begrep": "Bergartenes kretsløp",
     "forklaring": "Modell med flere mulige veier mellom bergarter, sediment og magma.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "bergarter"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "bergarter"
+      }
+    ]
   },
   {
     "begrep": "Berggrunn",
     "forklaring": "Fast fjell som kan være dekket av løsmasser.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "norges-berggrunn"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "norges-berggrunn"
+      }
+    ]
   },
   {
     "begrep": "Betinget fornybar",
     "forklaring": "Ressurs som kan fornyes hvis grunnlaget for ny produksjon bevares.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "hva-er-ressurser"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "hva-er-ressurser"
+      }
+    ]
   },
   {
     "begrep": "Bevegelse",
     "forklaring": "Strømmer mellom steder, blant annet av mennesker, varer og ideer.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "geografiske-begreper"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "geografiske-begreper"
+      }
+    ]
   },
   {
     "begrep": "Biokapasitet",
     "forklaring": "Økosystemenes kapasitet til biologisk produksjon og opptak av avfall, særlig CO₂.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "planetare-grenser"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "planetare-grenser"
+      }
+    ]
   },
   {
     "begrep": "BNI",
     "forklaring": "Bruttonasjonalinntekt, med justering for lønn og formuesinntekter til og fra utlandet.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "mal-pa-utvikling"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "mal-pa-utvikling"
+      }
+    ]
   },
   {
     "begrep": "BNP",
     "forklaring": "Bruttonasjonalprodukt, et mål på verdiskaping innenfor et lands økonomiske territorium.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "mal-pa-utvikling"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "mal-pa-utvikling"
+      }
+    ]
   },
   {
     "begrep": "BNP per innbygger",
     "forklaring": "BNP delt på innbyggertallet, ikke den enkelte personens inntekt.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "mal-pa-utvikling"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "mal-pa-utvikling"
+      }
+    ]
   },
   {
     "begrep": "Botn",
     "forklaring": "Skålformet fordypning med bratt bakkant, utviklet ved blant annet breerosjon.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landformer-fra-is"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landformer-fra-is"
+      }
+    ]
   },
   {
     "begrep": "Breddegrad",
     "forklaring": "En vinkel som angir plassering nord eller sør for ekvator.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "koordinater-og-malestokk"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "koordinater-og-malestokk"
+      }
+    ]
   },
   {
     "begrep": "Brundtland-definisjonen",
     "forklaring": "Definisjonen av bærekraftig utvikling knyttet til rapporten Vår felles framtid.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "baerekraftbegrepet"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "baerekraftbegrepet"
+      }
+    ]
   },
   {
     "begrep": "Bærekraftig utvikling",
     "forklaring": "Å dekke dagens behov uten å ødelegge framtidige generasjoners muligheter.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "baerekraftbegrepet"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "baerekraftbegrepet"
+      }
+    ]
   },
   {
     "begrep": "Bærekraftsmål",
     "forklaring": "FNs 17 mål som inngår i 2030-agendaen.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "baerekraftbegrepet"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "baerekraftbegrepet"
+      }
+    ]
   },
   {
     "begrep": "Delta",
     "forklaring": "Avsetning der en elv møter en innsjø eller havet.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "elver-og-landformer"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "elver-og-landformer"
+      }
+    ]
   },
   {
     "begrep": "Demografi",
     "forklaring": "Læren om befolkningers størrelse, sammensetning og endring.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "befolkningsvekst"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "befolkningsvekst"
+      }
+    ]
   },
   {
     "begrep": "Demografisk overgang",
     "forklaring": "Modell for endring fra høye til lave fødsels- og dødsrater.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "demografisk-overgang"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "demografisk-overgang"
+      }
+    ]
   },
   {
     "begrep": "Demografisk treghet",
     "forklaring": "Virkning av tidligere aldersstruktur på senere fødsler, dødsfall og befolkningsutvikling.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "demografisk-overgang"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "demografisk-overgang"
+      }
+    ]
   },
   {
     "begrep": "Drivhuseffekt",
     "forklaring": "Oppvarming knyttet til drivhusgassers opptak og utsending av varmestråling.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "drivhuseffekten"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "drivhuseffekten"
+      }
+    ]
   },
   {
     "begrep": "Drivhusgass",
     "forklaring": "Gass som tar opp og sender ut varmestråling.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "drivhuseffekten"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "drivhuseffekten"
+      }
+    ]
   },
   {
     "begrep": "Dødsrate",
     "forklaring": "Antall døde per tusen innbyggere i en periode, vanligvis ett år.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "demografiske-mal"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "demografiske-mal"
+      }
+    ]
   },
   {
     "begrep": "Eksponering",
     "forklaring": "Mennesker og verdier som befinner seg der faren kan ramme.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "risiko-og-sarbarhet"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "risiko-og-sarbarhet"
+      }
+    ]
   },
   {
     "begrep": "Eksterne virkninger",
     "forklaring": "Virkninger for utenforstående som beslutningstakeren ikke tar tilstrekkelig hensyn til.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "ringvirkninger"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "ringvirkninger"
+      }
+    ]
   },
   {
     "begrep": "Ekvidistanse",
     "forklaring": "Den faste, loddrette høydeforskjellen mellom to nabohøydekurver.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "lese-topografisk-kart"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "lese-topografisk-kart"
+      }
+    ]
   },
   {
     "begrep": "Eldrebølge",
     "forklaring": "Økning i antall og andel eldre når store kull eldes og flere overlever lenge.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "befolkning-i-norge"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "befolkning-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Elveterrasse",
     "forklaring": "Trinn eller flate som står igjen fra en tidligere dalbunn.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "elver-og-landformer"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "elver-og-landformer"
+      }
+    ]
   },
   {
     "begrep": "Emigrasjon",
     "forklaring": "Utvandring sett fra landet man flytter fra.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hva-er-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hva-er-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Episenter",
     "forklaring": "Punktet på overflaten rett over hyposenteret.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordskjelv"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordskjelv"
+      }
+    ]
   },
   {
     "begrep": "Erosjon",
     "forklaring": "Nedsliting og fjerning av materiale ved blant annet vann, is og vind.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "ytre-krefter"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "ytre-krefter"
+      }
+    ]
   },
   {
     "begrep": "Esker",
     "forklaring": "Rygg av sand og grus avsatt av smeltevann under en bre.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landformer-fra-is"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landformer-fra-is"
+      }
+    ]
   },
   {
     "begrep": "Feilkilde",
     "forklaring": "Et forhold som kan gjøre registreringer eller tolkninger misvisende.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "bearbeide-data"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "bearbeide-data"
+      }
+    ]
   },
   {
     "begrep": "Feltarbeid",
     "forklaring": "Innsamling av data som inngår i en undersøkelse av virkelige forhold.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "hva-er-feltarbeid"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "hva-er-feltarbeid"
+      }
+    ]
   },
   {
     "begrep": "Feltlogg",
     "forklaring": "Systematiske notater og registreringer fra arbeidet på undersøkelsesstedet.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "metoder-i-felt"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "metoder-i-felt"
+      }
+    ]
   },
   {
     "begrep": "Fjernmåling",
     "forklaring": "Innsamling av opplysninger om jordoverflaten uten direkte kontakt med området.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "fjernmaling-og-gis"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "fjernmaling-og-gis"
+      }
+    ]
   },
   {
     "begrep": "Fjord",
     "forklaring": "Havarm i en dal som isbreer har gravd ut.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landformer-fra-is"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landformer-fra-is"
+      }
+    ]
   },
   {
     "begrep": "Flernasjonalt selskap",
     "forklaring": "Selskap med virksomhet i flere land.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "internasjonal-arbeidsdeling"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "internasjonal-arbeidsdeling"
+      }
+    ]
   },
   {
     "begrep": "Flomsone",
     "forklaring": "Område som kan oversvømmes under en definert flomsituasjon.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "flom-og-overvann"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "flom-og-overvann"
+      }
+    ]
   },
   {
     "begrep": "Flyktning",
     "forklaring": "Etter konvensjonen: person utenfor eget land med velbegrunnet frykt for forfølgelse på angitte grunnlag og uten tilgang til landets beskyttelse.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "flyktninger"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "flyktninger"
+      }
+    ]
   },
   {
     "begrep": "Flyttestrøm",
     "forklaring": "Registrerte flyttinger gjennom en bestemt periode, ikke nødvendigvis like mange unike personer.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hva-er-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hva-er-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Forbruksbaserte utslipp",
     "forklaring": "Utslipp knyttet til forbruk, også der produksjon skjer i andre land.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "norges-ressursbruk"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "norges-ressursbruk"
+      }
+    ]
   },
   {
     "begrep": "Fornybar",
     "forklaring": "Ressurs som fornyes naturlig innenfor tidsrom som er relevante for oss.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "hva-er-ressurser"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "hva-er-ressurser"
+      }
+    ]
   },
   {
     "begrep": "Forsyningskjede",
     "forklaring": "Forbindelsene som får innsatsfaktorer og varer fram til kunden.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "verdikjeder"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "verdikjeder"
+      }
+    ]
   },
   {
     "begrep": "Forsørgerbyrde",
     "forklaring": "Demografisk forholdstall mellom valgte aldersgrupper; ikke direkte antall yrkesaktive per hjelpetrengende.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "befolkning-i-norge"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "befolkning-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Forvaltning",
     "forklaring": "Arbeidet med å styre, bruke og ta vare på ressurser over tid.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "fornybare-ressurser"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "fornybare-ressurser"
+      }
+    ]
   },
   {
     "begrep": "Forventet levealder",
     "forklaring": "Beregnet gjennomsnittlig levetid dersom periodens dødelighetsmønster vedvarer.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "fruktbarhet-og-dodelighet"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "fruktbarhet-og-dodelighet"
+      }
+    ]
   },
   {
     "begrep": "Forvitring",
     "forklaring": "Nedbryting av bergarter på stedet, mekanisk eller kjemisk.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "ytre-krefter"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "ytre-krefter"
+      }
+    ]
   },
   {
     "begrep": "Frihandel",
     "forklaring": "Handel der handelspolitiske hindringer er fjernet eller redusert.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "globalisering"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "globalisering"
+      }
+    ]
   },
   {
     "begrep": "Fruktbarhet",
     "forklaring": "Fødslene i en befolkning, målt med blant annet aldersspesifikke rater.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "fruktbarhet-og-dodelighet"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "fruktbarhet-og-dodelighet"
+      }
+    ]
   },
   {
     "begrep": "Fødselsrate",
     "forklaring": "Antall levendefødte per tusen innbyggere i en periode, vanligvis ett år.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "demografiske-mal"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "demografiske-mal"
+      }
+    ]
   },
   {
     "begrep": "Fønvind",
     "forklaring": "Forholdsvis varm og tørr vind som synker ned på lesiden av fjell.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "norges-klima"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "norges-klima"
+      }
+    ]
   },
   {
     "begrep": "Geografi",
     "forklaring": "Faget som undersøker jordoverflaten, romlige forskjeller og sammenhenger mellom steder.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "hva-er-geografi"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "hva-er-geografi"
+      }
+    ]
   },
   {
     "begrep": "Geografisk skala",
     "forklaring": "Nivået eller den geografiske utstrekningen vi undersøker et spørsmål på.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "geografiske-begreper"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "geografiske-begreper"
+      }
+    ]
   },
   {
     "begrep": "Geologisk tid",
     "forklaring": "Tidsperspektiv for jordas utvikling og geologiske prosesser.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "geologisk-tid"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "geologisk-tid"
+      }
+    ]
   },
   {
     "begrep": "GIS",
     "forklaring": "Et geografisk informasjonssystem for å samle, lagre, analysere og vise stedfestede data.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "fjernmaling-og-gis"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "fjernmaling-og-gis"
+      }
+    ]
   },
   {
     "begrep": "Gjentaksintervall",
     "forklaring": "Statistisk gjennomsnittstid mellom overskridelser av en bestemt vannføring.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "flom-og-overvann"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "flom-og-overvann"
+      }
+    ]
   },
   {
     "begrep": "Globalisering",
     "forklaring": "Prosesser som knytter steder og samfunn tettere sammen på tvers av landegrenser.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "globalisering"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "globalisering"
+      }
+    ]
   },
   {
     "begrep": "GPS-sporing",
     "forklaring": "En serie registrerte posisjoner som viser en rute over tid.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "metoder-i-felt"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "metoder-i-felt"
+      }
+    ]
   },
   {
     "begrep": "Grunnfjell",
     "forklaring": "Gammel, hovedsakelig magmatisk og metamorf berggrunn fra før kambrium.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "norges-berggrunn"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "norges-berggrunn"
+      }
+    ]
   },
   {
     "begrep": "Grønn vekst",
     "forklaring": "Ambisjonen om økonomisk utvikling som dekker behov innenfor naturens tåleevne.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "dilemmaer"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "dilemmaer"
+      }
+    ]
   },
   {
     "begrep": "Havstrøm",
     "forklaring": "Vedvarende bevegelse av sjøvann som kan transportere varme.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "globale-sirkulasjoner"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "globale-sirkulasjoner"
+      }
+    ]
   },
   {
     "begrep": "HDI",
     "forklaring": "FNs utviklingsprograms sammensatte indeks for menneskelig utvikling, basert på helse, utdanning og inntekt.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "mal-pa-utvikling"
-  },
-  {
-    "begrep": "HDI",
-    "forklaring": "FNs utviklingsprograms sammensatte indeks for menneskelig utvikling, basert på helse, utdanning og inntekt.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "levekar-i-verden"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "mal-pa-utvikling"
+      },
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "levekar-i-verden"
+      }
+    ]
   },
   {
     "begrep": "Hyposenter",
     "forklaring": "Stedet inne i jorda der jordskjelvbruddet starter.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordskjelv"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordskjelv"
+      }
+    ]
   },
   {
     "begrep": "Hypotese",
     "forklaring": "En antakelse eller mulig forklaring som prøves mot observasjoner og kunnskap.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "problemstilling-og-plan"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "problemstilling-og-plan"
+      }
+    ]
   },
   {
     "begrep": "Høytrykk",
     "forklaring": "Område med høyere lufttrykk enn omgivelsene.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "vaer-og-klima"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "vaer-og-klima"
+      }
+    ]
   },
   {
     "begrep": "Ikke-fornybar",
     "forklaring": "Ressurs som ikke erstattes i takt med uttaket innenfor menneskelige tidsperspektiver.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "hva-er-ressurser"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "hva-er-ressurser"
+      }
+    ]
   },
   {
     "begrep": "Immigrasjon",
     "forklaring": "Innvandring sett fra landet man flytter til.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hva-er-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hva-er-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Informert samtykke",
     "forklaring": "En frivillig og tydelig tilslutning etter forståelig informasjon om deltakelsen.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "sikkerhet-og-etikk"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "sikkerhet-og-etikk"
+      }
+    ]
   },
   {
     "begrep": "Innlandsis",
     "forklaring": "Svært stor, sammenhengende ismasse over et omfattende landområde.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "istider-og-isbreer"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "istider-og-isbreer"
+      }
+    ]
   },
   {
     "begrep": "Intensitet",
     "forklaring": "Rystelser og virkninger ved et bestemt sted.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordskjelv"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordskjelv"
+      }
+    ]
   },
   {
     "begrep": "Interessekonflikt",
     "forklaring": "Uenighet mellom ulike behov eller mål.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "arealbruk-og-konflikter"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "arealbruk-og-konflikter"
+      }
+    ]
   },
   {
     "begrep": "Intern migrasjon",
     "forklaring": "Flytting innenfor ett land.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hva-er-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hva-er-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Internasjonal arbeidsdeling",
     "forklaring": "Fordeling av produksjonsoppgaver mellom aktører i forskjellige land.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "internasjonal-arbeidsdeling"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "internasjonal-arbeidsdeling"
+      }
+    ]
   },
   {
     "begrep": "Internt fordrevet",
     "forklaring": "Person som er tvunget til å forlate hjemmet uten å krysse en internasjonalt anerkjent landegrense.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "flyktninger"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "flyktninger"
+      }
+    ]
   },
   {
     "begrep": "Isbre",
     "forklaring": "Masse av snø og is som beveger seg ved tyngdekraften.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "istider-og-isbreer"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "istider-og-isbreer"
+      }
+    ]
   },
   {
     "begrep": "Jordskorpe",
     "forklaring": "Jordas ytterste lag av fast bergart.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordas-oppbygning"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordas-oppbygning"
+      }
+    ]
   },
   {
     "begrep": "Jordvarme",
     "forklaring": "Varme fra jordas indre som mennesker kan utnytte.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "ressurser-i-aktive-omrader"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "ressurser-i-aktive-omrader"
+      }
+    ]
   },
   {
     "begrep": "Karbonatitter",
     "forklaring": "Sjelden gruppe magmatiske bergarter som består av karbonatmineraler og kan inneholde sjeldne jordarter.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "ressurser-i-berggrunnen"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "ressurser-i-berggrunnen"
+      }
+    ]
   },
   {
     "begrep": "Karbonkretsløp",
     "forklaring": "Utveksling av karbon mellom luft, organismer, jord, hav og berggrunn.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "drivhuseffekten"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "drivhuseffekten"
+      }
+    ]
   },
   {
     "begrep": "Kartogram",
     "forklaring": "En geografisk framstilling av statistikk, for eksempel med farger eller proporsjonale sirkler.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "temakart-og-mentale-kart"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "temakart-og-mentale-kart"
+      }
+    ]
   },
   {
     "begrep": "Kartprojeksjon",
     "forklaring": "En matematisk metode for å framstille jordas krumme overflate på et flatt kart.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "kart-og-projeksjoner"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "kart-og-projeksjoner"
+      }
+    ]
   },
   {
     "begrep": "Katastrofe",
     "forklaring": "En alvorlig forstyrrelse av et samfunn med store følger.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "risiko-og-sarbarhet"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "risiko-og-sarbarhet"
+      }
+    ]
   },
   {
     "begrep": "Kildekritikk",
     "forklaring": "Vurdering av avsender, troverdighet og hvor egnet informasjonen er til et formål.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "kildekritikk"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "kildekritikk"
+      }
+    ]
   },
   {
     "begrep": "Kjøpekraftsjustering",
     "forklaring": "Justering for prisnivåforskjeller slik at beløp blir mer sammenliknbare.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "mal-pa-utvikling"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "mal-pa-utvikling"
+      }
+    ]
   },
   {
     "begrep": "Klima",
     "forklaring": "Langsiktige mønstre i været, med gjennomsnitt og variasjon.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "vaer-og-klima"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "vaer-og-klima"
+      }
+    ]
   },
   {
     "begrep": "Klimadiagram",
     "forklaring": "Diagram med temperatur og nedbør gjennom årets måneder.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "vaer-og-klima"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "vaer-og-klima"
+      }
+    ]
   },
   {
     "begrep": "Klimafotavtrykk",
     "forklaring": "Klimagassutslipp knyttet til forbruk eller aktivitet med en bestemt avgrensning.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "planetare-grenser"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "planetare-grenser"
+      }
+    ]
   },
   {
     "begrep": "Klimakvote",
     "forklaring": "Rett til et bestemt utslipp; i EUs system ett tonn CO₂-ekvivalenter.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "kutt-og-tilpasning"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "kutt-og-tilpasning"
+      }
+    ]
   },
   {
     "begrep": "Klimasone",
     "forklaring": "Område med bestemte fellestrekk i temperatur og nedbør.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "klimasoner"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "klimasoner"
+      }
+    ]
   },
   {
     "begrep": "Klimatilpasning",
     "forklaring": "Tiltak som reduserer sårbarhet eller skade fra klima og klimaendringer.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "kutt-og-tilpasning"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "kutt-og-tilpasning"
+      }
+    ]
   },
   {
     "begrep": "Kollisjonssone",
     "forklaring": "Område der kontinenter møtes og skorpa presses sammen.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "platetektonikk"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "platetektonikk"
+      }
+    ]
   },
   {
     "begrep": "Konveksjonsstrøm",
     "forklaring": "Strømningsbevegelse drevet av tetthetsforskjeller, ofte knyttet til temperatur.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "platetektonikk"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "platetektonikk"
+      }
+    ]
   },
   {
     "begrep": "Kritiske mineraler",
     "forklaring": "Råvarer med høy økonomisk betydning og høy risiko for forsyningssvikt.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "ressurser-i-berggrunnen"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "ressurser-i-berggrunnen"
+      }
+    ]
   },
   {
     "begrep": "Kvalitativ metode",
     "forklaring": "Innsamling og analyse av blant annet tekstlige beskrivelser og utsagn.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "metoder-i-felt"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "metoder-i-felt"
+      }
+    ]
   },
   {
     "begrep": "Kvantitativ metode",
     "forklaring": "Innsamling og analyse av opplysninger uttrykt som tall eller mengder.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "metoder-i-felt"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "metoder-i-felt"
+      }
+    ]
   },
   {
     "begrep": "Kvikkleire",
     "forklaring": "Marin leire som kan miste styrken og bli flytende når strukturen kollapser, for eksempel ved omrøring eller overbelastning.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landhevning-og-marin-grense"
-  },
-  {
-    "begrep": "Kvikkleire",
-    "forklaring": "Marin leire som kan miste styrken og bli flytende når strukturen kollapser, for eksempel ved omrøring eller overbelastning.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "skred-i-norge"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landhevning-og-marin-grense"
+      },
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "skred-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Landhevning",
     "forklaring": "Heving av landet, her særlig etter at vekten av innlandsisen forsvant.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landhevning-og-marin-grense"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landhevning-og-marin-grense"
+      }
+    ]
   },
   {
     "begrep": "Lavtrykk",
     "forklaring": "Område med lavere lufttrykk enn omgivelsene.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "vaer-og-klima"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "vaer-og-klima"
+      }
+    ]
   },
   {
     "begrep": "Lengdegrad",
     "forklaring": "En vinkel som angir plassering øst eller vest for nullmeridianen.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "koordinater-og-malestokk"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "koordinater-og-malestokk"
+      }
+    ]
   },
   {
     "begrep": "Levekår",
     "forklaring": "Livsbetingelser og muligheter som påvirker hvordan mennesker lever, blant annet helse, utdanning, inntekt og trygghet.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "hva-er-utvikling"
-  },
-  {
-    "begrep": "Levekår",
-    "forklaring": "Livsbetingelser og muligheter som påvirker hvordan mennesker lever, blant annet helse, utdanning, inntekt og trygghet.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "levekar-i-verden"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "hva-er-utvikling"
+      },
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "levekar-i-verden"
+      }
+    ]
   },
   {
     "begrep": "Litosfære",
     "forklaring": "Jordskorpa og den stive øverste delen av mantelen, delt i plater.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordas-oppbygning"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordas-oppbygning"
+      }
+    ]
   },
   {
     "begrep": "Lokaliseringsfaktor",
     "forklaring": "Forhold som gjør et sted mer eller mindre aktuelt for en virksomhet.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "lokalisering"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "lokalisering"
+      }
+    ]
   },
   {
     "begrep": "Løsmasser",
     "forklaring": "Løst materiale over berggrunnen, som stein, sand og leire.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "ytre-krefter"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "ytre-krefter"
+      }
+    ]
   },
   {
     "begrep": "Magma og lava",
     "forklaring": "Smeltet bergartsmateriale under overflaten, og når det kommer ut på overflaten.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "bergarter"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "bergarter"
+      }
+    ]
   },
   {
     "begrep": "Magmatisk bergart",
     "forklaring": "Bergart dannet når magma eller lava størkner.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "bergarter"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "bergarter"
+      }
+    ]
   },
   {
     "begrep": "Magnitude",
     "forklaring": "Mål på størrelsen til et jordskjelv, ikke en direkte skadeskala.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordskjelv"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordskjelv"
+      }
+    ]
   },
   {
     "begrep": "Malm",
     "forklaring": "Mineralforekomst der innhold og økonomiske forhold gjør utvinning aktuell.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "ressurser-i-berggrunnen"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "ressurser-i-berggrunnen"
+      }
+    ]
   },
   {
     "begrep": "Mantel",
     "forklaring": "Bergartslaget mellom skorpa og kjernen, i hovedsak fast.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "jordas-oppbygning"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "jordas-oppbygning"
+      }
+    ]
   },
   {
     "begrep": "Marin grense",
     "forklaring": "Høyeste nivå havet nådde lokalt etter siste istid.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landhevning-og-marin-grense"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landhevning-og-marin-grense"
+      }
+    ]
   },
   {
     "begrep": "Meander",
     "forklaring": "Tydelig sving i et elveløp, ofte gjennom løsmasser.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "elver-og-landformer"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "elver-og-landformer"
+      }
+    ]
   },
   {
     "begrep": "Menneske–miljø",
     "forklaring": "Samspillet mellom menneskers virksomhet og naturforholdene i områder de bruker.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "geografiske-begreper"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "geografiske-begreper"
+      }
+    ]
   },
   {
     "begrep": "Menneskehandel",
     "forklaring": "Handlinger med utnytting som formål; for voksne inngår bestemte midler som tvang, bedrag eller misbruk av sårbarhet.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "menneskehandel"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "menneskehandel"
+      }
+    ]
   },
   {
     "begrep": "Menneskesmugling",
     "forklaring": "Etter FNs protokoll: tilrettelegging av ulovlig innreise til et annet land for økonomisk eller annen materiell fordel.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "menneskehandel"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "menneskehandel"
+      }
+    ]
   },
   {
     "begrep": "Mentalt kart",
     "forklaring": "En persons forestilling om et geografisk område eller sted.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "temakart-og-mentale-kart"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "temakart-og-mentale-kart"
+      }
+    ]
   },
   {
     "begrep": "Metamorf bergart",
     "forklaring": "Bergart omdannet i fast tilstand, uten å smelte.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "bergarter"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "bergarter"
+      }
+    ]
   },
   {
     "begrep": "Migrasjon",
     "forklaring": "Flytting bort fra vanlig bosted, innenfor et land eller over en landegrense.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hva-er-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hva-er-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Miljøkatastrofe",
     "forklaring": "En alvorlig hendelse med omfattende miljøskade og samfunnsmessige følger.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "miljokatastrofer"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "miljokatastrofer"
+      }
+    ]
   },
   {
     "begrep": "Morene",
     "forklaring": "Materiale avsatt av en bre, eller en landform av slikt materiale.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landformer-fra-is"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landformer-fra-is"
+      }
+    ]
   },
   {
     "begrep": "Motstandskraft eller resiliens",
     "forklaring": "Evnen til å håndtere påkjenninger, tilpasse seg og gjenopprette viktige funksjoner.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "risiko-og-sarbarhet"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "risiko-og-sarbarhet"
+      }
+    ]
   },
   {
     "begrep": "Målestokk",
     "forklaring": "Forholdet mellom avstand på kartet og tilsvarende avstand i terrenget.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "koordinater-og-malestokk"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "koordinater-og-malestokk"
+      }
+    ]
   },
   {
     "begrep": "Naturfare",
     "forklaring": "En naturlig prosess eller et fenomen som kan gi skade.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "risiko-og-sarbarhet"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "risiko-og-sarbarhet"
+      }
+    ]
   },
   {
     "begrep": "Naturlig tilvekst",
     "forklaring": "Levendefødte minus døde i samme område og periode.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "demografiske-mal"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "demografiske-mal"
+      }
+    ]
   },
   {
     "begrep": "Naturressurs",
     "forklaring": "Materiale, energi eller areal fra naturen som mennesker kan ha nytte av.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "hva-er-ressurser"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "hva-er-ressurser"
+      }
+    ]
   },
   {
     "begrep": "Netto migrasjonsrate",
     "forklaring": "Innflyttinger minus utflyttinger, per tusen innbyggere i samme periode.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "demografiske-mal"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "demografiske-mal"
+      }
+    ]
   },
   {
     "begrep": "Non-refoulement",
     "forklaring": "Vern mot retur til forfølgelse eller annen alvorlig fare etter relevante internasjonale regler.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "flyktninger"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "flyktninger"
+      }
+    ]
   },
   {
     "begrep": "Nordområdene",
     "forklaring": "Her: fastland, øyer, havbunn og hav mellom polarsirkelen og Nordpolen.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "nordomradene"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "nordomradene"
+      }
+    ]
   },
   {
     "begrep": "Næringsstruktur",
     "forklaring": "Fordelingen av økonomisk virksomhet mellom næringer i et område, målt på en oppgitt måte.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "naeringsstruktur"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "naeringsstruktur"
+      }
+    ]
   },
   {
     "begrep": "Observasjon",
     "forklaring": "Systematisk registrering av forhold som er relevante for spørsmålet.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "metoder-i-felt"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "metoder-i-felt"
+      }
+    ]
   },
   {
     "begrep": "Overforbruksdag",
     "forklaring": "Kalenderuttrykk for når beregnet etterspørsel tilsvarer et helt års biokapasitet. Jordas overforbruksdag gjelder hele menneskehetens forbruk. En nasjonal overforbruksdag viser når dette ville skjedd dersom alle forbrukte som landets innbyggere, målt mot verdens biokapasitet per person.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "norges-ressursbruk"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "norges-ressursbruk"
+      }
+    ]
   },
   {
     "begrep": "Overvann",
     "forklaring": "Regn- eller smeltevann som renner av på overflaten utenfor vassdrag og avløpsnett.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "flom-og-overvann"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "flom-og-overvann"
+      }
+    ]
   },
   {
     "begrep": "Passatvind",
     "forklaring": "Dominerende vind mot ekvator med en østlig komponent.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "globale-sirkulasjoner"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "globale-sirkulasjoner"
+      }
+    ]
   },
   {
     "begrep": "Pengeoverføring",
     "forklaring": "Privat internasjonal overføring fra en migrant til familie eller andre forbindelser.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "global-migrasjon"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "global-migrasjon"
+      }
+    ]
   },
   {
     "begrep": "Petroleum",
     "forklaring": "Olje og naturgass dannet fra organisk materiale gjennom geologiske prosesser.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "olje-og-gass"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "olje-og-gass"
+      }
+    ]
   },
   {
     "begrep": "Planetære grenser",
     "forklaring": "Forskningsrammeverk for prosesser som bidrar til jordas stabilitet og motstandskraft.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "planetare-grenser"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "planetare-grenser"
+      }
+    ]
   },
   {
     "begrep": "Primærnæring",
     "forklaring": "Her jordbruk, skogbruk og fiske, med akvakultur inkludert i datagruppen.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "naeringsstruktur"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "naeringsstruktur"
+      }
+    ]
   },
   {
     "begrep": "Problemstilling",
     "forklaring": "Spørsmålet vi avgrenser undersøkelsen rundt og vil belyse med data.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "problemstilling-og-plan"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "problemstilling-og-plan"
+      }
+    ]
   },
   {
     "begrep": "Region",
     "forklaring": "Et område avgrenset med utgangspunkt i valgte fellestrekk.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "geografiske-begreper"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "geografiske-begreper"
+      }
+    ]
   },
   {
     "begrep": "Reindrift",
     "forklaring": "Næring som bruker tamrein og beiter gjennom ulike årstider og områder.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "sapmi-og-reindrift"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "sapmi-og-reindrift"
+      }
+    ]
   },
   {
     "begrep": "Reliabilitet",
     "forklaring": "Pålitelighet, uttrykt gjennom konsistens og stabilitet under sammenliknbare betingelser.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "bearbeide-data"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "bearbeide-data"
+      }
+    ]
   },
   {
     "begrep": "Ressursknapphet",
     "forklaring": "Begrenset tilgang til en ressurs i forhold til behovet.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "hva-er-ressurser"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "hva-er-ressurser"
+      }
+    ]
   },
   {
     "begrep": "Retrogressiv skredutvikling",
     "forklaring": "Skredet forplanter seg bakover når nye kanter mister støtte.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "skred-i-norge"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "skred-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Rift",
     "forklaring": "Område der litosfæren strekkes og skorpa tynnes og sprekker opp.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "platetektonikk"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "platetektonikk"
+      }
+    ]
   },
   {
     "begrep": "Ringvirkning",
     "forklaring": "Virkning som sprer seg videre fra en aktivitet til andre aktører.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "ringvirkninger"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "ringvirkninger"
+      }
+    ]
   },
   {
     "begrep": "Risiko",
     "forklaring": "Mulige tap og skader, vurdert i sammenheng med fare og samfunnsforhold.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "risiko-og-sarbarhet"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "risiko-og-sarbarhet"
+      }
+    ]
   },
   {
     "begrep": "Romlig oppløsning",
     "forklaring": "Størrelsen på bakkeområdet som én bildecelle representerer i framstillingen.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "fjernmaling-og-gis"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "fjernmaling-og-gis"
+      }
+    ]
   },
   {
     "begrep": "Rådata",
     "forklaring": "De opprinnelige registreringene før bearbeiding og oppsummering.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "bearbeide-data"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "bearbeide-data"
+      }
+    ]
   },
   {
     "begrep": "Samlet fruktbarhetstall (SFT)",
     "forklaring": "Beregnet barnetall ved et bestemt års fruktbarhetsmønster gjennom hele fødeperioden, uten dødsfall.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "fruktbarhet-og-dodelighet"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "fruktbarhet-og-dodelighet"
+      }
+    ]
   },
   {
     "begrep": "Sedimentær bergart",
     "forklaring": "Bergart dannet av avsetninger, blant annet sammenpresset og sammenkittet sediment.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "bergarter"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "bergarter"
+      }
+    ]
   },
   {
     "begrep": "Sekundærnæring",
     "forklaring": "Her bergverk og oljeutvinning, industri, forsyning, renovasjon og byggevirksomhet.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "naeringsstruktur"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "naeringsstruktur"
+      }
+    ]
   },
   {
     "begrep": "Sentralisering",
     "forklaring": "Konsentrasjon av bosetting eller aktiviteter i et begrenset antall sentre.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "flytting-i-norge"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "flytting-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Sirkulær økonomi",
     "forklaring": "Lengre bruk av produkter og materialer for å redusere uttak og ressurstap.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "veien-videre"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "veien-videre"
+      }
+    ]
   },
   {
     "begrep": "Sjødeponi",
     "forklaring": "Deponi i sjøen der avgangsmasser fra gruvedrift føres ut gjennom rør og legges på bunnen.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "arealbruk-og-konflikter"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "arealbruk-og-konflikter"
+      }
+    ]
   },
   {
     "begrep": "Skjoldvulkan",
     "forklaring": "Bred vulkan med slake sider, bygd av relativt lettflytende lava.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "vulkaner"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "vulkaner"
+      }
+    ]
   },
   {
     "begrep": "Skred",
     "forklaring": "Massebevegelse der tyngdekraften bidrar til bevegelsen.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "skred-i-norge"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "skred-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Skyvedekke",
     "forklaring": "Stort bergflak skjøvet over annet berg ved sammenpressing.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "norges-berggrunn"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "norges-berggrunn"
+      }
+    ]
   },
   {
     "begrep": "Skyvefaktor",
     "forklaring": "Forhold som presser noen til å forlate et sted eller gjør det mindre attraktivt å bli.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hvorfor-folk-flytter"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hvorfor-folk-flytter"
+      }
+    ]
   },
   {
     "begrep": "Spedbarnsdødelighet",
     "forklaring": "Dødelighet før fylte ett år, vanligvis per tusen levendefødte.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "fruktbarhet-og-dodelighet"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "fruktbarhet-og-dodelighet"
+      }
+    ]
   },
   {
     "begrep": "Spredningsrygg",
     "forklaring": "Havbunnsrygg der plater går fra hverandre og ny skorpe dannes.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "platetektonikk"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "platetektonikk"
+      }
+    ]
   },
   {
     "begrep": "Sted",
     "forklaring": "Et bestemt geografisk område som vi undersøker og beskriver nærmere.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "geografiske-begreper"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "geografiske-begreper"
+      }
+    ]
   },
   {
     "begrep": "Stedfesting",
     "forklaring": "Å knytte opplysninger til en geografisk plassering.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "metoder-i-felt"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "metoder-i-felt"
+      }
+    ]
   },
   {
     "begrep": "Stormflo",
     "forklaring": "Høy vannstand som skyldes værets virkning på havet.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "stormer-orkaner-og-tornadoer"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "stormer-orkaner-og-tornadoer"
+      }
+    ]
   },
   {
     "begrep": "Strandflate",
     "forklaring": "Lavt, forholdsvis jevnt kystområde både over og under havnivået.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "kystlandskapet"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "kystlandskapet"
+      }
+    ]
   },
   {
     "begrep": "Stratovulkan",
     "forklaring": "Vanligvis bratt vulkan med lag av lava og oppstykket vulkansk materiale.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "vulkaner"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "vulkaner"
+      }
+    ]
   },
   {
     "begrep": "Subduksjon",
     "forklaring": "En plate synker under en annen og ned i mantelen.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "platetektonikk"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "platetektonikk"
+      }
+    ]
   },
   {
     "begrep": "Sårbarhet",
     "forklaring": "Forhold som gjør mennesker og verdier utsatt for skade.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "risiko-og-sarbarhet"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "risiko-og-sarbarhet"
+      }
+    ]
   },
   {
     "begrep": "Temakart",
     "forklaring": "Et kart som framhever ett eller noen få utvalgte temaer.",
-    "kapittel": "verktoy",
-    "kapittelNr": 1,
-    "under": "temakart-og-mentale-kart"
+    "steder": [
+      {
+        "kapittel": "verktoy",
+        "kapittelNr": 1,
+        "under": "temakart-og-mentale-kart"
+      }
+    ]
   },
   {
     "begrep": "Territorielle utslipp",
     "forklaring": "Utslipp som føres etter territoriet i et nasjonalt klimaregnskap.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "norges-ressursbruk"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "norges-ressursbruk"
+      }
+    ]
   },
   {
     "begrep": "Tertiærnæring",
     "forklaring": "Tjenesteyting, både privat og offentlig.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "naeringsstruktur"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "naeringsstruktur"
+      }
+    ]
   },
   {
     "begrep": "Tilbakekopling",
     "forklaring": "Prosess der en virkning påvirker den opprinnelige endringen.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "klimaendringer-na"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "klimaendringer-na"
+      }
+    ]
   },
   {
     "begrep": "Tornado",
     "forklaring": "Roterende luftsøyle mellom en bygesky og bakken.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "stormer-orkaner-og-tornadoer"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "stormer-orkaner-og-tornadoer"
+      }
+    ]
   },
   {
     "begrep": "Transekt",
     "forklaring": "En undersøkelseslinje som kan brukes til å organisere registreringer gjennom et område.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "problemstilling-og-plan"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "problemstilling-og-plan"
+      }
+    ]
   },
   {
     "begrep": "Transformforkastning",
     "forklaring": "Plategrense med hovedsakelig sidelengs bevegelse.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "platetektonikk"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "platetektonikk"
+      }
+    ]
   },
   {
     "begrep": "Trekkfaktor",
     "forklaring": "Forhold som gjør et mulig tilflyttingssted attraktivt eller relevant.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "hvorfor-folk-flytter"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "hvorfor-folk-flytter"
+      }
+    ]
   },
   {
     "begrep": "Tropisk orkan",
     "forklaring": "En sterk tropisk syklon, ikke bare sterk vind i et hvilket som helst værsystem.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "stormer-orkaner-og-tornadoer"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "stormer-orkaner-og-tornadoer"
+      }
+    ]
   },
   {
     "begrep": "Tropisk syklon",
     "forklaring": "Organisert lavtrykkssystem som utvikles over varme tropiske havområder.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "stormer-orkaner-og-tornadoer"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "stormer-orkaner-og-tornadoer"
+      }
+    ]
   },
   {
     "begrep": "Tsunami",
     "forklaring": "Bølgeserie som dannes ved stor, brå forskyvning av vann.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "tsunamier"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "tsunamier"
+      }
+    ]
   },
   {
     "begrep": "Tørke",
     "forklaring": "En lengre periode med mindre nedbør enn normalt for området.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "torke-og-skogbrann"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "torke-og-skogbrann"
+      }
+    ]
   },
   {
     "begrep": "U-dal",
     "forklaring": "Breformet dal med bredere bunn og bratte sider.",
-    "kapittel": "landskap",
-    "kapittelNr": 4,
-    "under": "landformer-fra-is"
+    "steder": [
+      {
+        "kapittel": "landskap",
+        "kapittelNr": 4,
+        "under": "landformer-fra-is"
+      }
+    ]
   },
   {
     "begrep": "Ulikhet",
     "forklaring": "Forskjeller i fordeling av goder, ressurser og muligheter.",
-    "kapittel": "befolkning",
-    "kapittelNr": 10,
-    "under": "levekar-i-verden"
+    "steder": [
+      {
+        "kapittel": "befolkning",
+        "kapittelNr": 10,
+        "under": "levekar-i-verden"
+      }
+    ]
   },
   {
     "begrep": "Urbanisering",
     "forklaring": "Økt konsentrasjon av befolkning i byer og tettsteder.",
-    "kapittel": "migrasjon",
-    "kapittelNr": 11,
-    "under": "flytting-i-norge"
+    "steder": [
+      {
+        "kapittel": "migrasjon",
+        "kapittelNr": 11,
+        "under": "flytting-i-norge"
+      }
+    ]
   },
   {
     "begrep": "Urfolksrettigheter",
     "forklaring": "Rettigheter som blant annet beskytter urfolks språk, kultur og samfunnsliv.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "sapmi-og-reindrift"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "sapmi-og-reindrift"
+      }
+    ]
   },
   {
     "begrep": "Utkontraktering (outsourcing)",
     "forklaring": "Å sette oppgaver bort til en annen leverandør, innenlands eller utenlands.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "internasjonal-arbeidsdeling"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "internasjonal-arbeidsdeling"
+      }
+    ]
   },
   {
     "begrep": "Utslippskutt",
     "forklaring": "Reduksjon av menneskers utslipp av drivhusgasser.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "kutt-og-tilpasning"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "kutt-og-tilpasning"
+      }
+    ]
   },
   {
     "begrep": "Utslippsscenario",
     "forklaring": "Mulig utslippsutvikling under bestemte forutsetninger om framtiden.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "klimaendringer-na"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "klimaendringer-na"
+      }
+    ]
   },
   {
     "begrep": "Utvalg",
     "forklaring": "Den delen av stedene, enhetene eller observasjonene som faktisk undersøkes.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "problemstilling-og-plan"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "problemstilling-og-plan"
+      }
+    ]
   },
   {
     "begrep": "Utvikling",
     "forklaring": "Endringer i levekår, muligheter og samfunnsforhold over tid.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "hva-er-utvikling"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "hva-er-utvikling"
+      }
+    ]
   },
   {
     "begrep": "Validitet",
     "forklaring": "Hvor godt data belyser spørsmålet og gir grunnlag for gyldige slutninger.",
-    "kapittel": "feltarbeid",
-    "kapittelNr": 2,
-    "under": "bearbeide-data"
+    "steder": [
+      {
+        "kapittel": "feltarbeid",
+        "kapittelNr": 2,
+        "under": "bearbeide-data"
+      }
+    ]
   },
   {
     "begrep": "Vannkraft",
     "forklaring": "Energi fra vannets fall, utnyttet til mekanisk arbeid eller elektrisitet.",
-    "kapittel": "ressurser",
-    "kapittelNr": 7,
-    "under": "energi"
+    "steder": [
+      {
+        "kapittel": "ressurser",
+        "kapittelNr": 7,
+        "under": "energi"
+      }
+    ]
   },
   {
     "begrep": "Varmeflekk (hotspot)",
     "forklaring": "Langvarig vulkansk område knyttet til en varm kilde under platen.",
-    "kapittel": "indre-krefter",
-    "kapittelNr": 3,
-    "under": "vulkaner"
+    "steder": [
+      {
+        "kapittel": "indre-krefter",
+        "kapittelNr": 3,
+        "under": "vulkaner"
+      }
+    ]
   },
   {
     "begrep": "Varsling",
     "forklaring": "Informasjon om en mulig eller pågående farlig situasjon som grunnlag for handling.",
-    "kapittel": "naturfare",
-    "kapittelNr": 6,
-    "under": "forebygging-og-varsling"
+    "steder": [
+      {
+        "kapittel": "naturfare",
+        "kapittelNr": 6,
+        "under": "forebygging-og-varsling"
+      }
+    ]
   },
   {
     "begrep": "Verdikjede",
     "forklaring": "Modell av aktiviteter som bidrar til verdiskaping rundt et produkt eller en tjeneste.",
-    "kapittel": "naering",
-    "kapittelNr": 9,
-    "under": "verdikjeder"
+    "steder": [
+      {
+        "kapittel": "naering",
+        "kapittelNr": 9,
+        "under": "verdikjeder"
+      }
+    ]
   },
   {
     "begrep": "Vestavindsbeltet",
     "forklaring": "Belte på midlere breddegrader der vestlige vinder dominerer over tid.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "globale-sirkulasjoner"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "globale-sirkulasjoner"
+      }
+    ]
   },
   {
     "begrep": "Vær",
     "forklaring": "Tilstanden i atmosfæren på et sted over kort tid.",
-    "kapittel": "klima",
-    "kapittelNr": 5,
-    "under": "vaer-og-klima"
+    "steder": [
+      {
+        "kapittel": "klima",
+        "kapittelNr": 5,
+        "under": "vaer-og-klima"
+      }
+    ]
   },
   {
     "begrep": "Økologisk fotavtrykk",
     "forklaring": "Beregnet behov for biologisk produktivt areal knyttet til forbruk og karbonopptak, uttrykt i globale hektar.",
-    "kapittel": "baerekraft",
-    "kapittelNr": 8,
-    "under": "planetare-grenser"
+    "steder": [
+      {
+        "kapittel": "baerekraft",
+        "kapittelNr": 8,
+        "under": "planetare-grenser"
+      }
+    ]
   }
 ];
 

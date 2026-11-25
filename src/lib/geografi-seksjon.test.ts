@@ -5,7 +5,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { posterHeadingAnchorIds } from "./chapter-scan.ts";
 import { GEOGRAFI_KAPITLER } from "./geografi-kapitler.ts";
-import { byggGeografiData, renderGeografiData } from "./geografi-generert-bygg.ts";
+import { GEOGRAFI_BEGREPSREGISTER } from "./geografi-begreper.ts";
+import { begrepsTabell, byggGeografiData, renderGeografiData } from "./geografi-generert-bygg.ts";
 import { geografiHeadingAliases, sliceGeografiUnderkapittel } from "./geografi-seksjon.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -46,20 +47,68 @@ describe("Geografi: underkapittel-URL-er", () => {
 });
 
 describe("Geografi: begrepsregister", () => {
-  it("geografi-generert.ts er i takt med md (kjør scripts/geografi-generer.mts)", () => {
-    const fresh = renderGeografiData(byggGeografiData(GEOGRAFI_KAPITLER, md));
+  const norm = (t: string) => t.toLocaleLowerCase("nb");
+
+  it("geografi-generert.ts er i takt med md og registeret (kjør scripts/geografi-generer.mts)", () => {
+    const fresh = renderGeografiData(
+      byggGeografiData(GEOGRAFI_KAPITLER, md, GEOGRAFI_BEGREPSREGISTER),
+    );
     assert.equal(read("geografi-generert.ts"), fresh);
   });
 
-  it("hvert begrep og hver forklaring står ordrett i kapittelets Begreper-tabell", () => {
-    const { begreper } = byggGeografiData(GEOGRAFI_KAPITLER, md);
-    assert.ok(begreper.length > 150);
-    for (const b of begreper) {
-      const kap = GEOGRAFI_KAPITLER[b.kapittelNr - 1]!;
-      const flat = md(kap.slug).replace(/[*_`]/g, "");
-      assert.ok(flat.includes(b.begrep), b.begrep);
-      assert.ok(flat.includes(b.forklaring.slice(0, 40)), b.begrep);
-      if (b.under) assert.ok(kap.underkapitler.some((u) => u.id === b.under));
+  it("hver forklaring står ordrett i Begreper-tabellen i hvert kapittel begrepet hører til", () => {
+    assert.equal(GEOGRAFI_BEGREPSREGISTER.length, 206);
+    for (const b of GEOGRAFI_BEGREPSREGISTER) {
+      for (const path of b.kapitler) {
+        const kap = GEOGRAFI_KAPITLER.find((k) => k.path === path);
+        assert.ok(kap, `${b.begrep}: ukjent kapittel ${path}`);
+        const rad = begrepsTabell(md(kap.slug)).find(([navn]) => norm(navn) === norm(b.begrep));
+        assert.ok(rad, `${b.begrep} mangler i tabellen i ${path}`);
+        assert.equal(
+          rad[1],
+          b.forklaring,
+          `${b.begrep} (${path}) er ikke ordrett lik kapittelraden`,
+        );
+      }
+    }
+  });
+
+  it("registeret har verken manglende eller oppdiktede begreper", () => {
+    const fraTabeller = new Set(
+      GEOGRAFI_KAPITLER.flatMap((k) =>
+        begrepsTabell(md(k.slug)).map(([navn]) => `${k.path}|${norm(navn)}`),
+      ),
+    );
+    const fraRegister = new Set(
+      GEOGRAFI_BEGREPSREGISTER.flatMap((b) =>
+        b.kapitler.map((path) => `${path}|${norm(b.begrep)}`),
+      ),
+    );
+    assert.deepEqual(
+      [...fraTabeller].filter((x) => !fraRegister.has(x)),
+      [],
+      "mangler i registeret",
+    );
+    assert.deepEqual(
+      [...fraRegister].filter((x) => !fraTabeller.has(x)),
+      [],
+      "finnes ikke i noen kapitteltabell",
+    );
+    const navn = GEOGRAFI_BEGREPSREGISTER.map((b) => norm(b.begrep));
+    assert.equal(new Set(navn).size, navn.length, "dobbeltoppføring");
+  });
+
+  it("lenkene peker til underkapitler som finnes", () => {
+    for (const b of byggGeografiData(GEOGRAFI_KAPITLER, md, GEOGRAFI_BEGREPSREGISTER).begreper) {
+      for (const st of b.steder) {
+        const kap = GEOGRAFI_KAPITLER[st.kapittelNr - 1]!;
+        assert.equal(kap.path, st.kapittel);
+        if (st.under)
+          assert.ok(
+            kap.underkapitler.some((u) => u.id === st.under),
+            `${b.begrep}`,
+          );
+      }
     }
   });
 
