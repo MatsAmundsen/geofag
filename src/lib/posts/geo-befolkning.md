@@ -182,6 +182,8 @@ Modellen bygger i stor grad på historiske mønstre som ikke har likt forløp ov
 
 Japan og Niger illustrerer forskjellige aldersstrukturer, men pyramidene alene gir ikke sikre fasenumre. For å vurdere en overgang trenger vi også tidsserier for fødsels- og dødsrater. Ett enkelt SFT kan ikke vise hvor raskt et land endrer seg eller hvorfor. Det samme gjelder et øyeblikksbilde av forventet levealder eller en befolkningspyramide. Sammenlikningen blir sterkere når vi kombinerer flere daterte indikatorer og undersøker kildenes metode (Tønnessen, 2024; Verdensbanken, 2026).
 
+**Tenk over:** Hvorfor kan folketallet fortsette å øke etter et fall i SFT? Hvilke opplysninger trenger vi før vi plasserer et land i en fase?
+
 ### Innblikk: Kina, færre fødsler og et synkende folketall
 
 Ved utgangen av 2022 var folketallet i Kina 1411,75 millioner, som var 0,85 millioner færre enn året før. Det året ble det født 9,56 millioner barn, mens 10,41 millioner døde. Den naturlige tilveksten var dermed negativ, med en rate på minus 0,60 promille. Tallene er foreløpige og gjelder fastlands-Kina. De omfatter ikke innbyggere fra Hongkong, Macao og Taiwan eller utenlandske statsborgere som bor i landet (National Bureau of Statistics of China [NBS], 2023).
@@ -193,8 +195,6 @@ Nedgangen har fortsatt. De foreløpige tallene viser at folketallet ved utgangen
 Kina kan brukes til å drøfte den mulige femte fasen i den demografiske overgangen. Men casen viser ikke at fasen er et sikkert sluttpunkt, eller at alle land med lav fruktbarhet vil krympe på samme måte. Folketallet påvirkes også av aldersfordeling og migrasjon, og begge kan endre seg. Vi bruker derfor de daterte tallene til å stille spørsmål, ikke til å lage en prognose.
 
 > **Undersøk casen:** Bruk den demografiske grunnformelen på tallene for 2025. Hvor stor del av endringen i folketallet kan forklares med fødte minus døde? Hvorfor kan antall fødsler synke selv om hver kvinne i gjennomsnitt får like mange barn som før?
-
-**Tenk over:** Hvorfor kan folketallet fortsette å øke etter et fall i SFT? Hvilke opplysninger trenger vi før vi plasserer et land i en fase?
 
 ## Befolkningsteorier
 

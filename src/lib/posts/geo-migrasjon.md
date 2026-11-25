@@ -228,6 +228,8 @@ Ansvar handler både om å gi trygghet nå og om muligheter til å leve videre o
 
 En drøfting av ansvar må derfor skille mellom hva rettighetene krever, og hvilke politiske virkemidler som velges. Støtte til vertsland, bosetting, inkludering og arbeid for trygghet i opprinnelsesområder kan inngå på forskjellige måter. Ingen av dem gjør alle andre behov irrelevante. Vi må undersøke hvem som berøres, hvilke virkninger som dokumenteres, og hvilke usikkerheter som gjenstår. Mennesker på flukt skal ikke omtales som en ensartet belastning uten egne rettigheter og handlingsmuligheter (UNHCR, 2026a; Verdensbanken, 2023).
 
+**Tenk over:** Hva er forskjellen mellom en asylsøker og en internt fordrevet? Hvorfor kan ikke 65-prosentandelen multipliseres med alle tvunget fordrevne uten videre?
+
 ### Innblikk: Ukraina og kollektiv beskyttelse i Norge
 
 I 2022 fikk UDI 40 014 søknader om beskyttelse, flere enn i noe tidligere år. Til sammenlikning kom det 31 150 søknader i 2015. Av søknadene i 2022 var 34 732 fra ukrainere som ba om midlertidig kollektiv beskyttelse. UDI forklarer at krigen i Ukraina var hovedårsaken til de høye tallene. Samme år fikk 33 554 personer innvilget kollektiv beskyttelse (UDI, 2023).
@@ -237,8 +239,6 @@ Søknadene fortsatte, men i et lavere antall de siste årene. I 2025 registrerte
 Casen viser forskjellen mellom strømmer og beholdninger. Søknader er hendelser i løpet av et år, mens bosatte innvandrere telles på en bestemt dato. Ikke alle som søker, blir nødvendigvis bosatt, og noen kan reise videre eller tilbake. Kollektiv beskyttelse bygger dessuten på en gruppevurdering og er ikke det samme som en individuell vurdering etter flyktningkonvensjonen. Vi kan derfor ikke legge sammen søknadene fra flere år og kalle summen antallet ukrainere i Norge (UDI, u.å.-a, u.å.-b).
 
 > **Undersøk casen:** Hvorfor er 85 461 ikke det samme som summen av søknadene fra 2022 til 2025? Hvilke opplysninger trenger en kommune som skal planlegge skoleplasser for barn som har fått kollektiv beskyttelse?
-
-**Tenk over:** Hva er forskjellen mellom en asylsøker og en internt fordrevet? Hvorfor kan ikke 65-prosentandelen multipliseres med alle tvunget fordrevne uten videre?
 
 ## Menneskehandel
 
