@@ -271,7 +271,7 @@ Definisjonene bygger på kildene brukt i delene om ytre krefter, brelandskap, la
 | Esker | Rygg av sand og grus avsatt av smeltevann under en bre. |
 | Marin grense | Høyeste nivå havet nådde lokalt etter siste istid. |
 | Landhevning | Heving av landet, her særlig etter at vekten av innlandsisen forsvant. |
-| Kvikkleire | Leire som kan miste mye styrke og bli flytende ved omrøring. |
+| Kvikkleire | Marin leire som kan miste styrken og bli flytende når strukturen kollapser, for eksempel ved omrøring eller overbelastning. |
 | Meander | Tydelig sving i et elveløp, ofte gjennom løsmasser. |
 | Delta | Avsetning der en elv møter en innsjø eller havet. |
 | Elveterrasse | Trinn eller flate som står igjen fra en tidligere dalbunn. |

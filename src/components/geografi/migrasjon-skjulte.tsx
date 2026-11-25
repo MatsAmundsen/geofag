@@ -3,6 +3,7 @@ import { GeografiVerdenskart } from "./verdenskart";
 import land from "@/lib/geografi-verdensland.json";
 import netto from "@/lib/geografi-nettomigrasjon-2023.json";
 import korr from "@/lib/geografi-migrantkorridorer-2024.json";
+import { MARKOR_FONT, MARKOR_R, korridorGeometri } from "@/lib/geografi-korridorer";
 
 const tall = (n: number) => n.toLocaleString("nb-NO");
 
@@ -14,7 +15,7 @@ export function GeografiNettomigrasjonKart() {
     verdi: r.verdi,
   }));
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 11.1 – Nettomigrasjon per 1000 innbyggere, 2023
       </h3>
@@ -49,11 +50,11 @@ export function GeografiMigrantkorridorer() {
   const id = useId();
   const verden = land as { name: string; iso3: string; path: string }[];
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 11.6 – Ti store forbindelser mellom fødeland og bostedsland, 2024
       </h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 11.6 – Ti store forbindelser mellom fødeland og bostedsland, 2024, kan rulles sideveis">
         <svg
           viewBox="150 20 600 280"
           className="min-w-[560px] w-full rounded bg-sky-50"
@@ -83,29 +84,19 @@ export function GeografiMigrantkorridorer() {
             />
           ))}
           {korr.korridorer.map((k) => {
-            const mx = (k.fx + k.tx) / 2,
-              my = (k.fy + k.ty) / 2 - Math.min(40, Math.hypot(k.tx - k.fx, k.ty - k.fy) * 0.25);
+            const { d, cx, cy, lx, ly } = korridorGeometri(k, korr.korridorer);
             return (
               <g key={k.nr}>
-                <path
-                  d={`M${k.fx} ${k.fy} Q${mx} ${my} ${k.tx} ${k.ty}`}
-                  fill="none"
-                  stroke="#7c2d12"
-                  strokeWidth="1.6"
-                  markerEnd={`url(#${id}-pil)`}
-                />
-                <circle
-                  cx={mx}
-                  cy={(my + (k.fy + k.ty) / 2) / 2}
-                  r="4.2"
-                  fill="#fff"
-                  stroke="#7c2d12"
-                  strokeWidth="0.8"
-                />
+                <path d={d} fill="none" stroke="#7c2d12" strokeWidth="1.6" markerEnd={`url(#${id}-pil)`} />
+                {lx !== undefined && ly !== undefined ? (
+                  <line x1={cx} y1={cy} x2={lx} y2={ly} stroke="#7c2d12" strokeWidth="0.8" />
+                ) : null}
+                <circle cx={cx} cy={cy} r={MARKOR_R} fill="#fff" stroke="#7c2d12" strokeWidth="1" />
                 <text
-                  x={mx}
-                  y={(my + (k.fy + k.ty) / 2) / 2 + 2.3}
-                  fontSize="6"
+                  x={cx}
+                  y={cy + 4.6}
+                  fontSize={MARKOR_FONT}
+                  fontWeight="600"
                   textAnchor="middle"
                   fill="#111827"
                 >

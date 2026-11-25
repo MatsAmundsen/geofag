@@ -296,7 +296,7 @@ Punktene sammenfatter forklaringene og kildene i underkapitlene.
 | Katastrofe | En alvorlig forstyrrelse av et samfunn med store følger. |
 | Miljøkatastrofe | En alvorlig hendelse med omfattende miljøskade og samfunnsmessige følger. |
 | Skred | Massebevegelse der tyngdekraften bidrar til bevegelsen. |
-| Kvikkleire | Marin leire som kan miste styrken når strukturen kollapser. |
+| Kvikkleire | Marin leire som kan miste styrken og bli flytende når strukturen kollapser, for eksempel ved omrøring eller overbelastning. |
 | Retrogressiv skredutvikling | Skredet forplanter seg bakover når nye kanter mister støtte. |
 | Flomsone | Område som kan oversvømmes under en definert flomsituasjon. |
 | Overvann | Regn- eller smeltevann som renner av på overflaten utenfor vassdrag og avløpsnett. |

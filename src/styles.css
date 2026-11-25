@@ -852,6 +852,18 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-950: oklch(98.4% 0.003 247.858);
 }
 
+/*
+ * Figurer beholder det mørke temaet også på lyse kapittelsider (variablene over). Figurer
+ * uten egen bakgrunn arvet sidens lyse flate og fikk lys tekst på lys bunn (axe color-contrast).
+ * Her får de samme mørke kortflate som figurene med bg-card. I @layer base, så en bg-klasse
+ * på figuren går foran.
+ */
+@layer base {
+  :root:not([data-tema="mork"]):has(.kapittel-lys) :where(figure) {
+    background-color: var(--color-card);
+  }
+}
+
 :root:not([data-tema="mork"]):has(.kapittel-lys) :is(figure, .jet-root) {
   --color-background: #0b1014;
   --color-foreground: #e8eef2;
@@ -914,6 +926,41 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-900: oklch(20.8% 0.042 265.755);
   --color-slate-950: oklch(12.9% 0.042 264.695);
   color: var(--color-foreground);
+}
+
+/*
+ * Figurer tegnet for hvit bunn (mørk tekst som #334155, lyse kart og koropletkart) får hvit flate
+ * på lyse kapittelsider. De semantiske fargevariablene (foreground, card, border …) arves fra siden
+ * i stedet for figurens mørke variabler over, så tekst, skjemaer og kanter følger det lyse temaet.
+ * Tailwind-paletten (slate-200 osv.) beholder standardverdiene fra figurregelen over, siden disse
+ * figurene er tegnet med standardpaletten. Lista over figurer og flate står i
+ * src/lib/geografi-figurflate.ts og testes i geografi-figurflate.test.ts.
+ */
+:root:not([data-tema="mork"]):has(.kapittel-lys) figure.geo-lys-flate {
+  --color-background: inherit;
+  --color-foreground: inherit;
+  --color-card: inherit;
+  --color-card-foreground: inherit;
+  --color-muted: inherit;
+  --color-muted-foreground: inherit;
+  --color-primary: inherit;
+  --color-primary-foreground: inherit;
+  --color-secondary: inherit;
+  --color-secondary-foreground: inherit;
+  --color-accent: inherit;
+  --color-accent-foreground: inherit;
+  --color-border: inherit;
+  --color-ring: inherit;
+  --color-lava: inherit;
+  --color-lava-foreground: inherit;
+  background-color: #ffffff;
+  border-color: #bcd4c4;
+  color: var(--color-foreground);
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) figure.geo-lys-flate .geo-merkelapp {
+  border-color: #d97706;
+  background-color: #fef3c7;
+  color: #78350f;
 }
 
 /* Temaknappen (kapittelheader). Ikonet og teksten følger data-tema direkte i CSS, så de er riktige fra første maling. */
@@ -1008,6 +1055,90 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 /* Mer spesifikk enn .scroll-frame { --scroll-fade: var(--color-background) } (:331). */
 .kapittel-lys .kapittel-callout .scroll-frame {
   --scroll-fade: var(--callout-bg, #145a40);
+}
+
+/*
+ * Figurer med egen lys og mørk utgave (Geografi figur 8.5, baerekraft-valg.tsx). Mørk utgave
+ * som standard (mørkt tema og sider uten kapittel-layout). På lyse kapittelsider vises den lyse
+ * utgaven på hvit flate med lyse tekstfarger, i stedet for den mørke figurflaten over.
+ */
+.geo-tema-figur {
+  background-color: var(--color-card);
+}
+.geo-tema-figur__lys {
+  display: none;
+}
+.geo-tema-figur__mork,
+.geo-tema-figur__lys {
+  max-width: 100%;
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .geo-tema-figur {
+  --color-foreground: #14261d;
+  --color-card-foreground: #14261d;
+  --color-muted-foreground: #46594d;
+  --color-border: #bcd4c4;
+  --color-primary: #17684a;
+  background-color: #ffffff;
+  border-color: #bcd4c4;
+  color: #14261d;
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .geo-tema-figur .geo-tema-figur__lys {
+  display: block;
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .geo-tema-figur .geo-tema-figur__mork {
+  display: none;
+}
+
+/*
+ * Innblikk-boks (Geografi, poster-body.tsx): samme grønne familie som callout-ene over
+ * (#145a40, grønn venstrestrek), men lys flate og egen etikett med ikon, så den skilles fra
+ * fakta-callouts. Brødtekst, figurer og tabeller inni beholder sidens farger.
+ * Mørkt tema er standard; lyst tema overstyres under.
+ */
+.innblikk-boks {
+  --innblikk-flate: color-mix(in srgb, #145a40 24%, var(--color-background));
+  --innblikk-kant: color-mix(in srgb, #6ee7b7 35%, var(--color-background));
+  --innblikk-strek: #6ee7b7;
+  margin-block: 2rem;
+  max-width: 100%;
+  min-width: 0;
+  padding: 1rem 1rem 1.15rem 1rem;
+  border: 1px solid var(--innblikk-kant);
+  border-left: 0.25rem solid var(--innblikk-strek);
+  border-radius: 0.75rem;
+  background: var(--innblikk-flate);
+  overflow-wrap: anywhere;
+}
+@media (min-width: 640px) {
+  .innblikk-boks {
+    padding: 1.25rem 1.5rem 1.4rem 1.35rem;
+  }
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .innblikk-boks {
+  --innblikk-flate: #e6f1ea;
+  --innblikk-kant: #9cc3ab;
+  --innblikk-strek: #145a40;
+}
+.innblikk-etikett {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  padding: 0.2rem 0.65rem 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: #145a40;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.innblikk-innhold > :first-child > :first-child,
+.innblikk-innhold > :first-child > :first-child > :first-child {
+  margin-top: 0;
+}
+.innblikk-innhold > :last-child > :last-child {
+  margin-bottom: 0;
 }
 
 /* Geografi kap. 1–2: SVG-tekst skaleres med figuren. Under 390 px blir 15/34
@@ -1152,4 +1283,10 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   .geo-plass[data-widget="GeoFeltBearbeiding"] { --geo-slot: 382px; }
   .geo-plass[data-widget="GeoFeltFeilkilder"] { --geo-slot: 565px; }
   .geo-plass[data-widget="GeoFeltMikroklimaEget"] { --geo-slot: 524px; }
+}
+
+/* Rullbare figur- og tabellrammer (role="region" tabIndex=0) får synlig tastaturfokus. */
+[role="region"][tabindex="0"]:focus-visible {
+  outline: 2px solid var(--color-ring, currentColor);
+  outline-offset: 2px;
 }

@@ -5,11 +5,11 @@ import vulk from "@/lib/geografi-vulkaner-2000-2025.json";
 export function GeografiVarmeflekker() {
   const id = useId();
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 3.9 – Plategrenser og utvalgte varmeflekker
       </h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 3.9 – Plategrenser og utvalgte varmeflekker, kan rulles sideveis">
         <img
           src="/images/geografi/usgs-varmeflekker-1996.png"
           width="692"

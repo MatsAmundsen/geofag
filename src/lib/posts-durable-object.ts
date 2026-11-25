@@ -34,6 +34,7 @@ export type PostsDoOp =
   | { op: "list" }
   | { op: "get"; slug: string }
   | { op: "save"; input: PostInput }
+  | { op: "saveIfBody"; input: PostInput; expectedBody: string }
   | { op: "remove"; slug: string }
   | { op: "getMeta"; key: string }
   | { op: "setMeta"; key: string; value: string };
@@ -106,6 +107,24 @@ export async function handlePostsDoOp(
       };
       await storage.put(key, post);
       return { saved: true, slug: post.slug };
+    }
+    case "saveIfBody": {
+      // Betinget skriving for reseed: lagre bare hvis raden fortsatt har teksten som ble lest.
+      // DO-en behandler én forespørsel om gangen, så lesing og skriving her er atomisk.
+      const key = `${POST_PREFIX}${op.input.slug}`;
+      const existing = await storage.get<Post>(key);
+      if (!existing || existing.bodyMarkdown !== op.expectedBody) return { saved: false, slug: op.input.slug };
+      await storage.put(key, {
+        ...existing,
+        title: op.input.title,
+        summary: op.input.summary,
+        ingress: op.input.ingress,
+        thumbnail: op.input.thumbnail,
+        bodyMarkdown: op.input.bodyMarkdown,
+        published: op.input.published,
+        updatedAt: stamp(),
+      } satisfies Post);
+      return { saved: true, slug: op.input.slug };
     }
     case "remove":
       await storage.delete(`${POST_PREFIX}${op.slug}`);

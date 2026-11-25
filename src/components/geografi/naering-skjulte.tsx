@@ -10,7 +10,7 @@ const GRONN = ["#f0fdf4", "#bbf7d0", "#4ade80", "#16a34a", "#14532d"];
 export function GeografiTjenesteKart() {
   const id = useId();
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 9.1 – Andel sysselsatte i tjenesteyting, 2023
       </h3>

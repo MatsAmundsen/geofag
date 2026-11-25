@@ -354,7 +354,7 @@ export function BaerekraftTreFigur({ geografi = false }: { geografi?: boolean } 
     <G2Figur
       title="Bærekraft i tre dimensjoner: miljø, sosial og økonomi"
       desc={geografi ? "Tre overlappende sirkler viser miljø, sosiale forhold og økonomi. Kortene beskriver hensyn som må vurderes sammen, ikke størrelser som er beregnet eller kan veies direkte mot hverandre." : "Tre overlappende sirkler: miljø, sosial og økonomi. Eksempler fra kapitlet: vindkraft på land beslaglegger store landområder og Hywind Tampen dekker bare om lag 35 prosent av behovet til plattformene. Fosen-saken viser sosial bærekraft, der Høyesterett i 2021 slo fast at konsesjonene var ugyldige. Havsul I og saltkraft stoppet av økonomiske grunner, og Hywind Tampen fikk støtte fra Enova. En energikilde er ikke bærekraftig bare fordi den er fornybar."}
-      heading={geografi ? "Figur 8.3: Bærekraft har tre dimensjoner" : "Bærekraft har tre dimensjoner"}
+      heading={geografi ? "Figur 8.3 – Bærekraft har tre dimensjoner" : "Bærekraft har tre dimensjoner"}
       caption={geografi ? "En forenklet begrepsmodell, ikke et målt arealregnskap. Overlappet viser at miljø, sosiale forhold og økonomi må vurderes i sammenheng. Sirklene betyr ikke at naturtap alltid kan oppveies med penger (FN-sambandet, 2026)." : "Eksemplene er hentet fra kapitlet. Kilder: Store norske leksikon (u.å.-j, u.å.-k), Equinor (2023) og Statkraft (2013)."}
       narrow={{ w: 300, h: geografi ? 660 : 760 }}
       wide={{ w: 720, h: geografi ? 350 : 452 }}
