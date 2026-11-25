@@ -31,7 +31,7 @@ export function GeografiInnhold({
                 erAktiv ? "bg-muted font-medium text-foreground" : "text-primary",
               )}
             >
-              <span className="w-9 shrink-0 tabular-nums text-muted-foreground">
+              <span className="w-9 shrink-0 font-medium tabular-nums text-[var(--kap-aksent,var(--color-muted-foreground))]">
                 {nr}.{i + 1}
               </span>
               <span>{u.title}</span>
@@ -44,7 +44,7 @@ export function GeografiInnhold({
   return (
     <nav
       aria-label="Innhold i kapitlet"
-      className="rounded-2xl border border-border bg-card p-4 sm:p-5"
+      className="rounded-2xl border border-border border-l-4 border-l-[var(--kap-aksent,var(--color-border))] bg-card p-4 sm:p-5"
     >
       {aktiv ? (
         <details>

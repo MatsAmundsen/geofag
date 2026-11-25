@@ -10,6 +10,7 @@ import { Kildeliste } from "@/components/kildeliste";
 import { PosterBody } from "@/components/poster-body";
 import { BannerBilde } from "@/components/geografi/banner-bilde";
 import { bannerLisensUrl } from "@/lib/geografi-banner";
+import { aksentStil } from "@/lib/geografi-aksent";
 import { useEffect, useState } from "react";
 import { getPost, type Post } from "@/lib/posts";
 import { geografiHeadingAliases, sliceGeografiUnderkapittel } from "@/lib/geografi-seksjon";
@@ -88,7 +89,7 @@ export function GeografiKapittelSide({
   }, [body]);
 
   return (
-    <div className="kapittel-lys flex min-h-dvh flex-col">
+    <div className="kapittel-lys geo-aksent flex min-h-dvh flex-col" style={aksentStil(kapittel.path)}>
       <a
         href="#innhold"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
@@ -97,22 +98,24 @@ export function GeografiKapittelSide({
       </a>
       <SiteHeader />
       <main id="innhold" className="flex-1">
-        <header className="relative isolate min-h-[19.5rem] overflow-hidden">
+        <header className="relative isolate min-h-[23rem] overflow-hidden sm:min-h-[27rem]">
           <BannerBilde
             banner={kapittel.banner}
             sizes="100vw"
             hero
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/25 lys:via-background/94 lys:to-background/80" />
-          <div className="relative mx-auto flex min-h-[19.5rem] max-w-4xl flex-col px-4 pb-12 pt-3 sm:px-6 sm:pt-4">
+          {/* Lyst tema: mindre utvasking enn før (94 %/80 %), så banneret gir kapitlet sitt eget preg.
+              Teksten står nederst, der gradienten er nesten helt bakgrunn (målt kontrast i kapittelforsider.md). */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/25 lys:from-background lys:from-25% lys:via-background/88 lys:to-background/30" />
+          <div className="relative mx-auto flex min-h-[23rem] max-w-4xl flex-col px-4 pb-12 pt-3 sm:min-h-[27rem] sm:px-6 sm:pt-4">
             <div className="flex shrink-0 justify-end">
               <ThemeToggle />
             </div>
             <div className="mt-auto pt-6">
               {underkapittel ? (
                 <nav aria-label="Brødsmuler" className="self-start">
-                  <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-2 rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-primary lys:bg-background/95">
+                  <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-2 rounded-md bg-background px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-[var(--kap-aksent)]">
                     <li>
                       <Link to="/geografi" className="inline-flex min-h-6 items-center underline-offset-4 hover:underline">
                         Geografi
@@ -135,8 +138,9 @@ export function GeografiKapittelSide({
                   </ol>
                 </nav>
               ) : (
-                <p className="self-start rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-primary lys:bg-background/95">
-                  Geografi · {kapittel.kicker}
+                <p className="inline-flex items-center gap-1.5 self-start rounded-md bg-background px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-[var(--kap-aksent)]">
+                  <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-[var(--kap-aksent)]" />
+                  Geografi · Kapittel {kapNr} · {kapittel.kicker}
                 </p>
               )}
               <h1 className="mt-2 font-display text-4xl font-medium tracking-tight sm:text-5xl">
@@ -165,6 +169,7 @@ export function GeografiKapittelSide({
               </a>
             </span>
           </p>
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1 bg-[var(--kap-aksent)]" />
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">

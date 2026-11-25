@@ -1290,3 +1290,16 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   outline: 2px solid var(--color-ring, currentColor);
   outline-offset: 2px;
 }
+
+/*
+ * Geografi: aksentfarge per kapittel (src/lib/geografi-aksent.ts). Elementet med .geo-aksent får
+ * --kap-lys/--kap-mork inline. Mørkt tema (og /geografi, som alltid er mørk) bruker den lyse tonen,
+ * lyst kapitteltema den mørke. Begge er testet til minst 4,5:1 mot bakgrunn, kort og muted.
+ */
+.geo-aksent {
+  --kap-aksent: var(--kap-mork, var(--color-primary));
+}
+:root:not([data-tema="mork"]) .kapittel-lys.geo-aksent,
+:root:not([data-tema="mork"]) .kapittel-lys .geo-aksent {
+  --kap-aksent: var(--kap-lys, var(--color-primary));
+}
