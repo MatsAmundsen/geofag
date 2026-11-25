@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { C, Diagram, L } from "@/components/diagrams/svg-kit";
 import { GeografiDatakart } from "./datakart";
+import { ScrollFrame } from "@/components/scroll-frame";
+import { RIFT_STATUS } from "@/components/diagrams/indre-rift-tekst";
+import { TSUNAMI_STATUS } from "@/components/diagrams/indre-tsunami-tekst";
 import kartdata from "@/lib/geografi-kap3-kart.json";
 import type { GeoJsonObject } from "geojson";
-function Stegvalg({ steg, valgt, velg }: { steg: readonly string[]; valgt: number; velg: (n: number) => void }) {
-  return <div className="space-y-2"><div className="flex flex-wrap gap-2" role="group" aria-label="Velg prosesstrinn">{steg.map((s, i) => <button className="rounded border px-3 py-2" type="button" key={s} aria-pressed={valgt === i} onClick={() => velg(i)}>{i + 1}. {s}</button>)}</div><div className="flex flex-wrap items-center gap-3"><button type="button" className="rounded border px-3 py-2 disabled:opacity-40" disabled={valgt === 0} onClick={() => velg(valgt - 1)}>Forrige</button><p role="status">Trinn {valgt + 1} av {steg.length}</p><button type="button" className="rounded border px-3 py-2 disabled:opacity-40" disabled={valgt === steg.length - 1} onClick={() => velg(valgt + 1)}>Neste</button></div></div>;
-}
 const plater = [
   ["A", 550, 210, "Den nordamerikanske platen"], ["B", 300, 335, "Stillehavsplaten"],
   ["C", 598, 405, "Den søramerikanske platen"], ["D", 480, 445, "Nazcaplaten"],
@@ -13,38 +13,115 @@ const plater = [
   ["G", 235, 450, "Den australske platen"], ["H", 710, 550, "Antarktisplaten"],
 ] as const;
 export function GeografiPlateKart() {
-  return <figure className="my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 3.0. Tektoniske plater – et forenklet verdenskart</h3><div className="overflow-x-auto"><svg viewBox="0 0 1024 613" role="img" aria-label="USGS sitt forenklede platekart fra 2026, sentrert på Stillehavet. Bokstaver er koblet til norske platenavn nedenfor." className="w-full min-w-[48rem] bg-white"><image href="/images/geografi/usgs-plater-2026.webp" width="1024" height="613" />{plater.map(([id, x, y]) => <g key={id}><circle cx={x} cy={y} r="11" fill="#fff" stroke="#0f172a" strokeWidth="2" /><text x={x} y={y + 5} fontSize="15" textAnchor="middle" fill="#0f172a" fontWeight="bold">{id}</text></g>)}</svg></div><ul className="grid gap-1 text-sm sm:grid-cols-2">{plater.map(([id, , , navn]) => <li key={id}><strong>{id}:</strong> {navn}</li>)}</ul><figcaption className="text-sm">USGS (2026), public domain. Nedskalert, med egne bokstavetiketter og norsk lesenøkkel. Grensene er ikke tegnet om. India og Australia er skilt, og Afrikas Nubia- og Somaliaplater er ikke én uoppdelt plate her. Kartet viser plater, ikke observerte skjelv/vulkaner, aktive varsler eller presise faresoner. Gjeldende USGS-grensetjeneste er kontrollert som sammenlikningsgrunnlag.</figcaption></figure>;
+  return <figure className="my-6 space-y-3 rounded-xl border border-border bg-card p-4 text-card-foreground sm:p-5"><h3 className="font-semibold">Figur 3.0. Tektoniske plater – et forenklet verdenskart</h3><ScrollFrame label="Figur 3.0. Tektoniske plater" fade="var(--color-card)"><svg viewBox="0 0 1024 613" role="img" aria-label="USGS sitt forenklede platekart fra 2026, sentrert på Stillehavet. Bokstaver er koblet til norske platenavn nedenfor." className="w-full min-w-[48rem] bg-white"><image href="/images/geografi/usgs-plater-2026.webp" width="1024" height="613" />{plater.map(([id, x, y]) => <g key={id}><circle cx={x} cy={y} r="11" fill="#fff" stroke="#0f172a" strokeWidth="2" /><text x={x} y={y + 5} fontSize="15" textAnchor="middle" fill="#0f172a" fontWeight="bold">{id}</text></g>)}</svg></ScrollFrame><ul className="grid gap-1 text-sm sm:grid-cols-2">{plater.map(([id, , , navn]) => <li key={id}><strong>{id}:</strong> {navn}</li>)}</ul><figcaption className="text-sm">USGS (2026), public domain. Nedskalert, med egne bokstavetiketter og norsk lesenøkkel. Grensene er ikke tegnet om. India og Australia er skilt, og Afrikas Nubia- og Somaliaplater er ikke én uoppdelt plate her. Kartet viser plater, ikke observerte skjelv/vulkaner, aktive varsler eller presise faresoner. Gjeldende USGS-grensetjeneste er kontrollert som sammenlikningsgrunnlag.</figcaption></figure>;
 }
-const riftsteg = ["Tøying", "Riftdal", "Mulig havinntrenging", "Mulig havbasseng"];
-const rifttekst = ["Strekk tynner litosfæren. Forkastninger kan dannes.", "Blokker synker mellom forkastninger. Magma kan stige.", "Hvis strekken fortsetter og området ligger lavt nok, kan havet trenge inn.", "Fortsatt oppsprekking kan gi ny havbunn og et havbasseng. Dette er én mulig utvikling."];
+/** Figur 3.3 og 3.11 er stegmodeller (avspilling, pause, trinnknapper, nummermerker på smal skjerm). De lastes ved behov. */
+const RiftFigur = lazy(() => import("@/components/diagrams/indre-rift-figur").then((m) => ({ default: m.GeografiRiftFigur })));
+const TsunamiFigur = lazy(() => import("@/components/diagrams/indre-tsunami-figur").then((m) => ({ default: m.GeografiTsunamiFigur })));
+function Reserve({ heading }: { heading: string }) {
+  return <figure className="my-6 min-h-[38rem] rounded-xl border border-border bg-card p-4 text-card-foreground"><p className="font-semibold">{heading}</p><p className="text-sm text-muted-foreground">Laster figur.</p></figure>;
+}
 export function GeografiRiftHav() {
-  const [s, setS] = useState(0); const gap = [0, 35, 85, 150][s]; const gulv = s === 0 ? 90 : 185;
-  return <div><Diagram heading="Figur 3.3. Fra tøying til et mulig hav" title={`Prinsippsnitt, trinn ${s + 1}: ${riftsteg[s]}`} viewBox="0 0 800 330" scroll toolbar={<Stegvalg steg={riftsteg} valgt={s} velg={setS} />} caption={<><p>{rifttekst[s]}</p><p>Egen Vg1-prinsippfigur etter USGS (u.å.-h) og NGU (u.å.-a), ikke målte lagtykkelser eller en tidsprognose. Tøying → riftdal → mulig hav er ikke en nødvendig kjede. Oslo-riften utviklet seg ikke til et nytt hav.</p></>}>
-    {({warm}) => <><path d="M35 130 H765 V280 H35Z" fill={C.warm} opacity=".2" /><path d={`M35 90 H${350-gap} L${395-gap} ${gulv} H${405+gap} L${450+gap} 90 H765 V210 H35Z`} fill={C.sand} stroke={C.fg} strokeWidth="2" />{s === 3 ? <><path d={`M${395-gap} 185 H${405+gap} V210 H${395-gap}Z`} fill={C.cold} /><L x="400" y="173" anchor="middle">Ny havbunn</L></> : null}{s >= 2 ? <path d={`M${385-gap} 145 H${415+gap} L${405+gap} 185 H${395-gap}Z`} fill={C.rain} opacity=".85" /> : null}{s > 0 ? <path d="M385 280 L400 190 L415 280Z" fill={C.low} /> : null}<path d="M300 55 H200 M500 55 H600" stroke={C.warm} strokeWidth="3" markerEnd={`url(#${warm})`} /><L x="400" y="36" anchor="middle">Strekk</L><L x="130" y="120">Kontinent</L><L x="550" y="120">Kontinent</L>{s > 0 ? <L x="400" y="240" anchor="middle">Magma kan stige</L> : null}<L x="400" y="312" anchor="middle">Samme perspektiv, uten felles høyde- og lengdemålestokk</L></>}
-  </Diagram><details><summary>Les hele forklaringen</summary><ol className="list-decimal space-y-2 pl-6">{rifttekst.map((t) => <li key={t}>{t}</li>)}</ol></details></div>;
+  const heading = "Figur 3.3. Fra tøying til et mulig hav";
+  return <div><Suspense fallback={<Reserve heading={heading} />}><RiftFigur heading={heading} caption="Egen Vg1-prinsippfigur etter USGS (u.å.-h) og NGU (u.å.-a), ikke målte lagtykkelser eller en tidsprognose. Tøying → riftdal → mulig hav er ikke en nødvendig kjede. Oslo-riften utviklet seg ikke til et nytt hav." /></Suspense><details><summary>Les hele forklaringen</summary><ol className="list-decimal space-y-2 pl-6">{RIFT_STATUS.map((t) => <li key={t}>{t}</li>)}</ol></details></div>;
 }
-const tsunamisteg = ["Vann forskyves", "Over dypt hav", "Grunnere vann", "Kyst og varsling"];
-const tsunamitekst = ["Brå vertikal bevegelse av havbunnen kan forskyve vannmassen. Ikke ethvert jordskjelv lager en tsunami.", "En bølgeserie sprer seg. Ute på dypt hav kan bølgehøyden være liten selv om mye vann er i bevegelse.", "I grunnere vann avtar farten. Bølgelengde og bølgeform endres, og høyden kan øke.", "Vann og sterke strømmer kan nå inn over land. Naturlige tegn og lokale evakueringsplaner er viktige; et varsel kan komme for sent ved en nær kilde."];
 export function GeografiTsunamiSteg() {
-  const [s, setS] = useState(0); const x = [180, 330, 490, 600][s], a = [16, 9, 22, 38][s];
-  return <div><Diagram heading="Figur 3.11. Fra vannforskyvning til kyst" title={`Skjematisk tsunami, trinn ${s + 1}: ${tsunamisteg[s]}`} viewBox="0 0 800 330" scroll toolbar={<Stegvalg steg={tsunamisteg} valgt={s} velg={setS} />} caption={<><p>{tsunamitekst[s]}</p><p>Egen forklaringsskisse etter NOAA (u.å.-a, u.å.-b), med fast perspektiv. Formene er illustrasjoner, ikke beregnede bølgehøyder, ankomsttider, oversvømmelse eller sikkerhetssoner. Flere bølger kan følge; følg lokale myndigheters råd.</p></>}>
-    {() => <><path d="M30 145 H620 L700 105 H770 V285 H30Z" fill={C.rain} opacity=".23" /><path d="M30 270 H180 L200 250 H380 L620 145 L700 105 H770 V300 H30Z" fill={C.sand} stroke={C.fg} strokeWidth="2" /><path d={`M30 145 H${x-65} Q${x-35} ${145+a} ${x-8} 145 Q${x+15} ${145-a*2} ${x+38} 145 H620`} fill="none" stroke={C.rain} strokeWidth="4" /><L x="60" y="95">Dypt hav</L><L x="465" y="95">Grunnere vann</L><L x="695" y="80">Kyst</L>{s === 0 ? <><path d="M200 280 V235" stroke={C.warm} strokeWidth="4" /><L x="225" y="235">Havbunn forskyves</L></> : null}{s === 3 ? <path d="M600 145 Q640 95 680 115" fill="none" stroke={C.rain} strokeWidth="7" /> : null}<L x="400" y="320" anchor="middle">Ingen felles målestokk for dybde, avstand eller bølgehøyde</L></>}
-  </Diagram><details><summary>Les alle fire prosesstrinn</summary><ol className="list-decimal space-y-2 pl-6">{tsunamitekst.map((t) => <li key={t}>{t}</li>)}</ol></details></div>;
+  const heading = "Figur 3.11. Fra vannforskyvning til kyst";
+  return <div><Suspense fallback={<Reserve heading={heading} />}><TsunamiFigur heading={heading} caption="Egen forklaringsskisse etter NOAA (u.å.-a, u.å.-b), med fast perspektiv. Formene er illustrasjoner, ikke beregnede bølgehøyder, ankomsttider, oversvømmelse eller sikkerhetssoner. Flere bølger kan følge; følg lokale myndigheters råd." /></Suspense><details><summary>Les alle fire prosesstrinn</summary><ol className="list-decimal space-y-2 pl-6">{TSUNAMI_STATUS.map((t) => <li key={t}>{t}</li>)}</ol></details></div>;
 }
 export function GeografiTyrkiaKart() {
-  return <figure className="my-6 space-y-3"><h3 className="font-semibold">Figur 3.7. To episentre i jordskjelvsekvensen 6. februar 2023</h3><GeografiDatakart data={kartdata.kart.tyrkia as GeoJsonObject} center={[37, 36]} zoom={5} property="klasse" colors={{Landkontur:"#cbd5e1","M 7,5":"#9f1239","M 7,8":"#9f1239"}} /><table className="w-full text-left text-sm"><caption>USGS-katalogen: punkter, ikke hele bruddflater</caption><thead><tr><th scope="col">Hendelse</th><th scope="col">Magnitude</th><th scope="col">Breddegrad N</th><th scope="col">Lengdegrad Ø</th></tr></thead><tbody>{kartdata.skjelv.map((d) => <tr key={d.id}><th scope="row"><a href={d.url} className="underline">{d.id}</a></th><td>{d.mag.toLocaleString("nb-NO")}</td><td>{d.lat.toLocaleString("nb-NO")}</td><td>{d.lon.toLocaleString("nb-NO")}</td></tr>)}</tbody></table><figcaption>USGS (2023a), eget katalogutvalg: to hendelser med magnitude minst 7, denne dagen og i dette området. Landkonturer: Natural Earth (u.å.), public domain. Røde punkter er episentre, ikke skred, byer, kartlagte brudd eller rystelsesfelt. Ingen konstruerte bruddlinjer, skadegrenser eller dødstall er lagt til.</figcaption><p><strong>Tenk over:</strong> Bruddet omfatter en flate, rystelsene varierer fra sted til sted, og bygningers sårbarhet avgjør hvordan de tåler bevegelsen. Hvorfor kan ingen av disse tre forholdene leses direkte av to episenterprikker?</p></figure>;
+  return <figure className="my-6 space-y-3 rounded-xl border border-border bg-card p-4 text-card-foreground sm:p-5"><h3 className="font-semibold">Figur 3.7. To episentre i jordskjelvsekvensen 6. februar 2023</h3><GeografiDatakart data={kartdata.kart.tyrkia as GeoJsonObject} center={[37, 36]} zoom={5} property="klasse" colors={{Landkontur:"#cbd5e1","M 7,5":"#9f1239","M 7,8":"#9f1239"}} /><table className="w-full text-left text-sm"><caption>USGS-katalogen: punkter, ikke hele bruddflater</caption><thead><tr><th scope="col">Hendelse</th><th scope="col">Magnitude</th><th scope="col">Breddegrad N</th><th scope="col">Lengdegrad Ø</th></tr></thead><tbody>{kartdata.skjelv.map((d) => <tr key={d.id}><th scope="row"><a href={d.url} className="underline">{d.id}</a></th><td>{d.mag.toLocaleString("nb-NO")}</td><td>{d.lat.toLocaleString("nb-NO")}</td><td>{d.lon.toLocaleString("nb-NO")}</td></tr>)}</tbody></table><figcaption>USGS (2023a), eget katalogutvalg: to hendelser med magnitude minst 7, denne dagen og i dette området. Landkonturer: Natural Earth (u.å.), public domain. Røde punkter er episentre, ikke skred, byer, kartlagte brudd eller rystelsesfelt. Ingen konstruerte bruddlinjer, skadegrenser eller dødstall er lagt til.</figcaption><p><strong>Tenk over:</strong> Bruddet omfatter en flate, rystelsene varierer fra sted til sted, og bygningers sårbarhet avgjør hvordan de tåler bevegelsen. Hvorfor kan ingen av disse tre forholdene leses direkte av to episenterprikker?</p></figure>;
 }
 export function GeografiReykjanes() {
-  return <figure className="my-6 space-y-3"><h3 className="font-semibold">Figur 3.10. Reykjanes – opptak 19. desember 2023</h3><img src="/images/geografi/reykjanes-19-desember-2023.webp" width="2000" height="1286" loading="lazy" decoding="async" alt="Infrarød satellittframstilling med et tydelig gult og oransje varmesignal nær Grindavík på Reykjanes, 19. desember 2023." className="h-auto w-full rounded" /><div className="max-w-md"><GeografiDatakart data={kartdata.kart.island as GeoJsonObject} center={[64.8,-19]} zoom={4} property="klasse" colors={{Landkontur:"#7eb8c9"}} /></div><p>Lokatoren viser Island; Reykjanes ligger sørvest på øya. Den viser ikke satellittbildets nøyaktige fotavtrykk. Landkontur: Natural Earth (u.å.), public domain.</p><figcaption className="text-sm"><span>Contains modified Copernicus Sentinel data 2023</span>. European Union (2023), Copernicus Sentinel-3/SLSTR. Opptaket er fra 19. desember, publiseringen fra 21. desember 2023. Infrarød/falskfarget framstilling med grov romlig oppløsning, ikke et vanlig fotografi eller en faresone. Bildet er nedskalert og WebP-komprimert, ikke omtegnet. Fri bruk med attribusjon etter Copernicus-vilkårene (European Commission, u.å.), ingen antydet EU-godkjenning. Dette dokumenterer ikke dagens aktivitet.</figcaption></figure>;
+  return <figure className="my-6 space-y-3 rounded-xl border border-border bg-card p-4 text-card-foreground sm:p-5"><h3 className="font-semibold">Figur 3.10. Reykjanes – opptak 19. desember 2023</h3><img src="/images/geografi/reykjanes-19-desember-2023.webp" width="2000" height="1286" loading="lazy" decoding="async" alt="Infrarød satellittframstilling med et tydelig gult og oransje varmesignal nær Grindavík på Reykjanes, 19. desember 2023." className="h-auto w-full rounded" /><div className="max-w-md"><GeografiDatakart data={kartdata.kart.island as GeoJsonObject} center={[64.8,-19]} zoom={4} property="klasse" colors={{Landkontur:"#7eb8c9"}} /></div><p>Lokatoren viser Island; Reykjanes ligger sørvest på øya. Den viser ikke satellittbildets nøyaktige fotavtrykk. Landkontur: Natural Earth (u.å.), public domain.</p><figcaption className="text-sm"><span>Contains modified Copernicus Sentinel data 2023</span>. European Union (2023), Copernicus Sentinel-3/SLSTR. Opptaket er fra 19. desember, publiseringen fra 21. desember 2023. Infrarød/falskfarget framstilling med grov romlig oppløsning, ikke et vanlig fotografi eller en faresone. Bildet er nedskalert og WebP-komprimert, ikke omtegnet. Fri bruk med attribusjon etter Copernicus-vilkårene (European Commission, u.å.), ingen antydet EU-godkjenning. Dette dokumenterer ikke dagens aktivitet.</figcaption></figure>;
 }
+/** Pilleknapp i samme stil som zoomknappene i Geofag 1 (Den geologiske tidsskalaen). */
+function Pille({ aktiv, onClick, children }: { aktiv: boolean; onClick: () => void; children: string }) {
+  return <button type="button" aria-pressed={aktiv} onClick={onClick} className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${aktiv ? "border-primary bg-primary text-primary-foreground" : "border-border bg-muted/40 text-foreground hover:bg-muted"}`}>{children}</button>;
+}
+
+/** Gneisstriper i grunnfjellet (bølgete foliasjon). */
+const gneis = Array.from({ length: 7 }, (_, i) => {
+  const y = 246 + i * 8;
+  let d = `M35 ${y}`;
+  for (let x = 35; x <= 765; x += 20) d += ` Q${x + 10} ${y + (i % 2 ? 4 : -4) * Math.sin(x / 37 + i)} ${x + 20} ${y}`;
+  return d;
+});
+
+const skyvegrenser: [number, number][][] = [[[270, 236], [592, 236]], [[300, 214], [556, 214]], [[372, 176], [420, 186], [470, 170], [518, 185]]];
+/** Punkter med fast avstand langs en brutt linje (plass til trekantene på en skyvegrense). */
+function tenner(linje: [number, number][], avstand: number) {
+  const ut: [number, number][] = [];
+  for (let i = 1; i < linje.length; i++) {
+    const [x0, y0] = linje[i - 1], [x1, y1] = linje[i];
+    const n = Math.max(1, Math.floor(Math.hypot(x1 - x0, y1 - y0) / avstand));
+    for (let k = 0; k < n; k++) { const t = (k + 0.5) / n; ut.push([x0 + (x1 - x0) * t, y0 + (y1 - y0) * t]); }
+  }
+  return ut;
+}
+
 export function GeografiBerggrunnSkisse() {
   return <Diagram heading="Figur 3.13. Byggeklosser i Norges berggrunn" title="Skjematisk kobling mellom gammel berggrunn, skyvedekker, Oslofeltet og sedimenter på sokkelen. Ikke et geografisk profil eller kart." viewBox="0 0 800 330" scroll caption="Egen prinsippskisse etter NGU (u.å.-a, u.å.-d). Ikke et NGU-kart, geografisk profil eller virkelige grenser, arealer og lagtykkelser. Sokkelens sedimentbassenger er ikke det samme som grunnfjell. Ingen NGU-raster er brukt.">
-    {() => <><path d="M35 230 H765 V290 H35Z" fill={C.warm} stroke={C.fg} /><path d="M35 130 H210 L270 230 H35Z" fill={C.rain} opacity=".4" /><path d="M35 170 H220 L270 230 H35Z" fill={C.sand} stroke={C.fg} /><path d="M270 200 L340 160 L405 190 L470 150 L520 200 H580 L615 230 H650 L680 200 H765 V230 H270Z" fill={C.teal} stroke={C.fg} /><path d="M580 200 L615 230 H650 L680 200" fill="none" stroke={C.low} strokeWidth="7" /><L x="60" y="100">Sokkel: sedimenter</L><L x="290" y="115">Kaledonske skyvedekker</L><L x="595" y="165">Oslofelt: riftspor</L><L x="410" y="269" anchor="middle">Grunnfjell under yngre enheter</L><L x="400" y="320" anchor="middle">Bare sammenhenger – ikke ett bestemt sted</L></>}
+    {() => <>
+      <defs>
+        <linearGradient id="bg313-hav" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3f8fc0" /><stop offset="100%" stopColor="#1b4f72" /></linearGradient>
+        <linearGradient id="bg313-grunn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#d79a7c" /><stop offset="100%" stopColor="#9c5f4c" /></linearGradient>
+      </defs>
+      {/* grunnfjell */}
+      <path d="M35 236 H765 V296 H35Z" fill="url(#bg313-grunn)" stroke="#3a2420" strokeWidth="1.5" />
+      {gneis.map((d, i) => <path key={i} d={d} fill="none" stroke="#5e3328" strokeOpacity=".45" strokeWidth="1.3" />)}
+      <ellipse cx="150" cy="272" rx="40" ry="9" fill="#7c4a3d" opacity=".55" /><ellipse cx="610" cy="262" rx="34" ry="7" fill="#7c4a3d" opacity=".5" />
+      {/* sokkel: hav og sedimentlag */}
+      <path d="M35 138 H232 L262 172 H35Z" fill="url(#bg313-hav)" opacity=".9" />
+      {[["#e7d29a", 172, 186], ["#c9b27a", 186, 202], ["#a8946a", 202, 218], ["#8a7a5c", 218, 236]].map(([f, y0, y1]) => <path key={String(y0)} d={`M35 ${y0} H${262 + (Number(y0) - 172) * 0.5} L${262 + (Number(y1) - 172) * 0.5} ${y1} H35Z`} fill={String(f)} stroke="#3a2c1f" strokeOpacity=".5" />)}
+      <path d="M140 172 L160 236 M205 172 L222 236" stroke="#3a2c1f" strokeWidth="1.6" strokeOpacity=".7" />
+      {/* kaledonske skyvedekker: bergflak stablet over hverandre */}
+      <path d="M262 236 L300 214 H560 L600 236Z" fill="#4f8f8a" stroke="#1d3a38" strokeWidth="1.4" />
+      <path d="M292 214 L330 188 L372 176 L420 186 L470 170 L520 186 L548 214Z" fill="#6fb3b8" stroke="#1d3a38" strokeWidth="1.4" />
+      <path d="M340 188 L372 162 L404 152 L436 160 L468 146 L500 162 L520 186 L470 170 L420 186 L372 176Z" fill="#9fcfc6" stroke="#1d3a38" strokeWidth="1.4" />
+      {/* skyvegrenser med trekanter på det overliggende flaket */}
+      {skyvegrenser.map((linje, i) => <g key={i}><path d={`M${linje.map((q) => q.join(" ")).join(" L")}`} fill="none" stroke="#10201f" strokeWidth="1.8" />{tenner(linje, 30).map(([tx, ty], k) => <path key={k} d={`M${tx - 5} ${ty} l5 -7 l5 7Z`} fill="#10201f" />)}</g>)}
+      {/* Oslofeltet: graben mellom forkastninger, med lava og dypbergart */}
+      <path d="M600 236 L615 214 H765 V236Z" fill="#c8ab82" stroke="#3a2c1f" strokeWidth="1.2" />
+      <path d="M640 214 L668 270 H712 L740 214Z" fill="#5a3b44" />
+      <path d="M646 226 H734 L728 238 H652Z" fill="#a8434a" /><path d="M652 238 H728 L722 250 H658Z" fill="#7a3a3f" />
+      <ellipse cx="690" cy="276" rx="26" ry="12" fill="#e08a6a" stroke="#5e3328" />
+      <path d="M640 210 L672 290 M740 210 L708 290" stroke="#ff6b6b" strokeWidth="3.2" strokeLinecap="round" />
+      {/* etiketter */}
+      <L x="60" y="104" weight={700}>Sokkel: sedimenter</L>
+      <L x="60" y="122" size={13} fill={C.muted}>lag over eldre berggrunn</L>
+      <L x="300" y="110" weight={700}>Kaledonske skyvedekker</L>
+      <L x="300" y="128" size={13} fill={C.muted}>bergflak skjøvet over hverandre</L>
+      <L x="600" y="156" weight={700}>Oslofelt: riftspor</L>
+      <L x="600" y="174" size={13} fill={C.muted}>strekk, forkastninger og magma</L>
+      <L x="410" y="290" anchor="middle" weight={700} fill="#1f0f0b">Grunnfjell under yngre enheter</L>
+      <L x="400" y="322" anchor="middle" fill={C.muted} size={13}>Bare sammenhenger – ikke ett bestemt sted</L>
+    </>}
   </Diagram>;
 }
 export function GeografiTidsskala() {
   const [zoom, setZoom] = useState(false); const maks = zoom ? 600 : 4540; const x = (ma: number) => 715 - ma / maks * 650;
-  return <Diagram heading="Figur 3.1. To lineære utsnitt av geologisk tid" title={zoom ? "Siste 600 millioner år, lineær akse" : "Jordas historie, lineær akse fra 4540 millioner år siden til nå"} viewBox="0 0 800 320" scroll toolbar={<div role="group" aria-label="Velg tidsutsnitt" className="flex flex-wrap gap-2"><button type="button" className="rounded border px-3 py-2" aria-pressed={!zoom} onClick={() => setZoom(false)}>Hele jordas historie</button><button type="button" className="rounded border px-3 py-2" aria-pressed={zoom} onClick={() => setZoom(true)}>Forstørr siste 600 mill. år</button></div>} caption="Egen framstilling. USGS (u.å.-a): Jorda ca. 4,54 milliarder år; NGU (u.å.-a): kaledonsk fjellkjededannelse ca. 400–500 millioner år og starten på Osloriften ca. 310 millioner år. Dette er tre utvalgte holdepunkter, ikke en komplett formell tidsskala. Hvert utsnitt er lineært; målestokken skifter mellom knappene.">
-    {() => <><path d="M65 250 H715" stroke={C.fg} strokeWidth="3" />{[0,maks/2,maks].map((v) => <g key={v}><path d={`M${x(v)} 244 v12`} stroke={C.fg} /><L x={x(v)} y="282" anchor="middle">{v.toLocaleString("nb-NO")} mill. år</L></g>)}{!zoom ? <><path d="M65 80 V245" stroke={C.warm} /><L x="75" y="65">Jordas dannelse, ca. 4 540 mill. år</L></> : <L x="65" y="65">Jordas dannelse ligger utenfor dette utsnittet</L>}<rect x={x(500)} y="115" width={x(400)-x(500)} height="135" fill={C.teal} opacity=".45" /><L x={x(450)-12} y="108" anchor={zoom ? "middle" : "end"}>Kaledonsk: ca. 400–500 mill. år</L><path d={`M${x(310)} 185 V250`} stroke={C.low} strokeWidth="3" /><L x={x(310)-5} y="173" anchor={zoom ? "middle" : "end"}>Osloriften starter: ca. 310 mill. år</L><L x="715" y="230" anchor="end">Nå</L></>}
+  const steg = zoom ? 100 : 1000;
+  const merker = Array.from({ length: Math.floor(maks / steg) + 1 }, (_, i) => i * steg);
+  const hendelse = "#e0b48a", kal = "#6fb3b8", oslo = "#ef8a8a";
+  return <Diagram heading="Figur 3.1. To lineære utsnitt av geologisk tid" title={zoom ? "Siste 600 millioner år, lineær akse" : "Jordas historie, lineær akse fra 4540 millioner år siden til nå"} viewBox="0 0 800 340" scroll toolbar={<div role="group" aria-label="Velg tidsutsnitt" className="flex flex-wrap gap-2"><Pille aktiv={!zoom} onClick={() => setZoom(false)}>Hele jordas historie</Pille><Pille aktiv={zoom} onClick={() => setZoom(true)}>Forstørr siste 600 mill. år</Pille></div>} caption="Egen framstilling. USGS (u.å.-a): Jorda ca. 4,54 milliarder år; NGU (u.å.-a): kaledonsk fjellkjededannelse ca. 400–500 millioner år og starten på Osloriften ca. 310 millioner år. Dette er tre utvalgte holdepunkter, ikke en komplett formell tidsskala. Hvert utsnitt er lineært; målestokken skifter mellom knappene.">
+    {() => <>
+      <defs><linearGradient id="gt31-bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="#5b4a6b" /><stop offset="100%" stopColor={zoom ? "#4a6b74" : "#5b4a6b"} /></linearGradient></defs>
+      <rect x="65" y="200" width="650" height="40" rx="4" fill="url(#gt31-bar)" stroke="#8b7aa0" strokeOpacity=".6" />
+      {merker.map((v) => <g key={v}><path d={`M${x(v)} 240 v8`} stroke={C.fg} strokeOpacity=".8" /><L x={x(v)} y="266" anchor="middle" size={13} fill={C.muted}>{v.toLocaleString("nb-NO")}</L></g>)}
+      <L x="65" y="292" size={13} fill={C.muted}>Millioner år siden · eldst til venstre · lineær akse</L>
+      <L x="715" y="292" anchor="end" size={13} weight={700}>Nå</L>
+      {!zoom ? <>
+        <rect x={x(600)} y="194" width={x(0) - x(600)} height="52" rx="4" fill="none" stroke={hendelse} strokeWidth="2" strokeDasharray="5 4" />
+        <L x={x(600) + (x(0) - x(600)) / 2} y="320" anchor="middle" size={12} fill={hendelse}>Utsnittet som forstørres</L>
+        <path d={`M${x(4540)} 200 V86`} stroke={hendelse} strokeWidth="2.5" /><circle cx={x(4540)} cy="200" r="4" fill={hendelse} />
+        <L x={x(4540) + 8} y="80" weight={700} fill={hendelse}>Jordas dannelse, ca. 4 540 mill. år</L>
+      </> : <L x="65" y="80" fill={C.muted}>Jordas dannelse ligger utenfor dette utsnittet</L>}
+      <rect x={x(500)} y="200" width={Math.max(4, x(400) - x(500))} height="40" fill={kal} opacity=".85" />
+      <path d={`M${x(450)} 200 V120`} stroke={kal} strokeWidth="2" />
+      <L x={zoom ? x(450) : x(450) - 8} y="114" anchor={zoom ? "middle" : "end"} weight={700} fill={kal}>Kaledonsk: ca. 400–500 mill. år</L>
+      <path d={`M${x(310)} 196 V${zoom ? 120 : 156}`} stroke={oslo} strokeWidth="3" /><circle cx={x(310)} cy="200" r="4.5" fill={oslo} stroke="#0f171c" />
+      <L x={zoom ? x(310) + 8 : x(310) - 8} y={zoom ? 114 : 150} anchor={zoom ? "start" : "end"} weight={700} fill={oslo}>Osloriften starter: ca. 310 mill. år</L>
+    </>}
   </Diagram>;
 }

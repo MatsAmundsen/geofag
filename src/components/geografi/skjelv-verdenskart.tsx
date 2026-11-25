@@ -34,7 +34,7 @@ export function SkjelvVerdenskart({
   const [skjelv, setSkjelv] = useState(visSkjelv);
   const sterke = data.skjelv.filter((s) => s.mag >= 7);
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border border-border bg-card p-4 text-card-foreground sm:p-5">
       <h3 id={id} className="text-xl font-semibold">
         {heading}
       </h3>
