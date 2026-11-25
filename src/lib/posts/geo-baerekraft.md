@@ -265,19 +265,19 @@ Punktene sammenfatter forklaringene og kildene i underkapitlene.
 | Begrep | Forklaring i dette kapitlet |
 |---|---|
 | Utvikling | Endringer i levekår, muligheter og samfunnsforhold over tid. |
-| Levekår | Forhold som påvirker hvordan mennesker lever, blant annet helse, utdanning og økonomisk trygghet. |
+| Levekår | Livsbetingelser og muligheter som påvirker hvordan mennesker lever, blant annet helse, utdanning, inntekt og trygghet. |
 | BNP | Bruttonasjonalprodukt, et mål på verdiskaping innenfor et lands økonomiske territorium. |
 | BNP per innbygger | BNP delt på innbyggertallet, ikke den enkelte personens inntekt. |
 | BNI | Bruttonasjonalinntekt, med justering for lønn og formuesinntekter til og fra utlandet. |
-| HDI | Sammensatt indeks for menneskelig utvikling basert på helse, utdanning og inntekt. |
+| HDI | FNs utviklingsprograms sammensatte indeks for menneskelig utvikling, basert på helse, utdanning og inntekt. |
 | Kjøpekraftsjustering | Justering for prisnivåforskjeller slik at beløp blir mer sammenliknbare. |
 | Bærekraftig utvikling | Å dekke dagens behov uten å ødelegge framtidige generasjoners muligheter. |
 | Brundtland-definisjonen | Definisjonen av bærekraftig utvikling knyttet til rapporten Vår felles framtid. |
 | Bærekraftsmål | FNs 17 mål som inngår i 2030-agendaen. |
 | Planetære grenser | Forskningsrammeverk for prosesser som bidrar til jordas stabilitet og motstandskraft. |
-| Økologisk fotavtrykk | Beregnet behov for biologisk produktivt areal knyttet til forbruk og karbonopptak. |
+| Økologisk fotavtrykk | Beregnet behov for biologisk produktivt areal knyttet til forbruk og karbonopptak, uttrykt i globale hektar. |
 | Biokapasitet | Økosystemenes kapasitet til biologisk produksjon og opptak av avfall, særlig CO₂. |
-| Overforbruksdag | Kalenderuttrykk for når beregnet etterspørsel tilsvarer et helt års fornybare kapasitet. |
+| Overforbruksdag | Kalenderuttrykk for når beregnet etterspørsel tilsvarer et helt års biokapasitet. Jordas overforbruksdag gjelder hele menneskehetens forbruk. En nasjonal overforbruksdag viser når dette ville skjedd dersom alle forbrukte som landets innbyggere, målt mot verdens biokapasitet per person. |
 | Klimafotavtrykk | Klimagassutslipp knyttet til forbruk eller aktivitet med en bestemt avgrensning. |
 | Territorielle utslipp | Utslipp som føres etter territoriet i et nasjonalt klimaregnskap. |
 | Forbruksbaserte utslipp | Utslipp knyttet til forbruk, også der produksjon skjer i andre land. |

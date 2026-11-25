@@ -1302,6 +1302,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.nbim.no/no/om-oss/om-oljefondet/",
     },
     {
+      prefix: "Norges geologiske undersøkelse [NGU]. (2024, 6. juni). ",
+      italic: "Fen har største forekomst av sjeldne jordarter i Europa",
+      suffix: ".",
+      href: "https://www.ngu.no/nyheter/fensfeltet-satt-pa-europa-kartet-storste-forekomst-av-sjeldne-jordarter",
+    },
+    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
       italic: "Geologiske ressurser",
       suffix: ". Hentet 6. november 2026.",
@@ -1318,6 +1324,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       italic: "Sand, grus og pukk",
       suffix: ". Hentet 6. november 2026.",
       href: "https://www.ngu.no/geologiske-ressurser/sand-grus-og-pukk",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-d). ",
+      italic: "Fensfeltet",
+      suffix: ". Hentet 25. november 2026.",
+      href: "https://www.ngu.no/geologiske-ressurser/fensfeltet",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026a, 12. januar). ",
@@ -1344,6 +1356,18 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.norskpetroleum.no/rammeverk/rammevilkarpetroleumshistorie/",
     },
     {
+      prefix: "Miljødirektoratet. (2019, 24. januar). ",
+      italic: "Forbud mot sjødeponering av avgangsmasser fra gruvevirksomhet",
+      suffix: " [Notat til Klima- og miljødepartementet].",
+      href: "https://www.miljodirektoratet.no/globalassets/dokumenter/vann-hav-og-kyst/sjodeponering-gruver-notat240119.pdf",
+    },
+    {
+      prefix: "Nærings- og fiskeridepartementet. (2019, 29. november). ",
+      italic: "Klage over Nærings- og fiskeridepartementets vedtak 14. februar 2019 om tildeling av driftskonsesjon til Nussir ASA for utvinning av Repparfjord kobberforekomst",
+      suffix: " [Kongelig resolusjon]. Regjeringen.",
+      href: "https://www.regjeringen.no/contentassets/7403db77a0d84af2b9876e868f3f8c02/kongelig-resolusjon.pdf",
+    },
+    {
       prefix: "Nærings- og fiskeridepartementet. (2025). ",
       italic: "Noregs fiskeriavtalar for 2025 og fisket etter avtalane i 2023 og 2024. Meld. St. 12 (2024–2025), kapittel 2",
       suffix: ".",
@@ -1354,6 +1378,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       italic: "Fornybare ressurser",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/fornybare_ressurser",
+    },
+    {
+      prefix: "Rare Earths Norway. (2024, 6. juni). ",
+      italic: "Europas største forekomst av sjeldne jordarter finnes på Fen",
+      suffix: " [Pressemelding]. NTB Kommunikasjon.",
+      href: "https://kommunikasjon.ntb.no/pressemelding/18122627/europas-storste-forekomst-av-sjeldne-jordarter-finnes-pa-fen?lang=no&publisherId=17848716",
     },
     {
       prefix: "Rosvold, K. A., & Halleraker, J. H. (2026, 16. mars). ",
@@ -1740,10 +1770,34 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
     },
     {
+      prefix: "Ministry of Data and Statistics [tidligere Statistics Korea]. (2026a, 25. februar). ",
+      italic: "Preliminary results of birth and death statistics in 2025",
+      suffix: " [Pressemelding]. Republic of Korea.",
+      href: "https://www.mods.go.kr/board.es?act=view&bid=11773&list_no=444910&mid=a20108010000",
+    },
+    {
+      prefix: "Ministry of Data and Statistics. (2026b, 25. februar). ",
+      italic: "2025년 출생·사망통계(잠정)",
+      suffix: " [Foreløpig fødsels- og dødsstatistikk 2025, pressebriefing på koreansk]. Korea.kr.",
+      href: "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156745912",
+    },
+    {
       prefix: "Mæhlum, L. (2023, 21. april). ",
       italic: "Ester Boserup",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/Ester_Boserup",
+    },
+    {
+      prefix: "National Bureau of Statistics of China [NBS]. (2023, 28. februar). ",
+      italic: "Statistical communiqué of the People's Republic of China on the 2022 national economic and social development",
+      suffix: ". Foreløpige tall.",
+      href: "https://www.stats.gov.cn/english/PressRelease/202302/t20230227_1918979.html",
+    },
+    {
+      prefix: "National Bureau of Statistics of China [NBS]. (2026, 28. februar). ",
+      italic: "Statistical communiqué of the People's Republic of China on the 2025 national economic and social development",
+      suffix: ". Foreløpige tall.",
+      href: "https://www.stats.gov.cn/english/PressRelease/202602/t20260228_1962661.html",
     },
     {
       prefix: "Nylenna, M., Stoltenberg, C., Solerød, H., & Tønnessen, M. (2025, 11. mars). ",
@@ -1834,6 +1888,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       italic: "Family planning/contraception methods",
       suffix: ". Brukt for frivillige valg, helse og rettigheter, ikke globale antallsanslag.",
       href: "https://www.who.int/news-room/fact-sheets/detail/family-planning-contraception",
+    },
+    {
+      prefix: "Wang, P. (2023, 18. januar). ",
+      italic: "人口总量略有下降 城镇化水平继续提高",
+      suffix: " [Folketallet gikk litt ned, urbaniseringen fortsatte å øke]. National Bureau of Statistics of China.",
+      href: "https://www.stats.gov.cn/sj/sjjd/202302/t20230202_1896742.html",
     },
   ] as const,
   "geo-migrasjon": [
@@ -1964,10 +2024,22 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.ssb.no/statbank/table/07113",
     },
     {
+      prefix: "Statistisk sentralbyrå [SSB]. (2026e, 5. mars). ",
+      italic: "13880: Innvandrere og norskfødte med innvandrerforeldre, etter kjønn og landbakgrunn 2004–2026",
+      suffix: " [Statistikkbanktabell]. Uttrekk for Polen og Ukraina 25. november 2026.",
+      href: "https://www.ssb.no/statbank/table/13880",
+    },
+    {
       prefix: "Statistisk sentralbyrå [SSB]. (u.å.). ",
       italic: "Lisens",
       suffix: ". CC BY 4.0. Hentet 6. november 2026.",
       href: "https://www.ssb.no/diverse/lisens",
+    },
+    {
+      prefix: "Thorsdalen, B. (2016, 8. februar). ",
+      italic: "En demografisk beskrivelse av arbeidsinnvandrere fra EU/EØS og deres familier",
+      suffix: " (Rapporter 2016/03). Statistisk sentralbyrå.",
+      href: "https://www.ssb.no/befolkning/artikler-og-publikasjoner/en-demografisk-beskrivelse-av-arbeidsinnvandrere-fra-eu-eos-og-deres-familier",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
@@ -1976,10 +2048,22 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.udir.no/lk20/geo01-02/kompetansemaal-og-vurdering/kv49",
     },
     {
-      prefix: "Utlendingsdirektoratet [UDI]. (u.å.). ",
+      prefix: "Utlendingsdirektoratet [UDI]. (2023, 6. januar). ",
+      italic: "40 000 søknader om beskyttelse i 2022",
+      suffix: ". Oppdatert 2. februar 2023.",
+      href: "https://www.udi.no/aktuelt/40-000-soknader-om-beskyttelse-i-2022/",
+    },
+    {
+      prefix: "Utlendingsdirektoratet [UDI]. (u.å.-a). ",
       italic: "Kollektiv beskyttelse",
       suffix: ". Brukt for skillet mellom gruppevurdering og individuell vurdering, ikke som personlig oppholdsveiledning. Hentet 6. november 2026.",
       href: "https://www.udi.no/ord-og-begreper/kollektiv-beskyttelse/",
+    },
+    {
+      prefix: "Utlendingsdirektoratet [UDI]. (u.å.-b). ",
+      italic: "Søknader om beskyttelse etter hjemmel om massefluktsituasjon (kollektiv beskyttelse) etter statsborgerskap, aldersgruppe og kjønn (2025)",
+      suffix: ". Hentet 25. november 2026.",
+      href: "https://www.udi.no/statistikk-og-analyse/statistikk/soknader-om-beskyttelse-etter-hjemmel-om-massefluktsituasjon-kollektiv--beskyttelse-etter-statsborgerskap-aldersgruppe-og-kjonn-2025/",
     },
     {
       prefix: "Verdensbanken. (2023). ",

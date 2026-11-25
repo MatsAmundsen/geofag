@@ -726,8 +726,8 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
     assert.doesNotMatch(md, /[Ss]e figur 7\.(?:2|5|7|8|9)\b/);
   });
 
-  it("registrerer 43 eksterne kilder uten bibliotek eller lærebok", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 43);
+  it("registrerer 48 eksterne kilder uten bibliotek eller lærebok", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 48);
     for (const domain of ["snl.no", "ngu.no", "nibio.no", "nve.no", "domstol.no", "regjeringen.no", "landbruksdirektoratet.no", "sametinget.no", "norskpetroleum.no", "nbim.no", "ec.europa.eu", "ipcc.ch", "udir.no"])
       assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
@@ -902,8 +902,8 @@ describe("Geografi kapittel 10: befolkning og levekår", () => {
     assert.doesNotMatch(md, /[Ss]e figur 10\.(?:1|7)\b/);
   });
 
-  it("registrerer 19 kontrollerte kilder og henviser til fagkildene", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 19);
+  it("registrerer 24 kontrollerte kilder og henviser til fagkildene", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 24);
     for (const domain of ["ssb.no", "worldbank.org", "ourworldindata.org", "who.int", "undp.org", "snl.no", "udir.no"]) assert.ok(sources.includes(domain), domain);
     for (const citation of ["SSB, 2026a", "SSB, 2026b", "SSB, 2026c", "2026d", "Tømmerås et al., 2026", "Tønnessen, 2024", "Solerød & Tønnessen, 2026", "Nylenna et al., 2025", "Mæhlum, 2023", "Stoltz, 2026", "WHO, 2025", "UNDP, u.å.", "Verdensbanken, 2026", "Our World in Data, 2024"]) assert.ok(md.includes(citation), citation);
     assert.doesNotMatch(md + sources, /Terra Nova|Aunivers|bibliotek/);
@@ -1027,8 +1027,8 @@ describe("Geografi kapittel 11: migrasjon", () => {
     assert.doesNotMatch(renderToStaticMarkup(createElement(ReactMarkdown, { children: md })), /FIGURPLASSHOLDER|figur-11-/);
   });
 
-  it("har 25 kontrollerte kilder og planens femten begreper", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 25);
+  it("har 29 kontrollerte kilder og planens femten begreper", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 29);
     for (const domain of ["ssb.no", "snl.no", "iom.int", "unhcr.org", "unodc.org", "udi.no", "worldbank.org", "udir.no"]) assert.ok(sources.includes(domain), domain);
     for (const citation of ["SSB, 2026a", "SSB, 2026b", "SSB, 2026c", "SSB, 2026d", "IOM, u.å.", "UNHCR, 2026a", "UNHCR, u.å.-a", "UNHCR, u.å.-b", "UNHCR, u.å.-c", "UNODC, u.å.", "[UDI], u.å.", "Bore, 2005", "Gursli-Berg et al., 2026", "Hansen & Tjernshaugen, 2026", "Butenschøn, 2020", "Verdensbanken, 2023"]) assert.ok(md.includes(citation), citation);
     for (const term of ["Migrasjon", "Emigrasjon", "Immigrasjon", "Intern migrasjon", "Skyvefaktor", "Trekkfaktor", "Sentralisering", "Urbanisering", "Arbeidsinnvandring", "Flyktning", "Asylsøker", "Internt fordrevet", "Menneskesmugling", "Menneskehandel", "Pengeoverføring"]) assert.ok(md.includes(`| ${term} |`), term);

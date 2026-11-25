@@ -158,6 +158,16 @@ Tallene 40 982 og 55 243 motsier dermed ikke hverandre, selv om begge gjelder in
 
 Mottakersteder kan få viktig kompetanse og arbeidskraft, mens arbeidsinnvandrere kan få nye muligheter. Samtidig kan utrygge kontrakter, manglende rettigheter eller avhengighet av én arbeidsgiver øke risikoen for utnytting. Virkningene avhenger derfor av mer enn antall mennesker som kommer. Tilgang til et formelt arbeidsmarked, muligheten til å skifte arbeidsgiver og sosial inkludering er viktige forhold å undersøke. Vi bør ikke beskrive alle migrantarbeidere enten som et problem eller som en automatisk økonomisk gevinst (Verdensbanken, 2023).
 
+### Innblikk: Fra Polen til Norge etter 2004
+
+Polen var blant de nye EU-landene som fikk tilgang til det norske arbeidsmarkedet i 2004. Overgangsordninger begrenset først tilgangen, og arbeidsinnvandringen var derfor forholdsvis liten i begynnelsen. Fra 2004 til 2014 innvandret 138 600 personer fra EU-land i tidligere Øst-Europa for å arbeide i Norge. 55 prosent kom fra Polen, og 22 prosent kom fra Litauen. Arbeidsinnvandringen fra disse landene var høyest i 2011, med mer enn 19 000 innvandringer (Thorsdalen, 2016).
+
+Antallet bosatte innvandrere fra Polen økte fra 6797 den 1. januar 2004 til 111 740 den 1. januar 2026. Polen var dermed den største innvandrergruppen i Norge i 2026, foran Ukraina med 85 461. Dette er beholdninger på bestemte datoer, ikke antall flyttinger i løpet av et år. Tallene gjelder personer som er registrert bosatt. Vi må derfor undersøke definisjonen før vi bruker dem som mål på alle som har arbeidet i Norge (SSB, 2026e).
+
+Tallene forteller ikke hvorfor hver enkelt kom, eller hvilket arbeid de har i dag. SSB fant at tre av fire arbeidsinnvandrere fra disse landene var menn. I samme periode innvandret 40 200 personer fra de samme landene på grunn av familietilknytning til arbeidsinnvandrerne. Den 1. januar 2026 var det dessuten 18 032 norskfødte med innvandrerforeldre med polsk landbakgrunn. Arbeidsinnvandring kan altså bli starten på familieinnvandring og nye generasjoner, ikke bare et midlertidig opphold (SSB, 2026e; Thorsdalen, 2016).
+
+> **Undersøk casen:** Finn antallet bosatte innvandrere fra Polen i SSB-tabell 13880 for 2008, 2011 og 2026. Hvilke andre opplysninger trenger du før du kan forklare hvorfor veksten var raskere i noen perioder enn i andre?
+
 ### Pengeoverføringer er private forbindelser
 
 **Pengeoverføringer** fra migranter, ofte kalt remitteringer, er private overføringer til familie eller andre forbindelser i andre land. De kan brukes til daglige utgifter, skolegang, helsehjelp eller investeringer. Overføringene er ikke det samme som offentlig bistand eller en statlig utviklingsplan. Dessuten kan gebyrer og andre kostnader redusere hvor mye mottakerne faktisk får. Vi må undersøke både beløp, kostnader og hvem som har tilgang til slike forbindelser (IOM, u.å.; Verdensbanken, 2023).
@@ -212,11 +222,21 @@ GeoMigrasjonVertslandKart
 
 Et sentralt prinsipp er vern mot retur til forfølgelse eller annen alvorlig fare, kalt **non-refoulement**. Det begrenser staters adgang til å sende mennesker tilbake når vilkårene for vernet er oppfylt. Flyktningkonvensjonen omhandler også rettigheter og plikter, blant annet tilgang til arbeid, utdanning og rettsvern. Staters grensekontroll må derfor vurderes sammen med internasjonale beskyttelsesforpliktelser. Det å søke beskyttelse er ikke i seg selv bevis for at en person har gjort noe galt (UNHCR, u.å.-c; IOM, u.å.).
 
-I Norge finnes også en ordning med kollektiv beskyttelse i en massefluktsituasjon. UDI forklarer at en gruppevurdering da kan erstatte individuell vurdering i den aktuelle ordningen. Dette er ikke det samme som at alle som får slik beskyttelse, har gjennomgått samme individuelle konvensjonsvurdering. Vilkår og varighet kan endres, og konkrete spørsmål må kontrolleres hos UDI for den aktuelle datoen. Her forklarer vi forskjellen mellom ordninger, ikke hvem en bestemt elev eller familie har rett til opphold som (Utlendingsdirektoratet [UDI], u.å.).
+I Norge finnes også en ordning med kollektiv beskyttelse i en massefluktsituasjon. UDI forklarer at en gruppevurdering da kan erstatte individuell vurdering i den aktuelle ordningen. Dette er ikke det samme som at alle som får slik beskyttelse, har gjennomgått samme individuelle konvensjonsvurdering. Vilkår og varighet kan endres, og konkrete spørsmål må kontrolleres hos UDI for den aktuelle datoen. Her forklarer vi forskjellen mellom ordninger, ikke hvem en bestemt elev eller familie har rett til opphold som (Utlendingsdirektoratet [UDI], u.å.-a).
 
 Ansvar handler både om å gi trygghet nå og om muligheter til å leve videre over tid. Mat, bolig og helsehjelp er viktige, men skolegang, arbeid og rettigheter har også betydning ved langvarig fordrivelse. Internasjonal støtte kan bidra til at vertsland med mange mennesker på flukt klarer å tilby slike tjenester. UNHCR understreker samtidig at retur ikke automatisk betyr at trygghet og bærekraftige levekår er gjenopprettet. I rapporten om 2025 beskrives mange returer til svært sårbare forhold (UNHCR, 2026a; Verdensbanken, 2023).
 
 En drøfting av ansvar må derfor skille mellom hva rettighetene krever, og hvilke politiske virkemidler som velges. Støtte til vertsland, bosetting, inkludering og arbeid for trygghet i opprinnelsesområder kan inngå på forskjellige måter. Ingen av dem gjør alle andre behov irrelevante. Vi må undersøke hvem som berøres, hvilke virkninger som dokumenteres, og hvilke usikkerheter som gjenstår. Mennesker på flukt skal ikke omtales som en ensartet belastning uten egne rettigheter og handlingsmuligheter (UNHCR, 2026a; Verdensbanken, 2023).
+
+### Innblikk: Ukraina og kollektiv beskyttelse i Norge
+
+I 2022 fikk UDI 40 014 søknader om beskyttelse, flere enn i noe tidligere år. Til sammenlikning kom det 31 150 søknader i 2015. Av søknadene i 2022 var 34 732 fra ukrainere som ba om midlertidig kollektiv beskyttelse. UDI forklarer at krigen i Ukraina var hovedårsaken til de høye tallene. Samme år fikk 33 554 personer innvilget kollektiv beskyttelse (UDI, 2023).
+
+Søknadene fortsatte, men i et lavere antall de siste årene. I 2025 registrerte UDI 13 445 søknader om kollektiv beskyttelse, og 13 406 av dem kom fra ukrainske statsborgere. Denne statistikken omfatter ikke ordinære asylsøknader som behandles individuelt. Antallet bosatte innvandrere med ukrainsk landbakgrunn økte fra 6512 den 1. januar 2022 til 85 461 den 1. januar 2026 (UDI, u.å.-b; SSB, 2026e).
+
+Casen viser forskjellen mellom strømmer og beholdninger. Søknader er hendelser i løpet av et år, mens bosatte innvandrere telles på en bestemt dato. Ikke alle som søker, blir nødvendigvis bosatt, og noen kan reise videre eller tilbake. Kollektiv beskyttelse bygger dessuten på en gruppevurdering og er ikke det samme som en individuell vurdering etter flyktningkonvensjonen. Vi kan derfor ikke legge sammen søknadene fra flere år og kalle summen antallet ukrainere i Norge (UDI, u.å.-a, u.å.-b).
+
+> **Undersøk casen:** Hvorfor er 85 461 ikke det samme som summen av søknadene fra 2022 til 2025? Hvilke opplysninger trenger en kommune som skal planlegge skoleplasser for barn som har fått kollektiv beskyttelse?
 
 **Tenk over:** Hva er forskjellen mellom en asylsøker og en internt fordrevet? Hvorfor kan ikke 65-prosentandelen multipliseres med alle tvunget fordrevne uten videre?
 

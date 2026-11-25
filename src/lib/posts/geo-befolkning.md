@@ -102,6 +102,16 @@ Tilgang til utdanning, arbeid, bolig og trygg inntekt kan påvirke når menneske
 
 Tilgang til frivillig prevensjon og gode helsetjenester gjør det mulig å bestemme antall barn og avstand mellom fødslene. Verdens helseorganisasjon understreker at dette handler om helse og retten til informerte valg. Høy fruktbarhet skal derfor ikke forklares som manglende ansvar hos bestemte folkegrupper. Lav fruktbarhet betyr heller ikke at staten kan se bort fra den enkeltes rett til å velge. Befolkningspolitikk må vurderes ut fra både virkninger, levekår og rettigheter (Verdens helseorganisasjon [WHO], 2025).
 
+### Innblikk: Sør-Korea og et fruktbarhetstall under 1
+
+I Sør-Korea falt samlet fruktbarhetstall fra 1,24 i 2015 til 0,72 i 2023. Antallet levendefødte gikk i samme periode ned fra om lag 438 400 til om lag 230 000. Til sammenlikning var SFT i Norge 1,40 i 2023. Et SFT på 0,72 betyr at årets fødselsmønster tilsvarer færre enn ett barn per kvinne gjennom fødeperioden. Det er langt under nivået på om lag 2,1 som ofte omtales som reproduksjonsnivå (Ministry of Data and Statistics, 2026a; SSB, 2026b; Solerød & Tønnessen, 2026).
+
+Etter 2023 har tallene økt noe. De foreløpige tallene for 2025 viser om lag 254 500 levendefødte og et SFT på 0,80. Samme år døde om lag 363 400 personer, slik at den naturlige tilveksten var om lag minus 110 000. Statistikkmyndigheten peker blant annet på flere inngåtte ekteskap som en forklaring på økningen. To år med økning viser likevel ikke alene at fruktbarheten er på vei tilbake til et høyere nivå (Ministry of Data and Statistics, 2026a, 2026b).
+
+Kildene her gir ingen fullstendig forklaring på hvorfor tallet er så lavt, og vi skal ikke finne på én. Tidligere i kapitlet så vi at utdanning, arbeid, bolig, familiepolitikk og normer kan påvirke når og om mennesker får barn. Hvilke av disse forholdene som veier tyngst i Sør-Korea, må vi undersøke i egne kilder. Små fødselskull kan dessuten påvirke aldersfordelingen lenge, fordi de senere blir små årskull i arbeidsalder og i fødealder (Solerød & Tønnessen, 2026; Tønnessen, 2024).
+
+> **Undersøk casen:** Regn ut hvor mange prosent antallet levendefødte i Sør-Korea endret seg fra 2015 til 2023. Hvorfor er SFT et bedre mål enn antall fødte når vi sammenlikner fruktbarheten i Sør-Korea og Norge?
+
 ### Hvorfor synker dødeligheten?
 
 Tilgang til nok mat, trygt drikkevann og gode sanitærforhold kan redusere sykdom og tidlige dødsfall. Vaksiner, forebygging og behandling påvirker også hvor mange som overlever gjennom ulike aldre. Bedring i helse skyldes derfor ikke bare flere sykehus eller én bestemt medisinsk oppfinnelse. Utdanning, inntekt og samfunnets organisering kan gjøre det lettere å forebygge sykdom og få hjelp. Krig, epidemier og svikt i grunnleggende tjenester kan samtidig gi alvorlige tilbakeslag (Nylenna et al., 2025).
@@ -171,6 +181,18 @@ Modellen bygger i stor grad på historiske mønstre som ikke har likt forløp ov
 **Demografisk treghet** betyr at tidligere aldersfordeling påvirker befolkningsutviklingen lenge etter at fruktbarheten har endret seg. Hvis mange unge etter hvert når fødealdrene, kan det fortsatt bli mange fødsler. Det kan skje selv om hver kvinne i gjennomsnitt får færre barn enn tidligere. Omvendt kan små årskull gi få fødsler selv når periodens SFT øker noe. Endringen i fødselstall avhenger både av fødselsmønsteret og av hvor mange som er i aktuelle aldre (Tønnessen, 2024).
 
 Japan og Niger illustrerer forskjellige aldersstrukturer, men pyramidene alene gir ikke sikre fasenumre. For å vurdere en overgang trenger vi også tidsserier for fødsels- og dødsrater. Ett enkelt SFT kan ikke vise hvor raskt et land endrer seg eller hvorfor. Det samme gjelder et øyeblikksbilde av forventet levealder eller en befolkningspyramide. Sammenlikningen blir sterkere når vi kombinerer flere daterte indikatorer og undersøker kildenes metode (Tønnessen, 2024; Verdensbanken, 2026).
+
+### Innblikk: Kina, færre fødsler og et synkende folketall
+
+Ved utgangen av 2022 var folketallet i Kina 1411,75 millioner, som var 0,85 millioner færre enn året før. Det året ble det født 9,56 millioner barn, mens 10,41 millioner døde. Den naturlige tilveksten var dermed negativ, med en rate på minus 0,60 promille. Tallene er foreløpige og gjelder fastlands-Kina. De omfatter ikke innbyggere fra Hongkong, Macao og Taiwan eller utenlandske statsborgere som bor i landet (National Bureau of Statistics of China [NBS], 2023).
+
+Det kinesiske statistikkbyrået forklarte nedgangen i fødsler med to forhold. Antallet kvinner i alderen 15 til 49 år gikk ned med mer enn 4 millioner fra 2021 til 2022. Samtidig fortsatte fruktbarheten å synke, blant annet fordi holdninger til å få barn endret seg og mange giftet seg og fikk barn senere. Det første forholdet er demografisk treghet: når årskullene i fødealder blir mindre, kan antall fødsler synke selv uten lavere fruktbarhet (Wang, 2023).
+
+Nedgangen har fortsatt. De foreløpige tallene viser at folketallet ved utgangen av 2025 var 1404,89 millioner, 3,39 millioner færre enn året før. Det ble født 7,92 millioner barn, mens 11,31 millioner døde. Andelen som var 65 år eller eldre, økte fra 14,9 prosent i 2022 til 15,9 prosent i 2025. Norge hadde en høyere eldreandel, men både fødselsoverskudd og nettoinnflytting i 2025 (NBS, 2023, 2026; SSB, 2026a, 2026c).
+
+Kina kan brukes til å drøfte den mulige femte fasen i den demografiske overgangen. Men casen viser ikke at fasen er et sikkert sluttpunkt, eller at alle land med lav fruktbarhet vil krympe på samme måte. Folketallet påvirkes også av aldersfordeling og migrasjon, og begge kan endre seg. Vi bruker derfor de daterte tallene til å stille spørsmål, ikke til å lage en prognose.
+
+> **Undersøk casen:** Bruk den demografiske grunnformelen på tallene for 2025. Hvor stor del av endringen i folketallet kan forklares med fødte minus døde? Hvorfor kan antall fødsler synke selv om hver kvinne i gjennomsnitt får like mange barn som før?
 
 **Tenk over:** Hvorfor kan folketallet fortsette å øke etter et fall i SFT? Hvilke opplysninger trenger vi før vi plasserer et land i en fase?
 
@@ -282,13 +304,13 @@ Vi kan undersøke kommunens offentlige aldersstatistikk sammen med en tur i nær
 | Demografisk overgang | Modell for endring fra høye til lave fødsels- og dødsrater. |
 | Forsørgerbyrde | Demografisk forholdstall mellom valgte aldersgrupper; ikke direkte antall yrkesaktive per hjelpetrengende. |
 | Eldrebølge | Økning i antall og andel eldre når store kull eldes og flere overlever lenge. |
-| Levekår | Livsbetingelser og muligheter, blant annet helse, utdanning, inntekt og trygghet. |
+| Levekår | Livsbetingelser og muligheter som påvirker hvordan mennesker lever, blant annet helse, utdanning, inntekt og trygghet. |
 | Ulikhet | Forskjeller i fordeling av goder, ressurser og muligheter. |
 | Naturlig tilvekst | Levendefødte minus døde i samme område og periode. |
 | Netto migrasjonsrate | Innflyttinger minus utflyttinger, per tusen innbyggere i samme periode. |
 | Demografisk treghet | Virkning av tidligere aldersstruktur på senere fødsler, dødsfall og befolkningsutvikling. |
 | Befolkningsframskriving | Beregning av framtidig befolkning under bestemte forutsetninger. |
-| HDI | FNs utviklingsprograms sammenfattede mål for helse, utdanning og inntekt. |
+| HDI | FNs utviklingsprograms sammensatte indeks for menneskelig utvikling, basert på helse, utdanning og inntekt. |
 
 ## Spørsmål
 

@@ -59,6 +59,13 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
     "under": "flyktninger"
   },
   {
+    "begrep": "Avgangsmasser",
+    "forklaring": "Finknust stein som er igjen når det verdifulle mineralet er skilt ut av malmen.",
+    "kapittel": "ressurser",
+    "kapittelNr": 7,
+    "under": "arealbruk-og-konflikter"
+  },
+  {
     "begrep": "Avsetning",
     "forklaring": "Materiale blir liggende etter transport, eller massene som da dannes.",
     "kapittel": "landskap",
@@ -508,14 +515,14 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
   },
   {
     "begrep": "HDI",
-    "forklaring": "Sammensatt indeks for menneskelig utvikling basert på helse, utdanning og inntekt.",
+    "forklaring": "FNs utviklingsprograms sammensatte indeks for menneskelig utvikling, basert på helse, utdanning og inntekt.",
     "kapittel": "baerekraft",
     "kapittelNr": 8,
     "under": "mal-pa-utvikling"
   },
   {
     "begrep": "HDI",
-    "forklaring": "FNs utviklingsprograms sammenfattede mål for helse, utdanning og inntekt.",
+    "forklaring": "FNs utviklingsprograms sammensatte indeks for menneskelig utvikling, basert på helse, utdanning og inntekt.",
     "kapittel": "befolkning",
     "kapittelNr": 10,
     "under": "levekar-i-verden"
@@ -624,6 +631,13 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
     "kapittel": "indre-krefter",
     "kapittelNr": 3,
     "under": "ressurser-i-aktive-omrader"
+  },
+  {
+    "begrep": "Karbonatitter",
+    "forklaring": "Sjelden gruppe magmatiske bergarter som består av karbonatmineraler og kan inneholde sjeldne jordarter.",
+    "kapittel": "ressurser",
+    "kapittelNr": 7,
+    "under": "ressurser-i-berggrunnen"
   },
   {
     "begrep": "Karbonkretsløp",
@@ -746,14 +760,14 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
   },
   {
     "begrep": "Kvikkleire",
-    "forklaring": "Leire som kan miste mye styrke og bli flytende ved omrøring.",
+    "forklaring": "Marin leire som kan miste styrken og bli flytende når strukturen kollapser, for eksempel ved omrøring eller overbelastning.",
     "kapittel": "landskap",
     "kapittelNr": 4,
     "under": "landhevning-og-marin-grense"
   },
   {
     "begrep": "Kvikkleire",
-    "forklaring": "Marin leire som kan miste styrken når strukturen kollapser.",
+    "forklaring": "Marin leire som kan miste styrken og bli flytende når strukturen kollapser, for eksempel ved omrøring eller overbelastning.",
     "kapittel": "naturfare",
     "kapittelNr": 6,
     "under": "skred-i-norge"
@@ -781,14 +795,14 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
   },
   {
     "begrep": "Levekår",
-    "forklaring": "Forhold som påvirker hvordan mennesker lever, blant annet helse, utdanning og økonomisk trygghet.",
+    "forklaring": "Livsbetingelser og muligheter som påvirker hvordan mennesker lever, blant annet helse, utdanning, inntekt og trygghet.",
     "kapittel": "baerekraft",
     "kapittelNr": 8,
     "under": "hva-er-utvikling"
   },
   {
     "begrep": "Levekår",
-    "forklaring": "Livsbetingelser og muligheter, blant annet helse, utdanning, inntekt og trygghet.",
+    "forklaring": "Livsbetingelser og muligheter som påvirker hvordan mennesker lever, blant annet helse, utdanning, inntekt og trygghet.",
     "kapittel": "befolkning",
     "kapittelNr": 10,
     "under": "levekar-i-verden"
@@ -991,7 +1005,7 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
   },
   {
     "begrep": "Overforbruksdag",
-    "forklaring": "Kalenderuttrykk for når beregnet etterspørsel tilsvarer et helt års fornybare kapasitet.",
+    "forklaring": "Kalenderuttrykk for når beregnet etterspørsel tilsvarer et helt års biokapasitet. Jordas overforbruksdag gjelder hele menneskehetens forbruk. En nasjonal overforbruksdag viser når dette ville skjedd dersom alle forbrukte som landets innbyggere, målt mot verdens biokapasitet per person.",
     "kapittel": "baerekraft",
     "kapittelNr": 8,
     "under": "norges-ressursbruk"
@@ -1149,6 +1163,13 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
     "kapittel": "baerekraft",
     "kapittelNr": 8,
     "under": "veien-videre"
+  },
+  {
+    "begrep": "Sjødeponi",
+    "forklaring": "Deponi i sjøen der avgangsmasser fra gruvedrift føres ut gjennom rør og legges på bunnen.",
+    "kapittel": "ressurser",
+    "kapittelNr": 7,
+    "under": "arealbruk-og-konflikter"
   },
   {
     "begrep": "Skjoldvulkan",
@@ -1439,7 +1460,7 @@ export const GEOGRAFI_BEGREPER: readonly GeografiBegrep[] = [
   },
   {
     "begrep": "Økologisk fotavtrykk",
-    "forklaring": "Beregnet behov for biologisk produktivt areal knyttet til forbruk og karbonopptak.",
+    "forklaring": "Beregnet behov for biologisk produktivt areal knyttet til forbruk og karbonopptak, uttrykt i globale hektar.",
     "kapittel": "baerekraft",
     "kapittelNr": 8,
     "under": "planetare-grenser"
