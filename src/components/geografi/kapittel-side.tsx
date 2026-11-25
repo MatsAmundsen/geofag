@@ -112,9 +112,9 @@ export function GeografiKapittelSide({
             <div className="mt-auto pt-6">
               {underkapittel ? (
                 <nav aria-label="Brødsmuler" className="self-start">
-                  <ol className="flex flex-wrap items-center gap-x-1.5 rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-primary lys:bg-background/95">
+                  <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-2 rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-primary lys:bg-background/95">
                     <li>
-                      <Link to="/geografi" className="underline-offset-4 hover:underline">
+                      <Link to="/geografi" className="inline-flex min-h-6 items-center underline-offset-4 hover:underline">
                         Geografi
                       </Link>
                     </li>
@@ -123,7 +123,7 @@ export function GeografiKapittelSide({
                       <Link
                         to="/geografi/$kapittel"
                         params={{ kapittel: kapittel.path }}
-                        className="underline-offset-4 hover:underline"
+                        className="inline-flex min-h-6 items-center underline-offset-4 hover:underline"
                       >
                         Kapittel {kapNr}: {kapittel.title}
                       </Link>
