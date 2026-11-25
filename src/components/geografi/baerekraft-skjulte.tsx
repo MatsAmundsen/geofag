@@ -13,7 +13,7 @@ export function GeografiFattigdomKart() {
     verdi: r.verdi,
   }));
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 8.1 – Andel som lever for under 3,00 dollar per dag
       </h3>
@@ -45,7 +45,7 @@ export function GeografiFattigdomKart() {
 export function GeografiCo2Kart() {
   const id = useId();
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 8.6 – CO₂ per person fra fossil energi og industri, 2024
       </h3>
@@ -73,9 +73,9 @@ export function GeografiCo2Kart() {
 }
 
 const SERIE = [
-  { key: "World", navn: "Verden", farge: "#525252", strek: "6 4" },
-  { key: "Norway", navn: "Norge", farge: "#1d4ed8", strek: undefined },
-  { key: "China", navn: "Kina", farge: "#b91c1c", strek: "2 3" },
+  { key: "World", navn: "Verden", farge: "#8b9aa6", strek: "6 4" },
+  { key: "Norway", navn: "Norge", farge: "#60a5fa", strek: undefined },
+  { key: "China", navn: "Kina", farge: "#f87171", strek: "2 3" },
 ] as const;
 
 export function GeografiCo2Serie() {

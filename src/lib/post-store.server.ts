@@ -20,6 +20,7 @@ import {
   reseedFlaggedCopies as runCopyReseeds,
 } from "@/lib/copy-reseed";
 import { COPY_RESEEDS_B } from "@/lib/copy-reseeds-b";
+import { reseedGeografiFromMd } from "@/lib/geografi-reseed";
 import {
   CHAPTER_POST_SEEDS,
   nowStamp,
@@ -70,6 +71,8 @@ type Store = {
   list: () => Promise<Post[]>;
   get: (slug: string) => Promise<Post | null>;
   save: (input: PostInput) => Promise<void>;
+  /** Betinget skriving: oppdater bare hvis raden finnes og fortsatt har `expectedBody`. */
+  saveIfBody: (input: PostInput, expectedBody: string) => Promise<boolean>;
   remove: (slug: string) => Promise<void>;
   getMeta: (key: string) => Promise<string | null>;
   setMeta: (key: string, value: string) => Promise<void>;
@@ -261,6 +264,26 @@ async function d1Store(db: D1Database): Promise<Store> {
         )
         .run();
     },
+    async saveIfBody(input, expectedBody) {
+      const res = (await db
+        .prepare(
+          `UPDATE posts SET title = ?, summary = ?, ingress = ?, thumbnail = ?, body_markdown = ?, published = ?, updated_at = ?
+           WHERE slug = ? AND body_markdown = ?`,
+        )
+        .bind(
+          input.title,
+          input.summary,
+          input.ingress,
+          input.thumbnail,
+          input.bodyMarkdown,
+          input.published,
+          nowStamp(),
+          input.slug,
+          expectedBody,
+        )
+        .run()) as { meta?: { changes?: number } } | null;
+      return Number(res?.meta?.changes ?? 0) > 0;
+    },
     async remove(slug) {
       await db.prepare("DELETE FROM posts WHERE slug = ?").bind(slug).run();
     },
@@ -314,6 +337,25 @@ function postgresStore(sql: SqlClient): Store {
         ],
       );
     },
+    async saveIfBody(data, expectedBody) {
+      const rows = await sql.query(
+        `update posts set title = $2, summary = $3, ingress = $4, thumbnail = $5, body_markdown = $6,
+           published = $7, updated_at = now()
+         where slug = $1 and body_markdown = $8
+         returning slug`,
+        [
+          data.slug,
+          data.title,
+          data.summary,
+          data.ingress,
+          data.thumbnail,
+          data.bodyMarkdown,
+          data.published,
+          expectedBody,
+        ],
+      );
+      return rows.length > 0;
+    },
     async remove(slug) {
       await sql.query(`delete from posts where slug = $1`, [slug]);
     },
@@ -358,6 +400,11 @@ function memoryStore(): Store {
         updatedAt: stamp,
       });
     },
+    async saveIfBody(input, expectedBody) {
+      if (memory.posts.get(input.slug)?.bodyMarkdown !== expectedBody) return false;
+      await this.save(input);
+      return true;
+    },
     async remove(slug) {
       memory.posts.delete(slug);
     },
@@ -393,6 +440,10 @@ function durableStore(ns: DurableNs): Store {
     async save(input) {
       await callPostsDo(ns, { op: "save", input });
     },
+    async saveIfBody(input, expectedBody) {
+      const r = await callPostsDo<{ saved: boolean }>(ns, { op: "saveIfBody", input, expectedBody });
+      return Boolean(r?.saved);
+    },
     async remove(slug) {
       await callPostsDo(ns, { op: "remove", slug });
     },
@@ -416,6 +467,7 @@ export async function getPostStore(): Promise<Store> {
       if (!env?.POSTS_DB) throw new Error("POSTS_DB binding missing");
       const store = await d1Store(env.POSTS_DB);
       await reseedFlaggedCopies(store);
+      await reseedGeografi(store);
       return store;
     }
     if (backend === "do") {
@@ -1769,9 +1821,34 @@ async function ensureChapterSeeds(store: Store): Promise<void> {
   }
 }
 
+/** Geografi: md vinner over urørte/stubb-rader, aldri over CMS-redigert tekst. */
+const GEO_SEEDS = CHAPTER_POST_SEEDS.filter((seed) => seed.slug.startsWith("geo-"));
+
+async function reseedGeografi(store: Store): Promise<void> {
+  try {
+    await reseedGeografiFromMd(
+      {
+        persist: store.persist,
+        get: (slug) => store.get(slug),
+        async save(slug, published, expectedBody) {
+          const seed = GEO_SEEDS.find((row) => row.slug === slug);
+          if (!seed) return false;
+          return store.saveIfBody({ ...toPostInput(seed), published }, expectedBody);
+        },
+        getMeta: (key) => store.getMeta(key),
+        setMeta: (key, value) => store.setMeta(key, value),
+      },
+      GEO_SEEDS,
+    );
+  } catch (err) {
+    console.error("[posts] Geografi reseed failed", err);
+  }
+}
+
 async function runChapterSeeds(store: Store, version: string): Promise<void> {
   await publishPlatetektonikkCopy(store);
   await reseedFlaggedCopies(store);
+  await reseedGeografi(store);
   if (store.persist === "do" || store.persist === "d1") {
     const saved = await store.getMeta(CHAPTER_SEED_FLAG);
     if (chapterSeedIsCurrent(saved, version)) return;

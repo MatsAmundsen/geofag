@@ -105,6 +105,16 @@ Vi kan møte forsyningsrisiko med flere tiltak, ikke bare ved å åpne nye gruve
 
 > **Undersøk argumentet:** «Mineralet trengs til omstilling, derfor må gruva bygges akkurat her.» Hvilken kunnskap mangler mellom begrunnelsen om behov og konklusjonen om sted? Skill mellom behovet for en råvare og tillatelsen til et bestemt prosjekt.
 
+### Innblikk: Fensfeltet og sjeldne jordarter
+
+Fensfeltet i Nome kommune i Telemark er roten av en vulkan som er om lag 580 millioner år gammel og i dag erodert bort. Mesteparten av bergartene der er **karbonatitter**, en sjelden gruppe magmatiske bergarter som består av karbonatmineraler. Slike bergarter kan inneholde sjeldne jordartselementer, som brukes blant annet i sterke magneter. I juni 2024 la gruveselskapet Rare Earths Norway fram et første ressursestimat for forekomsten. NGU omtalte tallene som dokumentasjon på at Fensfeltet er Europas største kjente forekomst av sjeldne jordarter (NGU, 2024, u.å.-d).
+
+Estimatet gjelder en mineralressurs på 559 millioner tonn med et gjennomsnittlig innhold på 1,57 prosent sjeldne jordartsoksider. Det tilsvarer om lag 8,8 millioner tonn, og av dette er 1,5 millioner tonn neodym- og praseodymoksid. Selskapet oppgir at disse to grunnstoffene brukes i permanentmagneter til blant annet elbiler og vindturbiner. Ressursen er rapportert som antatt etter en internasjonal rapporteringskode og gjelder ned til 468 meter under havnivå. Den omfatter bare den delen selskapet mener har rimelig mulighet for framtidig økonomisk utnyttelse, ut fra geologi, driftsmetoder, kostnader og priser (Rare Earths Norway, 2024).
+
+Casen viser hvorfor vi skiller mellom en forekomst, et ressursestimat og en tillatelse til å drive gruve. Et estimat fra et selskap er et anslag med usikkerhet, ikke en vedtatt gruve eller en avgjørelse om arealbruk. Spørsmål om natur, avfall, lokalsamfunn og andre interesser må fortsatt avklares etter plan- og bygningsloven og annet regelverk. Vi kan derfor bruke Fensfeltet til å prøve argumentet over: et europeisk behov for råvarer avgjør ikke alene hvor og hvordan det bør utvinnes. En pressemelding fra selskapet og en nyhetssak fra en fagetat er dessuten ulike kilder, selv når de gjengir de samme tallene (Kommunal- og distriktsdepartementet, 2026; Rare Earths Norway, 2024).
+
+> **Undersøk casen:** Hvilke opplysninger i casen gjelder geologien, og hvilke gjelder økonomi og drift? Hvilke spørsmål må være besvart før et ressursestimat kan bli en godkjent gruve?
+
 ## Olje og gass
 
 ### Et langt geologisk forløp
@@ -186,6 +196,18 @@ En **konsekvensutredning** undersøker mulige virkninger av en plan eller et til
 ```widget
 GeoRessursVindAvveining
 ```
+
+### Innblikk: Repparfjorden, kobber og sjødeponi
+
+Ved Repparfjorden i Finnmark ligger kobberforekomstene Ulveryggen og Nussir. Folldal verk drev kobberutvinning i dagbrudd i Ulveryggen fra 1972 til 1978. Selskapet Nussir ASA planla underjordsdrift i begge forekomstene i en driftsperiode på 25 til 30 år. Per 2017 var det kartlagt om lag 70 millioner tonn malm, og tiltaket var beregnet å gi om lag 150 direkte årsverk. Staten la vekt på at prosjektet kunne gi eksportinntekter, verdiskaping og arbeidsplasser i regionen (Nærings- og fiskeridepartementet, 2019).
+
+Saken viser at ett prosjekt kan kreve flere vedtak etter forskjellige lover. Reguleringsplanen ble godkjent i 2014, og Miljødirektoratet ga tillatelse etter forurensningsloven i januar 2016. Tillatelsen omfattet et **sjødeponi**, der avgangsmasser fra oppredningsverket føres ut i fjorden og legges på bunnen. Klima- og miljødepartementet opprettholdt tillatelsen i desember 2016, og driftskonsesjon etter mineralloven ble gitt i februar 2019. Sametinget, to reinbeitedistrikter og Naturvernforbundet mfl. klaget, men klagene ble ikke tatt til følge i statsråd 29. november 2019 (Nærings- og fiskeridepartementet, 2019).
+
+Konsesjonsområdet ligger innenfor reinbeitedistriktet Fiettar, og reinbeitedistriktet Fálá flytter gjennom området til og fra sommerbeite. Departementet mente at gruvedriften ikke ville hindre reindriften, og satte vilkår om avbøtende tiltak. Klagerne la blant annet vekt på samlet belastning for reindriften og på miljøvirkninger av sjødeponiet. En samfunnsøkonomisk analyse anslo mulige skadekostnader av deponiet til mellom 13 og 201 millioner kroner per år. Analysen tok selv store forbehold, og det brede spennet viser hvor usikre slike verdsettinger kan være (Nærings- og fiskeridepartementet, 2019).
+
+Vi avgrenser casen til vedtakene fram til 2019. Hva som har skjedd med prosjektet senere, må undersøkes i nyere og daterte kilder. Casen kan sammenliknes med Fosen, men vi må lese hva myndighetene og domstolene faktisk vurderte i hver sak. Hvilke spørsmål handlet om miljø, hvilke om samiske rettigheter, og hvilke om lokal næringsutvikling?
+
+> **Undersøk casen:** Lag en tidslinje over vedtakene fra 2014 til 2019, og skriv hvilken myndighet og hvilken lov hvert vedtak hører til. Hvilke av interessene i Repparfjorden er rettigheter, og hvilke er ønsker eller behov?
 
 ## Sápmi og reindrift
 
@@ -278,7 +300,10 @@ Et område kan være særlig verdifullt og sårbart uten at betegnelsen i seg se
 | Ikke-fornybar | Ressurs som ikke erstattes i takt med uttaket innenfor menneskelige tidsperspektiver. |
 | Ressursknapphet | Begrenset tilgang til en ressurs i forhold til behovet. |
 | Malm | Mineralforekomst der innhold og økonomiske forhold gjør utvinning aktuell. |
+| Avgangsmasser | Finknust stein som er igjen når det verdifulle mineralet er skilt ut av malmen. |
+| Sjødeponi | Deponi i sjøen der avgangsmasser fra gruvedrift føres ut gjennom rør og legges på bunnen. |
 | Kritiske mineraler | Råvarer med høy økonomisk betydning og høy risiko for forsyningssvikt. |
+| Karbonatitter | Sjelden gruppe magmatiske bergarter som består av karbonatmineraler og kan inneholde sjeldne jordarter. |
 | Petroleum | Olje og naturgass dannet fra organisk materiale gjennom geologiske prosesser. |
 | Vannkraft | Energi fra vannets fall, utnyttet til mekanisk arbeid eller elektrisitet. |
 | Arealbruk | Måten et område brukes på, for eksempel til jordbruk, bebyggelse eller energianlegg. |

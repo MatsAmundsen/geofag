@@ -12,9 +12,12 @@ test("lokal transportberegning bruker kontrollerte 2020-faktorer og bare CO₂",
   assert.doesNotMatch(ui, /localStorage|sessionStorage|fetch\(|https?:/);
   assert.match(ui, /ikke alle klimagasser/); assert.match(ui, /pandemiår/); assert.match(ui, /belegg/); assert.match(ui, /Nullstill/);
 });
-test("HDI og BNP gjelder samme år og GFN-datadiagrammet holdes sperret", () => {
+test("HDI og BNP gjelder samme år, og figur 8.5 bygger på NFBA under CC BY-SA 4.0", () => {
   assert.equal(HDI_BNP.length, 8); assert.ok(HDI_BNP.every((d) => d.ar === 2023 && d.hdi > 0 && d.hdi <= 1 && d.bnpPPP > 0));
   assert.equal(HDI_BNP.find((d) => d.iso3 === "NOR")?.hdi, .97);
   const md = readFileSync(new URL("./posts/geo-baerekraft.md", import.meta.url), "utf8");
-  assert.match(md, /FIGURPLASSHOLDER 8.5:.*CC BY-SA 4.0/); assert.match(md, /GeoLokalFotavtrykk/);
+  assert.doesNotMatch(md, /FIGURPLASSHOLDER/); assert.match(md, /GeoBaerekraftFotavtrykk/); assert.match(md, /GeoLokalFotavtrykk/);
+  const ui = readFileSync(new URL("../components/geografi/baerekraft-valg.tsx", import.meta.url), "utf8");
+  assert.match(ui, /Kilde: Lo mfl\. \(2026\).*CC BY-SA 4\.0.*Overforbruksdager: Lin og Wackernagel \(2026\), GFN \(u\.å\.-b\) og WWF \(u\.å\.\)\. Figuren deles under CC BY-SA 4\.0\./);
+  assert.doesNotMatch(ui, /UKLART/);
 });

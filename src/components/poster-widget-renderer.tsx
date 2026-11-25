@@ -352,6 +352,7 @@ const GeografiPlateKart = lazy(() => import("@/components/geografi/indre-valg").
 
 const GeografiLokalFotavtrykk = lazy(() => import("@/components/geografi/baerekraft-valg").then((m) => ({ default: m.GeografiLokalFotavtrykk })));
 const GeografiHdiBnp = lazy(() => import("@/components/geografi/baerekraft-valg").then((m) => ({ default: m.GeografiHdiBnp })));
+const GeografiFotavtrykkBiokapasitet = lazy(() => import("@/components/geografi/baerekraft-valg").then((m) => ({ default: m.GeografiFotavtrykkBiokapasitet })));
 
 const HydrographCatchmentModel = lazy(() => import("@/components/models/hydrograph-catchment-model").then((m) => ({ default: m.HydrographCatchmentModel })));
 
@@ -511,6 +512,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoIndrePlateKart: () => <GeografiPlateKart />,
   GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
   GeoHdiBnp: () => <GeografiHdiBnp />,
+  GeoBaerekraftFotavtrykk: () => <GeografiFotavtrykkBiokapasitet />,
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
   GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
   ...GEOGRAFI_KAP1_KAP2,

@@ -104,7 +104,7 @@ export function GeografiHavsonerFelt() {
     (s) => [s, hav.felt.filter((f) => f.status === s).length] as const,
   );
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 7.8 – Norske havområder og petroleumsfelt
       </h3>

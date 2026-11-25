@@ -5,16 +5,102 @@
   <url><loc>https://geofag.com/geofag-2</loc><priority>0.9</priority></url>
   <url><loc>https://geofag.com/geografi</loc><priority>0.9</priority></url>
   <url><loc>https://geofag.com/geografi/verktoy</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/hva-er-geografi</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/geografiske-begreper</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/kart-og-projeksjoner</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/koordinater-og-malestokk</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/lese-topografisk-kart</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/temakart-og-mentale-kart</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/fjernmaling-og-gis</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/verktoy/kildekritikk</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/feltarbeid</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/feltarbeid/hva-er-feltarbeid</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/feltarbeid/problemstilling-og-plan</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/feltarbeid/metoder-i-felt</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/feltarbeid/sikkerhet-og-etikk</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/feltarbeid/bearbeide-data</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/feltarbeid/presentere-feltarbeid</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/indre-krefter</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/geologisk-tid</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/jordas-oppbygning</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/platetektonikk</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/jordskjelv</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/vulkaner</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/tsunamier</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/bergarter</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/norges-berggrunn</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/indre-krefter/ressurser-i-aktive-omrader</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/landskap</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/landskap/ytre-krefter</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/landskap/istider-og-isbreer</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/landskap/landformer-fra-is</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/landskap/landhevning-og-marin-grense</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/landskap/elver-og-landformer</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/landskap/kystlandskapet</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/landskap/landskap-og-mennesker</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/klima</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/vaer-og-klima</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/globale-sirkulasjoner</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/klimasoner</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/norges-klima</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/drivhuseffekten</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/klimaendringer-na</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/klimaendringer-i-norge</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/klimaendringer-globalt</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/klima/kutt-og-tilpasning</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/naturfare</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/risiko-og-sarbarhet</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/skred-i-norge</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/flom-og-overvann</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/stormer-orkaner-og-tornadoer</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/torke-og-skogbrann</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/miljokatastrofer</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/forebygging-og-varsling</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naturfare/undersok-en-katastrofe</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/ressurser</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/hva-er-ressurser</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/fornybare-ressurser</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/ressurser-i-berggrunnen</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/olje-og-gass</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/energi</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/arealbruk-og-konflikter</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/sapmi-og-reindrift</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/ressurser/nordomradene</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/baerekraft</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/hva-er-utvikling</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/mal-pa-utvikling</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/baerekraftbegrepet</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/planetare-grenser</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/ditt-fotavtrykk</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/norges-ressursbruk</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/dilemmaer</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/baerekraft/veien-videre</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/naering</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/naering/naeringsstruktur</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naering/lokalisering</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naering/ringvirkninger</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naering/globalisering</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naering/internasjonal-arbeidsdeling</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naering/verdikjeder</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/naering/forbruk-og-ansvar</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/befolkning</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/befolkningsvekst</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/demografiske-mal</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/fruktbarhet-og-dodelighet</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/befolkningspyramider</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/demografisk-overgang</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/befolkningsteorier</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/levekar-i-verden</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/befolkning/befolkning-i-norge</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/geografi/migrasjon</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geografi/migrasjon/hva-er-migrasjon</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/migrasjon/hvorfor-folk-flytter</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/migrasjon/flytting-i-norge</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/migrasjon/utvandring-og-innvandring</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/migrasjon/global-migrasjon</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/migrasjon/flyktninger</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/migrasjon/menneskehandel</loc><priority>0.7</priority></url>
+  <url><loc>https://geofag.com/geografi/begreper</loc><priority>0.7</priority></url>
   <url><loc>https://geofag.com/eksamen</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/jordsystemene</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/platetektonikk</loc><priority>0.8</priority></url>

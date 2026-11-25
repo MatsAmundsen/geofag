@@ -36,7 +36,7 @@ export function GeografiNaeringsstruktur() {
     <details className="rounded-lg border border-border p-4">
       <summary className="cursor-pointer font-semibold">Vis antall, andeler og beregningsmåte som tabell</summary>
       <p className="my-3 text-sm">Antall er i tusen personer. Primær: jordbruk, skogbruk og fiske. Sekundær: bergverk og oljeutvinning, industri, kraftforsyning, vann/avløp/renovasjon og bygg/anlegg. Tertiær: total minus primær og sekundær. Prosentandel = gruppe delt på total, ganger hundre. Avrundede andeler kan summere til 99,9 eller 100,1.</p>
-      <div className="overflow-x-auto"><table className="w-full text-left text-sm">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Tabell: Norge, utvalgte år 1970–2023. SSB 09174: sysselsatte personer, lønnstakere og selvstendige. Antall i 1000 personer, andeler i prosent."><table className="w-full text-left text-sm">
         <caption className="py-2 text-left">Norge, utvalgte år 1970–2023. SSB 09174: sysselsatte personer, lønnstakere og selvstendige. Antall i 1000 personer, andeler i prosent.</caption>
         <thead><tr>{["År", "Totalt, tusen", "Primær, tusen", "Sekundær, tusen", "Tertiær, tusen (rest)", "Primær, prosent", "Sekundær, prosent", "Tertiær, prosent"].map((t) => <th key={t} scope="col" className="p-2">{t}</th>)}</tr></thead>
         <tbody>{NAERING_STRUKTUR.map((d) => <tr key={d.ar}><th scope="row" className="p-2">{d.ar}</th>{[d.total, d.primaer, d.sekundaer, d.tertiaer, ...d.andeler].map((v, i) => <td key={i} className="p-2">{format(v)}</td>)}</tr>)}</tbody>

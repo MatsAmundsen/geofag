@@ -1,0 +1,9 @@
+Figur 8.5 – Økologisk fotavtrykk og biokapasitet i verden, 1961–2025 (figur-8-5-*.webp/png)
+Data: Lo, K., Basnet, N., Miller, E., Srikanthalingam, B., Foley, B., Van Berkum, J. L., Long, A. H., Toneva, P., Ermina, M., & Klinkenberg, C. (2026).
+National Ecological Footprint and Biocapacity Accounts, edition 2026 (1961–2025), versjon 1.0. Footprint Data Foundation, York University og University of Iceland.
+https://fodafo.org/data/ (arket world_data, kolonnene efp_total_percapita og biocap_total_percapita)
+Lisens for dataene: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), https://creativecommons.org/licenses/by-sa/4.0/
+Overforbruksdager: Lin, D., & Wackernagel, M. (2026), Global Footprint Network; GFN (u.å.-b); WWF Verdens naturfond (u.å.). Bare datoene er brukt, ingen GFN-grafikk.
+Figuren er tegnet fra bunnen av Geofag.com og deles under CC BY-SA 4.0.
+Kildefiler og byggskript: /workspace/geografi-bilder/figur-8.5/ (SVG lys/mørk, desktop 960×756 og mobil 720×1116).
+Rasterisert med Chrome til 960/1920 px (desktop) og 390/780 px (mobil), WebP med PNG som reserve.
