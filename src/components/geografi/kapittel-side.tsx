@@ -8,6 +8,8 @@ import { GEOGRAFI_KAPITLER } from "@/lib/geografi-kapitler";
 import { KILDER_GEOGRAFI } from "@/lib/kilder-geografi";
 import { Kildeliste } from "@/components/kildeliste";
 import { PosterBody } from "@/components/poster-body";
+import { BannerBilde } from "@/components/geografi/banner-bilde";
+import { bannerKreditt } from "@/lib/geografi-banner";
 import { useEffect, useState } from "react";
 import { getPost, type Post } from "@/lib/posts";
 import { geografiHeadingAliases, sliceGeografiUnderkapittel } from "@/lib/geografi-seksjon";
@@ -96,10 +98,10 @@ export function GeografiKapittelSide({
       <SiteHeader />
       <main id="innhold" className="flex-1">
         <header className="relative isolate min-h-[19.5rem] overflow-hidden">
-          <img
-            src={kapittel.image}
-            alt={kapittel.alt}
-            fetchPriority="high"
+          <BannerBilde
+            banner={kapittel.banner}
+            sizes="100vw"
+            hero
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/25 lys:via-background/94 lys:to-background/80" />
@@ -151,6 +153,11 @@ export function GeografiKapittelSide({
               </p>
             </div>
           </div>
+          <p className="absolute inset-x-4 bottom-2 flex justify-end sm:inset-x-6">
+            <span className="rounded bg-background/90 px-1.5 py-0.5 text-right text-[0.6875rem] leading-snug text-foreground/90 lys:bg-background/95">
+              {bannerKreditt(kapittel.banner)}
+            </span>
+          </p>
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
@@ -227,7 +234,13 @@ export function GeografiKapittelSide({
 
           {kilder.length > 0 ? (
             <section className="mt-10">
-              <Kildeliste kilder={kilder} />
+              <Kildeliste
+                kilder={kilder}
+                bilde={{
+                  tekst: `Bannerbilde: ${kapittel.banner.foto}, ${kapittel.banner.lisens}, bearbeidet av Geofag.com.`,
+                  href: kapittel.banner.href,
+                }}
+              />
             </section>
           ) : null}
 

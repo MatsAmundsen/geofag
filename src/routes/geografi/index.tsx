@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { BannerBilde } from "@/components/geografi/banner-bilde";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GEOGRAFI_KAPITLER } from "@/lib/geografi-kapitler";
@@ -99,9 +100,9 @@ function GeografiOversikt() {
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
                 >
                   <div className="relative aspect-photo overflow-hidden">
-                    <img
-                      src={kap.image}
-                      alt={kap.alt}
+                    <BannerBilde
+                      banner={kap.banner}
+                      sizes="(min-width: 1152px) 552px, (min-width: 640px) 50vw, 100vw"
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />
                   </div>

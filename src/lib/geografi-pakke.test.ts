@@ -312,7 +312,7 @@ describe("Geografi kapittel 2: feltarbeid (PR C)", () => {
     assert.match(reseeds, /flag: "geo-feltarbeid-kap2-2026-11-06",\s+slug: "geo-feltarbeid"/);
     assert.match(read("geografi-kapitler.ts"), /path: "feltarbeid",\s+tekstKlar: true/);
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
-    assert.match(read("../components/geografi/kapittel-side.tsx"), /Kildeliste kilder=\{kilder\}/);
+    assert.match(read("../components/geografi/kapittel-side.tsx"), /<Kildeliste\s+kilder=\{kilder\}/);
   });
 });
 

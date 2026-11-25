@@ -1,5 +1,7 @@
 /** Kapittelmetadata for Geografi (GEO01-02). */
 
+import { GEOGRAFI_BANNERE, type GeografiBanner } from "./geografi-banner.ts";
+
 export type GeografiUnderkapittel = {
   readonly id: string;
   readonly title: string;
@@ -14,8 +16,11 @@ export type GeografiKapittel = {
   readonly navLabel: string;
   readonly kicker: string;
   readonly blurb: string;
+  /** Bannerbildet (jpg, 1792 px); kort og meny bruker denne. */
   readonly image: string;
   readonly alt: string;
+  /** Banneret med webp/avif, @2x og kreditlinje. */
+  readonly banner: GeografiBanner;
   readonly maal: readonly string[];
   readonly maalHoved: string;
   readonly laeringsmaal: readonly string[];
@@ -27,8 +32,10 @@ export type GeografiKapittel = {
   readonly tekstKlar?: boolean;
 };
 
-const BANNER = "/images/hero-earth.jpg";
-const BANNER_ALT = "Jorda sett fra lav bane over hav og skyer";
+const banner = (path: keyof typeof GEOGRAFI_BANNERE) => {
+  const bilde = GEOGRAFI_BANNERE[path];
+  return { image: `${bilde.base}.jpg`, alt: bilde.alt, banner: bilde };
+};
 
 export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   {
@@ -39,8 +46,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Verktøy",
     kicker: "Metoder",
     blurb: "Utforske og presentere geografiske forhold med kilder og kart, og forberede feltarbeid.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("verktoy"),
     maal: ["KM487", "KM486"],
     maalHoved: "KM487",
     laeringsmaal: [
@@ -71,8 +77,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Felt",
     kicker: "Metoder",
     blurb: "Planlegge, gjennomføre og presentere et geografisk feltarbeid med trygghet og kildekritikk.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("feltarbeid"),
     maal: ["KM486", "KM487"],
     maalHoved: "KM486",
     laeringsmaal: [
@@ -101,8 +106,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Indre",
     kicker: "Landskap",
     blurb: "Jordas oppbygning, platetektonikk, jordskjelv, vulkaner og berggrunn — egne Vg1-sider for Geografi.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("indre-krefter"),
     maal: ["KM480", "KM483"],
     maalHoved: "KM480",
     laeringsmaal: [
@@ -134,8 +138,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Landskap",
     kicker: "Landskap",
     blurb: "Forvitring, is, elver og kyst former landskapet, og landformene påvirker bosetting og ressursbruk.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("landskap"),
     maal: ["KM480", "KM483"],
     maalHoved: "KM480",
     laeringsmaal: [
@@ -164,8 +167,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Klima",
     kicker: "Klima",
     blurb: "Vær og klima, sirkulasjoner, drivhuseffekt og hva klimaendringer betyr lokalt og globalt.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("klima"),
     maal: ["KM482", "KM483", "KM485"],
     maalHoved: "KM482",
     laeringsmaal: [
@@ -198,8 +200,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Naturfare",
     kicker: "Fare",
     blurb: "Skille fare, risiko og sårbarhet, og utforske en aktuell natur- eller miljøkatastrofe.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("naturfare"),
     maal: ["KM483", "KM482", "KM487"],
     maalHoved: "KM483",
     laeringsmaal: [
@@ -230,8 +231,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Ressurser",
     kicker: "Ressurser",
     blurb: "Ressurstyper, arealbruk og interessekonflikter i Norge, Sápmi og nordområdene.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("ressurser"),
     maal: ["KM481", "KM480", "KM485"],
     maalHoved: "KM481",
     laeringsmaal: [
@@ -261,8 +261,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Bærekraft",
     kicker: "Bærekraft",
     blurb: "Utvikling, bærekraftsmål, fotavtrykk og Norges ressursbruk i et globalt perspektiv.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("baerekraft"),
     maal: ["KM485", "KM484", "KM481"],
     maalHoved: "KM485",
     laeringsmaal: [
@@ -293,8 +292,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Næring",
     kicker: "Samfunn",
     blurb: "Næringsstruktur, lokalisering, verdikjeder og hvordan forbruk påvirker produksjon andre steder.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("naering"),
     maal: ["KM485", "KM481", "KM484"],
     maalHoved: "KM485",
     laeringsmaal: [
@@ -323,8 +321,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Befolkning",
     kicker: "Samfunn",
     blurb: "Demografiske mål, befolkningspyramider, overgangsmodellen og ulike levekår i verden.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("befolkning"),
     maal: ["KM484", "KM485"],
     maalHoved: "KM484",
     laeringsmaal: [
@@ -355,8 +352,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
     navLabel: "Migrasjon",
     kicker: "Samfunn",
     blurb: "Typer migrasjon, skyve- og trekkfaktorer, flytting i Norge og den globale flyktningsituasjonen.",
-    image: BANNER,
-    alt: BANNER_ALT,
+    ...banner("migrasjon"),
     maal: ["KM484", "KM481"],
     maalHoved: "KM484",
     laeringsmaal: [

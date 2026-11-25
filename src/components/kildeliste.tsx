@@ -1,6 +1,13 @@
 import type { Kilde } from "@/lib/kilder";
 
-export function Kildeliste({ kilder }: { kilder: readonly Kilde[] }) {
+export function Kildeliste({
+  kilder,
+  bilde,
+}: {
+  kilder: readonly Kilde[];
+  /** Kreditt for sidens bannerbilde, under lista. */
+  bilde?: { tekst: string; href?: string };
+}) {
   if (kilder.length === 0) return null;
 
   const sorted = [...kilder].sort((a, b) =>
@@ -34,6 +41,24 @@ export function Kildeliste({ kilder }: { kilder: readonly Kilde[] }) {
           </li>
         ))}
       </ol>
+      {bilde ? (
+        <p className="mt-6 pl-8 -indent-8 text-sm leading-relaxed text-foreground/90">
+          {bilde.tekst}
+          {bilde.href ? (
+            <>
+              {" "}
+              <a
+                href={bilde.href}
+                className="break-all text-primary underline decoration-1 underline-offset-[0.18em] hover:decoration-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {bilde.href}
+              </a>
+            </>
+          ) : null}
+        </p>
+      ) : null}
     </section>
   );
 }
