@@ -392,11 +392,11 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
     assert.match(md, /### 7. Vurder et tiltak/);
   });
 
-  it("har én skjult figurplass (8.5, lisens) og sju registrerte Vg1-figurer", () => {
+  it("har ingen figurplassholdere og åtte registrerte Vg1-figurer, også 8.5", () => {
     const numbers = [...md.matchAll(/^\[figur-8-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b);
-    assert.deepEqual(numbers, [5]);
+    assert.deepEqual(numbers, []);
     const widgets = parsePosterMarkdown(md).filter((part) => part.type === "widget");
-    assert.deepEqual(widgets.map((part) => part.id), ["GeoBaerekraftFattigdomKart", "GeoHdiBnp", "GeoBaerekraftTre", "GeoBaerekraftPlanetaere", "GeoLokalFotavtrykk", "GeoBaerekraftCo2Kart", "GeoBaerekraftCo2Serie"]);
+    assert.deepEqual(widgets.map((part) => part.id), ["GeoBaerekraftFattigdomKart", "GeoHdiBnp", "GeoBaerekraftTre", "GeoBaerekraftPlanetaere", "GeoBaerekraftFotavtrykk", "GeoLokalFotavtrykk", "GeoBaerekraftCo2Kart", "GeoBaerekraftCo2Serie"]);
     assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBaerekraftTre:.*BaerekraftTreFigur geografi/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap8-redaksjon|figur-8-/);
@@ -404,8 +404,8 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
     assert.doesNotMatch(md, /[Ss]e figur 8\.[124567]/);
   });
 
-  it("har 28 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 28);
+  it("har 30 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 30);
     assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
     for (const domain of ["udir.no", "ssb.no", "undp.org", "worldbank.org", "footprintnetwork.org", "footprintcalculator.org", "wwf.no", "pik-potsdam.de", "ipcc.ch", "unep.org", "sdgs.un.org", "miljodirektoratet.no", "regjeringen.no", "stratigraphy.org", "ourworldindata.org", "fn.no"])
       assert.ok(sources.includes(domain), domain);

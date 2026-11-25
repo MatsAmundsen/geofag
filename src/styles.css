@@ -1023,6 +1023,38 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 }
 
 /*
+ * Figurer med egen lys og mørk utgave (Geografi figur 8.5, baerekraft-valg.tsx). Mørk utgave
+ * som standard (mørkt tema og sider uten kapittel-layout). På lyse kapittelsider vises den lyse
+ * utgaven på hvit flate med lyse tekstfarger, i stedet for den mørke figurflaten over.
+ */
+.geo-tema-figur {
+  background-color: var(--color-card);
+}
+.geo-tema-figur__lys {
+  display: none;
+}
+.geo-tema-figur__mork,
+.geo-tema-figur__lys {
+  max-width: 100%;
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .geo-tema-figur {
+  --color-foreground: #14261d;
+  --color-card-foreground: #14261d;
+  --color-muted-foreground: #46594d;
+  --color-border: #bcd4c4;
+  --color-primary: #17684a;
+  background-color: #ffffff;
+  border-color: #bcd4c4;
+  color: #14261d;
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .geo-tema-figur .geo-tema-figur__lys {
+  display: block;
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .geo-tema-figur .geo-tema-figur__mork {
+  display: none;
+}
+
+/*
  * Innblikk-boks (Geografi, poster-body.tsx): samme grønne familie som callout-ene over
  * (#145a40, grønn venstrestrek), men lys flate og egen etikett med ikon, så den skilles fra
  * fakta-callouts. Brødtekst, figurer og tabeller inni beholder sidens farger.

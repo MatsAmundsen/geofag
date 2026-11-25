@@ -1502,6 +1502,18 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.regjeringen.no/no/aktuelt/klimagassutslepp-fra-forbruk/id3160323/",
     },
     {
+      prefix: "Lin, D., & Wackernagel, M. (2026, mai). ",
+      italic: "Estimating the date of Earth Overshoot Day 2026",
+      suffix: ". Global Footprint Network.",
+      href: "https://overshoot.footprintnetwork.org/content/uploads/2026/05/2026-Nowcast-explained.pdf",
+    },
+    {
+      prefix: "Lo, K., Basnet, N., Miller, E., Srikanthalingam, B., Foley, B., Van Berkum, J. L., Long, A. H., Toneva, P., Ermina, M., & Klinkenberg, C. (2026). ",
+      italic: "National Ecological Footprint and Biocapacity Accounts, edition 2026 (1961–2025)",
+      suffix: " (Versjon 1.0) [Datasett]. Footprint Data Foundation, York University og University of Iceland. CC BY-SA 4.0.",
+      href: "https://fodafo.org/data/",
+    },
+    {
       prefix: "Miljødirektoratet. (u.å.-a). ",
       italic: "Norske utslipp og opptak av klimagasser",
       suffix: ". Hentet 6. november 2026.",
