@@ -7,9 +7,12 @@
  *
  * Her lagres i stedet en hash av teksten vi selv skrev sist (`seed-hash:<slug>`):
  * - raden er lik md → bare noter hashen
- * - raden er en kjent stubb (skjelettmerker) → skriv md
+ * - raden er tom eller tegn for tegn lik skjelettstubben (hash i GEO_STUB_HASHES) → skriv md
  * - raden er lik det vi skrev sist (hash stemmer) → ingen har redigert den, skriv md
  * - ellers er raden redigert i CMS → ALDRI overskriv, bare meld avvik
+ *
+ * Skrivingen er betinget: `save` får teksten vi leste, og lagrer bare hvis raden fortsatt har
+ * nøyaktig den teksten. En CMS-lagring mellom lesing og skriving vinner da alltid.
  *
  * En samlet versjonsnøkkel (hash av alle md-tekstene) gjør at løkka hoppes over
  * med ett DO-kall når ingenting er endret.
@@ -20,7 +23,11 @@ export type GeoSeed = { slug: string; bodyMarkdown: string };
 export type GeoReseedStore = {
   persist: string;
   get: (slug: string) => Promise<{ bodyMarkdown: string; published?: number | null } | null>;
-  save: (slug: string, published: number) => Promise<void>;
+  /**
+   * Skriv md-teksten for `slug` bare hvis raden fortsatt har `expectedBody` (betinget skriving).
+   * Returnerer false hvis raden er endret i mellomtiden; da skrives ingenting.
+   */
+  save: (slug: string, published: number, expectedBody: string) => Promise<boolean>;
   getMeta: (key: string) => Promise<string | null>;
   setMeta: (key: string, value: string) => Promise<void>;
 };
@@ -29,18 +36,30 @@ export type GeoReseedResult = {
   skipped: boolean;
   written: string[];
   avvik: string[];
+  /** Rader som ble endret mellom lesing og betinget skriving, og derfor ikke ble skrevet. */
+  kollisjon: string[];
 };
 
 /**
- * Tekst som bare skjelettet (PR A) hadde. `FIGURPLASSHOLDER` er bevisst IKKE med:
- * den står i ferdige kapitler (8.5) og kan stå i en tekst Mats har redigert.
+ * Skjelettstubbene (commit ddf9482, «## Planlagte underkapitler» / «Innholdet er under arbeid»),
+ * én per kapittel, som `textHash`. Bare en rad som er tegn for tegn lik stubben regnes som stubb.
+ * Det finnes ingen lengde- eller merkeheuristikk: en tekst Mats har redigert, er aldri en stubb,
+ * selv om den fortsatt inneholder et av skjelettmerkene. Generert fra git-historikken til
+ * src/lib/posts/geo-*.md (alle versjoner med et skjelettmerke).
  */
-export const GEO_STUB_MARKERS = [
-  "## Planlagte underkapitler",
-  "Innholdet er under arbeid",
-] as const;
-/** Skjelettstubbene var 1–2 kB. En lang tekst med et av merkene er ikke en stubb. */
-export const GEO_STUB_MAX_LENGTH = 8000;
+export const GEO_STUB_HASHES: Readonly<Record<string, readonly string[]>> = {
+  "geo-baerekraft": ["r1-22e26db5-850a10cd"],
+  "geo-befolkning": ["q0-e92dcad1-10e1389b"],
+  "geo-feltarbeid": ["ov-e187c604-7b6d6982"],
+  "geo-indre-krefter": ["t7-43d0d6d3-ac13a993"],
+  "geo-klima": ["tu-b80d51bf-2731d929"],
+  "geo-landskap": ["q9-4db9fe02-6dff58d8"],
+  "geo-migrasjon": ["n8-43641b8d-d283529d"],
+  "geo-naering": ["ok-45c22c99-3d847891"],
+  "geo-naturfare": ["si-3e8469be-42bf4b48"],
+  "geo-ressurser": ["rb-447e665d-8876363b"],
+  "geo-verktoy": ["ta-57b88188-24c56248"],
+};
 
 export const GEO_RESEED_VERSION_META = "geografi-md-versjon";
 export const GEO_AVVIK_META = "geografi-cms-avvik";
@@ -57,11 +76,14 @@ export function textHash(text: string): string {
   return `${text.length.toString(36)}-${(a >>> 0).toString(16)}-${(b >>> 0).toString(16)}`;
 }
 
-export function isGeoStub(body: string): boolean {
+/** Ren stubb: tom rad eller nøyaktig skjelettstubben for kapitlet. */
+export function isGeoStub(
+  slug: string,
+  body: string,
+  stubHashes: Readonly<Record<string, readonly string[]>> = GEO_STUB_HASHES,
+): boolean {
   if (!body.trim()) return true;
-  return (
-    body.length < GEO_STUB_MAX_LENGTH && GEO_STUB_MARKERS.some((marker) => body.includes(marker))
-  );
+  return (stubHashes[slug] ?? []).includes(textHash(body));
 }
 
 export function geoSeedsVersion(seeds: readonly GeoSeed[]): string {
@@ -71,10 +93,11 @@ export function geoSeedsVersion(seeds: readonly GeoSeed[]): string {
 export async function reseedGeografiFromMd(
   store: GeoReseedStore,
   seeds: readonly GeoSeed[],
+  stubHashes: Readonly<Record<string, readonly string[]>> = GEO_STUB_HASHES,
 ): Promise<GeoReseedResult> {
   const durable = store.persist === "do" || store.persist === "d1";
   const version = geoSeedsVersion(seeds);
-  const result: GeoReseedResult = { skipped: false, written: [], avvik: [] };
+  const result: GeoReseedResult = { skipped: false, written: [], avvik: [], kollisjon: [] };
   if (durable && (await store.getMeta(GEO_RESEED_VERSION_META)) === version) {
     return { ...result, skipped: true };
   }
@@ -95,10 +118,16 @@ export async function reseedGeografiFromMd(
     }
     const lastWritten = durable ? await store.getMeta(hashKey) : null;
     const untouched = lastWritten !== null && lastWritten === textHash(existing.bodyMarkdown);
-    if (isGeoStub(existing.bodyMarkdown) || untouched) {
-      await store.save(seed.slug, existing.published ?? 1);
-      if (durable) await store.setMeta(hashKey, seedHash);
-      result.written.push(seed.slug);
+    if (isGeoStub(seed.slug, existing.bodyMarkdown, stubHashes) || untouched) {
+      const saved = await store.save(seed.slug, existing.published ?? 1, existing.bodyMarkdown);
+      if (saved) {
+        if (durable) await store.setMeta(hashKey, seedHash);
+        result.written.push(seed.slug);
+      } else {
+        // Raden ble endret (CMS-lagring) mellom lesing og skriving. Ikke rørt; prøv neste gang.
+        complete = false;
+        result.kollisjon.push(seed.slug);
+      }
       continue;
     }
     result.avvik.push(seed.slug);

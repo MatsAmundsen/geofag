@@ -77,4 +77,32 @@ describe("handlePostsDoOp", () => {
     await handlePostsDoOp(storage, { op: "setMeta", key: "session", value: "abc" }, seed);
     assert.equal(await handlePostsDoOp(storage, { op: "getMeta", key: "session" }, seed), "abc");
   });
+
+  it("saveIfBody lagrer bare når raden fortsatt har teksten som ble lest", async () => {
+    const storage = memoryDoStorage();
+    const input = { ...seed, bodyMarkdown: "fra md" } as const;
+    const nei = (await handlePostsDoOp(
+      storage,
+      { op: "saveIfBody", input, expectedBody: "en annen tekst" },
+      seed,
+    )) as { saved: boolean };
+    assert.equal(nei.saved, false);
+    const uendret = (await handlePostsDoOp(storage, { op: "get", slug: "platetektonikk" }, seed)) as Post;
+    assert.equal(uendret.bodyMarkdown, seed.bodyMarkdown);
+    const ja = (await handlePostsDoOp(
+      storage,
+      { op: "saveIfBody", input, expectedBody: seed.bodyMarkdown },
+      seed,
+    )) as { saved: boolean };
+    assert.equal(ja.saved, true);
+    const ny = (await handlePostsDoOp(storage, { op: "get", slug: "platetektonikk" }, seed)) as Post;
+    assert.equal(ny.bodyMarkdown, "fra md");
+    assert.equal(ny.id, 1);
+    const mangler = (await handlePostsDoOp(
+      storage,
+      { op: "saveIfBody", input: { ...input, slug: "finnes-ikke" }, expectedBody: "" },
+      seed,
+    )) as { saved: boolean };
+    assert.equal(mangler.saved, false);
+  });
 });
