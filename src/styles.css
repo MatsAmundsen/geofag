@@ -852,6 +852,18 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-950: oklch(98.4% 0.003 247.858);
 }
 
+/*
+ * Figurer beholder det mørke temaet også på lyse kapittelsider (variablene over). Figurer
+ * uten egen bakgrunn arvet sidens lyse flate og fikk lys tekst på lys bunn (axe color-contrast).
+ * Her får de samme mørke kortflate som figurene med bg-card. I @layer base, så en bg-klasse
+ * på figuren går foran.
+ */
+@layer base {
+  :root:not([data-tema="mork"]):has(.kapittel-lys) :where(figure) {
+    background-color: var(--color-card);
+  }
+}
+
 :root:not([data-tema="mork"]):has(.kapittel-lys) :is(figure, .jet-root) {
   --color-background: #0b1014;
   --color-foreground: #e8eef2;
