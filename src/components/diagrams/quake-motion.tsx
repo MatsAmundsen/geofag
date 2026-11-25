@@ -219,7 +219,7 @@ export function ElasticReboundDiagram({ geografi = false }: { geografi?: boolean
           {step === 2 || step === 3 ? (
             <g>
               <rect x="368" y="188" width="24" height="28" rx="3" fill={C.low} />
-              <L x="404" y="206" fill={C.low} size={13} weight={700}>
+              <L x="404" y="206" fill="#d98585" size={13} weight={700}>
                 friksjon låser
               </L>
             </g>

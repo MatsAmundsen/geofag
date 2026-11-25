@@ -24,14 +24,14 @@ export function GeografiTemperaturserie() {
     .map(([a, t], i) => `${i ? "L" : "M"}${x(a).toFixed(1)} ${y(t).toFixed(1)}`)
     .join("");
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 5.0 – Global temperatur 1880–2025
       </h3>
       <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 5.0 – Global temperatur 1880–2025, kan rulles sideveis">
         <svg
           viewBox={`0 0 ${W} ${H}`}
-          className="min-w-[560px] w-full"
+          className="min-w-[560px] w-full rounded bg-white"
           role="img"
           aria-label="Linjediagram over global årsmiddeltemperatur 1880 til 2025 som avvik fra 1951–1980. Kurven ligger rundt minus 0,2 til minus 0,4 grader fram til rundt 1920, nær null midt i århundret og stiger tydelig etter rundt 1980 til 1,28 grader i 2024 og 1,18 grader i 2025."
         >
@@ -172,7 +172,7 @@ export function GeografiBangladeshLokator() {
   const [dx, dy] = gallPeters(90.406634, 23.725006);
   const verden = land as { name: string; iso3: string; path: string }[];
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 5.11 – Hvor ligger Bangladesh?
       </h3>

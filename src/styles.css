@@ -928,6 +928,41 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   color: var(--color-foreground);
 }
 
+/*
+ * Figurer tegnet for hvit bunn (mørk tekst som #334155, lyse kart og koropletkart) får hvit flate
+ * på lyse kapittelsider. De semantiske fargevariablene (foreground, card, border …) arves fra siden
+ * i stedet for figurens mørke variabler over, så tekst, skjemaer og kanter følger det lyse temaet.
+ * Tailwind-paletten (slate-200 osv.) beholder standardverdiene fra figurregelen over, siden disse
+ * figurene er tegnet med standardpaletten. Lista over figurer og flate står i
+ * src/lib/geografi-figurflate.ts og testes i geografi-figurflate.test.ts.
+ */
+:root:not([data-tema="mork"]):has(.kapittel-lys) figure.geo-lys-flate {
+  --color-background: inherit;
+  --color-foreground: inherit;
+  --color-card: inherit;
+  --color-card-foreground: inherit;
+  --color-muted: inherit;
+  --color-muted-foreground: inherit;
+  --color-primary: inherit;
+  --color-primary-foreground: inherit;
+  --color-secondary: inherit;
+  --color-secondary-foreground: inherit;
+  --color-accent: inherit;
+  --color-accent-foreground: inherit;
+  --color-border: inherit;
+  --color-ring: inherit;
+  --color-lava: inherit;
+  --color-lava-foreground: inherit;
+  background-color: #ffffff;
+  border-color: #bcd4c4;
+  color: var(--color-foreground);
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) figure.geo-lys-flate .geo-merkelapp {
+  border-color: #d97706;
+  background-color: #fef3c7;
+  color: #78350f;
+}
+
 /* Temaknappen (kapittelheader). Ikonet og teksten følger data-tema direkte i CSS, så de er riktige fra første maling. */
 .tema-knapp .tema-til-lys { display: none; }
 :root[data-tema="mork"] .tema-knapp .tema-til-lys { display: inline-flex; }

@@ -5,7 +5,7 @@ import vulk from "@/lib/geografi-vulkaner-2000-2025.json";
 export function GeografiVarmeflekker() {
   const id = useId();
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 3.9 – Plategrenser og utvalgte varmeflekker
       </h3>

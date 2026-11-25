@@ -125,7 +125,7 @@ export function SkredSonerDiagram({ caption }: { caption?: string } = {}) {
           <L x="90" y="76" fill={C.low} size={14}>
             1 · løsneområde
           </L>
-          <L x="196" y="112" fill={C.muted} size={12}>
+          <L x="196" y="112" fill="#a3b0ba" size={12}>
             bratt, her bryter massen løs
           </L>
 

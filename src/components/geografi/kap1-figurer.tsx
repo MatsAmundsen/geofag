@@ -436,6 +436,7 @@ function GisModell() {
 function SnowKart() {
   return (
     <GeoFigur
+      flate="lys"
       heading="Figur 1.9 – John Snows kart over kolerautbruddet i Soho, London 1854"
       caption="De svarte strekene langs husveggene er registrerte dødsfall, og PUMP markerer vannpumper. Utsnittet viser området rundt pumpen i Broad Street, der strekene ligger tettest. Kartet ble trykt i Snows bok i 1855, året etter utbruddet. Det støttet en hypotese Snow allerede hadde, og var ikke et bevis alene."
       kilde={
@@ -499,6 +500,7 @@ function ToKart() {
   );
   return (
     <GeoFigur
+      flate="lys"
       heading="Figur 1.10 – Innblikk: to kart over det samme oppdiktede området"
       caption="Begge kartene bruker samme bakgrunn, men formålet bestemmer hva som er framhevet. Kart 1 viser hvor elever møtes. Kart 2 viser hvilke strekninger klassen vil undersøke nærmere. Ingen av kartene sier noe om fare. Hva kan du ikke slutte fra kartene?"
       kilde="Egne skisser av geofag.com over et oppdiktet område."

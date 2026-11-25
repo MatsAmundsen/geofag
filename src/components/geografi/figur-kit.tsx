@@ -16,6 +16,7 @@ export function GeoFigur({
   caption,
   kilde,
   action,
+  flate = "mork",
   children,
 }: {
   heading: string;
@@ -23,11 +24,13 @@ export function GeoFigur({
   /** Kreditering, f.eks. «Kart: Natural Earth (public domain). Utforming: geofag.com». */
   kilde?: ReactNode;
   action?: ReactNode;
+  /** «lys» for figurer tegnet for hvit bunn: hvit figurflate i lyst tema (se geografi-figurflate.ts). */
+  flate?: "lys" | "mork";
   children: ReactNode;
 }) {
   return (
     <FigureFrame
-      className="geo-figur"
+      className={flate === "lys" ? "geo-figur geo-lys-flate" : "geo-figur"}
       heading={heading}
       action={action}
       caption={
@@ -215,7 +218,7 @@ export function Flate({ farge, kant }: { farge: string; kant?: string }) {
 /** Liten merkelapp «Oppdiktet eksempel» / «Konstruerte tall» som står i selve figuren. */
 export function Merkelapp({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-block rounded-md border border-amber-400/60 bg-amber-950/60 px-2 py-0.5 text-xs font-medium text-amber-200">
+    <span className="geo-merkelapp inline-block rounded-md border border-amber-400/60 bg-amber-950/60 px-2 py-0.5 text-xs font-medium text-amber-200">
       {children}
     </span>
   );

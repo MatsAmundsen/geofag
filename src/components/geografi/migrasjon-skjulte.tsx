@@ -14,7 +14,7 @@ export function GeografiNettomigrasjonKart() {
     verdi: r.verdi,
   }));
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 11.1 – Nettomigrasjon per 1000 innbyggere, 2023
       </h3>
@@ -49,7 +49,7 @@ export function GeografiMigrantkorridorer() {
   const id = useId();
   const verden = land as { name: string; iso3: string; path: string }[];
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         Figur 11.6 – Ti store forbindelser mellom fødeland og bostedsland, 2024
       </h3>

@@ -1,5 +1,5 @@
 import { useId, useState, type ReactNode } from "react";
-import { C, L } from "@/components/diagrams/svg-kit";
+import { L } from "@/components/diagrams/svg-kit";
 import land from "@/lib/geografi-verdensland.json";
 import data from "@/lib/geografi-skjelv-2023.json";
 
@@ -34,7 +34,7 @@ export function SkjelvVerdenskart({
   const [skjelv, setSkjelv] = useState(visSkjelv);
   const sterke = data.skjelv.filter((s) => s.mag >= 7);
   return (
-    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
         {heading}
       </h3>
@@ -68,14 +68,14 @@ export function SkjelvVerdenskart({
                 r={s.mag >= 7 ? 6 : 3}
                 fill={s.mag >= 7 ? "#f59e0b" : "#fbbf24"}
                 fillOpacity="0.85"
-                stroke={C.fg}
-                strokeWidth="0.6"
+                stroke="#7c2d12"
+                strokeWidth="1.2"
               >
                 <title>{`M ${s.mag}, ${s.dato}, ${s.sted}`}</title>
               </circle>
             ))}
           {ekstra}
-          <L x="450" y="552" anchor="middle" size={12}>
+          <L x="450" y="552" anchor="middle" size={12} fill="#1e293b">
             Egen Gall–Peters-projeksjon, flateriktig. Nord er opp.
           </L>
         </svg>
@@ -100,8 +100,8 @@ export function SkjelvVerdenskart({
         {skjelv && (
           <li className="flex items-center gap-2">
             <svg width="30" height="14" aria-hidden="true">
-              <circle cx="6" cy="7" r="3" fill="#fbbf24" stroke="#000" strokeWidth="0.6" />
-              <circle cx="20" cy="7" r="6" fill="#f59e0b" stroke="#000" strokeWidth="0.6" />
+              <circle cx="6" cy="7" r="3" fill="#fbbf24" stroke="#7c2d12" strokeWidth="1.2" />
+              <circle cx="20" cy="7" r="6" fill="#f59e0b" stroke="#7c2d12" strokeWidth="1.2" />
             </svg>
             Jordskjelv 2023: liten sirkel M 6–6,9, stor sirkel M 7 eller mer
           </li>
