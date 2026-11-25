@@ -18,9 +18,7 @@ export type Figurflate = {
 export const LYSE_FIGURER: readonly Figurflate[] = [
   { figur: "1.9", kilde: "kap1-figurer.tsx", merke: "Figur 1.9 – John Snows kart", grunn: "historisk kart på hvit bunn" },
   { figur: "1.10", kilde: "kap1-figurer.tsx", merke: "Figur 1.10 – Innblikk: to kart", grunn: "lyst kart med mørk tekst" },
-  { figur: "3.0", kilde: "indre-valg.tsx", merke: "Figur 3.0. Tektoniske plater", grunn: "USGS-kart på hvit bunn, mørk tekst" },
   { figur: "3.0b", kilde: "skjelv-verdenskart.tsx", merke: "Egen Gall–Peters-projeksjon", grunn: "lyst verdenskart (felles med 6.1)" },
-  { figur: "3.9", kilde: "indre-skjulte.tsx", merke: "Figur 3.9 – Plategrenser", grunn: "USGS-kart på hvit bunn" },
   { figur: "4.9", kilde: "landskap-valg.tsx", merke: "Figur 4.9. Vega", grunn: "lyst kart med mørk tekst" },
   { figur: "5.0", kilde: "klima-skjulte.tsx", merke: "Figur 5.0 – Global temperatur", grunn: "mørk tekst #334155 og rød linje for hvit bunn" },
   { figur: "5.11", kilde: "klima-skjulte.tsx", merke: "Figur 5.11", grunn: "lyst kart med mørk tekst" },

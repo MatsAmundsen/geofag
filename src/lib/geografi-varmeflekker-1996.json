@@ -1,0 +1,130 @@
+{
+ "kilde": "Avlest fra kartet over utvalgte varmeflekker i Kious og Tilling (1996), This Dynamic Earth, USGS, Public Domain. Posisjonene er georeferert med de seks navngitte varmeflekkene som kontrollpunkter (Mercator-tilpasning, rms ca. 2 px i originalen, om lag 2 grader). Omtrentlige posisjoner, ikke en oppdatert liste.",
+ "varmeflekker": [
+  {
+   "navn": "Island",
+   "lon": -17.5,
+   "lat": 64.4
+  },
+  {
+   "navn": null,
+   "lon": -131.7,
+   "lat": 46.3
+  },
+  {
+   "navn": "Yellowstone",
+   "lon": -109.7,
+   "lat": 46.2
+  },
+  {
+   "navn": "Azorene",
+   "lon": -28.0,
+   "lat": 36.5
+  },
+  {
+   "navn": null,
+   "lon": -20.4,
+   "lat": 26.4
+  },
+  {
+   "navn": null,
+   "lon": 18.3,
+   "lat": 21.0
+  },
+  {
+   "navn": "Hawaii",
+   "lon": -154.2,
+   "lat": 19.1
+  },
+  {
+   "navn": null,
+   "lon": -24.3,
+   "lat": 18.0
+  },
+  {
+   "navn": "Afar",
+   "lon": 41.8,
+   "lat": 11.2
+  },
+  {
+   "navn": null,
+   "lon": 9.4,
+   "lat": 4.9
+  },
+  {
+   "navn": "Galápagos",
+   "lon": -93.9,
+   "lat": 0.6
+  },
+  {
+   "navn": null,
+   "lon": 28.1,
+   "lat": -0.1
+  },
+  {
+   "navn": null,
+   "lon": -8.9,
+   "lat": -10.2
+  },
+  {
+   "navn": null,
+   "lon": 43.0,
+   "lat": -10.8
+  },
+  {
+   "navn": null,
+   "lon": -137.2,
+   "lat": -12.1
+  },
+  {
+   "navn": null,
+   "lon": -167.8,
+   "lat": -15.3
+  },
+  {
+   "navn": null,
+   "lon": -148.2,
+   "lat": -19.7
+  },
+  {
+   "navn": null,
+   "lon": 54.2,
+   "lat": -20.1
+  },
+  {
+   "navn": null,
+   "lon": -108.0,
+   "lat": -27.8
+  },
+  {
+   "navn": null,
+   "lon": -138.7,
+   "lat": -30.3
+  },
+  {
+   "navn": null,
+   "lon": 75.9,
+   "lat": -36.9
+  },
+  {
+   "navn": null,
+   "lon": -13.5,
+   "lat": -38.7
+  },
+  {
+   "navn": null,
+   "lon": 37.5,
+   "lat": -45.7
+  },
+  {
+   "navn": null,
+   "lon": 69.2,
+   "lat": -48.8
+  },
+  {
+   "navn": null,
+   "lon": 140.2,
+   "lat": -49.0
+  }
+ ]
+}

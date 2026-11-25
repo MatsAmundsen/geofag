@@ -28,7 +28,12 @@ function tekstfarger(blokk: string) {
 }
 
 // Tekst som står på en egen etikett eller form i figuren, ikke rett på figurflaten.
-const EGEN_BUNN = new Set(["kap1-figurer.tsx|#ffffff|Kart 1: Møteplasser", "kap1-figurer.tsx|#ffffff|Kart 2: Veier vi vil undersøke"]);
+// 3.13: «Grunnfjell …» står på grunnfjellsbåndet (gradient #d79a7c → #b07560, minst 4,9:1 mot #1f0f0b).
+const EGEN_BUNN = new Set([
+  "kap1-figurer.tsx|#ffffff|Kart 1: Møteplasser",
+  "kap1-figurer.tsx|#ffffff|Kart 2: Veier vi vil undersøke",
+  "indre-valg.tsx|#1f0f0b|Grunnfjell under yngre enheter",
+]);
 
 test("figurene i lista over lyse figurer har hvit flate i lyst tema", () => {
   assert.match(css, /:root:not\(\[data-tema="mork"\]\):has\(\.kapittel-lys\) figure\.geo-lys-flate \{[^}]*--color-foreground: inherit;[^}]*background-color: #ffffff;/);
