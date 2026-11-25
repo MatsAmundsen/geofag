@@ -38,13 +38,13 @@ const F85 = "/images/geografi/figur-8-5";
 const F85_ALT =
   "Linjediagram over verdens økologiske fotavtrykk og biokapasitet fra 1961 til 2025, i globale hektar per person. Biokapasiteten synker jevnt fra 3,17 i 1961 til 1,48 i 2025. Fotavtrykket stiger fra 2,20 i 1961, krysser biokapasiteten i 1973 og ligger mellom om lag 2,3 og 2,8 resten av perioden, med 2,51 i 2025. Feltet mellom linjene er overforbruket. De siste to årene er stiplet fordi de er anslag.";
 
-/** Én temavariant av figur 8.5: mobil (≤599 px) og desktop, WebP med PNG som reserve. */
+/** Én temavariant av figur 8.5: mobil (≤599 px, viewBox 720 bred, så teksten er minst 12 px ved 390) og desktop, WebP med PNG som reserve. */
 function Fotavtrykk85Bilde({ tema }: { tema: "lys" | "mork" }) {
   const b = `${F85}-${tema}`;
   return (
     <picture className={`geo-tema-figur__${tema}`}>
-      <source media="(max-width: 599px)" type="image/webp" srcSet={`${b}-mobil-390.webp 390w, ${b}-mobil-780.webp 780w`} sizes="calc(100vw - 4.5rem)" />
-      <source media="(max-width: 599px)" srcSet={`${b}-mobil-780.png 780w`} sizes="calc(100vw - 4.5rem)" />
+      <source media="(max-width: 599px)" type="image/webp" srcSet={`${b}-mobil-390.webp 390w, ${b}-mobil-780.webp 780w`} sizes="calc(100vw - 4.5rem)" width={780} height={1209} />
+      <source media="(max-width: 599px)" srcSet={`${b}-mobil-780.png 780w`} sizes="calc(100vw - 4.5rem)" width={780} height={1209} />
       <source type="image/webp" srcSet={`${b}-960.webp 960w, ${b}-1920.webp 1920w`} sizes="(min-width: 896px) 800px, 100vw" />
       <img src={`${b}-1920.png`} width={960} height={756} alt={F85_ALT} loading="lazy" decoding="async" className="h-auto w-full rounded-lg" />
     </picture>
