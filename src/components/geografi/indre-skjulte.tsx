@@ -9,7 +9,7 @@ export function GeografiVarmeflekker() {
       <h3 id={id} className="text-xl font-semibold">
         Figur 3.9 – Plategrenser og utvalgte varmeflekker
       </h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 3.9 – Plategrenser og utvalgte varmeflekker, kan rulles sideveis">
         <img
           src="/images/geografi/usgs-varmeflekker-1996.png"
           width="692"

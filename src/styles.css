@@ -1249,3 +1249,9 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   .geo-plass[data-widget="GeoFeltFeilkilder"] { --geo-slot: 565px; }
   .geo-plass[data-widget="GeoFeltMikroklimaEget"] { --geo-slot: 524px; }
 }
+
+/* Rullbare figur- og tabellrammer (role="region" tabIndex=0) får synlig tastaturfokus. */
+[role="region"][tabindex="0"]:focus-visible {
+  outline: 2px solid var(--color-ring, currentColor);
+  outline-offset: 2px;
+}

@@ -28,7 +28,7 @@ export function GeografiTemperaturserie() {
       <h3 id={id} className="text-xl font-semibold">
         Figur 5.0 – Global temperatur 1880–2025
       </h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 5.0 – Global temperatur 1880–2025, kan rulles sideveis">
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="min-w-[560px] w-full"

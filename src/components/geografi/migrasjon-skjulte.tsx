@@ -53,7 +53,7 @@ export function GeografiMigrantkorridorer() {
       <h3 id={id} className="text-xl font-semibold">
         Figur 11.6 – Ti store forbindelser mellom fødeland og bostedsland, 2024
       </h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 11.6 – Ti store forbindelser mellom fødeland og bostedsland, 2024, kan rulles sideveis">
         <svg
           viewBox="150 20 600 280"
           className="min-w-[560px] w-full rounded bg-sky-50"

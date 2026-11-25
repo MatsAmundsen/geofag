@@ -32,7 +32,7 @@ export function GeografiKlimadiagram() {
     </p>
     <details className="rounded-lg border border-border p-4">
       <summary className="cursor-pointer font-semibold">Vis klimanormalene som tabell</summary>
-      <div className="overflow-x-auto"><table className="mt-3 w-full text-left text-sm">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Tabell: Oslo – Blindern (18700), 1991–2020: månedsmiddeltemperatur og normal månedsnedbør"><table className="mt-3 w-full text-left text-sm">
         <caption className="pb-2 text-left">Oslo – Blindern (18700), 1991–2020: månedsmiddeltemperatur og normal månedsnedbør</caption>
         <thead><tr><th scope="col">Måned</th><th scope="col">Temperatur (°C)</th><th scope="col">Nedbør (mm)</th></tr></thead>
         <tbody>{OSLO_BLINDERN_NORMALER.map(([month, temperature, rain]) => <tr key={month}><th scope="row">{month}</th><td>{temperature.toLocaleString("nb-NO", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</td><td>{rain}</td></tr>)}</tbody>

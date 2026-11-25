@@ -10,6 +10,7 @@ export function ModelFrame({
   stackToolbar = false,
   children,
   stackHeader = false,
+  titleTag: TitleTag = "p",
 }: {
   kicker: string;
   title: string;
@@ -20,6 +21,8 @@ export function ModelFrame({
   children: ReactNode;
   /** Title and toolbar on separate rows, so a long button row cannot crush the title. */
   stackHeader?: boolean;
+  /** Overskriftsnivå for tittelen der modellen er en nummerert figur i en kapittelside (Geografi). */
+  titleTag?: "p" | "h3";
 }) {
   return (
     <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6">
@@ -31,7 +34,7 @@ export function ModelFrame({
       >
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase tracking-wider text-primary">{kicker}</p>
-          <p className="mt-1 font-display text-xl font-medium tracking-tight sm:text-2xl">{title}</p>
+          <TitleTag className="mt-1 font-display text-xl font-medium tracking-tight sm:text-2xl">{title}</TitleTag>
           <p className="mt-2 max-w-3xl text-sm text-muted-foreground">{lead}</p>
         </div>
         {toolbar ? (

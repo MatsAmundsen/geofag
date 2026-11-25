@@ -38,7 +38,7 @@ export function SkjelvVerdenskart({
       <h3 id={id} className="text-xl font-semibold">
         {heading}
       </h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label={`${heading}, kan rulles sideveis`}>
         <svg
           viewBox="0 0 900 560"
           role="img"
