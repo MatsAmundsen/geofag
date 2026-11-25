@@ -1,10 +1,12 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { readdirSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import {
   GEO_AVVIK_META,
   GEO_RESEED_VERSION_META,
   GEO_STUB_HASHES,
+  GEO_TIDLIGERE_MD_HASHES,
   geoSeedHashMeta,
   isGeoStub,
   reseedGeografiFromMd,
@@ -142,6 +144,56 @@ describe("reseedGeografiFromMd", () => {
     const r = await kjor(f);
     assert.deepEqual(r.written, ["geo-a"]);
     assert.deepEqual(r.avvik, ["geo-b"]);
+  });
+});
+
+describe("første deploy over rader seedet av main (uten seed-hash)", () => {
+  const MAIN_A = "# A\n\nTeksten slik den lå på main.\n";
+  const TIDLIGERE = { "geo-a": [textHash(MAIN_A)] };
+  const kjorMain = (f: ReturnType<typeof fake>) =>
+    reseedGeografiFromMd(f.store, SEEDS, STUBBER, TIDLIGERE);
+
+  it("en rad lik md på main, uten hash, blir oppdatert", async () => {
+    const f = fake("do", { "geo-a": MAIN_A, "geo-b": "ny tekst b" });
+    f.setSeeds(seedMap);
+    const r = await kjorMain(f);
+    assert.deepEqual(r.written, ["geo-a"]);
+    assert.deepEqual(r.avvik, []);
+    assert.equal(f.rows["geo-a"], "ny tekst a");
+    assert.equal(f.meta[geoSeedHashMeta("geo-a")], textHash("ny tekst a"));
+    assert.equal(f.meta[GEO_AVVIK_META], "");
+  });
+
+  it("en rad med CMS-endring av main-teksten, uten hash, blir stående", async () => {
+    const endret = MAIN_A.replace("Teksten", "Mats sin tekst");
+    const f = fake("do", { "geo-a": endret, "geo-b": "ny tekst b" });
+    f.setSeeds(seedMap);
+    const r = await kjorMain(f);
+    assert.deepEqual(r.written, []);
+    assert.deepEqual(r.avvik, ["geo-a"]);
+    assert.equal(f.rows["geo-a"], endret);
+    assert.equal(f.saves.length, 0);
+  });
+
+  it("ett tegn ekstra (f.eks. linjeskift) regnes som endring", async () => {
+    const f = fake("do", { "geo-a": MAIN_A + "\n", "geo-b": "ny tekst b" });
+    f.setSeeds(seedMap);
+    const r = await kjorMain(f);
+    assert.deepEqual(r.avvik, ["geo-a"]);
+  });
+
+  it("hashene dekker md-versjonen på origin/main 52ae17a for alle 11 kapitler (hoppes over uten git-historikk)", (t) => {
+    const git = (...a: string[]) => execFileSync("git", a, { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
+    try {
+      git("cat-file", "-e", "52ae17a^{commit}");
+    } catch {
+      t.skip("52ae17a finnes ikke i denne klonen");
+      return;
+    }
+    for (const slug of Object.keys(GEO_TIDLIGERE_MD_HASHES)) {
+      const tekst = git("show", `52ae17a:src/lib/posts/${slug}.md`);
+      assert.ok(GEO_TIDLIGERE_MD_HASHES[slug]!.includes(textHash(tekst)), slug);
+    }
   });
 });
 

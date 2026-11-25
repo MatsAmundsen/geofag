@@ -9,6 +9,7 @@
  * - raden er lik md → bare noter hashen
  * - raden er tom eller tegn for tegn lik skjelettstubben (hash i GEO_STUB_HASHES) → skriv md
  * - raden er lik det vi skrev sist (hash stemmer) → ingen har redigert den, skriv md
+ * - raden er lik en tidligere md-versjon fra git (GEO_TIDLIGERE_MD_HASHES) → seedet av oss, skriv md
  * - ellers er raden redigert i CMS → ALDRI overskriv, bare meld avvik
  *
  * Skrivingen er betinget: `save` får teksten vi leste, og lagrer bare hvis raden fortsatt har
@@ -17,6 +18,8 @@
  * En samlet versjonsnøkkel (hash av alle md-tekstene) gjør at løkka hoppes over
  * med ett DO-kall når ingenting er endret.
  */
+
+import { GEO_STUB_HASHES, GEO_TIDLIGERE_MD_HASHES } from "./geografi-md-historikk.ts";
 
 export type GeoSeed = { slug: string; bodyMarkdown: string };
 
@@ -41,25 +44,16 @@ export type GeoReseedResult = {
 };
 
 /**
- * Skjelettstubbene (commit ddf9482, «## Planlagte underkapitler» / «Innholdet er under arbeid»),
- * én per kapittel, som `textHash`. Bare en rad som er tegn for tegn lik stubben regnes som stubb.
- * Det finnes ingen lengde- eller merkeheuristikk: en tekst Mats har redigert, er aldri en stubb,
- * selv om den fortsatt inneholder et av skjelettmerkene. Generert fra git-historikken til
- * src/lib/posts/geo-*.md (alle versjoner med et skjelettmerke).
+ * Kjente tekster vi selv har seedet, generert fra git-historikken til src/lib/posts/geo-*.md
+ * (scripts/geografi-md-hashes.mts → geografi-md-historikk.ts):
+ * - GEO_STUB_HASHES: skjelettstubbene fra ddf9482. Bare en rad som er tegn for tegn lik stubben
+ *   regnes som stubb; ingen lengde- eller merkeheuristikk.
+ * - GEO_TIDLIGERE_MD_HASHES: alle tidligere md-versjoner, også den på origin/main 52ae17a. Main
+ *   har ingen seed-hash i meta, så uten denne lista ville rader main har seedet, blitt meldt som
+ *   avvik og aldri oppdatert ved første deploy.
+ * En rad som avviker fra alle kjente versjoner, er redigert i CMS og overskrives aldri.
  */
-export const GEO_STUB_HASHES: Readonly<Record<string, readonly string[]>> = {
-  "geo-baerekraft": ["r1-22e26db5-850a10cd"],
-  "geo-befolkning": ["q0-e92dcad1-10e1389b"],
-  "geo-feltarbeid": ["ov-e187c604-7b6d6982"],
-  "geo-indre-krefter": ["t7-43d0d6d3-ac13a993"],
-  "geo-klima": ["tu-b80d51bf-2731d929"],
-  "geo-landskap": ["q9-4db9fe02-6dff58d8"],
-  "geo-migrasjon": ["n8-43641b8d-d283529d"],
-  "geo-naering": ["ok-45c22c99-3d847891"],
-  "geo-naturfare": ["si-3e8469be-42bf4b48"],
-  "geo-ressurser": ["rb-447e665d-8876363b"],
-  "geo-verktoy": ["ta-57b88188-24c56248"],
-};
+export { GEO_STUB_HASHES, GEO_TIDLIGERE_MD_HASHES };
 
 export const GEO_RESEED_VERSION_META = "geografi-md-versjon";
 export const GEO_AVVIK_META = "geografi-cms-avvik";
@@ -94,6 +88,7 @@ export async function reseedGeografiFromMd(
   store: GeoReseedStore,
   seeds: readonly GeoSeed[],
   stubHashes: Readonly<Record<string, readonly string[]>> = GEO_STUB_HASHES,
+  tidligereHashes: Readonly<Record<string, readonly string[]>> = GEO_TIDLIGERE_MD_HASHES,
 ): Promise<GeoReseedResult> {
   const durable = store.persist === "do" || store.persist === "d1";
   const version = geoSeedsVersion(seeds);
@@ -117,7 +112,10 @@ export async function reseedGeografiFromMd(
       continue;
     }
     const lastWritten = durable ? await store.getMeta(hashKey) : null;
-    const untouched = lastWritten !== null && lastWritten === textHash(existing.bodyMarkdown);
+    const radHash = textHash(existing.bodyMarkdown);
+    const untouched =
+      (lastWritten !== null && lastWritten === radHash) ||
+      (tidligereHashes[seed.slug] ?? []).includes(radHash);
     if (isGeoStub(seed.slug, existing.bodyMarkdown, stubHashes) || untouched) {
       const saved = await store.save(seed.slug, existing.published ?? 1, existing.bodyMarkdown);
       if (saved) {
@@ -135,6 +133,14 @@ export async function reseedGeografiFromMd(
   if (durable) {
     await store.setMeta(GEO_AVVIK_META, result.avvik.join(","));
     if (complete) await store.setMeta(GEO_RESEED_VERSION_META, version);
+  }
+  if (result.written.length > 0) {
+    console.info(`[posts] Geografi: oppdatert fra md: ${result.written.join(", ")}`);
+  }
+  if (result.kollisjon.length > 0) {
+    console.warn(
+      `[posts] Geografi: raden ble endret under reseed og er IKKE skrevet (prøves igjen): ${result.kollisjon.join(", ")}`,
+    );
   }
   if (result.avvik.length > 0) {
     console.warn(
