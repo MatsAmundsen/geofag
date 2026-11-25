@@ -3,22 +3,41 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeToggle } from "@/components/theme-toggle";
-import type { GeografiKapittel } from "@/lib/geografi-kapitler";
+import type { GeografiKapittel, GeografiUnderkapittel } from "@/lib/geografi-kapitler";
 import { GEOGRAFI_KAPITLER } from "@/lib/geografi-kapitler";
 import { KILDER_GEOGRAFI } from "@/lib/kilder-geografi";
 import { Kildeliste } from "@/components/kildeliste";
 import { PosterBody } from "@/components/poster-body";
 import { useEffect, useState } from "react";
 import { getPost, type Post } from "@/lib/posts";
+import { geografiHeadingAliases, sliceGeografiUnderkapittel } from "@/lib/geografi-seksjon";
+import { GeografiInnhold } from "@/components/geografi/innhold-nav";
 
-export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel }) {
+export function GeografiKapittelSide({
+  kapittel,
+  underkapittel,
+}: {
+  kapittel: GeografiKapittel;
+  /** Satt på `/geografi/<kap>/<under>`: bare den H2-blokken vises. */
+  underkapittel?: GeografiUnderkapittel;
+}) {
   const index = GEOGRAFI_KAPITLER.findIndex((k) => k.path === kapittel.path);
+  const kapNr = index + 1;
+  const underIndex = underkapittel
+    ? kapittel.underkapitler.findIndex((u) => u.id === underkapittel.id)
+    : -1;
+  const forrigeUnder = underIndex > 0 ? kapittel.underkapitler[underIndex - 1] : undefined;
+  const nesteUnder =
+    underIndex >= 0 && underIndex < kapittel.underkapitler.length - 1
+      ? kapittel.underkapitler[underIndex + 1]
+      : undefined;
   const prev = index > 0 ? GEOGRAFI_KAPITLER[index - 1] : undefined;
   const next =
     index >= 0 && index < GEOGRAFI_KAPITLER.length - 1 ? GEOGRAFI_KAPITLER[index + 1] : undefined;
   const kilder = KILDER_GEOGRAFI[kapittel.slug] ?? [];
   // Kap. 1–2 har målte figurreserver og reserverer også teksthøyden (CLS).
-  const reserverTekst = kapittel.path === "verktoy" || kapittel.path === "feltarbeid";
+  const reserverTekst =
+    !underkapittel && (kapittel.path === "verktoy" || kapittel.path === "feltarbeid");
 
   const [post, setPost] = useState<Post | null>(null);
   useEffect(() => {
@@ -30,6 +49,22 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
       cancelled = true;
     };
   }, [kapittel.slug]);
+
+  const body = post?.bodyMarkdown
+    ? underkapittel
+      ? sliceGeografiUnderkapittel(post.bodyMarkdown, underkapittel.title)
+      : post.bodyMarkdown
+    : null;
+  const mangler = Boolean(post?.bodyMarkdown) && body === null;
+
+  // Teksten kommer etter første maling, så nettleseren rekker ikke å hoppe til
+  // #anker (gamle lenker som /geografi/verktoy#kildekritikk). Gjør det når den er på plass.
+  useEffect(() => {
+    if (!body || typeof window === "undefined" || !window.location.hash) return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    const frame = requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
+    return () => cancelAnimationFrame(frame);
+  }, [body]);
 
   return (
     <div className="kapittel-lys flex min-h-dvh flex-col">
@@ -54,14 +89,38 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
               <ThemeToggle />
             </div>
             <div className="mt-auto pt-6">
-              <p className="self-start rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-primary lys:bg-background/95">
-                Geografi · {kapittel.kicker}
-              </p>
+              {underkapittel ? (
+                <nav aria-label="Brødsmuler" className="self-start">
+                  <ol className="flex flex-wrap items-center gap-x-1.5 rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-primary lys:bg-background/95">
+                    <li>
+                      <Link to="/geografi" className="underline-offset-4 hover:underline">
+                        Geografi
+                      </Link>
+                    </li>
+                    <li aria-hidden="true">·</li>
+                    <li>
+                      <Link
+                        to="/geografi/$kapittel"
+                        params={{ kapittel: kapittel.path }}
+                        className="underline-offset-4 hover:underline"
+                      >
+                        Kapittel {kapNr}: {kapittel.navLabel}
+                      </Link>
+                    </li>
+                  </ol>
+                </nav>
+              ) : (
+                <p className="self-start rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-primary lys:bg-background/95">
+                  Geografi · {kapittel.kicker}
+                </p>
+              )}
               <h1 className="mt-2 font-display text-4xl font-medium tracking-tight sm:text-5xl">
-                {kapittel.title}
+                {underkapittel ? underkapittel.title : kapittel.title}
               </h1>
               <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">
-                {kapittel.blurb}
+                {underkapittel
+                  ? `${kapNr}.${underIndex + 1} i kapitlet «${kapittel.title}»`
+                  : kapittel.blurb}
               </p>
               <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">
                 {kapittel.maal.join(" · ")}
@@ -105,7 +164,25 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
             </>
           ) : null}
 
-          {(reserverTekst && kapittel.tekstKlar) || post?.bodyMarkdown ? (
+          {kapittel.tekstKlar ? (
+            <GeografiInnhold kapittel={kapittel} aktiv={underkapittel?.id} />
+          ) : null}
+
+          {mangler ? (
+            <p className="mt-10 rounded-2xl border border-border bg-card p-5 text-sm">
+              Fant ikke denne delen i kapittelteksten.{" "}
+              <Link
+                to="/geografi/$kapittel"
+                params={{ kapittel: kapittel.path }}
+                className="text-primary underline underline-offset-4"
+              >
+                Les hele kapitlet
+              </Link>
+              .
+            </p>
+          ) : null}
+
+          {(reserverTekst && kapittel.tekstKlar) || body ? (
             // Kap. 1–2: hold kilder og navigasjon under skjermkanten mens CMS-teksten
             // lastes. Figurreservene alene hindrer ikke dette tidligere hoppet (CLS 0,25
             // ved 1280 uten). Andre kapitler er som i main.
@@ -113,7 +190,11 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
               className={reserverTekst ? "prose-geofag mt-10 min-h-dvh" : "prose-geofag mt-10"}
               aria-busy={reserverTekst ? !post : undefined}
             >
-              {post?.bodyMarkdown ? <PosterBody>{post.bodyMarkdown}</PosterBody> : null}
+              {body ? (
+                <PosterBody headingAnchors headingIdAlias={geografiHeadingAliases(kapittel)}>
+                  {body}
+                </PosterBody>
+              ) : null}
             </section>
           ) : null}
 
@@ -123,44 +204,94 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
             </section>
           ) : null}
 
-          <nav
-            className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:justify-between"
-            aria-label="Kapittelnavigasjon"
-          >
-            {prev ? (
-              <Link
-                to="/geografi/$kapittel"
-                params={{ kapittel: prev.path }}
-                className="inline-flex items-center gap-2 text-sm text-primary"
-              >
-                <ArrowLeft className="size-4" aria-hidden="true" />
-                Forrige: {prev.title}
-              </Link>
-            ) : (
-              <Link to="/geografi" className="inline-flex items-center gap-2 text-sm text-primary">
-                <ArrowLeft className="size-4" aria-hidden="true" />
-                Til oversikten
-              </Link>
-            )}
-            {next ? (
-              <Link
-                to="/geografi/$kapittel"
-                params={{ kapittel: next.path }}
-                className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto"
-              >
-                Neste: {next.title}
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            ) : (
-              <Link
-                to="/geografi"
-                className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto"
-              >
-                Til oversikten
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            )}
-          </nav>
+          {underkapittel ? (
+            <nav
+              className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:justify-between"
+              aria-label="Underkapittelnavigasjon"
+            >
+              {forrigeUnder ? (
+                <Link
+                  to="/geografi/$kapittel/$under"
+                  params={{ kapittel: kapittel.path, under: forrigeUnder.id }}
+                  className="inline-flex items-center gap-2 text-sm text-primary"
+                >
+                  <ArrowLeft className="size-4" aria-hidden="true" />
+                  Forrige: {forrigeUnder.title}
+                </Link>
+              ) : (
+                <Link
+                  to="/geografi/$kapittel"
+                  params={{ kapittel: kapittel.path }}
+                  className="inline-flex items-center gap-2 text-sm text-primary"
+                >
+                  <ArrowLeft className="size-4" aria-hidden="true" />
+                  Til kapitlet: {kapittel.title}
+                </Link>
+              )}
+              {nesteUnder ? (
+                <Link
+                  to="/geografi/$kapittel/$under"
+                  params={{ kapittel: kapittel.path, under: nesteUnder.id }}
+                  className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto"
+                >
+                  Neste: {nesteUnder.title}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              ) : (
+                <Link
+                  to="/geografi/$kapittel"
+                  params={{ kapittel: kapittel.path }}
+                  hash="oppsummering"
+                  className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto"
+                >
+                  Oppsummering og oppgaver
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              )}
+            </nav>
+          ) : (
+            <nav
+              className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:justify-between"
+              aria-label="Kapittelnavigasjon"
+            >
+              {prev ? (
+                <Link
+                  to="/geografi/$kapittel"
+                  params={{ kapittel: prev.path }}
+                  className="inline-flex items-center gap-2 text-sm text-primary"
+                >
+                  <ArrowLeft className="size-4" aria-hidden="true" />
+                  Forrige: {prev.title}
+                </Link>
+              ) : (
+                <Link
+                  to="/geografi"
+                  className="inline-flex items-center gap-2 text-sm text-primary"
+                >
+                  <ArrowLeft className="size-4" aria-hidden="true" />
+                  Til oversikten
+                </Link>
+              )}
+              {next ? (
+                <Link
+                  to="/geografi/$kapittel"
+                  params={{ kapittel: next.path }}
+                  className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto"
+                >
+                  Neste: {next.title}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              ) : (
+                <Link
+                  to="/geografi"
+                  className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto"
+                >
+                  Til oversikten
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              )}
+            </nav>
+          )}
         </article>
       </main>
       <SiteFooter />

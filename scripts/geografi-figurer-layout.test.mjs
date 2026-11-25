@@ -36,8 +36,9 @@ test('pattern map has a keyboard-native full-size link', () => {
 
 test('only chapters 1–2 reserve text space before the CMS response', () => {
   const source = read('src/components/geografi/kapittel-side.tsx');
-  assert.match(source, /const reserverTekst = kapittel\.path === "verktoy" \|\| kapittel\.path === "feltarbeid";/);
-  assert.match(source, /\(reserverTekst && kapittel\.tekstKlar\) \|\| post\?\.bodyMarkdown \? \(/);
+  // Underkapittel-sidene (/geografi/<kap>/<under>) viser bare én H2-blokk og reserverer ikke.
+  assert.match(source, /const reserverTekst =\s+!underkapittel && \(kapittel\.path === "verktoy" \|\| kapittel\.path === "feltarbeid"\);/);
+  assert.match(source, /\(reserverTekst && kapittel\.tekstKlar\) \|\| body \? \(/);
   assert.match(source, /reserverTekst \? "prose-geofag mt-10 min-h-dvh" : "prose-geofag mt-10"/);
   assert.equal(source.split('mt-10 min-h-dvh').length - 1, 1);
 });

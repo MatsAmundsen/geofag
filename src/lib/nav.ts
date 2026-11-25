@@ -288,6 +288,7 @@ export const NAV_GEO = [
   { to: "/geografi/naering", label: "Næring" },
   { to: "/geografi/befolkning", label: "Befolkning" },
   { to: "/geografi/migrasjon", label: "Migrasjon" },
+  { to: "/geografi/begreper", label: "Begreper" },
   { to: "/poster", label: "Poster" },
 ] as const;
 

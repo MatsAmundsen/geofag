@@ -142,6 +142,7 @@ export function PosterBody({
   scrollTables = false,
   wrapTables = false,
   headingAnchors = false,
+  headingIdAlias,
 }: {
   children: string;
   className?: string;
@@ -150,11 +151,16 @@ export function PosterBody({
   wrapTables?: boolean;
   /** Stabile overskrifts-id-er, samme slug som scan-modus. Av som standard. */
   headingAnchors?: boolean;
+  /** Bytter enkelte anker-id-er (slug → id), f.eks. Geografis underkapittel-id-er. */
+  headingIdAlias?: Readonly<Record<string, string>>;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const prepared = injectPosterWidgets(content);
   const headingIds: HeadingIdCursor | undefined = headingAnchors
-    ? { ids: posterHeadingAnchorIds(prepared), index: 0 }
+    ? {
+        ids: posterHeadingAnchorIds(prepared).map((id) => (id && headingIdAlias?.[id]) || id),
+        index: 0,
+      }
     : undefined;
   const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(prepared));
   let runningHeading = "";
