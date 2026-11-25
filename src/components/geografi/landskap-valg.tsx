@@ -1,4 +1,5 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 import { VdalTilUdal } from "@/components/diagrams/isbreer";
 import { GeografiDatakart } from "./datakart";
 import steder from "@/lib/geografi-fjord-lokator.json";

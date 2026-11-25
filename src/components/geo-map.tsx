@@ -10,7 +10,8 @@
  * props only.
  */
 import { ClientOnly } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 import type { JSX } from "react";
 import { cn } from "@/lib/utils";
 

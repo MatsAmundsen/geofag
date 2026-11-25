@@ -1,5 +1,6 @@
 import { Search, X } from "lucide-react";
-import { lazy, Suspense, useEffect, useId, useRef, useState, type RefObject } from "react";
+import { Suspense, useEffect, useId, useRef, useState, type RefObject } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 import { lastSokIndeks } from "@/lib/sok/klient";
 import { cn } from "@/lib/utils";
 import {

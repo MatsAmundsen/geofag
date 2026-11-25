@@ -1,4 +1,5 @@
-import { lazy, Suspense, useState } from "react";
+import { Suspense, useState } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 import { C, Diagram, L } from "@/components/diagrams/svg-kit";
 import { GeografiDatakart } from "./datakart";
 import { PlateKartForklaring, PlateKartSvg } from "./platekart";
