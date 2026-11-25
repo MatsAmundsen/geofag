@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { BannerBilde } from "@/components/geografi/banner-bilde";
 import { bannerKreditt } from "@/lib/geografi-banner";
+import { aksentStil } from "@/lib/geografi-aksent";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GEOGRAFI_KAPITLER } from "@/lib/geografi-kapitler";
@@ -93,8 +94,8 @@ function GeografiOversikt() {
           </div>
 
           <ul className="mt-10 grid gap-5 sm:grid-cols-2">
-            {GEOGRAFI_KAPITLER.map((kap) => (
-              <li key={kap.path} className="relative">
+            {GEOGRAFI_KAPITLER.map((kap, i) => (
+              <li key={kap.path} className="geo-aksent relative" style={aksentStil(kap.path)}>
                 <Link
                   to="/geografi/$kapittel"
                   params={{ kapittel: kap.path }}
@@ -107,8 +108,11 @@ function GeografiOversikt() {
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />
                   </div>
+                  <div aria-hidden="true" className="h-1 bg-[var(--kap-aksent)]" />
                   <div className="flex flex-1 flex-col gap-2 p-5">
                     <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                      <span className="font-medium text-[var(--kap-aksent)]">Kapittel {i + 1}</span>
+                      {" · "}
                       {kap.kicker} · {kap.maal.join(", ")}
                     </p>
                     <h3 className="font-display text-2xl font-medium tracking-tight">{kap.title}</h3>
