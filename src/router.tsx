@@ -1,4 +1,5 @@
 import { createRouter } from "@tanstack/react-router";
+import { clearChunkReloadMark, installChunkReloadListener } from "@/lib/chunk-reload";
 import { AppErrorComponent } from "@/lib/error-component";
 import { routeTree } from "./routeTree.gen";
 
@@ -41,5 +42,11 @@ function lagRouter() {
 export function getRouter() {
   const router = lagRouter();
   beholdTidligRulling(router);
+  // 'vite:preloadError' (gammel kodebit etter deploy): last på nytt én gang. Bare i nettleseren.
+  installChunkReloadListener();
+  if (typeof window !== "undefined") {
+    // vellykket navigering: rydd omlastingsmerket (fjernes først når vernevinduet er over)
+    router.subscribe("onResolved", () => clearChunkReloadMark());
+  }
   return router;
 }

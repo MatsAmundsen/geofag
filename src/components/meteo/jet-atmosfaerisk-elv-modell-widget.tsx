@@ -1,5 +1,6 @@
 import { ClientOnly } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 
 const AtmosfaeriskElvDannelseFigur = lazy(() =>
   import("@/components/diagrams/atmosfaerisk-elv-dannelse-figur").then((m) => ({

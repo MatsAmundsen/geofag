@@ -1,4 +1,5 @@
-import { lazy, Suspense, type ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 import { ScanSearch } from "lucide-react";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
 import { TsunamiPlass } from "@/components/tsunami-plass";

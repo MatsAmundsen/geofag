@@ -2,7 +2,8 @@ import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { TermiskVindV5 } from "@/components/diagrams/termisk-vind-v5";
 import { TsunamiPlass } from "@/components/tsunami-plass";
-import { lazy, Suspense, useEffect, useState, type JSX } from "react";
+import { Suspense, useEffect, useState, type JSX } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 import {
   AdaptationExamFrameworkDiagram,
   ImpactLevelsDiagram,

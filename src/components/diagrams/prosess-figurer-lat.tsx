@@ -6,7 +6,8 @@
  * Den fulle figuren (modul, teksturer og SVG) lastes først når plassholderen nærmer seg skjermen.
  * Da slipper serveren å rendre figurene, og andre sider som importerer poster-body, laster dem ikke.
  */
-import { lazy, Suspense, useEffect, useRef, useState, type ComponentType, type CSSProperties, type JSX } from "react";
+import { Suspense, useEffect, useRef, useState, type ComponentType, type CSSProperties, type JSX } from "react";
+import { lazyWithReload as lazy } from "@/lib/lazy-with-reload";
 import { FigureFrame } from "@/components/figure-frame";
 import { BOTN_EGG_TIND_TEKST } from "./botn-egg-tind-tekst";
 import { BRE_ARBEID_TEKST } from "./bre-arbeid-tekst";
