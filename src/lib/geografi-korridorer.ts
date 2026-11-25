@@ -7,9 +7,9 @@ export const MARKOR_FONT = 13;
 export const VIEWBOX_BREDDE = 600;
 export const MIN_BREDDE_PX = 560;
 
-/** Markører som står ved siden av pila, med en tynn strek: korte piler (3, 10) som markøren ellers ville
- *  dekket, og 5, som ellers lå oppå pil 6 (begge starter i India). */
-export const MARKOR_FLYTT: Record<number, [number, number]> = { 3: [558, 122], 5: [604, 189], 10: [515, 158] };
+/** Markører som står ved siden av pila, med en tynn strek: korte piler (2, 3, 7, 10) som markøren ellers
+ *  ville dekket, og 5, som ellers lå oppå pil 6 (begge starter i India). */
+export const MARKOR_FLYTT: Record<number, [number, number]> = { 2: [601, 146], 3: [558, 122], 5: [604, 189], 7: [302, 265], 10: [515, 158] };
 
 export type Korridor = { nr: number; fx: number; fy: number; tx: number; ty: number };
 

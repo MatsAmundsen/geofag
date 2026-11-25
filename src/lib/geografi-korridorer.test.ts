@@ -24,7 +24,7 @@ describe("figur 11.6: markører", () => {
         assert.ok(d >= 2 * MARKOR_R + 2, `markør ${a.nr} og ${b.nr}: ${d.toFixed(1)}`);
       }
   });
-  it("ingen markør ligger oppå en annen korridors pil", () => {
+  it("ingen markør ligger oppå en annen pil, og flyttede markører ikke på sin egen", () => {
     const punkter = (d: string) => {
       const m = d.match(/M([\d.]+) ([\d.]+) Q([\d.-]+) ([\d.-]+) ([\d.]+) ([\d.]+)/)!.slice(1).map(Number);
       const ut: [number, number][] = [];
@@ -37,7 +37,8 @@ describe("figur 11.6: markører", () => {
     };
     for (const a of g)
       for (const b of g) {
-        if (a.nr === b.nr) continue;
+        // Flyttede markører (med ledestrek) skal heller ikke ligge på sin egen pil.
+        if (a.nr === b.nr && a.lx === undefined) continue;
         const min = Math.min(...punkter(b.d).map(([x, y]) => Math.hypot(x - a.cx, y - a.cy)));
         assert.ok(min >= MARKOR_R + 1.5, `markør ${a.nr} på pil ${b.nr}: ${min.toFixed(1)}`);
       }
