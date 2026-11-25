@@ -20,6 +20,7 @@ import {
   reseedFlaggedCopies as runCopyReseeds,
 } from "@/lib/copy-reseed";
 import { COPY_RESEEDS_B } from "@/lib/copy-reseeds-b";
+import { reseedGeografiFromMd } from "@/lib/geografi-reseed";
 import {
   CHAPTER_POST_SEEDS,
   nowStamp,
@@ -416,6 +417,7 @@ export async function getPostStore(): Promise<Store> {
       if (!env?.POSTS_DB) throw new Error("POSTS_DB binding missing");
       const store = await d1Store(env.POSTS_DB);
       await reseedFlaggedCopies(store);
+      await reseedGeografi(store);
       return store;
     }
     if (backend === "do") {
@@ -1769,9 +1771,33 @@ async function ensureChapterSeeds(store: Store): Promise<void> {
   }
 }
 
+/** Geografi: md vinner over urørte/stubb-rader, aldri over CMS-redigert tekst. */
+const GEO_SEEDS = CHAPTER_POST_SEEDS.filter((seed) => seed.slug.startsWith("geo-"));
+
+async function reseedGeografi(store: Store): Promise<void> {
+  try {
+    await reseedGeografiFromMd(
+      {
+        persist: store.persist,
+        get: (slug) => store.get(slug),
+        async save(slug, published) {
+          const seed = GEO_SEEDS.find((row) => row.slug === slug);
+          if (seed) await store.save({ ...toPostInput(seed), published });
+        },
+        getMeta: (key) => store.getMeta(key),
+        setMeta: (key, value) => store.setMeta(key, value),
+      },
+      GEO_SEEDS,
+    );
+  } catch (err) {
+    console.error("[posts] Geografi reseed failed", err);
+  }
+}
+
 async function runChapterSeeds(store: Store, version: string): Promise<void> {
   await publishPlatetektonikkCopy(store);
   await reseedFlaggedCopies(store);
+  await reseedGeografi(store);
   if (store.persist === "do" || store.persist === "d1") {
     const saved = await store.getMeta(CHAPTER_SEED_FLAG);
     if (chapterSeedIsCurrent(saved, version)) return;
