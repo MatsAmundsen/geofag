@@ -1010,6 +1010,58 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --scroll-fade: var(--callout-bg, #145a40);
 }
 
+/*
+ * Innblikk-boks (Geografi, poster-body.tsx): samme grønne familie som callout-ene over
+ * (#145a40, grønn venstrestrek), men lys flate og egen etikett med ikon, så den skilles fra
+ * fakta-callouts. Brødtekst, figurer og tabeller inni beholder sidens farger.
+ * Mørkt tema er standard; lyst tema overstyres under.
+ */
+.innblikk-boks {
+  --innblikk-flate: color-mix(in srgb, #145a40 24%, var(--color-background));
+  --innblikk-kant: color-mix(in srgb, #6ee7b7 35%, var(--color-background));
+  --innblikk-strek: #6ee7b7;
+  margin-block: 2rem;
+  max-width: 100%;
+  min-width: 0;
+  padding: 1rem 1rem 1.15rem 1rem;
+  border: 1px solid var(--innblikk-kant);
+  border-left: 0.25rem solid var(--innblikk-strek);
+  border-radius: 0.75rem;
+  background: var(--innblikk-flate);
+  overflow-wrap: anywhere;
+}
+@media (min-width: 640px) {
+  .innblikk-boks {
+    padding: 1.25rem 1.5rem 1.4rem 1.35rem;
+  }
+}
+:root:not([data-tema="mork"]):has(.kapittel-lys) .innblikk-boks {
+  --innblikk-flate: #e6f1ea;
+  --innblikk-kant: #9cc3ab;
+  --innblikk-strek: #145a40;
+}
+.innblikk-etikett {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  padding: 0.2rem 0.65rem 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: #145a40;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.innblikk-innhold > :first-child > :first-child,
+.innblikk-innhold > :first-child > :first-child > :first-child {
+  margin-top: 0;
+}
+.innblikk-innhold > :last-child > :last-child {
+  margin-bottom: 0;
+}
+
 /* Geografi kap. 1–2: SVG-tekst skaleres med figuren. Under 390 px blir 15/34
  * brukerenheter mindre enn 12 px, så de løftes her (CSS-px = brukerenheter i SVG).
  * 18 × 0,675 ≈ 12,1 px ved 320; ved 390 og bredere gjelder attributtverdien. */

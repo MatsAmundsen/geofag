@@ -214,7 +214,11 @@ export function GeografiKapittelSide({
               aria-busy={reserverTekst ? !post : undefined}
             >
               {body ? (
-                <PosterBody headingAnchors headingIdAlias={geografiHeadingAliases(kapittel)}>
+                <PosterBody
+                  headingAnchors
+                  innblikk
+                  headingIdAlias={geografiHeadingAliases(kapittel)}
+                >
                   {body}
                 </PosterBody>
               ) : null}

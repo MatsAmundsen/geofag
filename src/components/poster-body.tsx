@@ -1,9 +1,11 @@
 import { lazy, Suspense, type ReactNode } from "react";
+import { ScanSearch } from "lucide-react";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
 import { TsunamiPlass } from "@/components/tsunami-plass";
 import { cn } from "@/lib/utils";
 import { posterHeadingAnchorIds } from "@/lib/chapter-scan";
 import type { HeadingIdCursor } from "@/lib/poster-heading";
+import { splitInnblikk } from "@/lib/geografi-innblikk";
 import { GEO_MARIA_CHANNEL, GEO_MARIA_VIDEOS } from "@/lib/youtube-geo-maria";
 import {
   EARTH_LAYERS_PHOTO_SRC,
@@ -131,6 +133,31 @@ function ReservertRamme({ id, children }: { id: string; children: ReactNode }) {
   );
 }
 
+/** Innblikk-boks (Geografi): samme grønne familie som callout-ene, egen etikett og ikon. */
+function InnblikkBoks({
+  nr,
+  overskriftId,
+  children,
+}: {
+  nr: number;
+  overskriftId?: string;
+  children: ReactNode;
+}) {
+  const etikettId = `innblikk-etikett-${nr}`;
+  return (
+    <section
+      className="innblikk-boks"
+      aria-labelledby={overskriftId ? `${etikettId} ${overskriftId}` : etikettId}
+    >
+      <p className="innblikk-etikett" id={etikettId}>
+        <ScanSearch aria-hidden="true" className="size-4" />
+        Innblikk
+      </p>
+      <div className="innblikk-innhold space-y-4">{children}</div>
+    </section>
+  );
+}
+
 /**
  * Published post + editor preview. Diagrams, quizzes, map and the plate model
  * are injected from chapter headings when the stored markdown has none.
@@ -143,6 +170,7 @@ export function PosterBody({
   wrapTables = false,
   headingAnchors = false,
   headingIdAlias,
+  innblikk = false,
 }: {
   children: string;
   className?: string;
@@ -153,6 +181,8 @@ export function PosterBody({
   headingAnchors?: boolean;
   /** Bytter enkelte anker-id-er (slug → id), f.eks. Geografis underkapittel-id-er. */
   headingIdAlias?: Readonly<Record<string, string>>;
+  /** Pakk inn «Innblikk: …»-blokker som bokser (Geografi). */
+  innblikk?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const prepared = injectPosterWidgets(content);
@@ -162,34 +192,55 @@ export function PosterBody({
         index: 0,
       }
     : undefined;
-  const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(prepared));
   let runningHeading = "";
+  const renderParts = (markdown: string, prefix: string) =>
+    withoutDuplicateEarthFigure(parsePosterMarkdown(markdown)).map((part, index) => {
+      if (part.type === "widget") {
+        return (
+          <ReservertRamme key={`${prefix}w-${part.id}-${index}`} id={part.id}>
+            <Suspense fallback={<WidgetFallback id={part.id} />}>
+              <PosterWidget id={part.id} />
+            </Suspense>
+          </ReservertRamme>
+        );
+      }
+      const captionFallback = runningHeading;
+      const heading = lastMarkdownHeading(part.value);
+      if (heading) runningHeading = heading;
+      return (
+        <Markdown
+          key={`${prefix}m-${index}`}
+          scrollTables={scrollTables}
+          wrapTables={wrapTables}
+          captionFallback={captionFallback}
+          searchable
+          headingIds={headingIds}
+        >
+          {part.value}
+        </Markdown>
+      );
+    });
+  if (!innblikk) {
+    return <div className={cn("space-y-4", className)}>{renderParts(prepared, "")}</div>;
+  }
+  const segmenter = splitInnblikk(prepared);
+  let foran = "";
+  let nr = 0;
   return (
     <div className={cn("space-y-4", className)}>
-      {parts.map((part, index) => {
-        if (part.type === "widget") {
-          return (
-            <ReservertRamme key={`w-${part.id}-${index}`} id={part.id}>
-              <Suspense fallback={<WidgetFallback id={part.id} />}>
-                <PosterWidget id={part.id} />
-              </Suspense>
-            </ReservertRamme>
-          );
+      {segmenter.map((seg, i) => {
+        const prefix = `s${i}-`;
+        if (seg.type === "tekst") {
+          foran += `${seg.value}\n`;
+          return renderParts(seg.value, prefix);
         }
-        const captionFallback = runningHeading;
-        const heading = lastMarkdownHeading(part.value);
-        if (heading) runningHeading = heading;
+        nr += 1;
+        const overskriftId = headingIds?.ids[posterHeadingAnchorIds(foran).length] ?? undefined;
+        foran += `${seg.value}\n`;
         return (
-          <Markdown
-            key={`m-${index}`}
-            scrollTables={scrollTables}
-            wrapTables={wrapTables}
-            captionFallback={captionFallback}
-            searchable
-            headingIds={headingIds}
-          >
-            {part.value}
-          </Markdown>
+          <InnblikkBoks key={`${prefix}innblikk`} nr={nr} overskriftId={overskriftId}>
+            {renderParts(seg.value, prefix)}
+          </InnblikkBoks>
         );
       })}
     </div>
