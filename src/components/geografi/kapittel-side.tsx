@@ -16,10 +16,13 @@ import { GeografiInnhold } from "@/components/geografi/innhold-nav";
 export function GeografiKapittelSide({
   kapittel,
   underkapittel,
+  initialPost = null,
 }: {
   kapittel: GeografiKapittel;
   /** Satt på `/geografi/<kap>/<under>`: bare den H2-blokken vises. */
   underkapittel?: GeografiUnderkapittel;
+  /** Fra rute-loaderen (SSR), så fagteksten står i HTML-en fra serveren. */
+  initialPost?: Post | null;
 }) {
   const index = GEOGRAFI_KAPITLER.findIndex((k) => k.path === kapittel.path);
   const kapNr = index + 1;
@@ -39,11 +42,23 @@ export function GeografiKapittelSide({
   const reserverTekst =
     !underkapittel && (kapittel.path === "verktoy" || kapittel.path === "feltarbeid");
 
-  const [post, setPost] = useState<Post | null>(null);
+  const [post, setPost] = useState<Post | null>(initialPost);
   useEffect(() => {
+    if (initialPost) setPost(initialPost);
+  }, [initialPost]);
+  useEffect(() => {
+    // Loaderen gir teksten ved SSR og klientnavigasjon. Hent likevel på nytt én
+    // gang, så en side fra cache får siste CMS-versjon (som før).
     let cancelled = false;
     void getPost({ data: kapittel.slug }).then((fresh) => {
-      if (!cancelled) setPost(fresh);
+      if (cancelled || !fresh) return;
+      setPost((current) =>
+        current &&
+        current.bodyMarkdown === fresh.bodyMarkdown &&
+        current.updatedAt === fresh.updatedAt
+          ? current
+          : fresh,
+      );
     });
     return () => {
       cancelled = true;
@@ -52,7 +67,11 @@ export function GeografiKapittelSide({
 
   const body = post?.bodyMarkdown
     ? underkapittel
-      ? sliceGeografiUnderkapittel(post.bodyMarkdown, underkapittel.title)
+      ? // H1 er underkapittelnavnet; H2-linja i blokken ville gitt dobbel tittel.
+        (sliceGeografiUnderkapittel(post.bodyMarkdown, underkapittel.title)?.replace(
+          /^## .*\n+/,
+          "",
+        ) ?? null)
       : post.bodyMarkdown
     : null;
   const mangler = Boolean(post?.bodyMarkdown) && body === null;
@@ -104,8 +123,12 @@ export function GeografiKapittelSide({
                         params={{ kapittel: kapittel.path }}
                         className="underline-offset-4 hover:underline"
                       >
-                        Kapittel {kapNr}: {kapittel.navLabel}
+                        Kapittel {kapNr}: {kapittel.title}
                       </Link>
+                    </li>
+                    <li aria-hidden="true">·</li>
+                    <li aria-current="page">
+                      {kapNr}.{underIndex + 1}
                     </li>
                   </ol>
                 </nav>
@@ -117,11 +140,11 @@ export function GeografiKapittelSide({
               <h1 className="mt-2 font-display text-4xl font-medium tracking-tight sm:text-5xl">
                 {underkapittel ? underkapittel.title : kapittel.title}
               </h1>
-              <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">
-                {underkapittel
-                  ? `${kapNr}.${underIndex + 1} i kapitlet «${kapittel.title}»`
-                  : kapittel.blurb}
-              </p>
+              {underkapittel ? null : (
+                <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">
+                  {kapittel.blurb}
+                </p>
+              )}
               <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">
                 {kapittel.maal.join(" · ")}
                 {!kapittel.tekstKlar ? " · status: under arbeid" : ""}

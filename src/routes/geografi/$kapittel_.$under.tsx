@@ -3,10 +3,16 @@ import { GeografiKapittelSide } from "@/components/geografi/kapittel-side";
 import { GEOGRAFI_KAPITLER, geografiKapittel } from "@/lib/geografi-kapitler";
 import { GEOGRAFI_UNDER_BESKRIVELSE } from "@/lib/geografi-generert";
 import { geografiUnderkapittel } from "@/lib/geografi-seksjon";
+import { getPost } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
 
 /** `/geografi/<kapittel>/<underkapittel>`: én H2-blokk fra kapittelteksten (utsatt i PR #293). */
 export const Route = createFileRoute("/geografi/$kapittel_/$under")({
+  // SSR: fagteksten skal stå i HTML-en (SEO, underkapittel-URL-ene). Ukjent kapittel → null.
+  loader: async ({ params }) => {
+    const kap = geografiKapittel(params.kapittel);
+    return { post: kap ? await getPost({ data: kap.slug }) : null };
+  },
   head: ({ params }) => {
     const kap = geografiKapittel(params.kapittel);
     const under = kap ? geografiUnderkapittel(kap, params.under) : undefined;
@@ -32,8 +38,9 @@ export const Route = createFileRoute("/geografi/$kapittel_/$under")({
 
 function GeografiUnderkapittelRoute() {
   const { kapittel, under } = Route.useParams();
+  const { post } = Route.useLoaderData();
   const kap = geografiKapittel(kapittel);
   const u = kap ? geografiUnderkapittel(kap, under) : undefined;
   if (!kap || !u) throw notFound();
-  return <GeografiKapittelSide kapittel={kap} underkapittel={u} />;
+  return <GeografiKapittelSide kapittel={kap} underkapittel={u} initialPost={post} />;
 }
