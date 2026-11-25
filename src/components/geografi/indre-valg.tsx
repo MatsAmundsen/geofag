@@ -1,18 +1,15 @@
 import { lazy, Suspense, useState } from "react";
 import { C, Diagram, L } from "@/components/diagrams/svg-kit";
 import { GeografiDatakart } from "./datakart";
+import { PlateKartForklaring, PlateKartSvg } from "./platekart";
+import { ScrollFrame } from "@/components/scroll-frame";
 import { RIFT_STATUS } from "@/components/diagrams/indre-rift-tekst";
 import { TSUNAMI_STATUS } from "@/components/diagrams/indre-tsunami-tekst";
 import kartdata from "@/lib/geografi-kap3-kart.json";
 import type { GeoJsonObject } from "geojson";
-const plater = [
-  ["A", 550, 210, "Den nordamerikanske platen"], ["B", 300, 335, "Stillehavsplaten"],
-  ["C", 598, 405, "Den søramerikanske platen"], ["D", 480, 445, "Nazcaplaten"],
-  ["E", 830, 215, "Den eurasiske platen"], ["F", 667, 350, "Nubiaplaten"],
-  ["G", 235, 450, "Den australske platen"], ["H", 710, 550, "Antarktisplaten"],
-] as const;
+const PLATENAVN_3_0 = "Den eurasiske platen, Den nordamerikanske platen, Stillehavsplaten, Den søramerikanske platen, Nazcaplaten, Kokosplaten, Den karibiske platen, Den filippinske platen, Scotiaplaten, Antarktisplaten, Nubiaplaten, Somaliaplaten, Den arabiske platen, Den indiske platen og Den australske platen";
 export function GeografiPlateKart() {
-  return <figure className="geo-lys-flate my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 3.0. Tektoniske plater – et forenklet verdenskart</h3><div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 3.0. Tektoniske plater – et forenklet verdenskart, kan rulles sideveis"><svg viewBox="0 0 1024 613" role="img" aria-label="USGS sitt forenklede platekart fra 2026, sentrert på Stillehavet. Bokstaver er koblet til norske platenavn nedenfor." className="w-full min-w-[48rem] bg-white"><image href="/images/geografi/usgs-plater-2026.webp" width="1024" height="613" />{plater.map(([id, x, y]) => <g key={id}><circle cx={x} cy={y} r="11" fill="#fff" stroke="#0f172a" strokeWidth="2" /><text x={x} y={y + 5} fontSize="15" textAnchor="middle" fill="#0f172a" fontWeight="bold">{id}</text></g>)}</svg></div><ul className="grid gap-1 text-sm sm:grid-cols-2">{plater.map(([id, , , navn]) => <li key={id}><strong>{id}:</strong> {navn}</li>)}</ul><figcaption className="text-sm">USGS (2026), public domain. Nedskalert, med egne bokstavetiketter og norsk lesenøkkel. Grensene er ikke tegnet om. India og Australia er skilt, og Afrikas Nubia- og Somaliaplater er ikke én uoppdelt plate her. Kartet viser plater, ikke observerte skjelv/vulkaner, aktive varsler eller presise faresoner. Gjeldende USGS-grensetjeneste er kontrollert som sammenlikningsgrunnlag.</figcaption></figure>;
+  return <figure className="my-6 space-y-3 rounded-xl border border-border bg-card p-4 text-card-foreground sm:p-5"><h3 className="font-semibold">Figur 3.0. Tektoniske plater – et forenklet verdenskart</h3><ScrollFrame label="Figur 3.0. Tektoniske plater – et forenklet verdenskart" fade="var(--color-card)"><PlateKartSvg visPlatenavn ariaLabel={`Verdenskart sentrert på Stillehavet med plategrensene og norske platenavn: ${PLATENAVN_3_0}. Den eurasiske platen står både helt til venstre og helt til høyre fordi kartet går litt mer enn én gang rundt jorda.`} /></ScrollFrame><PlateKartForklaring /><figcaption className="text-sm text-muted-foreground">Egen tegning med norske platenavn som i USGS (2026). Plategrenser: USGS-karttjenesten Tectonic Plate Boundaries, bygd på Bird (2003), med grensen mellom Nubia- og Somaliaplaten (Den østafrikanske riftsonen) fra samme tjeneste. Land: Natural Earth 5.1.1. Alle er offentlige data (Public Domain). Millers sylindriske projeksjon, sentrert på Stillehavet. Kartet går litt mer enn én gang rundt jorda, så Den eurasiske platen står to ganger. India og Australia er skilt, og Afrikas Nubia- og Somaliaplater er ikke én uoppdelt plate her. Kartet viser plater, ikke observerte skjelv/vulkaner, aktive varsler eller presise faresoner (USGS, u.å.-k; Bird, 2003; Natural Earth, u.å.).</figcaption></figure>;
 }
 /** Figur 3.3 og 3.11 er stegmodeller (avspilling, pause, trinnknapper, nummermerker på smal skjerm). De lastes ved behov. */
 const RiftFigur = lazy(() => import("@/components/diagrams/indre-rift-figur").then((m) => ({ default: m.GeografiRiftFigur })));

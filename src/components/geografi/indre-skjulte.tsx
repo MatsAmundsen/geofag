@@ -1,53 +1,33 @@
 import { useId } from "react";
+import { ScrollFrame } from "@/components/scroll-frame";
+import { PlateKartForklaring, PlateKartSvg } from "./platekart";
 import { SkjelvVerdenskart } from "./skjelv-verdenskart";
 import vulk from "@/lib/geografi-vulkaner-2000-2025.json";
 
 export function GeografiVarmeflekker() {
   const id = useId();
   return (
-    <figure aria-labelledby={id} className="geo-lys-flate my-8 space-y-3 rounded-xl border p-4">
+    <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border border-border bg-card p-4 text-card-foreground sm:p-5">
       <h3 id={id} className="text-xl font-semibold">
         Figur 3.9 – Plategrenser og utvalgte varmeflekker
       </h3>
-      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Figur 3.9 – Plategrenser og utvalgte varmeflekker, kan rulles sideveis">
-        <img
-          src="/images/geografi/usgs-varmeflekker-1996.png"
-          width="692"
-          height="259"
-          loading="lazy"
-          className="min-w-[640px] w-full bg-white"
-          alt="Verdenskart fra USGS med plategrenser og oransje prikker for utvalgte varmeflekker. Hawaii, Yellowstone, Island, Azorene, Galápagos og Afar er navngitt. Flere prikker ligger midt på platene, mens Island, Azorene og Galápagos ligger ved eller nær spredningsrygger."
+      <ScrollFrame label="Figur 3.9 – Plategrenser og utvalgte varmeflekker" fade="var(--color-card)">
+        <PlateKartSvg
+          visVarmeflekker
+          ariaLabel="Verdenskart sentrert på Stillehavet med plategrenser og oransje prikker for utvalgte varmeflekker. Hawaii, Yellowstone, Island, Azorene, Galápagos og Afar er navngitt. Flere prikker ligger midt på platene, mens Island, Azorene og Galápagos ligger ved eller nær spredningsrygger."
         />
-      </div>
-      <dl className="grid gap-1 text-sm sm:grid-cols-2">
-        <div>
-          <dt className="inline font-semibold">Tynn strek: </dt>
-          <dd className="inline">spredningsgrense (divergent)</dd>
-        </div>
-        <div>
-          <dt className="inline font-semibold">Strek med trekanter: </dt>
-          <dd className="inline">subduksjonsgrense (konvergent)</dd>
-        </div>
-        <div>
-          <dt className="inline font-semibold">Strek med prikker: </dt>
-          <dd className="inline">transformgrense</dd>
-        </div>
-        <div>
-          <dt className="inline font-semibold">Rødskravert felt: </dt>
-          <dd className="inline">brede soner der grensen er uklar</dd>
-        </div>
-        <div>
-          <dt className="inline font-semibold">Oransje prikk: </dt>
-          <dd className="inline">utvalgt varmeflekk, ikke en fullstendig liste</dd>
-        </div>
-      </dl>
+      </ScrollFrame>
+      <PlateKartForklaring visVarmeflekker />
       <figcaption className="text-sm text-muted-foreground">
-        Kart fra U.S. Geological Survey i Kious og Tilling (1996), This Dynamic Earth, nettutgave
-        1.20. Offentlig verk (Public Domain). Gjengitt uendret med norsk lesenøkkel. Kartet er fra
-        1996 og viser utvalgte varmeflekker med omtrentlig plassering. Forfatterne skriver selv at
-        det siden har vært faglig debatt om hvor dype og hvor faste varmeflekkene er. Bruk kartet
-        til å se mønsteret, ikke som en oppdatert liste eller nøyaktige posisjoner (Kious & Tilling,
-        1996; USGS, u.å.-c).
+        Egen tegning. Varmeflekkene er avlest fra kartet over utvalgte varmeflekker i Kious og
+        Tilling (1996), This Dynamic Earth, nettutgave 1.20, fra U.S. Geological Survey (Public
+        Domain), og har omtrentlig plassering. Plategrenser: USGS-karttjenesten Tectonic Plate
+        Boundaries, bygd på Bird (2003). Land: Natural Earth 5.1.1. Alle er offentlige data
+        (Public Domain). Originalkartet er fra 1996 og viser utvalgte varmeflekker. Forfatterne
+        skriver selv at det siden har vært faglig debatt om hvor dype og hvor faste varmeflekkene
+        er. Bruk kartet til å se mønsteret, ikke som en oppdatert liste eller nøyaktige posisjoner.
+        Brede, uklare grensesoner, som originalen viser som skraverte felt, er ikke tegnet her
+        (Kious & Tilling, 1996; USGS, u.å.-c, u.å.-k; Bird, 2003; Natural Earth, u.å.).
       </figcaption>
     </figure>
   );
