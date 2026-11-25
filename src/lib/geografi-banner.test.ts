@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { describe, it } from "node:test";
-import { GEOGRAFI_BANNERE, bannerKreditt } from "./geografi-banner.ts";
+import { GEOGRAFI_BANNERE, bannerKreditt, bannerLisensUrl } from "./geografi-banner.ts";
 import { GEOGRAFI_KAPITLER } from "./geografi-kapitler.ts";
 import { GEO_THEMES } from "./nav.ts";
 
@@ -49,5 +49,22 @@ describe("Geografi: kapittelbannere", () => {
       readFileSync(new URL("../routes/geografi/index.tsx", import.meta.url), "utf8"),
       /hero-earth\.jpg/,
     );
+  });
+
+  it("lisensnavnet lenkes: CC til lisensteksten, offentlig eiendom til filsida", () => {
+    for (const b of Object.values(GEOGRAFI_BANNERE)) {
+      const url = bannerLisensUrl(b);
+      if (b.lisens.startsWith("CC")) assert.match(url, /^https:\/\/creativecommons\.org\//, b.base);
+      else assert.equal(url, b.href);
+    }
+    assert.equal(bannerLisensUrl(GEOGRAFI_BANNERE.migrasjon), "https://creativecommons.org/licenses/by/2.0/deed.no");
+  });
+
+  it("kreditten er minst 12 px på kapittelsida og står på kortene på /geografi", () => {
+    const side = readFileSync(new URL("../components/geografi/kapittel-side.tsx", import.meta.url), "utf8");
+    assert.ok(!side.includes("text-[0.6875rem]"));
+    assert.ok(side.includes("bannerLisensUrl(kapittel.banner)"));
+    const indeks = readFileSync(new URL("../routes/geografi/index.tsx", import.meta.url), "utf8");
+    assert.ok(indeks.includes("{bannerKreditt(kap.banner)}"));
   });
 });

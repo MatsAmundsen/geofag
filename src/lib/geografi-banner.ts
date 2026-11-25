@@ -119,6 +119,18 @@ export function bannerKreditt(banner: GeografiBanner): string {
   return `Foto: ${banner.foto}, ${banner.lisens}`;
 }
 
+const LISENS_URL: Record<string, string> = {
+  "CC0": "https://creativecommons.org/publicdomain/zero/1.0/deed.no",
+  "CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/deed.no",
+  "CC BY 4.0": "https://creativecommons.org/licenses/by/4.0/deed.no",
+};
+
+/** Lenke for lisensnavnet i kreditlinja. CC-lisenser lenker til lisensteksten. Offentlig eiendom har
+ *  ingen lisenstekst, så den lenker til filsida der statusen er dokumentert. */
+export function bannerLisensUrl(banner: GeografiBanner): string {
+  return LISENS_URL[banner.lisens] ?? banner.href;
+}
+
 export function bannerSrcSet(banner: GeografiBanner, ext: "jpg" | "webp" | "avif"): string {
   return `${banner.base}.${ext} ${BANNER_BREDDE}w, ${banner.base}-2x.${ext} ${BANNER_BREDDE * 2}w`;
 }

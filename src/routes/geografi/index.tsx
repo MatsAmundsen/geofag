@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { BannerBilde } from "@/components/geografi/banner-bilde";
+import { bannerKreditt } from "@/lib/geografi-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GEOGRAFI_KAPITLER } from "@/lib/geografi-kapitler";
@@ -93,7 +94,7 @@ function GeografiOversikt() {
 
           <ul className="mt-10 grid gap-5 sm:grid-cols-2">
             {GEOGRAFI_KAPITLER.map((kap) => (
-              <li key={kap.path}>
+              <li key={kap.path} className="relative">
                 <Link
                   to="/geografi/$kapittel"
                   params={{ kapittel: kap.path }}
@@ -118,6 +119,10 @@ function GeografiOversikt() {
                     </span>
                   </div>
                 </Link>
+                {/* Kreditten står utenfor lenken (ingen nestede lenker) og slipper klikk gjennom til kortet. */}
+                <p className="pointer-events-none absolute right-2 top-2 max-w-[calc(100%-1rem)] rounded bg-background/90 px-1.5 py-0.5 text-right text-xs leading-snug text-foreground/90 lys:bg-background/95">
+                  {bannerKreditt(kap.banner)}
+                </p>
               </li>
             ))}
           </ul>

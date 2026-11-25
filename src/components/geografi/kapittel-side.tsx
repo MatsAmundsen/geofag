@@ -9,7 +9,7 @@ import { KILDER_GEOGRAFI } from "@/lib/kilder-geografi";
 import { Kildeliste } from "@/components/kildeliste";
 import { PosterBody } from "@/components/poster-body";
 import { BannerBilde } from "@/components/geografi/banner-bilde";
-import { bannerKreditt } from "@/lib/geografi-banner";
+import { bannerLisensUrl } from "@/lib/geografi-banner";
 import { useEffect, useState } from "react";
 import { getPost, type Post } from "@/lib/posts";
 import { geografiHeadingAliases, sliceGeografiUnderkapittel } from "@/lib/geografi-seksjon";
@@ -154,8 +154,15 @@ export function GeografiKapittelSide({
             </div>
           </div>
           <p className="absolute inset-x-4 bottom-2 flex justify-end sm:inset-x-6">
-            <span className="rounded bg-background/90 px-1.5 py-0.5 text-right text-[0.6875rem] leading-snug text-foreground/90 lys:bg-background/95">
-              {bannerKreditt(kapittel.banner)}
+            <span className="rounded bg-background/90 px-1.5 py-0.5 text-right text-xs leading-snug text-foreground/90 lys:bg-background/95">
+              Foto: {kapittel.banner.foto},{" "}
+              <a
+                href={bannerLisensUrl(kapittel.banner)}
+                rel="license noopener"
+                className="underline underline-offset-2 hover:text-primary"
+              >
+                {kapittel.banner.lisens}
+              </a>
             </span>
           </p>
         </header>
