@@ -4,7 +4,6 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GEOGRAFI_KAPITLER } from "@/lib/geografi-kapitler";
 import { topicHead } from "@/lib/seo";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/geografi/")({
   head: () =>
@@ -45,8 +44,8 @@ function GeografiOversikt() {
               Sted, landskap og samfunn.
             </h1>
             <p className="mt-5 max-w-2xl text-base text-foreground/90 sm:text-lg">
-              Elleve kapitler for Vg1 Geografi. Start med verktøy og feltarbeid, gå videre til
-              naturfare og bærekraft, og bygg ut resten etter planen.
+              Elleve kapitler for Vg1 Geografi, fra kart og feltarbeid til landskap, klima,
+              naturfare, ressurser, bærekraft, næring, befolkning og migrasjon.
             </p>
           </div>
         </section>
@@ -55,8 +54,12 @@ function GeografiOversikt() {
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl font-medium tracking-tight">Kapitler</h2>
             <p className="mt-3 text-muted-foreground">
-              Hvert kapittel er under arbeid. Kortene viser tittel, kompetansemål og en kort
-              beskrivelse.
+              Kortene viser tittel, kompetansemål og en kort beskrivelse. Alle begrepene fra
+              kapitlene er samlet i{" "}
+              <Link to="/geografi/begreper" className="text-primary underline underline-offset-4">
+                begrepsregisteret
+              </Link>
+              .
             </p>
           </div>
 
@@ -74,14 +77,6 @@ function GeografiOversikt() {
                       alt={kap.alt}
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />
-                    <span
-                      className={cn(
-                        "absolute left-3 top-3 rounded-md px-2 py-1 text-xs font-medium",
-                        "bg-background/80 text-muted-foreground",
-                      )}
-                    >
-                      Under arbeid
-                    </span>
                   </div>
                   <div className="flex flex-1 flex-col gap-2 p-5">
                     <p className="text-xs uppercase tracking-wider text-muted-foreground">

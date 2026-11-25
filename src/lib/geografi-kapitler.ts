@@ -1,4 +1,4 @@
-/** Kapittelmetadata for Geografi (GEO01-02). Skjelett PR A. */
+/** Kapittelmetadata for Geografi (GEO01-02). */
 
 export type GeografiUnderkapittel = {
   readonly id: string;
@@ -21,7 +21,8 @@ export type GeografiKapittel = {
   readonly laeringsmaal: readonly string[];
   readonly underkapitler: readonly GeografiUnderkapittel[];
   readonly ingress: string;
-  readonly status: "utkast";
+  /** «ferdig» når kapitlet har full fagtekst på main. */
+  readonly status: "utkast" | "ferdig";
   /** Har fagtekst, slik at kapittelsiden ikke viser skjelettets ventetekst. */
   readonly tekstKlar?: boolean;
 };
@@ -60,7 +61,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "kildekritikk", title: "Kildekritikk" }
     ],
     ingress: "Geografi handler om hvor ting er, hvorfor de er der, og hva det betyr. I dette kapitlet skal vi bruke kart, begreper og kilder for å stille geografiske spørsmål.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "feltarbeid",
@@ -90,7 +91,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "presentere-feltarbeid", title: "Presentere feltarbeid" }
     ],
     ingress: "Feltarbeid er å undersøke geografiske forhold ute. I dette kapitlet skal vi planlegge, samle inn, bearbeide og presentere data.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "indre-krefter",
@@ -123,7 +124,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "ressurser-i-aktive-omrader", title: "Ressurser i aktive områder" }
     ],
     ingress: "Indre krefter bygger opp landskap gjennom plater, skjelv og vulkaner. I dette kapitlet skal vi følge prosessene fra jordas indre til overflaten.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "landskap",
@@ -153,7 +154,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "landskap-og-mennesker", title: "Landskap og mennesker" }
     ],
     ingress: "Ytre krefter bryter ned og bygger opp. I dette kapitlet skal vi se hvordan is, elver og hav har formet Norge, og hva det betyr for bosetting.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "klima",
@@ -187,7 +188,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "kutt-og-tilpasning", title: "Kutt og tilpasning" }
     ],
     ingress: "Klima er gjennomsnittsvær over lang tid. I dette kapitlet skal vi forklare sirkulasjoner, drivhuseffekt og konsekvenser av klimaendringer.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "naturfare",
@@ -219,7 +220,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "undersok-en-katastrofe", title: "Undersøk en katastrofe" }
     ],
     ingress: "Naturfare blir en katastrofe når mennesker og verdier rammes. I dette kapitlet skal vi vurdere risiko, sårbarhet og beredskap.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "ressurser",
@@ -250,7 +251,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "nordomradene", title: "Nordområdene" }
     ],
     ingress: "Ressurser er naturgitte, men mennesker gjør dem verdifulle. I dette kapitlet skal vi drøfte arealbruk og konflikter i Norge, Sápmi og nordområdene.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "baerekraft",
@@ -282,7 +283,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "veien-videre", title: "Veien videre" }
     ],
     ingress: "Bærekraft balanserer økonomi, samfunn og miljø. I dette kapitlet skal vi måle utvikling og reflektere over ressursbruk.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "naering",
@@ -312,7 +313,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "forbruk-og-ansvar", title: "Forbruk og ansvar" }
     ],
     ingress: "Næringslivet er geografisk. I dette kapitlet skal vi følge lokalisering, verdikjeder og globalisering.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "befolkning",
@@ -344,7 +345,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "befolkning-i-norge", title: "Befolkning i Norge" }
     ],
     ingress: "Befolkningen endres gjennom fødsler, dødsfall og flytting. I dette kapitlet skal vi lese pyramider og drøfte levekår.",
-    status: "utkast",
+    status: "ferdig",
   },
   {
     path: "migrasjon",
@@ -375,7 +376,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
       { id: "menneskehandel", title: "Menneskehandel" }
     ],
     ingress: "Folk flytter av mange grunner. I dette kapitlet skal vi skille typer migrasjon og se på Norge og verden.",
-    status: "utkast",
+    status: "ferdig",
   },
 ] as const;
 
