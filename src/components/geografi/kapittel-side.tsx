@@ -67,11 +67,11 @@ export function GeografiKapittelSide({
 
   const body = post?.bodyMarkdown
     ? underkapittel
-      ? // H1 er underkapittelnavnet; H2-linja i blokken ville gitt dobbel tittel.
-        (sliceGeografiUnderkapittel(post.bodyMarkdown, underkapittel.title)?.replace(
-          /^## .*\n+/,
-          "",
-        ) ?? null)
+      ? // H1 er underkapittelnavnet. H2-linja i blokken ville gitt dobbel tittel, og
+        // mellomtitlene flyttes ett nivå opp, så overskriftsrekkefølgen blir H1 → H2 → H3.
+        (sliceGeografiUnderkapittel(post.bodyMarkdown, underkapittel.title)
+          ?.replace(/^## .*\n+/, "")
+          .replace(/^(#{3,6})(?=[ \t])/gm, (hashes) => hashes.slice(1)) ?? null)
       : post.bodyMarkdown
     : null;
   const mangler = Boolean(post?.bodyMarkdown) && body === null;
